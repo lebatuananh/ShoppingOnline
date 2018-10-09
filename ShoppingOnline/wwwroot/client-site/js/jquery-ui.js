@@ -42,7 +42,7 @@
                 }).eq(0);
             return "fixed" !== i && a.length ? a : e(this[0].ownerDocument || document)
         },
-        uniqueId: function() {
+        FabulousId: function() {
             var e = 0;
             return function() {
                 return this.each(function() {
@@ -50,7 +50,7 @@
                 })
             }
         }(),
-        removeUniqueId: function() {
+        removeFabulousId: function() {
             return this.each(function() {
                 /^ui-id-\d+$/.test(this.id) && e(this).removeAttr("id")
             })

@@ -69,7 +69,7 @@ if (typeof Object.create !== 'function') {
 				//let caller know image has been loaded
 				self.options.onZoomedImageLoaded(self.jQueryelem);
 			}
-			newImg.src = imgsrc; // this must be done AFTER setting onload
+			newImg.src = imgsrc; // this MUST be done AFTER setting onload
 			return;
 		},
 		startZoom: function() {
@@ -150,7 +150,7 @@ if (typeof Object.create !== 'function') {
 					self.zoomLens.wrap(self.tintContainer);
 					self.zoomTintcss = self.zoomLens.after(self.zoomTint);
 					//if tint enabled - set an image to show over the tint
-					self.zoomTintImage = jQuery('<img style="position: absolute; left: 0px; top: 0px; max-width: none; width: ' + self.nzWidth + 'px; height: ' + self.nzHeight + 'px;" src="' + self.imageSrc + '">').appendTo(self.zoomLens).click(function() {
+					self.zoomTintImage = jQuery('<img class="img-responsive" style="position: absolute; left: 0px; top: 0px; max-width: none; width: ' + self.nzWidth + 'px; height: ' + self.nzHeight + 'px;" src="' + self.imageSrc + '">').appendTo(self.zoomLens).click(function() {
 						self.jQueryelem.trigger('click');
 					});
 				}
@@ -993,7 +993,7 @@ if (typeof Object.create !== 'function') {
 				self.swapAction(smallimage, largeimage);
 				return;
 			}
-			newImg.src = largeimage; // this must be done AFTER setting onload
+			newImg.src = largeimage; // this MUST be done AFTER setting onload
 		},
 		swapAction: function(smallimage, largeimage) {
 			var self = this;
@@ -1451,7 +1451,7 @@ if (typeof Object.create !== 'function') {
 		constrainType: false, //width or height
 		constrainSize: false, //in pixels the dimensions you want to constrain on
 		loadingIcon: false, //http://www.example.com/spinner.gif
-		cursor: "default", // user should set to what they want the cursor as, if they have set a click function
+		cursor: "default", // user SHOULD set to what they want the cursor as, if they have set a click function
 		responsive: true,
 		onComplete: jQuery.noop,
 		onZoomedImageLoaded: function() {},
@@ -1471,9 +1471,9 @@ if (jQuery('#product-zoom').length > 0) {
 }
 jQuery("#jtv-more-views-img .slider-items").owlCarousel({
 	autoplay: false,
-	items: 3, //10 items above 1000px browser width
-	itemsDesktop: [1024, 3], //5 items between 1024px and 901px
-	itemsDesktopSmall: [900, 2], // 3 items betweem 900px and 601px
+	items: 4, //10 items above 1000px browser width
+	itemsDesktop: [1024, 4], //5 items between 1024px and 901px
+	itemsDesktopSmall: [900, 3], // 3 items betweem 900px and 601px
 	itemsTablet: [600, 3], //2 items between 600 and 0;
 	itemsMobile: [320, 2],
 	navigation: true,

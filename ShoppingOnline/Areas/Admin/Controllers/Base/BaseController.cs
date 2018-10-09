@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace ShoppingOnline.Areas.Admin.Controllers.Base
+namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Base
 {
     [Area("Admin")]
     public class BaseController:Controller

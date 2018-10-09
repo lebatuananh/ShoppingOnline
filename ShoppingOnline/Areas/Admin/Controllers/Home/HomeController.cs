@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using ShoppingOnline.Areas.Admin.Controllers.Base;
+using ShoppingOnline.WebApplication.Areas.Admin.Controllers.Base;
 
-namespace ShoppingOnline.Areas.Admin.Controllers.Home
+namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Home
 {
     public class HomeController : BaseController
     {

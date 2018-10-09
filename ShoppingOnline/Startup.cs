@@ -10,6 +10,11 @@ using Microsoft.Extensions.Logging;
 using ShoppingOnline.Data.EF;
 using ShoppingOnline.Data.Entities;
 using System;
+using AutoMapper;
+using ShoppingOnline.Application.ECommerce.Products;
+using ShoppingOnline.Data.EF.Abstract;
+using ShoppingOnline.Data.Entities.System;
+using ShoppingOnline.Infrastructure.Interfaces;
 
 namespace ShoppingOnline
 {
@@ -27,7 +32,7 @@ namespace ShoppingOnline
         {
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
-                o => o.MigrationsAssembly("ShoppingOnline.Data.EF")));
+                    o => o.MigrationsAssembly("ShoppingOnline.Data.EF")));
 
             // Configure Identity
             services.AddIdentity<AppUser, AppRole>()
@@ -55,7 +60,25 @@ namespace ShoppingOnline
             services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>();
 
+            //DbInitializer
             services.AddTransient<DbInitializer>();
+
+            //AutoMapper
+            services.AddAutoMapper();
+            services.AddSingleton(Mapper.Configuration);
+            services.AddScoped<IMapper>(sp =>
+                new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
+
+            //MemoryCache
+            services.AddMemoryCache();
+
+            //Repository And UnitOfWork
+            services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
+            services.AddTransient(typeof(IRepository<,>), typeof(EFRepository<,>));
+
+            //Service
+            services.AddTransient<IProductService, ProductService>();
+
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -85,11 +108,18 @@ namespace ShoppingOnline
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            app.UseAuthentication();
+
             app.UseMvc(routes =>
             {
+                //webapp
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+
+                //admin
+                routes.MapRoute(name: "areaRoute",
+                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

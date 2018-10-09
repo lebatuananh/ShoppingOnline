@@ -11,6 +11,10 @@ using ShoppingOnline.Data.EF.Extensions;
 using System;
 using System.IO;
 using System.Linq;
+using ShoppingOnline.Data.Entities.Advertisement;
+using ShoppingOnline.Data.Entities.Content;
+using ShoppingOnline.Data.Entities.ECommerce;
+using ShoppingOnline.Data.Entities.System;
 
 namespace ShoppingOnline.Data.EF
 {
@@ -72,11 +76,11 @@ namespace ShoppingOnline.Data.EF
 
         public DbSet<WholePrice> WholePrices { get; set; }
 
-        public DbSet<AdvertistmentPage> AdvertistmentPages { get; set; }
+        public DbSet<AdvertisementPage> AdvertistmentPages { get; set; }
 
-        public DbSet<Advertistment> Advertistments { get; set; }
+        public DbSet<Advertisement> Advertistments { get; set; }
 
-        public DbSet<AdvertistmentPosition> AdvertistmentPositions { get; set; }
+        public DbSet<AdvertisementPosition> AdvertistmentPositions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

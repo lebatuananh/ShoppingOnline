@@ -4,6 +4,7 @@ using ShoppingOnline.Data.EF.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using ShoppingOnline.Data.Entities.Content;
 
 namespace ShoppingOnline.Data.EF.Configurations
 {

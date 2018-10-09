@@ -96,7 +96,7 @@ namespace ShoppingOnline.Data.EF.Migrations
                     b.ToTable("AppUserTokens");
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.Advertistment", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.Advertisement.Advertisement", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -129,10 +129,10 @@ namespace ShoppingOnline.Data.EF.Migrations
 
                     b.HasIndex("PositionId");
 
-                    b.ToTable("Advertistments");
+                    b.ToTable("Advertisements");
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.AdvertistmentPage", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.Advertisement.AdvertisementPage", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
@@ -142,10 +142,10 @@ namespace ShoppingOnline.Data.EF.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AdvertistmentPages");
+                    b.ToTable("AdvertisementPages");
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.AdvertistmentPosition", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.Advertisement.AdvertisementPosition", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
@@ -161,202 +161,10 @@ namespace ShoppingOnline.Data.EF.Migrations
 
                     b.HasIndex("PageId");
 
-                    b.ToTable("AdvertistmentPositions");
+                    b.ToTable("AdvertisementPositions");
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.Announcement", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(128);
-
-                    b.Property<string>("Content")
-                        .HasMaxLength(250);
-
-                    b.Property<DateTime>("DateCreated");
-
-                    b.Property<DateTime>("DateModified");
-
-                    b.Property<int>("Status");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(250);
-
-                    b.Property<Guid>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Announcements");
-                });
-
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.AnnouncementUser", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AnnouncementId")
-                        .IsRequired()
-                        .HasMaxLength(128);
-
-                    b.Property<bool?>("HasRead");
-
-                    b.Property<Guid>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AnnouncementId");
-
-                    b.ToTable("AnnouncementUsers");
-                });
-
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.AppRole", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("ConcurrencyStamp");
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(250);
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("NormalizedName");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AppRoles");
-                });
-
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.AppUser", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("AccessFailedCount");
-
-                    b.Property<string>("Avatar");
-
-                    b.Property<decimal>("Balance");
-
-                    b.Property<DateTime?>("BirthDay");
-
-                    b.Property<string>("ConcurrencyStamp");
-
-                    b.Property<DateTime>("DateCreated");
-
-                    b.Property<DateTime>("DateModified");
-
-                    b.Property<string>("Email");
-
-                    b.Property<bool>("EmailConfirmed");
-
-                    b.Property<string>("FullName");
-
-                    b.Property<bool>("LockoutEnabled");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd");
-
-                    b.Property<string>("NormalizedEmail");
-
-                    b.Property<string>("NormalizedUserName");
-
-                    b.Property<string>("PasswordHash");
-
-                    b.Property<string>("PhoneNumber");
-
-                    b.Property<bool>("PhoneNumberConfirmed");
-
-                    b.Property<string>("SecurityStamp");
-
-                    b.Property<int>("Status");
-
-                    b.Property<bool>("TwoFactorEnabled");
-
-                    b.Property<string>("UserName");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AppUsers");
-                });
-
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.Bill", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("BillStatus");
-
-                    b.Property<string>("CustomerAddress")
-                        .IsRequired()
-                        .HasMaxLength(256);
-
-                    b.Property<Guid?>("CustomerId");
-
-                    b.Property<string>("CustomerMessage")
-                        .IsRequired()
-                        .HasMaxLength(256);
-
-                    b.Property<string>("CustomerMobile")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.Property<string>("CustomerName")
-                        .IsRequired()
-                        .HasMaxLength(256);
-
-                    b.Property<DateTime>("DateCreated");
-
-                    b.Property<DateTime>("DateModified");
-
-                    b.Property<int>("PaymentMethod");
-
-                    b.Property<int>("Status");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
-
-                    b.ToTable("Bills");
-                });
-
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.BillDetail", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("BillId");
-
-                    b.Property<int>("ColorId");
-
-                    b.Property<decimal>("Price");
-
-                    b.Property<int>("ProductId");
-
-                    b.Property<int>("Quantity");
-
-                    b.Property<int>("SizeId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BillId");
-
-                    b.HasIndex("ColorId");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("SizeId");
-
-                    b.ToTable("BillDetails");
-                });
-
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.Blog", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.Content.Blog", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -405,7 +213,7 @@ namespace ShoppingOnline.Data.EF.Migrations
                     b.ToTable("Blogs");
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.BlogTag", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.Content.BlogTag", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -427,24 +235,7 @@ namespace ShoppingOnline.Data.EF.Migrations
                     b.ToTable("BlogTags");
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.Color", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Code")
-                        .HasMaxLength(250);
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(250);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Colors");
-                });
-
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.Contact", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.Content.Contact", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
@@ -479,7 +270,7 @@ namespace ShoppingOnline.Data.EF.Migrations
                     b.ToTable("ContactDetails");
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.Feedback", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.Content.Feedback", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -506,7 +297,7 @@ namespace ShoppingOnline.Data.EF.Migrations
                     b.ToTable("Feedbacks");
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.Footer", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.Content.Footer", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
@@ -521,56 +312,7 @@ namespace ShoppingOnline.Data.EF.Migrations
                     b.ToTable("Footers");
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.Function", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(128)
-                        .IsUnicode(false);
-
-                    b.Property<string>("IconCss");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(128);
-
-                    b.Property<string>("ParentId")
-                        .HasMaxLength(128);
-
-                    b.Property<int>("SortOrder");
-
-                    b.Property<int>("Status");
-
-                    b.Property<string>("URL")
-                        .IsRequired()
-                        .HasMaxLength(250);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Functions");
-                });
-
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.Language", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<bool>("IsDefault");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(128);
-
-                    b.Property<string>("Resources");
-
-                    b.Property<int>("Status");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Languages");
-                });
-
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.Page", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.Content.Page", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -594,36 +336,110 @@ namespace ShoppingOnline.Data.EF.Migrations
                     b.ToTable("Pages");
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.Permission", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.Content.Slide", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("CanCreate");
+                    b.Property<string>("Content");
 
-                    b.Property<bool>("CanDelete");
+                    b.Property<string>("Description")
+                        .HasMaxLength(250);
 
-                    b.Property<bool>("CanRead");
+                    b.Property<int?>("DisplayOrder");
 
-                    b.Property<bool>("CanUpdate");
-
-                    b.Property<string>("FunctionId")
+                    b.Property<string>("GroupAlias")
                         .IsRequired()
-                        .HasMaxLength(128);
+                        .HasMaxLength(25);
 
-                    b.Property<Guid>("RoleId");
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasMaxLength(250);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(250);
+
+                    b.Property<bool>("Status");
+
+                    b.Property<string>("Url")
+                        .HasMaxLength(250);
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FunctionId");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("Permissions");
+                    b.ToTable("Slides");
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.Product", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.Content.Tag", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(50)
+                        .IsUnicode(false);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tags");
+                });
+
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.ECommerce.BillDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BillId");
+
+                    b.Property<int>("ColorId");
+
+                    b.Property<decimal>("Price");
+
+                    b.Property<int>("ProductId");
+
+                    b.Property<int>("Quantity");
+
+                    b.Property<int>("SizeId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BillId");
+
+                    b.HasIndex("ColorId");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("SizeId");
+
+                    b.ToTable("BillDetails");
+                });
+
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.ECommerce.Color", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Code")
+                        .HasMaxLength(250);
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(250);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Colors");
+                });
+
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.ECommerce.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -685,7 +501,7 @@ namespace ShoppingOnline.Data.EF.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.ProductCategory", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.ECommerce.ProductCategory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -724,7 +540,7 @@ namespace ShoppingOnline.Data.EF.Migrations
                     b.ToTable("ProductCategories");
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.ProductImage", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.ECommerce.ProductImage", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -745,7 +561,7 @@ namespace ShoppingOnline.Data.EF.Migrations
                     b.ToTable("ProductImages");
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.ProductQuantity", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.ECommerce.ProductQuantity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -770,7 +586,7 @@ namespace ShoppingOnline.Data.EF.Migrations
                     b.ToTable("ProductQuantities");
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.ProductTag", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.ECommerce.ProductTag", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -792,7 +608,7 @@ namespace ShoppingOnline.Data.EF.Migrations
                     b.ToTable("ProductTags");
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.Size", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.ECommerce.Size", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -806,42 +622,267 @@ namespace ShoppingOnline.Data.EF.Migrations
                     b.ToTable("Sizes");
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.Slide", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.ECommerce.WholePrice", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Content");
+                    b.Property<int>("FromQuantity");
+
+                    b.Property<decimal>("Price");
+
+                    b.Property<int>("ProductId");
+
+                    b.Property<int>("ToQuantity");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("WholePrices");
+                });
+
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.System.Announcement", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(128);
+
+                    b.Property<string>("Content")
+                        .HasMaxLength(250);
+
+                    b.Property<DateTime>("DateCreated");
+
+                    b.Property<DateTime>("DateModified");
+
+                    b.Property<int>("Status");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(250);
+
+                    b.Property<Guid>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Announcements");
+                });
+
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.System.AnnouncementUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AnnouncementId")
+                        .IsRequired()
+                        .HasMaxLength(128);
+
+                    b.Property<bool?>("HasRead");
+
+                    b.Property<Guid>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AnnouncementId");
+
+                    b.ToTable("AnnouncementUsers");
+                });
+
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.System.AppRole", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ConcurrencyStamp");
 
                     b.Property<string>("Description")
                         .HasMaxLength(250);
 
-                    b.Property<int?>("DisplayOrder");
+                    b.Property<string>("Name");
 
-                    b.Property<string>("GroupAlias")
-                        .IsRequired()
-                        .HasMaxLength(25);
+                    b.Property<string>("NormalizedName");
 
-                    b.Property<string>("Image")
+                    b.HasKey("Id");
+
+                    b.ToTable("AppRoles");
+                });
+
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.System.AppUser", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("AccessFailedCount");
+
+                    b.Property<string>("Avatar");
+
+                    b.Property<decimal>("Balance");
+
+                    b.Property<DateTime?>("BirthDay");
+
+                    b.Property<string>("ConcurrencyStamp");
+
+                    b.Property<DateTime>("DateCreated");
+
+                    b.Property<DateTime>("DateModified");
+
+                    b.Property<string>("Email");
+
+                    b.Property<bool>("EmailConfirmed");
+
+                    b.Property<string>("FullName");
+
+                    b.Property<bool>("LockoutEnabled");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd");
+
+                    b.Property<string>("NormalizedEmail");
+
+                    b.Property<string>("NormalizedUserName");
+
+                    b.Property<string>("PasswordHash");
+
+                    b.Property<string>("PhoneNumber");
+
+                    b.Property<bool>("PhoneNumberConfirmed");
+
+                    b.Property<string>("SecurityStamp");
+
+                    b.Property<int>("Status");
+
+                    b.Property<bool>("TwoFactorEnabled");
+
+                    b.Property<string>("UserName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AppUsers");
+                });
+
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.System.Bill", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BillStatus");
+
+                    b.Property<string>("CustomerAddress")
                         .IsRequired()
-                        .HasMaxLength(250);
+                        .HasMaxLength(256);
+
+                    b.Property<Guid?>("CustomerId");
+
+                    b.Property<string>("CustomerMessage")
+                        .IsRequired()
+                        .HasMaxLength(256);
+
+                    b.Property<string>("CustomerMobile")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<string>("CustomerName")
+                        .IsRequired()
+                        .HasMaxLength(256);
+
+                    b.Property<DateTime>("DateCreated");
+
+                    b.Property<DateTime>("DateModified");
+
+                    b.Property<int>("PaymentMethod");
+
+                    b.Property<int>("Status");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("Bills");
+                });
+
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.System.Function", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(128)
+                        .IsUnicode(false);
+
+                    b.Property<string>("IconCss");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(250);
+                        .HasMaxLength(128);
 
-                    b.Property<bool>("Status");
+                    b.Property<string>("ParentId")
+                        .HasMaxLength(128);
 
-                    b.Property<string>("Url")
+                    b.Property<int>("SortOrder");
+
+                    b.Property<int>("Status");
+
+                    b.Property<string>("URL")
+                        .IsRequired()
                         .HasMaxLength(250);
 
                     b.HasKey("Id");
 
-                    b.ToTable("Slides");
+                    b.ToTable("Functions");
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.SystemConfig", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.System.Language", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("IsDefault");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(128);
+
+                    b.Property<string>("Resources");
+
+                    b.Property<int>("Status");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Languages");
+                });
+
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.System.Permission", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("CanCreate");
+
+                    b.Property<bool>("CanDelete");
+
+                    b.Property<bool>("CanRead");
+
+                    b.Property<bool>("CanUpdate");
+
+                    b.Property<string>("FunctionId")
+                        .IsRequired()
+                        .HasMaxLength(128);
+
+                    b.Property<Guid>("RoleId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FunctionId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("Permissions");
+                });
+
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.System.SystemConfig", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
@@ -868,185 +909,144 @@ namespace ShoppingOnline.Data.EF.Migrations
                     b.ToTable("SystemConfigs");
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.Tag", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.Advertisement.Advertisement", b =>
                 {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(50)
-                        .IsUnicode(false);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tags");
-                });
-
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.WholePrice", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("FromQuantity");
-
-                    b.Property<decimal>("Price");
-
-                    b.Property<int>("ProductId");
-
-                    b.Property<int>("ToQuantity");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("WholePrices");
-                });
-
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.Advertistment", b =>
-                {
-                    b.HasOne("ShoppingOnline.Data.Entities.AdvertistmentPosition", "AdvertistmentPosition")
-                        .WithMany("Advertistments")
+                    b.HasOne("ShoppingOnline.Data.Entities.Advertisement.AdvertisementPosition", "AdvertisementPosition")
+                        .WithMany("Advertisements")
                         .HasForeignKey("PositionId");
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.AdvertistmentPosition", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.Advertisement.AdvertisementPosition", b =>
                 {
-                    b.HasOne("ShoppingOnline.Data.Entities.AdvertistmentPage", "AdvertistmentPage")
-                        .WithMany("AdvertistmentPositions")
+                    b.HasOne("ShoppingOnline.Data.Entities.Advertisement.AdvertisementPage", "AdvertisementPage")
+                        .WithMany("AdvertisementPositions")
                         .HasForeignKey("PageId");
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.Announcement", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.Content.BlogTag", b =>
                 {
-                    b.HasOne("ShoppingOnline.Data.Entities.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.AnnouncementUser", b =>
-                {
-                    b.HasOne("ShoppingOnline.Data.Entities.Announcement", "Announcement")
-                        .WithMany("AnnouncementUsers")
-                        .HasForeignKey("AnnouncementId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.Bill", b =>
-                {
-                    b.HasOne("ShoppingOnline.Data.Entities.AppUser", "User")
-                        .WithMany()
-                        .HasForeignKey("CustomerId");
-                });
-
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.BillDetail", b =>
-                {
-                    b.HasOne("ShoppingOnline.Data.Entities.Bill", "Bill")
-                        .WithMany("BillDetails")
-                        .HasForeignKey("BillId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("ShoppingOnline.Data.Entities.Color", "Color")
-                        .WithMany()
-                        .HasForeignKey("ColorId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("ShoppingOnline.Data.Entities.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("ShoppingOnline.Data.Entities.Size", "Size")
-                        .WithMany()
-                        .HasForeignKey("SizeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.BlogTag", b =>
-                {
-                    b.HasOne("ShoppingOnline.Data.Entities.Blog", "Blog")
+                    b.HasOne("ShoppingOnline.Data.Entities.Content.Blog", "Blog")
                         .WithMany("BlogTags")
                         .HasForeignKey("BlogId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("ShoppingOnline.Data.Entities.Tag", "Tag")
+                    b.HasOne("ShoppingOnline.Data.Entities.Content.Tag", "Tag")
                         .WithMany()
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.Permission", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.ECommerce.BillDetail", b =>
                 {
-                    b.HasOne("ShoppingOnline.Data.Entities.Function", "Function")
-                        .WithMany()
-                        .HasForeignKey("FunctionId")
+                    b.HasOne("ShoppingOnline.Data.Entities.System.Bill", "Bill")
+                        .WithMany("BillDetails")
+                        .HasForeignKey("BillId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("ShoppingOnline.Data.Entities.AppRole", "AppRole")
+                    b.HasOne("ShoppingOnline.Data.Entities.ECommerce.Color", "Color")
                         .WithMany()
-                        .HasForeignKey("RoleId")
+                        .HasForeignKey("ColorId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ShoppingOnline.Data.Entities.ECommerce.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ShoppingOnline.Data.Entities.ECommerce.Size", "Size")
+                        .WithMany()
+                        .HasForeignKey("SizeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.Product", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.ECommerce.Product", b =>
                 {
-                    b.HasOne("ShoppingOnline.Data.Entities.ProductCategory", "ProductCategory")
+                    b.HasOne("ShoppingOnline.Data.Entities.ECommerce.ProductCategory", "ProductCategory")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.ProductImage", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.ECommerce.ProductImage", b =>
                 {
-                    b.HasOne("ShoppingOnline.Data.Entities.Product", "Product")
+                    b.HasOne("ShoppingOnline.Data.Entities.ECommerce.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.ProductQuantity", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.ECommerce.ProductQuantity", b =>
                 {
-                    b.HasOne("ShoppingOnline.Data.Entities.Color", "Color")
+                    b.HasOne("ShoppingOnline.Data.Entities.ECommerce.Color", "Color")
                         .WithMany()
                         .HasForeignKey("ColorId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("ShoppingOnline.Data.Entities.Product", "Product")
+                    b.HasOne("ShoppingOnline.Data.Entities.ECommerce.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("ShoppingOnline.Data.Entities.Size", "Size")
+                    b.HasOne("ShoppingOnline.Data.Entities.ECommerce.Size", "Size")
                         .WithMany()
                         .HasForeignKey("SizeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.ProductTag", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.ECommerce.ProductTag", b =>
                 {
-                    b.HasOne("ShoppingOnline.Data.Entities.Product", "Product")
+                    b.HasOne("ShoppingOnline.Data.Entities.ECommerce.Product", "Product")
                         .WithMany("ProductTags")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("ShoppingOnline.Data.Entities.Tag", "Tag")
+                    b.HasOne("ShoppingOnline.Data.Entities.Content.Tag", "Tag")
                         .WithMany()
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.WholePrice", b =>
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.ECommerce.WholePrice", b =>
                 {
-                    b.HasOne("ShoppingOnline.Data.Entities.Product", "Product")
+                    b.HasOne("ShoppingOnline.Data.Entities.ECommerce.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.System.Announcement", b =>
+                {
+                    b.HasOne("ShoppingOnline.Data.Entities.System.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.System.AnnouncementUser", b =>
+                {
+                    b.HasOne("ShoppingOnline.Data.Entities.System.Announcement", "Announcement")
+                        .WithMany("AnnouncementUsers")
+                        .HasForeignKey("AnnouncementId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.System.Bill", b =>
+                {
+                    b.HasOne("ShoppingOnline.Data.Entities.System.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("CustomerId");
+                });
+
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.System.Permission", b =>
+                {
+                    b.HasOne("ShoppingOnline.Data.Entities.System.Function", "Function")
+                        .WithMany()
+                        .HasForeignKey("FunctionId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ShoppingOnline.Data.Entities.System.AppRole", "AppRole")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

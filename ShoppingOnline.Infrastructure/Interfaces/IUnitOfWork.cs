@@ -4,7 +4,8 @@ using System.Text;
 
 namespace ShoppingOnline.Infrastructure.Interfaces
 {
-    class IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
+        void Commit();
     }
 }

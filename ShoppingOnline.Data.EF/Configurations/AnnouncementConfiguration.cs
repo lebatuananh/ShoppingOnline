@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ShoppingOnline.Data.EF.Extensions;
 using ShoppingOnline.Data.Entities;
+using ShoppingOnline.Data.Entities.System;
 
 namespace ShoppingOnline.Data.EF.Configurations
 {

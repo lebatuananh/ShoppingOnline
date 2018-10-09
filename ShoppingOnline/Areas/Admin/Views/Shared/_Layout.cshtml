@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>@ViewData["Title"]</title>
+    <!-- Favicon-->
+    <link rel="icon" href="~/admin-site/favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="~/admin-site/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <!-- Waves Effect Css -->
+    <link href="~/admin-site/plugins/node-waves/waves.css" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link href="~/admin-site/plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- Morris Chart Css-->
+    <link href="~/admin-site/plugins/morrisjs/morris.css" rel="stylesheet" />
+
+    <!-- Custom Css -->
+    <link href="~/admin-site/css/style.css" rel="stylesheet">
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="~/admin-site/css/themes/all-themes.css" rel="stylesheet" />
+
+    @RenderSection("Styles", required: false)
+</head>
+
+<body class="theme-red">
+    <!-- Page Loader -->
+   <vc:page-loader-vc></vc:page-loader-vc>
+<!-- #END# Page Loader -->
+
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+<!-- #END# Overlay For Sidebars -->
+
+    <!-- Search Bar -->
+    <vc:search-bar-vc></vc:search-bar-vc>
+<!-- #END# Search Bar -->
+
+    <!-- Top Bar -->
+    <vc:top-bar-vc></vc:top-bar-vc>
+<!-- #Top Bar -->
+
+    <section>
+        <!-- Left Sidebar -->
+        <vc:left-side-bar-vc></vc:left-side-bar-vc>
+        <!-- #END# Left Sidebar -->
+        
+        <!-- Right Sidebar -->
+        <vc:right-side-bar-vc></vc:right-side-bar-vc>
+        <!-- #END# Right Sidebar -->
+        
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+           @RenderBody()
+        </div>
+    </section>
+
+    <!-- Jquery Core Js -->
+    <script src="~/admin-site/plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="~/admin-site/plugins/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Select Plugin Js -->
+    <script src="~/admin-site/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="~/admin-site/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="~/admin-site/plugins/node-waves/waves.js"></script>
+
+    <!-- Jquery CountTo Plugin Js -->
+    <script src="~/admin-site/plugins/jquery-countto/jquery.countTo.js"></script>
+
+    <!-- Morris Plugin Js -->
+    <script src="~/admin-site/plugins/raphael/raphael.min.js"></script>
+    <script src="~/admin-site/plugins/morrisjs/morris.js"></script>
+
+    <!-- ChartJs -->
+    <script src="~/admin-site/plugins/chartjs/Chart.bundle.js"></script>
+
+    <!-- Flot Charts Plugin Js -->
+    <script src="~/admin-site/plugins/flot-charts/jquery.flot.js"></script>
+    <script src="~/admin-site/plugins/flot-charts/jquery.flot.resize.js"></script>
+    <script src="~/admin-site/plugins/flot-charts/jquery.flot.pie.js"></script>
+    <script src="~/admin-site/plugins/flot-charts/jquery.flot.categories.js"></script>
+    <script src="~/admin-site/plugins/flot-charts/jquery.flot.time.js"></script>
+
+    <!-- Sparkline Chart Plugin Js -->
+    <script src="~/admin-site/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+
+    <!-- Custom Js -->
+    <script src="~/admin-site/js/admin.js"></script>
+    <script src="~/admin-site/js/pages/index.js"></script>
+
+    <!-- Demo Js -->
+    <script src="~/admin-site/js/demo.js"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>

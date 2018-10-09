@@ -31,4 +31,17 @@
     <ProjectReference Include="..\ShoppingOnline.Utilities\ShoppingOnline.Utilities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="wwwroot\app" />
+    <Folder Include="wwwroot\client-site" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\admin-site\css\custom.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\admin-site\css\custom.min.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\admin-site\css\maps\jquery-jvectormap-2.0.3.css" />
+  </ItemGroup>
+
 </Project>

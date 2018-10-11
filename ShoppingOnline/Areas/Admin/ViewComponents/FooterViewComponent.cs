@@ -1,6 +1,5 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Information;
 
 namespace ShoppingOnline.WebApplication.Areas.Admin.ViewComponents
 {

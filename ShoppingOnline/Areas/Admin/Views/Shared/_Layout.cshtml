@@ -13,102 +13,81 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
-    <link href="~/admin-site/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/admin-site/plugins/bootstrap/css/bootstrap.css" rel="stylesheet"/>
     <!-- Waves Effect Css -->
-    <link href="~/admin-site/plugins/node-waves/waves.css" rel="stylesheet" />
+    <link href="~/admin-site/plugins/node-waves/waves.css" rel="stylesheet"/>
 
     <!-- Animation Css -->
-    <link href="~/admin-site/plugins/animate-css/animate.css" rel="stylesheet" />
-
-    <!-- Morris Chart Css-->
-    <link href="~/admin-site/plugins/morrisjs/morris.css" rel="stylesheet" />
+    <link href="~/admin-site/plugins/animate-css/animate.css" rel="stylesheet"/>
 
     <!-- Custom Css -->
     <link href="~/admin-site/css/style.css" rel="stylesheet">
 
+    <!-- Font Awesome -->
+    <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-    <link href="~/admin-site/css/themes/all-themes.css" rel="stylesheet" />
+    <link href="~/admin-site/css/themes/all-themes.css" rel="stylesheet"/>
 
     @RenderSection("Styles", required: false)
 </head>
 
 <body class="theme-red">
-    <!-- Page Loader -->
-   <vc:page-loader-vc></vc:page-loader-vc>
+<!-- Page Loader -->
+<vc:page-loader-vc></vc:page-loader-vc>
 <!-- #END# Page Loader -->
 
-    <!-- Overlay For Sidebars -->
-    <div class="overlay"></div>
+<!-- Overlay For Sidebars -->
+<div class="overlay"></div>
 <!-- #END# Overlay For Sidebars -->
 
-    <!-- Search Bar -->
-    <vc:search-bar-vc></vc:search-bar-vc>
+<!-- Search Bar -->
+<vc:search-bar-vc></vc:search-bar-vc>
 <!-- #END# Search Bar -->
 
-    <!-- Top Bar -->
-    <vc:top-bar-vc></vc:top-bar-vc>
+<!-- Top Bar -->
+<vc:top-bar-vc></vc:top-bar-vc>
 <!-- #Top Bar -->
 
-    <section>
-        <!-- Left Sidebar -->
-        <vc:left-side-bar-vc></vc:left-side-bar-vc>
-        <!-- #END# Left Sidebar -->
-        
-        <!-- Right Sidebar -->
-        <vc:right-side-bar-vc></vc:right-side-bar-vc>
-        <!-- #END# Right Sidebar -->
-        
-    </section>
+<section>
+    <!-- Left Sidebar -->
+    <vc:left-side-bar-vc></vc:left-side-bar-vc>
+    <!-- #END# Left Sidebar -->
 
-    <section class="content">
-        <div class="container-fluid">
-           @RenderBody()
-        </div>
-    </section>
+    <!-- Right Sidebar -->
+    <vc:right-side-bar-vc></vc:right-side-bar-vc>
+    <!-- #END# Right Sidebar -->
 
-    <!-- Jquery Core Js -->
-    <script src="~/admin-site/plugins/jquery/jquery.min.js"></script>
+</section>
 
-    <!-- Bootstrap Core Js -->
-    <script src="~/admin-site/plugins/bootstrap/js/bootstrap.js"></script>
+<section class="content">
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+</section>
 
-    <!-- Select Plugin Js -->
-    <script src="~/admin-site/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+<!-- Jquery Core Js -->
+<script src="~/admin-site/plugins/jquery/jquery.min.js"></script>
 
-    <!-- Slimscroll Plugin Js -->
-    <script src="~/admin-site/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+<!-- Bootstrap Core Js -->
+<script src="~/admin-site/plugins/bootstrap/js/bootstrap.js"></script>
 
-    <!-- Waves Effect Plugin Js -->
-    <script src="~/admin-site/plugins/node-waves/waves.js"></script>
+<!-- Select Plugin Js -->
+<script src="~/admin-site/plugins/bootstrap-select/js/bootstrap-select.js"></script>
 
-    <!-- Jquery CountTo Plugin Js -->
-    <script src="~/admin-site/plugins/jquery-countto/jquery.countTo.js"></script>
+<!-- Slimscroll Plugin Js -->
+<script src="~/admin-site/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 
-    <!-- Morris Plugin Js -->
-    <script src="~/admin-site/plugins/raphael/raphael.min.js"></script>
-    <script src="~/admin-site/plugins/morrisjs/morris.js"></script>
+<!-- Waves Effect Plugin Js -->
+<script src="~/admin-site/plugins/node-waves/waves.js"></script>
 
-    <!-- ChartJs -->
-    <script src="~/admin-site/plugins/chartjs/Chart.bundle.js"></script>
+<!-- Custom Js -->
+<script src="~/admin-site/js/admin.js"></script>
 
-    <!-- Flot Charts Plugin Js -->
-    <script src="~/admin-site/plugins/flot-charts/jquery.flot.js"></script>
-    <script src="~/admin-site/plugins/flot-charts/jquery.flot.resize.js"></script>
-    <script src="~/admin-site/plugins/flot-charts/jquery.flot.pie.js"></script>
-    <script src="~/admin-site/plugins/flot-charts/jquery.flot.categories.js"></script>
-    <script src="~/admin-site/plugins/flot-charts/jquery.flot.time.js"></script>
+<!-- Demo Js -->
+<script src="~/admin-site/js/demo.js"></script>
 
-    <!-- Sparkline Chart Plugin Js -->
-    <script src="~/admin-site/plugins/jquery-sparkline/jquery.sparkline.js"></script>
-
-    <!-- Custom Js -->
-    <script src="~/admin-site/js/admin.js"></script>
-    <script src="~/admin-site/js/pages/index.js"></script>
-
-    <!-- Demo Js -->
-    <script src="~/admin-site/js/demo.js"></script>
-
-    @RenderSection("Scripts", required: false)
+@RenderSection("Scripts", required: false)
 </body>
 
 </html>

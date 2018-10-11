@@ -1,7 +1,19 @@
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+
 namespace ShoppingOnline.WebApplication.ViewComponents
 {
-    public class MobileMenuViewComponent
+    [ViewComponent(Name = "MobileMenuVC")]
+    public class MobileMenuViewComponent:ViewComponent
     {
-        
+        public MobileMenuViewComponent()
+        {
+            
+        }
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            return await Task.Run(() => View());
+        }
     }
 }

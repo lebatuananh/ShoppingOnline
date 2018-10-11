@@ -34,8 +34,7 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Views\Shared\Components" />
-    <Folder Include="wwwroot\app" />
+    <Folder Include="Views\Home\Components" />
     <Folder Include="wwwroot\client-site" />
   </ItemGroup>
 

@@ -22,6 +22,6 @@ namespace ShoppingOnline.Application.Systems.Permissions.Dtos
 
         public AppRoleViewModel AppRole { get; set; }
 
-        public FunctionsViewModel Function { get; set; }
+        public FunctionViewModel Function { get; set; }
     }
 }

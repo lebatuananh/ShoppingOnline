@@ -1,19 +1,15 @@
-using System;
 using AutoMapper;
 using ShoppingOnline.Application.ECommerce.Bills.Dtos;
 using ShoppingOnline.Application.ECommerce.ProductCategories.Dtos;
 using ShoppingOnline.Application.ECommerce.Products.Dtos;
-using ShoppingOnline.Data.Entities.Content;
 using ShoppingOnline.Data.Entities.ECommerce;
-using ShoppingOnline.Data.Entities.System;
 
 namespace ShoppingOnline.Application.AutoMapper
 {
-    public class ViewModelToDomainMappingProfile:Profile
+    public class ViewModelToDomainMappingProfile : Profile
     {
         public ViewModelToDomainMappingProfile()
         {
-
             CreateMap<ProductCategoryViewModel, ProductCategory>()
                 .ConstructUsing(c => new ProductCategory(c.Name, c.Description, c.ParentId, c.HomeOrder, c.Image, c.HomeFlag,
                 c.SortOrder, c.Status, c.SeoPageTitle, c.SeoAlias, c.SeoKeywords, c.SeoDescription));

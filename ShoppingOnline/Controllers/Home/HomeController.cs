@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ShoppingOnline.Models;
+using System.Diagnostics;
 
-namespace ShoppingOnline.Controllers
+namespace ShoppingOnline.WebApplication.Controllers.Home
 {
     public class HomeController : Controller
     {

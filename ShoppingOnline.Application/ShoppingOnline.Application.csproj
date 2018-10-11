@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ShopingOnline.Data\ShoppingOnline.Data.csproj" />
+    <ProjectReference Include="..\ShoppingOnline.Utilities\ShoppingOnline.Utilities.csproj" />
   </ItemGroup>
 
 </Project>

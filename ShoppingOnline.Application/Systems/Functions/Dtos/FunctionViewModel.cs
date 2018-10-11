@@ -3,7 +3,7 @@ using ShoppingOnline.Data.Enum;
 
 namespace ShoppingOnline.Application.Systems.Functions.Dtos
 {
-    public class FunctionsViewModel
+    public class FunctionViewModel
     {
         public string Id { get; set; }
 

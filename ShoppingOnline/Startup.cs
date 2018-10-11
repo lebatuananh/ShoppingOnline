@@ -12,9 +12,13 @@ using ShoppingOnline.Data.Entities;
 using System;
 using AutoMapper;
 using ShoppingOnline.Application.ECommerce.Products;
+using ShoppingOnline.Application.Systems.Functions;
+using ShoppingOnline.Application.Systems.Roles;
 using ShoppingOnline.Data.EF.Abstract;
 using ShoppingOnline.Data.Entities.System;
 using ShoppingOnline.Infrastructure.Interfaces;
+using ShoppingOnline.WebApplication.Helpers;
+using Newtonsoft.Json.Serialization;
 
 namespace ShoppingOnline
 {
@@ -56,6 +60,9 @@ namespace ShoppingOnline
                 options.User.RequireUniqueEmail = true;
             });
 
+            //Add Authentication
+            services.AddAuthentication();
+
             // Add application services.
             services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>();
@@ -78,6 +85,31 @@ namespace ShoppingOnline
 
             //Service
             services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IFunctionService, FunctionService>();
+            services.AddTransient<IRoleService, RoleService>();
+
+            //Principal
+            services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>();
+
+            //Session
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromHours(2);
+                options.Cookie.HttpOnly = true;
+            });
+
+            //Mvc
+            services.AddMvc();
+
+            //Config login Authen
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.AccessDeniedPath = "/Account/AccessDenied";
+                options.Cookie.Name = "ShoppingOnline.PO";
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+                options.LoginPath = "/admin/login";
+            });
 
 
             services.Configure<CookiePolicyOptions>(options =>
@@ -87,7 +119,22 @@ namespace ShoppingOnline
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(options =>
+                {
+                    options.CacheProfiles.Add("Default",
+                        new CacheProfile()
+                        {
+                            Duration = 60
+                        });
+                    options.CacheProfiles.Add("Never",
+                        new CacheProfile()
+                        {
+                            Location = ResponseCacheLocation.None,
+                            NoStore = true
+                        });
+                }).AddJsonOptions(
+                    options => options.SerializerSettings.ContractResolver = new DefaultContractResolver())
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -119,7 +166,7 @@ namespace ShoppingOnline
 
                 //admin
                 routes.MapRoute(name: "areaRoute",
-                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                    template: "{area:exists}/{controller=Login}/{action=Index}/{id?}");
             });
         }
     }

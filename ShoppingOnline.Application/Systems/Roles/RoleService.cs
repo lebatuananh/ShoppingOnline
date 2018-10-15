@@ -64,20 +64,22 @@ namespace ShoppingOnline.Application.Systems.Roles
         {
             var query = _roleManager.Roles;
             if (!string.IsNullOrEmpty(keyword))
-            {
-                query = query.Where(x => x.Name.Contains(keyword) || x.Description.Contains(keyword));
-            }
+                query = query.Where(x => x.Name.Contains(keyword)
+                                         || x.Description.Contains(keyword));
 
             int totalRow = query.Count();
-            query = query.Skip((page - 1) * pageSize).Take(pageSize);
+            query = query.Skip((page - 1) * pageSize)
+                .Take(pageSize);
+
             var data = query.ProjectTo<AppRoleViewModel>().ToList();
             var paginationSet = new PagedResult<AppRoleViewModel>()
             {
                 Results = data,
                 CurrentPage = page,
-                PageCount = totalRow,
+                RowCount = totalRow,
                 PageSize = pageSize
             };
+
             return paginationSet;
         }
 
@@ -103,13 +105,7 @@ namespace ShoppingOnline.Application.Systems.Roles
             var query = from f in functions
                 join p in permissions on f.Id equals p.FunctionId into fp
                 from p in fp.DefaultIfEmpty()
-                where p != null && p.RoleId == roleId &&
-                      (
-                          p.CanCreate == true
-                          || p.CanDelete == true
-                          || p.CanRead == true
-                          || p.CanUpdate == true
-                      )
+                where p != null && p.RoleId == roleId
                 select new PermissionViewModel()
                 {
                     RoleId = roleId,
@@ -130,10 +126,12 @@ namespace ShoppingOnline.Application.Systems.Roles
             {
                 _permissionRepository.RemoveMultiple(oldPermission);
             }
+
             foreach (var permission in permissions)
             {
                 _permissionRepository.Add(permission);
             }
+
             _unitOfWork.Commit();
         }
 
@@ -145,10 +143,10 @@ namespace ShoppingOnline.Application.Systems.Roles
                 join p in permissions on f.Id equals p.FunctionId
                 join r in _roleManager.Roles on p.RoleId equals r.Id
                 where roles.Contains(r.Name) && f.Id == functionId &&
-                      ((p.CanCreate == true && action == "Create")
-                       || (p.CanUpdate == true && action == "Update")
-                       || (p.CanDelete == true && action == "Delete")
-                       || (p.CanRead == true && action == "Read"))
+                      (p.CanCreate && action == "Create"
+                       || p.CanUpdate  && action == "Update"
+                       || p.CanDelete  && action == "Delete"
+                       || p.CanRead  && action == "Read")
                 select p;
             return query.AnyAsync();
         }
@@ -166,7 +164,13 @@ namespace ShoppingOnline.Application.Systems.Roles
             var query = from f in functions
                 join p in permissions on f.Id equals p.FunctionId into fp
                 from p in fp.DefaultIfEmpty()
-                where p != null && p.RoleId == roleId
+                where p != null && p.RoleId == roleId &&
+                      (
+                          p.CanCreate == true
+                          || p.CanDelete == true
+                          || p.CanRead == true
+                          || p.CanUpdate == true
+                      )
                 select new PermissionViewModel()
                 {
                     RoleId = roleId,

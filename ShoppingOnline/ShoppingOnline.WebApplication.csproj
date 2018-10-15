@@ -32,8 +32,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Views\Home\Components" />
     <Folder Include="wwwroot\client-site" />
   </ItemGroup>
@@ -42,6 +40,32 @@
     <_ContentIncludedByDefault Remove="wwwroot\admin-site\css\custom.css" />
     <_ContentIncludedByDefault Remove="wwwroot\admin-site\css\custom.min.css" />
     <_ContentIncludedByDefault Remove="wwwroot\admin-site\css\maps\jquery-jvectormap-2.0.3.css" />
+    <_ContentIncludedByDefault Remove="Areas\Admin\Views\Shared\Components\LeftSideBarVC\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Admin\Views\Shared\Components\MenuVC\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Admin\Views\Shared\Components\PageLoaderVC\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Admin\Views\Shared\Components\RightSideBarVC\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Admin\Views\Shared\Components\SearchBarVC\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Admin\Views\Shared\Components\TopBarVC\Default.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Admin\Data\**" />
+    <Compile Remove="Areas\Admin\Models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Areas\Admin\Data\**" />
+    <EmbeddedResource Remove="Areas\Admin\Models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Areas\Admin\Data\**" />
+    <None Remove="Areas\Admin\Models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Areas\Admin\Data\**" />
+    <Content Remove="Areas\Admin\Models\**" />
   </ItemGroup>
 
 </Project>

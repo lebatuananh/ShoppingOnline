@@ -1,93 +1,102 @@
 ﻿<!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>@ViewData["Title"]</title>
-    <!-- Favicon-->
-    <link rel="icon" href="~/admin-site/favicon.ico" type="image/x-icon">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
-    <!-- Bootstrap Core Css -->
-    <link href="~/admin-site/plugins/bootstrap/css/bootstrap.css" rel="stylesheet"/>
-    <!-- Waves Effect Css -->
-    <link href="~/admin-site/plugins/node-waves/waves.css" rel="stylesheet"/>
-
-    <!-- Animation Css -->
-    <link href="~/admin-site/plugins/animate-css/animate.css" rel="stylesheet"/>
-
-    <!-- Custom Css -->
-    <link href="~/admin-site/css/style.css" rel="stylesheet">
-
+    <!-- Bootstrap -->
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
-
-    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-    <link href="~/admin-site/css/themes/all-themes.css" rel="stylesheet"/>
+    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="~/lib/nprogress/nprogress.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="~/lib/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!--notify-->
+    <link href="~/lib/notifyjs/dist/styles/metro/notify-metro.css" rel="stylesheet"/>
+    <!--ckeditor-->
+    <link href="~/lib/ckeditor/skins/moono/editor.css" rel="stylesheet" />
+    <!-- Custom Theme Style -->
+    <link href="~/admin-site/css/custom.min.css" rel="stylesheet">
 
     @RenderSection("Styles", required: false)
 </head>
 
-<body class="theme-red">
-<!-- Page Loader -->
-<vc:page-loader-vc></vc:page-loader-vc>
-<!-- #END# Page Loader -->
-
-<!-- Overlay For Sidebars -->
-<div class="overlay"></div>
-<!-- #END# Overlay For Sidebars -->
-
-<!-- Search Bar -->
-<vc:search-bar-vc></vc:search-bar-vc>
-<!-- #END# Search Bar -->
-
-<!-- Top Bar -->
-<vc:top-bar-vc></vc:top-bar-vc>
-<!-- #Top Bar -->
-
-<section>
-    <!-- Left Sidebar -->
-    <vc:left-side-bar-vc></vc:left-side-bar-vc>
-    <!-- #END# Left Sidebar -->
-
-    <!-- Right Sidebar -->
-    <vc:right-side-bar-vc></vc:right-side-bar-vc>
-    <!-- #END# Right Sidebar -->
-
-</section>
-
-<section class="content">
-    <div class="container-fluid">
-        @RenderBody()
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+                <div class="navbar nav_title" style="border: 0;">
+                    <a href="index.html" class="site_title">
+                        <i class="fa fa-paw"></i> <span>Gentelella Alela!</span>
+                    </a>
+                </div>
+                <div class="clearfix"></div>
+                <!-- menu profile quick info -->
+                @await Component.InvokeAsync("MenuProfileVC")
+                <!-- /menu profile quick info -->
+                <br/>
+                <!-- sidebar menu -->
+                @await Component.InvokeAsync("SideBarVC")
+                <!-- /sidebar menu -->
+                <!-- /menu footer buttons -->
+                @await Component.InvokeAsync("MenuFooterVC")
+                <!-- /menu footer buttons -->
+            </div>
+        </div>
+        <!-- top navigation -->
+        @await Component.InvokeAsync("TopNavigationVC")
+        <!-- /top navigation -->
+        <!-- page content -->
+        <div class="right_col" role="main">
+            @RenderBody()
+        </div>
+        <!-- /page content -->
+        <!-- footer content -->
+        @await Component.InvokeAsync("FooterVC")
+        <!-- /footer content -->
     </div>
-</section>
+</div>
 
-<!-- Jquery Core Js -->
-<script src="~/admin-site/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery -->
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="~/lib/fastclick/lib/fastclick.js"></script>
+<!--Mustache-->
+<script src="~/lib/mustache/mustache.js"></script>
+<!-- NProgress -->
+<script src="~/lib/nprogress/nprogress.js"></script>
+<!-- jQuery Sparklines -->
+<script src="~/lib/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="~/lib/moment/min/moment.min.js"></script>
+<script src="~/lib/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!--Jquery Pagination-->
+<script src="~/lib/twbs-pagination/jquery.twbsPagination.js"></script>
+<!--Jquery Validation-->
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+<!--Ck Editor-->
+<script src="~/lib/ckeditor/ckeditor.js"></script>
+<!--Notify-->
+<script src="~/lib/notifyjs/dist/notify.js"></script>
+<script src="~/lib/notifyjs/dist/styles/metro/notify-metro.js"></script>
+<!--BootBox-->
+<script src="~/lib/bootbox/bootbox.js"></script>
 
-<!-- Bootstrap Core Js -->
-<script src="~/admin-site/plugins/bootstrap/js/bootstrap.js"></script>
+<!-- Custom Theme Scripts -->
+<script src="~/admin-site/js/custom.min.js"></script>
+<script src="~/app/shared/core.js" asp-append-version="true"></script>
 
-<!-- Select Plugin Js -->
-<script src="~/admin-site/plugins/bootstrap-select/js/bootstrap-select.js"></script>
-
-<!-- Slimscroll Plugin Js -->
-<script src="~/admin-site/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-
-<!-- Waves Effect Plugin Js -->
-<script src="~/admin-site/plugins/node-waves/waves.js"></script>
-
-<!-- Custom Js -->
-<script src="~/admin-site/js/admin.js"></script>
-
-<!-- Demo Js -->
-<script src="~/admin-site/js/demo.js"></script>
-
-@RenderSection("Scripts", required: false)
+@RenderSection("Scripts", false)
 </body>
-
 </html>

@@ -2,7 +2,9 @@ using AutoMapper;
 using ShoppingOnline.Application.ECommerce.Bills.Dtos;
 using ShoppingOnline.Application.ECommerce.ProductCategories.Dtos;
 using ShoppingOnline.Application.ECommerce.Products.Dtos;
+using ShoppingOnline.Application.Systems.Permissions.Dtos;
 using ShoppingOnline.Data.Entities.ECommerce;
+using ShoppingOnline.Data.Entities.System;
 
 namespace ShoppingOnline.Application.AutoMapper
 {
@@ -27,6 +29,10 @@ namespace ShoppingOnline.Application.AutoMapper
             CreateMap<BillDetailViewModel, BillDetail>()
               .ConstructUsing(c => new BillDetail(c.Id, c.BillId, c.ProductId,
                 c.Quantity, c.Price, c.ColorId, c.SizeId));
+            
+            CreateMap<PermissionViewModel, Permission>()
+                .ConstructUsing(c => new Permission(c.RoleId, c.FunctionId, c.CanCreate, c.CanRead, c.CanUpdate, c.CanDelete));
+            
         }
     }
 }

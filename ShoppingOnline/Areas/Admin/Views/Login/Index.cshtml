@@ -3,111 +3,81 @@
 }
 
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Login Page</title>
-    <!-- Favicon-->
-    <link rel="icon" href="~/admin-site/favicon.ico" type="image/x-icon">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <title>Login</title>
 
-    <!-- Bootstrap Core Css -->
-    <link href="~/admin-site/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Waves Effect Css -->
-    <link href="~/admin-site/plugins/node-waves/waves.css" rel="stylesheet"/>
-
-    <!-- Animation Css -->
-    <link href="~/admin-site/plugins/animate-css/animate.css" rel="stylesheet"/>
-    
+    <!-- Bootstrap -->
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="~/lib/animate.css/animate.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="~/lib/nprogress/nprogress.css" rel="stylesheet">
     <!-- notifyjs -->
     <link href="~/lib/notifyjs/dist/styles/metro/notify-metro.css" rel="stylesheet" />
+    <!-- Custom Theme Style -->
+    <link href="~/admin-site/css/custom.min.css" rel="stylesheet">
 
-    <!-- Custom Css -->
-    <link href="~/admin-site/css/style.css" rel="stylesheet">
 </head>
 
-<body class="login-page">
-    <div class="login-box">
-        <div class="logo">
-            <a href="javascript:void(0);">Admin<b>BSB</b></a>
-            <small>Admin BootStrap Based - Material Design</small>
-        </div>
-        <div class="card">
-            <div class="body">
-                <form id="frmLogin">
-                    @Html.AntiForgeryToken()
-                    <div class="msg">Sign in to start your session</div>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="material-icons">person</i>
-                        </span>
-                        <div class="form-line">
-                            <input type="text" id="txtUsername" class="form-control" name="username" placeholder="Username" required autofocus>
+<body class="login">
+    <div>
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    <form id="frmLogin">
+                        @Html.AntiForgeryToken()
+                        <h1>Login</h1>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Username" id="txtUsername"  name="username"/>
                         </div>
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="material-icons">lock</i>
-                        </span>
-                        <div class="form-line">
-                            <input type="password" id="txtPassword" class="form-control" name="password" placeholder="Password" required>
+                        <div>
+                            <input type="password" class="form-control" placeholder="Password" id="txtPassword" name="password"/>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-8 p-t-5">
-                            <input type="checkbox" name="rememberme" id="rememberme" class="filled-in chk-col-pink">
-                            <label for="rememberme">Remember Me</label>
+                        <div>
+                            <a class="btn btn-default submit" id="btnLogin">Login</a>
+                            <a class="reset_pass" href="#">Forget password</a>
                         </div>
-                        <div class="col-xs-4">
-                            <button class="btn btn-block bg-pink waves-effect" type="submit" id="btnLogin">SIGN IN</button>
+
+                        <div class="clearfix"></div>
+                        <div>
+                            <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
+                            <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
                         </div>
-                    </div>
-                    <div class="row m-t-15 m-b--20">
-                        <div class="col-xs-6">
-                            <a href="sign-up.html">Register Now!</a>
-                        </div>
-                        <div class="col-xs-6 align-right">
-                            <a href="forgot-password.html">Forgot Password?</a>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </section>
             </div>
         </div>
     </div>
+    <!-- jQuery -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/lib/fastclick/lib/fastclick.js"></script>
+    <!-- notify js -->
+    <script src="~/lib/notifyjs/dist/notify.js"></script>
 
-    <!-- Jquery Core Js -->
-    <script src="~/admin-site/plugins/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Core Js -->
-    <script src="~/admin-site/plugins/bootstrap/js/bootstrap.js"></script>
-
-    <!-- Waves Effect Plugin Js -->
-    <script src="~/admin-site/plugins/node-waves/waves.js"></script>
-
-    <!-- Validation Plugin Js -->
-    <script src="~/admin-site/plugins/jquery-validation/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
     <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 
-    <!-- notify js -->
-    <script src="~/lib/notifyjs/dist/notify.js"></script>
-    <script src="~/lib/notifyjs/dist/styles/metro/notify-metro.js"></script>
-
-    <!-- Custom Js -->
-    <script src="~/admin-site/js/admin.js"></script>
-    <script src="~/admin-site/js/pages/examples/sign-in.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="~/admin-site/js/custom.min.js"></script>
     <script src="~/app/shared/core.js"></script>
-    <script src="~/app/controllers/login/index.js"></script>
+    <script src="~/app/controllers/login/index.js" asp-append-version="true"></script>
     <script>
         var login = new loginController();
         login.initialize();
     </script>
 </body>
-
 </html>
+

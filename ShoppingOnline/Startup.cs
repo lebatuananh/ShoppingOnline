@@ -11,6 +11,7 @@ using ShoppingOnline.Data.EF;
 using ShoppingOnline.Data.Entities;
 using System;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using ShoppingOnline.Application.ECommerce.Products;
 using ShoppingOnline.Application.Systems.Functions;
 using ShoppingOnline.Application.Systems.Roles;
@@ -19,6 +20,8 @@ using ShoppingOnline.Data.Entities.System;
 using ShoppingOnline.Infrastructure.Interfaces;
 using ShoppingOnline.WebApplication.Helpers;
 using Newtonsoft.Json.Serialization;
+using ShoppingOnline.Application.Systems.Users;
+using ShoppingOnline.WebApplication.Authorization;
 
 namespace ShoppingOnline
 {
@@ -87,9 +90,13 @@ namespace ShoppingOnline
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IFunctionService, FunctionService>();
             services.AddTransient<IRoleService, RoleService>();
+            services.AddTransient<IAppUserService, AppUserService>();
 
             //Principal
             services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>();
+
+            //Authorization
+            services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 
             //Session
             services.AddSession(options =>

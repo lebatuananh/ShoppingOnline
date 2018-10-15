@@ -4,6 +4,7 @@ using ShoppingOnline.Application.ECommerce.Bills.Dtos;
 using ShoppingOnline.Application.ECommerce.ProductCategories.Dtos;
 using ShoppingOnline.Application.ECommerce.Products.Dtos;
 using ShoppingOnline.Application.Systems.Functions.Dtos;
+using ShoppingOnline.Application.Systems.Permissions.Dtos;
 using ShoppingOnline.Application.Systems.Roles.Dtos;
 using ShoppingOnline.Application.Systems.Users.Dtos;
 using ShoppingOnline.Data.Entities.Content;
@@ -40,11 +41,7 @@ namespace ShoppingOnline.Application.AutoMapper
             CreateMap<Function, FunctionViewModel>().MaxDepth(2);
             CreateMap<AppRole, AppRoleViewModel>().MaxDepth(2);
             CreateMap<AppUser, AppUserViewModel>().MaxDepth(2);
-
-
-
-
-
+            CreateMap<Permission, PermissionViewModel>();
         }
     }
 }

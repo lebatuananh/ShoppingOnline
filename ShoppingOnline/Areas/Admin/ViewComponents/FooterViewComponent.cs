@@ -4,11 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 namespace ShoppingOnline.WebApplication.Areas.Admin.ViewComponents
 {
     [ViewComponent(Name = "FooterVC")]
-    public class FooterViewComponent:ViewComponent
+    public class FooterViewComponent : ViewComponent
     {
         public FooterViewComponent()
         {
-            
         }
 
         public async Task<IViewComponentResult> InvokeAsync()

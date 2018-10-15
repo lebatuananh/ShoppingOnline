@@ -12,6 +12,7 @@ using ShoppingOnline.Application.Systems.Roles.Dtos;
 using ShoppingOnline.Data.Entities.System;
 using ShoppingOnline.Utilities.Dtos;
 using ShoppingOnline.WebApplication.Areas.Admin.Controllers.Base;
+using ShoppingOnline.WebApplication.Authorization;
 
 namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role
 {
@@ -29,8 +30,14 @@ namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role
             _signInManager = signInManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var result = await _authorizationService.AuthorizeAsync(User, "ROLE", Operations.Read);
+            if (result.Succeeded == false)
+            {
+                await _signInManager.SignOutAsync();
+                return new RedirectResult("/Admin/Login/Index");
+            }
             return View();
         }
 
@@ -62,6 +69,7 @@ namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role
                 IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
                 return new BadRequestObjectResult(allErrors);
             }
+
             if (!roleVm.Id.HasValue)
             {
                 await _roleService.AddAsync(roleVm);
@@ -70,9 +78,10 @@ namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role
             {
                 await _roleService.UpdateAsync(roleVm);
             }
-            return new OkObjectResult(roleVm);
+
+            return new OkObjectResult(new GenericResult(true, roleVm));
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> Delete(Guid id)
         {
@@ -80,17 +89,18 @@ namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role
             {
                 return new BadRequestObjectResult(ModelState);
             }
+
             await _roleService.DeleteAsync(id);
             return new OkObjectResult(id);
         }
-        
+
         [HttpPost]
         public IActionResult ListAllFunction(Guid roleId)
         {
             var functions = _roleService.GetListFunctionWithRole(roleId);
             return new OkObjectResult(functions);
         }
-        
+
         [HttpPost]
         public IActionResult SavePermission(List<PermissionViewModel> listPermmission, Guid roleId)
         {

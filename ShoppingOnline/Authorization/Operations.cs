@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Authorization.Infrastructure;
 
 namespace ShoppingOnline.WebApplication.Authorization
 {
-    public class Operations
+    public static class Operations
     {
         public static OperationAuthorizationRequirement Create = new OperationAuthorizationRequirement
             {Name = nameof(Create)};

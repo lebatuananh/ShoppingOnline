@@ -1,16 +1,16 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Product Management";
 }
 
 @section styles{
-    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
-    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet"/>
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet"/>
 }
 
 @section scripts{
     <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
     <script src="~/app/controllers/product/index.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/product/image-management.js"></script>
     <script>
         var product = new productController();
         product.initialize();
@@ -23,10 +23,14 @@
             <h2>List Products</h2>
             <ul class="nav navbar-right panel_toolbox">
                 <li>
-                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <i class="fa fa-wrench"></i>
+                    </a>
                     <ul class="dropdown-menu" role="menu">
                         <li>
                             <a href="#">Settings 1</a>
@@ -37,7 +41,9 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="close-link"><i class="fa fa-close"></i></a>
+                    <a class="close-link">
+                        <i class="fa fa-close"></i>
+                    </a>
                 </li>
             </ul>
             <div class="clearfix"></div>
@@ -47,7 +53,9 @@
                 <div class="input-group">
                     <input type="text" id="txtKeyword" class="form-control" placeholder="Search for...">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" id="btnSearch" type="button"><i class="fa fa-search"></i></button>
+                        <button class="btn btn-default" id="btnSearch" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
                     </span>
                 </div>
             </div>
@@ -57,8 +65,12 @@
                 </select>
             </div>
             <div class="col-md-3 col-sm-12  form-group pull-right">
-                <button id="btnCreate" class="btn btn-success pull-right"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                <a class="btn btn-danger pull-right" href="~/templates/ProductImportTemplate.xlsx"><i class="fa fa-file-text-o" aria-hidden="true"></i></a>
+                <button id="btnCreate" class="btn btn-success pull-right">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+                <a class="btn btn-danger pull-right" href="~/templates/ProductImportTemplate.xlsx">
+                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                </a>
                 <button class="btn btn-default pull-right" id="btn-export" type="button">
                     <i class="fa fa-file-excel-o " aria-hidden="true"></i>
                 </button>
@@ -71,15 +83,15 @@
         <div class="x_content">
             <table class="table">
                 <thead>
-                    <tr>
-                        <th width="12%">#</th>
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th>Price</th>
-                        <th>Image</th>
-                        <th>CreatedDate</th>
-                        <th>Status</th>
-                    </tr>
+                <tr>
+                    <th width="12%">Action</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                    <th>CreatedDate</th>
+                    <th>Status</th>
+                </tr>
                 </thead>
                 <tbody id="tbl-content"></tbody>
             </table>
@@ -99,7 +111,8 @@
                         </span>
                         Total entries: <strong id="lblTotalRecords"></strong>
                     </div>
-                </div><div class="col-sm-7">
+                </div>
+                <div class="col-sm-7">
                     <div class="dataTables_paginate paging_simple_numbers" id="datatable-checkbox_paginate">
                         <ul id="paginationUL"></ul>
                     </div>
@@ -127,4 +140,5 @@
         <td>{{{Status}}}</td>
     </tr>
 </script>
-
+@Html.Partial("_AddEditModal.cshtml")
+@Html.Partial("_ImageManagement.cshtml")

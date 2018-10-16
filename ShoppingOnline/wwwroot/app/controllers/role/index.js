@@ -181,10 +181,7 @@
                 }
             });
         });
-
-
     }
-
 
     function resetFormMaintainance() {
         $('#hidId').val('');
@@ -219,7 +216,6 @@
                     $("#lbl-total-records").text(response.RowCount);
                     if (render != undefined) {
                         $('#tbl-content').html(render);
-
                     }
                     wrapPaging(response.RowCount, function () {
                         loadData();

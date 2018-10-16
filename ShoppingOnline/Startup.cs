@@ -20,6 +20,7 @@ using ShoppingOnline.Data.Entities.System;
 using ShoppingOnline.Infrastructure.Interfaces;
 using ShoppingOnline.WebApplication.Helpers;
 using Newtonsoft.Json.Serialization;
+using ShoppingOnline.Application.ECommerce.ProductCategories;
 using ShoppingOnline.Application.Systems.Users;
 using ShoppingOnline.WebApplication.Authorization;
 
@@ -88,6 +89,7 @@ namespace ShoppingOnline
 
             //Service
             services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IProductCategoryService, ProductCategoryService>();
             services.AddTransient<IFunctionService, FunctionService>();
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<IAppUserService, AppUserService>();

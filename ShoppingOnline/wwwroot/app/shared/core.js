@@ -189,14 +189,14 @@
 
                 var template = $('#announcement-template').html();
                 var render = "";
+                console.log(response);
                 if (response.RowCount > 0) {
                     $('#announcementArea').show();
                     $.each(response.Results, function (i, item) {
                         render += Mustache.render(template, {
                             Content: item.Content,
                             Id: item.Id,
-                            Title: item.Title,
-                            Avatar: '/images/img.jpg'
+                            Title: item.Title
                         });
                     });
                     render += $('#announcement-tag-template').html();

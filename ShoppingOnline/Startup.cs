@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -7,22 +10,23 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using ShoppingOnline.Data.EF;
-using ShoppingOnline.Data.Entities;
-using System;
-using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
+using Newtonsoft.Json.Serialization;
+using ShoppingOnline.Application.ECommerce.Bills;
+using ShoppingOnline.Application.ECommerce.ProductCategories;
 using ShoppingOnline.Application.ECommerce.Products;
+using ShoppingOnline.Application.Systems.Announcements;
 using ShoppingOnline.Application.Systems.Functions;
 using ShoppingOnline.Application.Systems.Roles;
+using ShoppingOnline.Application.Systems.Users;
+using ShoppingOnline.Data.EF;
 using ShoppingOnline.Data.EF.Abstract;
+using ShoppingOnline.Data.Entities.ECommerce;
 using ShoppingOnline.Data.Entities.System;
 using ShoppingOnline.Infrastructure.Interfaces;
-using ShoppingOnline.WebApplication.Helpers;
-using Newtonsoft.Json.Serialization;
-using ShoppingOnline.Application.ECommerce.ProductCategories;
-using ShoppingOnline.Application.Systems.Users;
 using ShoppingOnline.WebApplication.Authorization;
+using ShoppingOnline.WebApplication.Helpers;
+using ShoppingOnline.WebApplication.SignalR;
+using IConfigurationProvider = AutoMapper.IConfigurationProvider;
 
 namespace ShoppingOnline
 {
@@ -78,10 +82,20 @@ namespace ShoppingOnline
             services.AddAutoMapper();
             services.AddSingleton(Mapper.Configuration);
             services.AddScoped<IMapper>(sp =>
-                new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
+                new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
 
             //MemoryCache
             services.AddMemoryCache();
+
+            //Session
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromHours(2);
+                options.Cookie.HttpOnly = true;
+            });
+
+            //Mvc
+            services.AddMvc();
 
             //Repository And UnitOfWork
             services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
@@ -93,6 +107,8 @@ namespace ShoppingOnline
             services.AddTransient<IFunctionService, FunctionService>();
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<IAppUserService, AppUserService>();
+            services.AddTransient<IBillService, BillService>();
+            services.AddTransient<IAnnouncementService, AnnouncementService>();
 
             //Principal
             services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>();
@@ -100,15 +116,8 @@ namespace ShoppingOnline
             //Authorization
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
 
-            //Session
-            services.AddSession(options =>
-            {
-                options.IdleTimeout = TimeSpan.FromHours(2);
-                options.Cookie.HttpOnly = true;
-            });
-
-            //Mvc
-            services.AddMvc();
+            //SignalIR
+            services.AddSignalR();
 
             //Config login Authen
             services.ConfigureApplicationCookie(options =>
@@ -165,6 +174,8 @@ namespace ShoppingOnline
             app.UseCookiePolicy();
 
             app.UseAuthentication();
+
+            app.UseSignalR(routes => { routes.MapHub<ChatHub>("/chatHub"); });
 
             app.UseMvc(routes =>
             {

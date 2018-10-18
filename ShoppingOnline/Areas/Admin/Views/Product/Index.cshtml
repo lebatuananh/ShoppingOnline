@@ -11,6 +11,8 @@
     <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
     <script src="~/app/controllers/product/index.js" asp-append-version="true"></script>
     <script src="~/app/controllers/product/image-management.js"></script>
+    <script src="~/app/controllers/product/quantity-management.js"></script>
+    <script src="~/app/controllers/product/whole-price-management.js"></script>
     <script>
         var product = new productController();
         product.initialize();
@@ -142,3 +144,6 @@
 </script>
 @Html.Partial("_AddEditModal.cshtml")
 @Html.Partial("_ImageManagement.cshtml")
+@Html.Partial("_QuantityManagement.cshtml")
+@Html.Partial("_WholePriceManagement.cshtml")
+@Html.Partial("_ImportExcelModal.cshtml")

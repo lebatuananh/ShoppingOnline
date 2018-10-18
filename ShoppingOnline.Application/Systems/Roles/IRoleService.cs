@@ -10,7 +10,8 @@ namespace ShoppingOnline.Application.Systems.Roles
 {
     public interface IRoleService
     {
-        Task<bool> AddAsync(AppRoleViewModel userVm);
+        Task<bool> AddAsync(AnnouncementViewModel announcementViewModel,
+            List<AnnouncementUserViewModel> announcementUsers, AppRoleViewModel userVm);
 
         Task DeleteAsync(Guid id);
 
@@ -20,7 +21,7 @@ namespace ShoppingOnline.Application.Systems.Roles
 
         Task<AppRoleViewModel> GetById(Guid id);
 
-        Task UpdateAsync(AppRoleViewModel userVm);
+        Task<bool> UpdateAsync(AnnouncementViewModel announcementViewModel, AppRoleViewModel userVm);
 
         List<PermissionViewModel> GetListFunctionWithRole(Guid roleId);
 
@@ -31,6 +32,5 @@ namespace ShoppingOnline.Application.Systems.Roles
         Task<AppRoleViewModel> GetByName(string role);
 
         List<PermissionViewModel> GetListFunctionMenuWithRole(Guid roleId);
-
     }
 }

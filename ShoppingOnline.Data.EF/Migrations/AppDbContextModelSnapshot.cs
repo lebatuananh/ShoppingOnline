@@ -391,6 +391,47 @@ namespace ShoppingOnline.Data.EF.Migrations
                     b.ToTable("Tags");
                 });
 
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.ECommerce.Bill", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BillStatus");
+
+                    b.Property<string>("CustomerAddress")
+                        .IsRequired()
+                        .HasMaxLength(256);
+
+                    b.Property<Guid?>("CustomerId");
+
+                    b.Property<string>("CustomerMessage")
+                        .IsRequired()
+                        .HasMaxLength(256);
+
+                    b.Property<string>("CustomerMobile")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<string>("CustomerName")
+                        .IsRequired()
+                        .HasMaxLength(256);
+
+                    b.Property<DateTime>("DateCreated");
+
+                    b.Property<DateTime>("DateModified");
+
+                    b.Property<int>("PaymentMethod");
+
+                    b.Property<int>("Status");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("Bills");
+                });
+
             modelBuilder.Entity("ShoppingOnline.Data.Entities.ECommerce.BillDetail", b =>
                 {
                     b.Property<int>("Id")
@@ -662,7 +703,7 @@ namespace ShoppingOnline.Data.EF.Migrations
                         .IsRequired()
                         .HasMaxLength(250);
 
-                    b.Property<Guid>("UserId");
+                    b.Property<Guid?>("UserId");
 
                     b.HasKey("Id");
 
@@ -761,47 +802,6 @@ namespace ShoppingOnline.Data.EF.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AppUsers");
-                });
-
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.System.Bill", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("BillStatus");
-
-                    b.Property<string>("CustomerAddress")
-                        .IsRequired()
-                        .HasMaxLength(256);
-
-                    b.Property<Guid?>("CustomerId");
-
-                    b.Property<string>("CustomerMessage")
-                        .IsRequired()
-                        .HasMaxLength(256);
-
-                    b.Property<string>("CustomerMobile")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.Property<string>("CustomerName")
-                        .IsRequired()
-                        .HasMaxLength(256);
-
-                    b.Property<DateTime>("DateCreated");
-
-                    b.Property<DateTime>("DateModified");
-
-                    b.Property<int>("PaymentMethod");
-
-                    b.Property<int>("Status");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
-
-                    b.ToTable("Bills");
                 });
 
             modelBuilder.Entity("ShoppingOnline.Data.Entities.System.Function", b =>
@@ -936,9 +936,16 @@ namespace ShoppingOnline.Data.EF.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.ECommerce.Bill", b =>
+                {
+                    b.HasOne("ShoppingOnline.Data.Entities.System.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("CustomerId");
+                });
+
             modelBuilder.Entity("ShoppingOnline.Data.Entities.ECommerce.BillDetail", b =>
                 {
-                    b.HasOne("ShoppingOnline.Data.Entities.System.Bill", "Bill")
+                    b.HasOne("ShoppingOnline.Data.Entities.ECommerce.Bill", "Bill")
                         .WithMany("BillDetails")
                         .HasForeignKey("BillId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -1018,8 +1025,7 @@ namespace ShoppingOnline.Data.EF.Migrations
                 {
                     b.HasOne("ShoppingOnline.Data.Entities.System.AppUser", "AppUser")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("ShoppingOnline.Data.Entities.System.AnnouncementUser", b =>
@@ -1028,13 +1034,6 @@ namespace ShoppingOnline.Data.EF.Migrations
                         .WithMany("AnnouncementUsers")
                         .HasForeignKey("AnnouncementId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("ShoppingOnline.Data.Entities.System.Bill", b =>
-                {
-                    b.HasOne("ShoppingOnline.Data.Entities.System.AppUser", "User")
-                        .WithMany()
-                        .HasForeignKey("CustomerId");
                 });
 
             modelBuilder.Entity("ShoppingOnline.Data.Entities.System.Permission", b =>

@@ -1,9 +1,7 @@
 ﻿var productController = function () {
-
-
-    // var quantityManagement = new QuantityManagement();
+    var quantityManagement = new QuantityManagement();
     var imageManagement = new ImageManagement();
-    // var wholePriceManagement = new WholePriceManagement();
+    var wholePriceManagement = new WholePriceManagement();
 
     this.initialize = function () {
 
@@ -13,8 +11,8 @@
         registerControls();
 
         imageManagement.initialize();
-        // quantityManagement.initialize();
-        // wholePriceManagement.initialize();
+        quantityManagement.initialize();
+        wholePriceManagement.initialize();
 
     };
 
@@ -131,7 +129,6 @@
         });
 
         $('#btn-import').on('click', function () {
-
             initTreeDropDownCategory();
             $('#modal-import-excel').modal('show');
             $(".combo").css("width", "20%");
@@ -507,7 +504,6 @@
     function importExcel() {
         var fileUpload = $("#fileInputExcel").get(0);
         var files = fileUpload.files;
-
         // Create FormData object  
         var fileData = new FormData();
         // Looping over all files and add it to FormData object  
@@ -525,6 +521,11 @@
             success: function (data) {
                 $('#modal-import-excel').modal('hide');
                 loadData();
+                core.notify('Import success product','success')
+            },
+            error:function (status) {
+                core.notify('Import failed','error');
+                console.log(status)
             }
         });
         return false;

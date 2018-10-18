@@ -20,31 +20,48 @@ namespace ShoppingOnline.Application.Systems.Roles
         private readonly RoleManager<AppRole> _roleManager;
         private readonly IRepository<Function, string> _functionRepository;
         private readonly IRepository<Permission, int> _permissionRepository;
+        private readonly IRepository<AnnouncementUser, int> _announcementUserRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IRepository<Announcement, string> _announcementRepository;
 
         public RoleService(RoleManager<AppRole> roleManager, IRepository<Function, string> functionRepository,
-            IRepository<Permission, int> permissionRepository, IUnitOfWork unitOfWork)
+            IRepository<Permission, int> permissionRepository,
+            IRepository<AnnouncementUser, int> announcementUserRepository, IUnitOfWork unitOfWork,
+            IRepository<Announcement, string> announcementRepository)
         {
             _roleManager = roleManager;
             _functionRepository = functionRepository;
             _permissionRepository = permissionRepository;
+            _announcementUserRepository = announcementUserRepository;
             _unitOfWork = unitOfWork;
+            _announcementRepository = announcementRepository;
         }
 
-        public async Task<bool> AddAsync(AppRoleViewModel appRoleVm)
+        public async Task<bool> AddAsync(AnnouncementViewModel announcementViewModel,
+            List<AnnouncementUserViewModel> announcementUsers, AppRoleViewModel appRoleVm)
         {
-            var roleCurrent = await _roleManager.FindByNameAsync(appRoleVm.Name);
-            if (roleCurrent != null)
-            {
-                return false;
-            }
+            var findRole = await _roleManager.FindByNameAsync(appRoleVm.Name);
 
-            var roleNew = new AppRole()
+            if (findRole != null)
+                return false;
+
+            var role = new AppRole()
             {
                 Name = appRoleVm.Name,
                 Description = appRoleVm.Description
             };
-            var result = await _roleManager.CreateAsync(roleNew);
+
+
+            var result = await _roleManager.CreateAsync(role);
+            var announcement = Mapper.Map<AnnouncementViewModel, Announcement>(announcementViewModel);
+
+            foreach (var item in announcementUsers)
+            {
+                var user = Mapper.Map<AnnouncementUserViewModel, AnnouncementUser>(item);
+                _announcementUserRepository.Add(user);
+            }
+
+            _announcementRepository.Add(announcement);
             _unitOfWork.Commit();
             return result.Succeeded;
         }
@@ -89,12 +106,18 @@ namespace ShoppingOnline.Application.Systems.Roles
             return Mapper.Map<AppRole, AppRoleViewModel>(role);
         }
 
-        public async Task UpdateAsync(AppRoleViewModel appRoleVm)
+        public async Task<bool> UpdateAsync(AnnouncementViewModel announcementViewModel, AppRoleViewModel appRoleVm)
         {
+            var announcement = Mapper.Map<AnnouncementViewModel, Announcement>(announcementViewModel);
             var role = await _roleManager.FindByIdAsync(appRoleVm.Id.ToString());
+
             role.Description = appRoleVm.Description;
             role.Name = appRoleVm.Name;
             await _roleManager.UpdateAsync(role);
+            _announcementRepository.Add(announcement);
+
+            _unitOfWork.Commit();
+            return true;
         }
 
         public List<PermissionViewModel> GetListFunctionWithRole(Guid roleId)
@@ -144,9 +167,9 @@ namespace ShoppingOnline.Application.Systems.Roles
                 join r in _roleManager.Roles on p.RoleId equals r.Id
                 where roles.Contains(r.Name) && f.Id == functionId &&
                       (p.CanCreate && action == "Create"
-                       || p.CanUpdate  && action == "Update"
-                       || p.CanDelete  && action == "Delete"
-                       || p.CanRead  && action == "Read")
+                       || p.CanUpdate && action == "Update"
+                       || p.CanDelete && action == "Delete"
+                       || p.CanRead && action == "Read")
                 select p;
             return query.AnyAsync();
         }

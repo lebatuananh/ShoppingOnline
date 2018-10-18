@@ -16,7 +16,7 @@ namespace ShoppingOnline.Data.Entities.System
             AnnouncementUsers = new List<AnnouncementUser>();
         }
 
-        public Announcement(string title, string content, Guid userId, Status status)
+        public Announcement(string title, string content, Guid? userId, Status status)
         {
             Title = title;
             Content = content;
@@ -24,17 +24,20 @@ namespace ShoppingOnline.Data.Entities.System
             Status = status;
         }
 
-        [Required]
-        [StringLength(250)]
-        public string Title { set; get; }
+        public Announcement(string title, string content, Status status)
+        {
+            Title = title;
+            Content = content;
+            Status = status;
+        }
 
-        [StringLength(250)]
-        public string Content { set; get; }
+        [Required] [StringLength(250)] public string Title { set; get; }
 
-        public Guid UserId { set; get; }
+        [StringLength(250)] public string Content { set; get; }
 
-        [ForeignKey("UserId")]
-        public virtual AppUser AppUser { get; set; }
+        public Guid? UserId { set; get; }
+ 
+        [ForeignKey("UserId")] public virtual AppUser AppUser { get; set; }
 
         public virtual ICollection<AnnouncementUser> AnnouncementUsers { get; set; }
         public DateTime DateCreated { set; get; }

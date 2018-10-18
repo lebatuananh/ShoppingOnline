@@ -2,6 +2,7 @@ using AutoMapper;
 using ShoppingOnline.Application.ECommerce.Bills.Dtos;
 using ShoppingOnline.Application.ECommerce.ProductCategories.Dtos;
 using ShoppingOnline.Application.ECommerce.Products.Dtos;
+using ShoppingOnline.Application.Systems.Announcements.Dtos;
 using ShoppingOnline.Application.Systems.Permissions.Dtos;
 using ShoppingOnline.Data.Entities.ECommerce;
 using ShoppingOnline.Data.Entities.System;
@@ -32,6 +33,15 @@ namespace ShoppingOnline.Application.AutoMapper
             
             CreateMap<PermissionViewModel, Permission>()
                 .ConstructUsing(c => new Permission(c.RoleId, c.FunctionId, c.CanCreate, c.CanRead, c.CanUpdate, c.CanDelete));
+            
+            CreateMap<AnnouncementViewModel, Announcement>()
+                .ConstructUsing(c => new Announcement(c.Title, c.Content, c.UserId, c.Status));
+
+            CreateMap<AnnouncementViewModel, Announcement>()
+                .ConstructUsing(c => new Announcement(c.Title, c.Content, c.Status));
+
+            CreateMap<AnnouncementUserViewModel, AnnouncementUser>()
+                .ConstructUsing(c => new AnnouncementUser(c.AnnouncementId, c.UserId, c.HasRead));
             
         }
     }

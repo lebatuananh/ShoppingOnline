@@ -20,7 +20,7 @@
     <!--notify-->
     <link href="~/lib/notifyjs/dist/styles/metro/notify-metro.css" rel="stylesheet"/>
     <!--ckeditor-->
-    <link href="~/lib/ckeditor/skins/moono/editor.css" rel="stylesheet" />
+    <link href="~/lib/ckeditor/skins/moono/editor.css" rel="stylesheet"/>
     <!-- Custom Theme Style -->
     <link href="~/admin-site/css/custom.min.css" rel="stylesheet">
 
@@ -64,8 +64,36 @@
     </div>
 </div>
 
+<script id="announcement-template" type="x-tmpl-mustache">
+        <li data-id="{{Id}}" class="announcement-read">
+            <a>
+                <span class="image"><i class="fa fa-bell"></i></span>
+                <span>
+                    <span>{{Title}}</span>
+                    <span class="time">{{DateCreated}}</span>
+                </span>
+                <span class="message">
+                    {{Content}}
+                </span>
+            </a>
+        </li>
+    </script>
+
+<script id="announcement-tag-template" type="x-tmpl-mustache">
+        <li>
+            <div class="text-center">
+                <a href="/admin/announcement/index">
+                    <strong>See All Alerts</strong>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+        </li>
+    </script>
+
 <!-- jQuery -->
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
+<!-- signalr -->
+<script src="~/lib/signalr/signalr.js"></script>
 <!-- Bootstrap -->
 <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- FastClick -->
@@ -94,8 +122,14 @@
 <script src="~/lib/bootbox/bootbox.js"></script>
 
 <!-- Custom Theme Scripts -->
+<script src="~/app/shared/signalIR.js"></script>
 <script src="~/admin-site/js/custom.min.js"></script>
 <script src="~/app/shared/core.js" asp-append-version="true"></script>
+<script src="~/app/shared/base.js"></script>
+<script>
+    var baseController = new BaseController();
+    baseController.initialize();
+</script>
 
 @RenderSection("Scripts", false)
 </body>

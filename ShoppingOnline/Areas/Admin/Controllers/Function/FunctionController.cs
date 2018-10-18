@@ -6,7 +6,7 @@ using ShoppingOnline.Application.Systems.Functions;
 using ShoppingOnline.Application.Systems.Functions.Dtos;
 using ShoppingOnline.WebApplication.Areas.Admin.Controllers.Base;
 
-namespace ShoppingOnline.WebApplication.Areas.Admin.Views
+namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Function
 {
     public class FunctionController : BaseController
     {

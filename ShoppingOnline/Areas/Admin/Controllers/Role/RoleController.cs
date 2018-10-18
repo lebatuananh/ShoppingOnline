@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.SignalR;
+using ShoppingOnline.Application.Systems.Announcements.Dtos;
 using ShoppingOnline.Application.Systems.Permissions.Dtos;
 using ShoppingOnline.Application.Systems.Roles;
 using ShoppingOnline.Application.Systems.Roles.Dtos;
@@ -13,6 +15,8 @@ using ShoppingOnline.Data.Entities.System;
 using ShoppingOnline.Utilities.Dtos;
 using ShoppingOnline.WebApplication.Areas.Admin.Controllers.Base;
 using ShoppingOnline.WebApplication.Authorization;
+using ShoppingOnline.WebApplication.Extensions;
+using ShoppingOnline.WebApplication.SignalR;
 
 namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role
 {
@@ -20,13 +24,15 @@ namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role
     {
         private readonly IRoleService _roleService;
         private readonly IAuthorizationService _authorizationService;
+        private readonly IHubContext<ChatHub> _hubContext;
         private readonly SignInManager<AppUser> _signInManager;
 
         public RoleController(IRoleService roleService, IAuthorizationService authorizationService,
-            SignInManager<AppUser> signInManager)
+            IHubContext<ChatHub> hubContext, SignInManager<AppUser> signInManager)
         {
             _roleService = roleService;
             _authorizationService = authorizationService;
+            _hubContext = hubContext;
             _signInManager = signInManager;
         }
 
@@ -38,6 +44,7 @@ namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role
                 await _signInManager.SignOutAsync();
                 return new RedirectResult("/Admin/Login/Index");
             }
+
             return View();
         }
 
@@ -72,11 +79,55 @@ namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role
 
             if (!roleVm.Id.HasValue)
             {
-                await _roleService.AddAsync(roleVm);
+                var notificationId = Guid.NewGuid().ToString();
+
+                var announcement = new AnnouncementViewModel()
+                {
+                    Title = "Role created",
+                    DateCreated = DateTime.Now,
+                    Content = $"Role {roleVm.Name} has been created",
+                    Id = notificationId,
+                    UserId = User.GetUserId()
+                };
+
+                var announcementUsers = new List<AnnouncementUserViewModel>()
+                {
+                    new AnnouncementUserViewModel()
+                    {
+                        AnnouncementId = notificationId,
+                        HasRead = false,
+                        UserId = User.GetUserId()
+                    }
+                };
+
+                var result = await _roleService.AddAsync(announcement, announcementUsers, roleVm);
+
+                if (result == false)
+                {
+                    return new OkObjectResult(new GenericResult(false, roleVm));
+                }
+
+                await _hubContext.Clients.All.SendAsync("ReceiveMessage", announcement);
             }
             else
             {
-                await _roleService.UpdateAsync(roleVm);
+                var announcement = new AnnouncementViewModel()
+                {
+                    Title = "Role updated",
+                    DateCreated = DateTime.Now,
+                    Content = $"Role {roleVm.Name} has been updated",
+                    Id = Guid.NewGuid().ToString(),
+                    UserId = User.GetUserId()
+                };
+
+                var result = await _roleService.UpdateAsync(announcement, roleVm);
+
+                if (result == false)
+                {
+                    return new OkObjectResult(new GenericResult(false, roleVm));
+                }
+
+                await _hubContext.Clients.All.SendAsync("ReceiveMessage", announcement);
             }
 
             return new OkObjectResult(new GenericResult(true, roleVm));

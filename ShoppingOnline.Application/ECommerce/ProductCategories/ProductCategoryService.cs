@@ -14,7 +14,8 @@ namespace ShoppingOnline.Application.ECommerce.ProductCategories
         private IRepository<ProductCategory, int> _productCategoryRepository;
         private IUnitOfWork _unitOfWork;
 
-        public ProductCategoryService(IRepository<ProductCategory, int> productCategoryRepository, IUnitOfWork unitOfWork)
+        public ProductCategoryService(IRepository<ProductCategory, int> productCategoryRepository,
+            IUnitOfWork unitOfWork)
         {
             _productCategoryRepository = productCategoryRepository;
             _unitOfWork = unitOfWork;

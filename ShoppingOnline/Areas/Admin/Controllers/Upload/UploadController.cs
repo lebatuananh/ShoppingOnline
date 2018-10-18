@@ -65,7 +65,7 @@ namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Upload
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult UploadImage(string height, string width)
+        public IActionResult UploadImage()
         {
             DateTime now = DateTime.Now;
             var files = Request.Form.Files;
@@ -93,23 +93,23 @@ namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Upload
                 }
 
                 string filePath = Path.Combine(folder, filename);
-                using (FileStream fs = System.IO.File.Create(filePath))
-                {
-                    file.CopyTo(fs);
-                    fs.Flush();
-                }
+//                using (FileStream fs = System.IO.File.Create(filePath))
+//                {
+//                    file.CopyTo(fs);
+//                    fs.Flush();
+//                }
 
-//                ResizeAndSaveImage(file.OpenReadStream(), filePath, Int32.Parse(width), Int32.Parse(height));
+                ResizeAndSaveImage(file.OpenReadStream(), filePath);
 
                 return new OkObjectResult(Path.Combine(imageFolder, filename).Replace(@"\", @"/"));
             }
         }
 
-        private void ResizeAndSaveImage(Stream stream, string filePath, int width, int height)
+        private void ResizeAndSaveImage(Stream stream, string filePath)
         {
             using (Image<Rgba32> image = Image.Load(stream))
             {
-                image.Mutate(x => x.Resize(width, height));
+                image.Mutate(x => x.Pad(600, 600).BackgroundColor(Rgba32.White).Opacity(1));
                 image.Save(filePath); // Automatic encoder selected based on extension.
             }
         }

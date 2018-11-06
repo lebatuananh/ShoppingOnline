@@ -33,8 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Home\Components" />
-    <Folder Include="wwwroot\client-site" />
+    <Folder Include="Resources\Views" />
     <Folder Include="wwwroot\uploaded" />
   </ItemGroup>
 
@@ -48,6 +47,11 @@
     <_ContentIncludedByDefault Remove="Areas\Admin\Views\Shared\Components\RightSideBarVC\Default.cshtml" />
     <_ContentIncludedByDefault Remove="Areas\Admin\Views\Shared\Components\SearchBarVC\Default.cshtml" />
     <_ContentIncludedByDefault Remove="Areas\Admin\Views\Shared\Components\TopBarVC\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\HeaderClientVC\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\MobileMenuVC\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\CategoryMenu\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\MainMenu\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\MobileMenu\Default.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

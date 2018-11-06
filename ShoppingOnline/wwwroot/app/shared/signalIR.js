@@ -15,7 +15,6 @@ var html = Mustache.render(template, {
     FullName: message.fullName,
     Avatar: message.avatar
 });
-
 $('#annoncementList').prepend(html);
 
 var totalAnnounce = parseInt($('#totalAnnouncement').text());

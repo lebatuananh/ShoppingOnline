@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.SignalR;
 using OfficeOpenXml;
 using OfficeOpenXml.Table;
 using ShoppingOnline.Application.ECommerce.Products;
@@ -18,6 +19,7 @@ using ShoppingOnline.Data.Entities.System;
 using ShoppingOnline.Utilities.Helpers;
 using ShoppingOnline.WebApplication.Areas.Admin.Controllers.Base;
 using ShoppingOnline.WebApplication.Authorization;
+using ShoppingOnline.WebApplication.SignalR;
 
 namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Product
 {
@@ -27,14 +29,17 @@ namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Product
         private readonly IAuthorizationService _authorizationService;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly IHubContext<ChatHub> _hubContext;
 
         public ProductController(IProductService productService, IAuthorizationService authorizationService,
-            SignInManager<AppUser> signInManager, IHostingEnvironment hostingEnvironment)
+            SignInManager<AppUser> signInManager, IHostingEnvironment hostingEnvironment,
+            IHubContext<ChatHub> hubContext)
         {
             _productService = productService;
             _authorizationService = authorizationService;
             _signInManager = signInManager;
             _hostingEnvironment = hostingEnvironment;
+            _hubContext = hubContext;
         }
 
         public async Task<IActionResult> Index()

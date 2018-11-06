@@ -1,0 +1,35 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+@model System.Collections.Generic.List<ShoppingOnline.Application.ECommerce.ProductCategories.Dtos.ProductCategoryViewModel>
+@inject IViewLocalizer Localizer
+
+<div class="navleft-container">
+    <div class="mega-menu-title">
+        <h3><span>@Localizer["AllCategories"]</span></h3>
+    </div>
+
+    <!-- Shop by category -->
+    <div class="mega-menu-category">
+        <ul class="nav">
+            @foreach (var item in Model.Where(n => n.ParentId == null).OrderBy(n=>n.SortOrder))
+            {
+                <li>
+                    <a href="/@item.SeoAlias-c.@(item.Id).html">@item.Name</a>
+                    @if (Model.Any(n => n.ParentId == item.Id))
+                    {
+                        <div class="wrap-popup column1">
+                            <div class="popup">
+                                <ul class="nav">
+                                    @foreach (var subItem in Model.Where(n => n.ParentId == item.Id))
+                                    {
+                                        <li><a href="@subItem.SeoAlias"><span>@subItem.Name</span></a></li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    }
+
+                </li>
+            }
+        </ul>
+    </div>
+</div>

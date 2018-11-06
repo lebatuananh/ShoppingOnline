@@ -67,7 +67,8 @@
 <script id="announcement-template" type="x-tmpl-mustache">
         <li data-id="{{Id}}" class="announcement-read">
             <a>
-                <span class="image"><i class="fa fa-bell"></i></span>
+@*                <span class="image"><i class="fa fa-bell"></i></span> *@
+                  <span class="image"><img src="{{{Avatar}}}" alt="Profile Image" /></span>
                 <span>
                     <span>{{Title}}</span>
                     <span class="time">{{DateCreated}}</span>

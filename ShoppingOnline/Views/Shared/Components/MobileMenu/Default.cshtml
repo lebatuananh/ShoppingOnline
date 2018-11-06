@@ -1,0 +1,22 @@
+@model System.Collections.Generic.List<ShoppingOnline.Application.ECommerce.ProductCategories.Dtos.ProductCategoryViewModel>
+
+<div id="mobile-menu">
+    <ul>
+        @foreach (var item in Model.Where(n => n.ParentId == null).OrderBy(n => n.SortOrder))
+        {
+            <li>
+                <a href="@item.SeoAlias-c.@(item.Id).html" class="home1">@item.Name</a>
+                @if (Model.Any(n => n.ParentId == item.Id))
+                {
+                    <ul>
+                        @foreach (var subItem in Model.Where(n => n.ParentId == item.Id))
+                        {
+                            <li><a href="@subItem.SeoAlias-c.@(subItem.Id).html"><span>@subItem.Name</span></a></li>
+
+                        }
+                    </ul>
+                }
+            </li>
+        }
+    </ul>
+</div>

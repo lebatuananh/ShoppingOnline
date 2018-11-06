@@ -1,0 +1,74 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+@model System.Collections.Generic.List<ShoppingOnline.Application.ECommerce.ProductCategories.Dtos.ProductCategoryViewModel>
+
+@inject IViewLocalizer Localizer
+
+
+<div class="mtmegamenu">
+    <ul class="hidden-xs">
+        <li class="mt-root demo_custom_link_cms">
+            <div class="mt-root-item">
+                <a asp-action="Index" asp-controller="Home">
+                    <div class="title title_font">
+                        <span class="title-text">@Localizer["Home"]</span>
+                    </div>
+                </a>
+            </div>
+
+        </li>
+
+        <li class="mt-root">
+            <div class="mt-root-item">
+                <a href="/products.html">
+                    <div class="title title_font">
+                        <span class="title-text">@Localizer["Products"]</span>
+                    </div>
+                </a>
+            </div>
+            <ul class="menu-items col-xs-12">
+                @foreach (var item in Model.Where(c => c.ParentId == null))
+                {
+                    <li class="menu-item depth-1 menucol-1-3 ">
+                        <div class="title title_font">
+                            <a href="/@item.SeoAlias-c.@(item.Id).html">@item.Name</a>
+                        </div>
+                        <ul class="submenu">
+                            @foreach (var subItem in Model.Where(x => x.ParentId == item.Id))
+                            {
+                                <li class="menu-item">
+                                    <div class="title">
+                                        <a href="/@subItem.SeoAlias-c.@(subItem.Id).html">@subItem.Name</a>
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+                    </li>
+                }
+
+            </ul>
+        </li>
+
+        <li class="mt-root">
+            <div class="mt-root-item">
+                <a href="/page/welcome-to-luan-core-shop.html">
+                    <div class="title title_font">
+                        <span class="title-text">@Localizer["About"]</span>
+                    </div>
+                </a>
+            </div>
+        </li>
+        <li class="mt-root demo_custom_link_cms">
+            <div class="mt-root-item">
+                <a href="blog.html">
+                    <div class="title title_font">
+                        <span class="title-text">@Localizer["Blog"]</span>
+                    </div>
+                </a>
+            </div>
+        </li>
+        <li>
+            <a href="/contact.html">@Localizer["Contact"]</a>
+        </li>
+    </ul>
+</div>

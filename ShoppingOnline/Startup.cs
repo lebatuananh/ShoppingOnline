@@ -1,16 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Serialization;
+using PaulMiami.AspNetCore.Mvc.Recaptcha;
+using ShoppingOnline.Application.Common;
+using ShoppingOnline.Application.Content.Blogs;
 using ShoppingOnline.Application.ECommerce.Bills;
 using ShoppingOnline.Application.ECommerce.ProductCategories;
 using ShoppingOnline.Application.ECommerce.Products;
@@ -68,6 +76,7 @@ namespace ShoppingOnline
                 options.User.RequireUniqueEmail = true;
             });
 
+
             //Add Authentication
             services.AddAuthentication();
 
@@ -109,6 +118,8 @@ namespace ShoppingOnline
             services.AddTransient<IAppUserService, AppUserService>();
             services.AddTransient<IBillService, BillService>();
             services.AddTransient<IAnnouncementService, AnnouncementService>();
+            services.AddTransient<ICommonService, CommonService>();
+            services.AddTransient<IBlogService, BlogService>();
 
             //Principal
             services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>();
@@ -137,6 +148,25 @@ namespace ShoppingOnline
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            //Facebook, Google
+//            services.AddAuthentication().AddFacebook(n =>
+//            {
+//                n.AppId = Configuration["Authentication:Facebook:AppId"];
+//                n.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+//            }).AddGoogle(n =>
+//            {
+//                n.ClientId = Configuration["Authentication:Google:ClientId"];
+//                n.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+//            });
+
+            //Recaptcha
+//            services.AddRecaptcha(new RecaptchaOptions()
+//            {
+//                SiteKey = Configuration["Recaptcha:SiteKey"],
+//                SecretKey = Configuration["Recaptcha:SerectKey"]
+//            });
+
+            //Cache and MultiLanguage
             services.AddMvc(options =>
                 {
                     options.CacheProfiles.Add("Default",
@@ -152,7 +182,28 @@ namespace ShoppingOnline
                         });
                 }).AddJsonOptions(
                     options => options.SerializerSettings.ContractResolver = new DefaultContractResolver())
+                .AddViewLocalization(
+                    LanguageViewLocationExpanderFormat.Suffix,
+                    opts => { opts.ResourcesPath = "Resources"; })
+                .AddDataAnnotationsLocalization()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
+
+            services.Configure<RequestLocalizationOptions>(
+                opts =>
+                {
+                    var supportedCultures = new List<CultureInfo>
+                    {
+                        new CultureInfo("en-US"),
+                        new CultureInfo("vi-VN")
+                    };
+
+                    opts.DefaultRequestCulture = new RequestCulture("en-US");
+                    // Formatting numbers, dates, etc.
+                    opts.SupportedCultures = supportedCultures;
+                    // UI strings that we have localized.
+                    opts.SupportedUICultures = supportedCultures;
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -176,6 +227,9 @@ namespace ShoppingOnline
             app.UseAuthentication();
 
             app.UseSignalR(routes => { routes.MapHub<ChatHub>("/chatHub"); });
+
+            var options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
+            app.UseRequestLocalization(options.Value);
 
             app.UseMvc(routes =>
             {

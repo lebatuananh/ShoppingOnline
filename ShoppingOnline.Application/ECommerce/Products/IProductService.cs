@@ -40,7 +40,8 @@ namespace ShoppingOnline.Application.ECommerce.Products
 
         List<ProductViewModel> GetHotProduct(int top);
 
-        PagedResult<ProductViewModel> GetAllPaging(int? categoryId, string keyword, int page, int pageSize, string sortBy);
+        PagedResult<ProductViewModel> GetAllPaging(int? categoryId, string keyword, int page, int pageSize,
+            string sortBy);
 
         List<ProductViewModel> GetRelatedProducts(int productId, int top);
 
@@ -51,6 +52,5 @@ namespace ShoppingOnline.Application.ECommerce.Products
         List<ProductViewModel> GetUpSellProducts(int top);
 
         List<TagViewModel> GetProductTags(int productId);
-
     }
 }

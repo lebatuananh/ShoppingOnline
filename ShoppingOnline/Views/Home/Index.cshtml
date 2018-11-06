@@ -1,205 +1,303 @@
-﻿@{
-    Layout = null;
+@model ShoppingOnline.WebApplication.Models.HomeViewModel
+
+@{
+    ViewData["Title"] = Model.Title;
+    ViewData["MetaKeyword"] = Model.MetaKeyword;
+    ViewData["MetaDescription"] = Model.MetaDescription;
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Basic page needs -->
-    <meta charset="utf-8">
-    <!--[if IE]>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <![endif]-->
-    <meta name="description" content="Fabulous is a creative, clean, fully responsive, powerful and multipurpose HTML Template with latest website trends. Perfect to all type of fashion stores.">
-    <meta name="keywords" content="HTML,CSS,womens clothes,fashion,mens fashion,fashion show,fashion week">
-    <meta name="author" content="JTV">
-    <title>Fabulous - Multipurpose Online Marketplace HTML Template</title>
-
-    <!-- Mobile specific metas  -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Favicon  -->
-    <link rel="shortcut icon" type="image/x-icon" href="~/client-site/favicon.ico">
-
-    <!-- CSS Style -->
-    <link rel="stylesheet" href="~/client-site/style.css">
-</head>
-
-<body class="cms-index-index cms-home-page">
-
-    <!-- mobile menu -->
-@await Component.InvokeAsync("MobileMenuVC")
-<div id="page">
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        <!-- Header -->
-    @await Component.InvokeAsync("HeaderClientVC")
-    <!-- end header -->
-        <!-- Navigation -->
-    @await Component.InvokeAsync("NavigationVC")
-    <!-- end nav -->
-        <!-- JTV Home Slider -->
-    @await Component.InvokeAsync("HomeSliderVC")
-    <!-- jtv bottom banner section -->
-    @await Component.InvokeAsync("BannerVC")
-    <!-- bestsell Slider -->
-    @await Component.InvokeAsync("BestSellerVC")
-    <!-- End Bestsell Slider -->
-        <!-- our features -->
-    @await Component.InvokeAsync("OurFeatureVC")
-
-    <!-- Top Categories Slider -->
-    @await Component.InvokeAsync("TopCategoryVC")
-    <!-- End Top categories Slider -->
-        <!--Product Content-->
-    @await Component.InvokeAsync("ProductContentVC")
-    <!--End Product Content-->
-        <!--Advertisment-->
-    @await Component.InvokeAsync("AdvertisementVC")
-    <!--End Advertisment-->
-        <!-- Latest Blog -->
-    @await Component.InvokeAsync("BlogVC")
-    <!-- End Latest Blog -->
-        <!--Brand-->
-    @await Component.InvokeAsync("BrandVC")
-    <!--End Brand-->
-        <!-- Recently Viewed Products Slider -->
-    @await Component.InvokeAsync("ProductViewedVC")
-    <!-- End Recently Viewed Products Slider -->
-        <!-- Footer -->
-    @await Component.InvokeAsync("FooterClientVC")
-</div>
-
-    <!-- End Footer -->
-    <!-- jquery js -->
-    <script src="~/client-site/js/jquery.min.js"></script>
-
-    <!-- bootstrap js -->
-    <script src="~/client-site/js/bootstrap.min.js"></script>
-
-    <!-- owl.carousel.min js -->
-    <script src="~/client-site/js/owl.carousel.min.js"></script>
-
-    <!-- jtv-jtv-mobile-menu js -->
-    <script src="~/client-site/js/jtv-mobile-menu.js"></script>
-    <script src="~/client-site/js/modernizr.custom.js"></script>
-    <!-- main js -->
-    <script src="~/client-site/js/main.js"></script>
-
-    <!-- rev-slider js -->
-    <script src="~/client-site/js/rev-slider.js"></script>
-    <script>
-        jQuery(document).ready(function () {
-            jQuery('#jtv-rev_slider').show().revolution({
-                dottedOverlay: 'none',
-                delay: 5000,
-                startwidth: 836,
-                startheight: 530,
-                hideThumbs: 200,
-                thumbWidth: 200,
-                thumbHeight: 50,
-                thumbAmount: 2,
-                navigationType: 'thumb',
-                navigationArrows: 'solo',
-                navigationStyle: 'round',
-                touchenabled: 'on',
-                onHoverStop: 'on',
-                swipe_velocity: 0.7,
-                swipe_min_touches: 1,
-                swipe_max_touches: 1,
-                drag_block_vertical: false,
-                spinner: 'spinner0',
-                keyboardNavigation: 'true',
-                navigationHAlign: 'center',
-                navigationVAlign: 'bottom',
-                navigationHOffset: 0,
-                navigationVOffset: 20,
-                soloArrowLeftHalign: 'left',
-                soloArrowLeftValign: 'center',
-                soloArrowLeftHOffset: 20,
-                soloArrowLeftVOffset: 0,
-                soloArrowRightHalign: 'right',
-                soloArrowRightValign: 'center',
-                soloArrowRightHOffset: 20,
-                soloArrowRightVOffset: 0,
-                shadow: 0,
-                fullWidth: 'on',
-                fullScreen: 'off',
-                stopLoop: 'off',
-                stopAfterLoops: -1,
-                stopAtSlide: -1,
-                shuffle: 'off',
-                autoHeight: 'off',
-                forceFullWidth: 'on',
-                fullScreenAlignForce: 'off',
-                minFullScreenHeight: 0,
-                hideNavDelayOnMobile: 1500,
-                hideThumbsOnMobile: 'off',
-                hideBulletsOnMobile: 'off',
-                hideArrowsOnMobile: 'off',
-                hideThumbsUnderResolution: 0,
-                hideSliderAtLimit: 0,
-                hideCaptionAtLimit: 0,
-                hideAllCaptionAtLilmit: 0,
-                startWithSlide: 0,
-                fullScreenOffsetContainer: ''
-            });
-        });
-    </script>
-
-    <!--Newsletter Popup Start-->
-    <div id="myModal" class="modal fade">
-        <div class="modal-dialog newsletter-popup">
-            <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <div class="modal-body">
-                    <h4 class="modal-title">Signup Newsletter</h4>
-                    <form id="newsletter-form" method="post" action="#">
-                        <div class="content-subscribe">
-                            <div class="form-subscribe-header">
-                                <label>
-                                    Get <strong>25%</strong> off your First order. Join our newsletter to receive the
-                                    latest updates and promotions
-                                </label>
-                            </div>
-                            <div class="input-box">
-                                <input type="text" class="input-text newsletter-subscribe" title="Sign up for our newsletter" name="email" placeholder="Enter your email address">
-                                <button class="button-subscribe" title="Subscribe" type="submit">Subscribe</button>
-                            </div>
+<!-- Slideshow  -->
+<div class="main-slider" id="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-3 col-xs-12 banner-left hidden-xs">
+                <img src="/client-side/images/banner-left.jpg" alt="banner">
+            </div>
+            <div class="col-sm-9 col-md-9 col-lg-9 col-xs-12 jtv-slideshow">
+                <div id="jtv-slideshow">
+                    <div id='rev_slider_4_wrapper' class='rev_slider_wrapper fullwidthbanner-container'>
+                        <div id='rev_slider_4' class='rev_slider fullwidthabanner'>
+                            <ul>
+                                @foreach (var item in Model.HomeSlides)
+                                {
+                                    <li data-transition='fade' data-slotamount='7' data-masterspeed='1000' data-thumb=''>
+                                        <img src="@item.Image" data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' alt="@item.Name"/>
+                                    </li>
+                                }
+                            </ul>
+                            <div class="tp-bannertimer"></div>
                         </div>
-                    </form>
-                    <ul class="social">
-                        <li>
-                            <a href="#.">
-                                <i class="fa fa-facebook"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#.">
-                                <i class="fa fa-pinterest"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#.">
-                                <i class="fa fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#.">
-                                <i class="fa fa-google"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="subscribe-bottom">
-                        <input name="notshowpopup" id="notshowpopup" type="checkbox">
-                        Don’t show this popup again
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--End of Newsletter Popup-->
+</div>
+<!-- service section -->
+@Html.Partial("_ServicePartial.cshtml")
 
-</body>
-</html>
+<div class="inner-box">
+    <div class="container">
+        <div class="row">
+            <!-- Banner -->
+            <div class="col-md-3 top-banner hidden-sm">
+                <div class="jtv-banner3">
+                    <div class="jtv-banner3-inner">
+                        @* <a href="@Model.Advertisement.Url" target="_blank"> *@
+                        @*     <img src="@Model.Advertisement.Image" alt="@Model.Advertisement.Name"> *@
+                        @* </a> *@
+                        @*<div class="hover_content">
+                            <div class="hover_data">
+                                <div class="title"> Big Sale </div>
+                                <div class="desc-text">Up to 55% off</div>
+                                <span>Camera, Laptop & Mobile</span>
+                                <p><a href="#" class="shop-now">Get it now!</a></p>
+                            </div>
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+            <!-- Best Sale -->
+            <div class="col-sm-12 col-md-9 jtv-best-sale special-pro">
+                <div class="jtv-best-sale-list">
+                    <div class="wpb_wrapper">
+                        <div class="best-title text-left">
+                            <h2>Special Offers</h2>
+                        </div>
+                    </div>
+                    <div class="slider-items-products">
+                        <div id="jtv-best-sale-slider" class="product-flexslider">
+                            <div class="slider-items">
+                                @foreach (var item in Model.TopSellProducts)
+                                {
+                                    <div class="product-item">
+                                        <div class="item-inner">
+                                            <div class="product-thumbnail">
+                                                <div class="icon-new-label new-left">News</div>
+                                                <div class="pr-img-area">
+                                                    <a title="Product title here" href="/@item.SeoAlias-p.@(item.Id).html">
+                                                        <figure>
+                                                            <img class="first-img" src="@item.Image" alt="@item.Name"> <img class="hover-img" src="@item.Image" alt="@item.Name">
+                                                        </figure>
+                                                    </a>
+                                                </div>
+                                                <div class="pr-info-area">
+                                                    <div class="pr-button">
+                                                        <div class="mt-button add_to_wishlist">
+                                                            <a href="wishlist.html">
+                                                                <i class="fa fa-heart-o"></i>
+                                                            </a>
+                                                        </div>
+                                                        <div class="mt-button add_to_compare">
+                                                            <a href="compare.html">
+                                                                <i class="fa fa-link"></i>
+                                                            </a>
+                                                        </div>
+                                                        <div class="mt-button quick-view">
+                                                            <a href="quick_view.html">
+                                                                <i class="fa fa-search"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="item-info">
+                                                <div class="info-inner">
+                                                    <div class="item-title">
+                                                        <a title="@item.Name" href="/@item.SeoAlias-p.@(item.Id).html">@item.Name </a>
+                                                    </div>
+                                                    <div class="item-content">
+                                                        <div class="rating">
+                                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>
+                                                        </div>
+                                                        <div class="item-price">
+                                                            <div class="price-box">
+                                                                <span class="regular-price">
+                                                                    <span class="price">@item.Price.ToString("N0")</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="pro-action">
+                                                            <button type="button" class="add-to-cart" data-id="@item.Id">
+                                                                <span>Purchase</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- All products-->
+
+<div class="container">
+    <div class="home-tab">
+        <div class="tab-title text-left">
+            <h2>Best selling</h2>
+            <ul class="nav home-nav-tabs home-product-tabs">
+                @for (var i = 0; i < Model.HomeCategories.Count; i++)
+                {
+                    var item = Model.HomeCategories[i];
+                    if (i == 0)
+                    {
+                        <li class="active">
+                            <a href="#@item.SeoAlias" data-toggle="tab" aria-expanded="false">@item.Name</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="#@item.SeoAlias" data-toggle="tab" aria-expanded="false">@item.Name</a>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+        <div id="productTabContent" class="tab-content">
+            @for (var i = 0; i < Model.HomeCategories.Count; i++)
+            {
+                var category = Model.HomeCategories[i];
+                string css = string.Empty;
+                if (i == 0)
+                {
+                    css = "tab-pane active in";
+                }
+                else
+                {
+                    css = "tab-pane wow fadeInLeft";
+                }
+                <div class="@css" id="@category.SeoAlias">
+                    <div class="featured-pro">
+                        <div class="slider-items-products">
+                            <div id="computer-slider" class="product-flexslider hidden-buttons">
+                                <div class="slider-items slider-width-col4">
+                                    @foreach (var item in category.Products)
+                                    {
+                                        <div class="product-item">
+                                            <div class="item-inner">
+                                                <div class="product-thumbnail">
+                                                    <div class="icon-new-label new-left">mới</div>
+                                                    <div class="pr-img-area">
+                                                        <a title="@item.Name" href="/@item.SeoAlias-p.@(item.Id).html">
+                                                            <figure>
+                                                                <img class="first-img" src="@item.Image" alt="@item.Name">
+                                                                <img class="hover-img" src="@item.Image" alt="@item.Name">
+                                                            </figure>
+                                                        </a>
+                                                    </div>
+                                                    <div class="pr-info-area">
+                                                        <div class="pr-button">
+                                                            <div class="mt-button add_to_wishlist">
+                                                                <a href="wishlist.html">
+                                                                    <i class="fa fa-heart-o"></i>
+                                                                </a>
+                                                            </div>
+                                                            <div class="mt-button add_to_compare">
+                                                                <a href="compare.html">
+                                                                    <i class="fa fa-link"></i>
+                                                                </a>
+                                                            </div>
+                                                            <div class="mt-button quick-view">
+                                                                <a href="quick_view.html">
+                                                                    <i class="fa fa-search"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="item-info">
+                                                    <div class="info-inner">
+                                                        <div class="item-title">
+                                                            <a title="Product title here" href="/@item.SeoAlias-p.@(item.Id).html">@item.Name </a>
+                                                        </div>
+                                                        <div class="item-content">
+                                                            <div class="rating">
+                                                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>
+                                                            </div>
+                                                            <div class="item-price">
+                                                                <div class="price-box">
+                                                                    <span class="regular-price">
+                                                                        <span class="price">@item.Price.ToString("N0")</span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="pro-action">
+                                                                <button type="button" class="add-to-cart" data-id="@item.Id">
+                                                                    <span> Mua ngay</span>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Blog -->
+<section class="blog-post-wrapper">
+    <div class="container">
+        <div class="best-title text-left">
+            <h2>Our Latest News</h2>
+        </div>
+        <div class="slider-items-products">
+            <div id="latest-news-slider" class="product-flexslider hidden-buttons">
+                <div class="slider-items slider-width-col6">
+                    @foreach (var item in Model.LastestBlogs)
+                    {
+                        <div class="item">
+                            <div class="blog-box">
+                                <a href="@item.SeoAlias-p.@(item.Id).html">
+                                    <img class="primary-img" src="@item.Image" alt="@item.Name">
+                                </a>
+                                <div class="blog-btm-desc">
+                                    <div class="blog-top-desc">
+                                        <div class="blog-date">@item.DateCreated.ToString("dd/MM/yyyy")</div>
+                                        <h4>
+                                            <a href="@item.SeoAlias-p.@(item.Id).html">@item.Name</a>
+                                        </h4>
+                                        @* <div class="jtv-entry-meta"> <i class="fa fa-user-o"></i> <strong>Admin</strong> <a href="#"><i class="fa fa-commenting-o"></i> <strong>15 Comments</strong></a></div>*@
+                                    </div>
+                                    <p>@item.Description</p>
+                                    <a class="read-more" href="@item.SeoAlias-p.@(item.Id).html"> Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts{
+    <!-- Slider Js -->
+    <script type="text/javascript" src="~/client-side/js/revolution-slider.js"></script>
+
+    <script src="~/app-client/controllers/home/index.js"></script>
+
+    <script type='text/javascript'>
+        var homeController = new HomeController();
+        homeController.initialize();
+
+    </script>
+}

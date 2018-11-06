@@ -1,4 +1,7 @@
 using AutoMapper;
+using ShoppingOnline.Application.Common.Advertisements.Dtos;
+using ShoppingOnline.Application.Common.Dtos;
+using ShoppingOnline.Application.Content.Blogs.Dtos;
 using ShoppingOnline.Application.Content.Dtos;
 using ShoppingOnline.Application.ECommerce.Bills.Dtos;
 using ShoppingOnline.Application.ECommerce.ProductCategories.Dtos;
@@ -7,7 +10,9 @@ using ShoppingOnline.Application.Systems.Announcements.Dtos;
 using ShoppingOnline.Application.Systems.Functions.Dtos;
 using ShoppingOnline.Application.Systems.Permissions.Dtos;
 using ShoppingOnline.Application.Systems.Roles.Dtos;
+using ShoppingOnline.Application.Systems.Settings.Dtos;
 using ShoppingOnline.Application.Systems.Users.Dtos;
+using ShoppingOnline.Data.Entities.Advertisement;
 using ShoppingOnline.Data.Entities.Content;
 using ShoppingOnline.Data.Entities.ECommerce;
 using ShoppingOnline.Data.Entities.System;
@@ -30,6 +35,16 @@ namespace ShoppingOnline.Application.AutoMapper
 
             //Content
             CreateMap<Tag, TagViewModel>();
+            CreateMap<Blog, BlogViewModel>().MaxDepth(2);
+            CreateMap<BlogTag, BlogTagViewModel>().MaxDepth(2);
+            CreateMap<Footer, FooterViewModel>().MaxDepth(2);
+            CreateMap<SystemConfig, SystemConfigViewModel>().MaxDepth(2);
+            CreateMap<Slide, SlideViewModel>().MaxDepth(2);
+            CreateMap<Page, PageViewModel>().MaxDepth(2);
+            CreateMap<Advertisement, AdvertisementViewModel>().MaxDepth(2);
+            CreateMap<AdvertisementPage, AdvertisementPageViewModel>().MaxDepth(2);
+            CreateMap<AdvertisementPosition, AdvertisementPositionViewModel>().MaxDepth(2);
+
 
             //Bill
             CreateMap<Bill, BillViewModel>().MaxDepth(2);

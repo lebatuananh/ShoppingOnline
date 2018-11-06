@@ -1,19 +1,21 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using ShoppingOnline.Application.ECommerce.ProductCategories;
 
 namespace ShoppingOnline.WebApplication.ViewComponents
 {
-    [ViewComponent(Name = "MobileMenuVC")]
     public class MobileMenuViewComponent:ViewComponent
     {
-        public MobileMenuViewComponent()
+        private IProductCategoryService _productCategoryService;
+
+        public MobileMenuViewComponent(IProductCategoryService productCategoryService)
         {
-            
+            _productCategoryService = productCategoryService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return await Task.Run(() => View());
+            return View(_productCategoryService.GetAll());
         }
     }
 }

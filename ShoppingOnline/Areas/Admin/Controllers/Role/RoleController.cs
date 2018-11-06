@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +12,7 @@ using ShoppingOnline.Application.Systems.Announcements.Dtos;
 using ShoppingOnline.Application.Systems.Permissions.Dtos;
 using ShoppingOnline.Application.Systems.Roles;
 using ShoppingOnline.Application.Systems.Roles.Dtos;
+using ShoppingOnline.Application.Systems.Users.Dtos;
 using ShoppingOnline.Data.Entities.System;
 using ShoppingOnline.Utilities.Dtos;
 using ShoppingOnline.WebApplication.Areas.Admin.Controllers.Base;
@@ -23,17 +25,19 @@ namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role
     public class RoleController : BaseController
     {
         private readonly IRoleService _roleService;
+        private readonly UserManager<AppUser> _userManager;
         private readonly IAuthorizationService _authorizationService;
         private readonly IHubContext<ChatHub> _hubContext;
         private readonly SignInManager<AppUser> _signInManager;
 
         public RoleController(IRoleService roleService, IAuthorizationService authorizationService,
-            IHubContext<ChatHub> hubContext, SignInManager<AppUser> signInManager)
+            IHubContext<ChatHub> hubContext, SignInManager<AppUser> signInManager,UserManager<AppUser> userManager)
         {
             _roleService = roleService;
             _authorizationService = authorizationService;
             _hubContext = hubContext;
             _signInManager = signInManager;
+            _userManager = userManager;
         }
 
         public async Task<IActionResult> Index()
@@ -80,14 +84,15 @@ namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role
             if (!roleVm.Id.HasValue)
             {
                 var notificationId = Guid.NewGuid().ToString();
-
+                var model = Mapper.Map<AppUser, AppUserViewModel>(await _userManager.FindByIdAsync(User.GetUserId().ToString()));
                 var announcement = new AnnouncementViewModel()
                 {
                     Title = "Role created",
                     DateCreated = DateTime.Now,
                     Content = $"Role {roleVm.Name} has been created",
                     Id = notificationId,
-                    UserId = User.GetUserId()
+                    UserId = User.GetUserId(),
+                    Avatar = model.Avatar
                 };
 
                 var announcementUsers = new List<AnnouncementUserViewModel>()
@@ -111,13 +116,15 @@ namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role
             }
             else
             {
+                var model = Mapper.Map<AppUser, AppUserViewModel>(await _userManager.FindByIdAsync(User.GetUserId().ToString()));
                 var announcement = new AnnouncementViewModel()
                 {
                     Title = "Role updated",
                     DateCreated = DateTime.Now,
                     Content = $"Role {roleVm.Name} has been updated",
                     Id = Guid.NewGuid().ToString(),
-                    UserId = User.GetUserId()
+                    UserId = User.GetUserId(),
+                    Avatar = model.Avatar
                 };
 
                 var result = await _roleService.UpdateAsync(announcement, roleVm);

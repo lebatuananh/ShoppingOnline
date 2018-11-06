@@ -4,7 +4,8 @@ using System.Text;
 
 namespace ShoppingOnline.Infrastructure.Enum
 {
-    class CacheKey
+    public enum CacheKey
     {
+        ProductCategories
     }
 }

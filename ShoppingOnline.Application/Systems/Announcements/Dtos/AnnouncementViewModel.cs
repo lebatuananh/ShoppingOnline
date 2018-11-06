@@ -21,6 +21,8 @@ namespace ShoppingOnline.Application.Systems.Announcements.Dtos
         public DateTime DateModified { set; get; }
 
         public Status Status { set; get; }
+        
+        public string Avatar { get; set; }
 
         public List<AnnouncementUserViewModel> AnnouncementUsers { get; set; }
     }

@@ -1,0 +1,14 @@
+{
+  "name": "cropper",
+  "homepage": "https://github.com/fengyuanchen/cropper",
+  "version": "4.0.0",
+  "_release": "4.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v4.0.0",
+    "commit": "799ab634f2b186ece0ad80df9f5798960b5158a1"
+  },
+  "_source": "https://github.com/fengyuanchen/cropper.git",
+  "_target": "4.0.0",
+  "_originalSource": "cropper"
+}

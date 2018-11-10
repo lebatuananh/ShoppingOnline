@@ -44,9 +44,8 @@ namespace ShoppingOnline.Application.Common
 
         public FooterViewModel GetFooter()
         {
-            return Mapper.Map<Footer, FooterViewModel>(_footerRepository.FindSingle(x => x.Id ==
-                                                                                         CommonConstants
-                                                                                             .DefaultFooterId));
+            return Mapper.Map<Footer, FooterViewModel>(
+                _footerRepository.FindSingle(x => x.Id == CommonConstants.DefaultFooterId));
         }
 
         public List<SlideViewModel> GetSlides(string groupAlias)

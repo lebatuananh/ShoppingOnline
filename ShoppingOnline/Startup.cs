@@ -17,9 +17,13 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Serialization;
 using PaulMiami.AspNetCore.Mvc.Recaptcha;
+using ShoppignOnline.Application.Dapper.Implementations;
+using ShoppignOnline.Application.Dapper.Interfaces;
 using ShoppingOnline.Application.Common;
+using ShoppingOnline.Application.Common.Advertisements;
 using ShoppingOnline.Application.Content.Blogs;
 using ShoppingOnline.Application.ECommerce.Bills;
+using ShoppingOnline.Application.ECommerce.Carts;
 using ShoppingOnline.Application.ECommerce.ProductCategories;
 using ShoppingOnline.Application.ECommerce.Products;
 using ShoppingOnline.Application.Systems.Announcements;
@@ -33,6 +37,7 @@ using ShoppingOnline.Data.Entities.System;
 using ShoppingOnline.Infrastructure.Interfaces;
 using ShoppingOnline.WebApplication.Authorization;
 using ShoppingOnline.WebApplication.Helpers;
+using ShoppingOnline.WebApplication.Services;
 using ShoppingOnline.WebApplication.SignalR;
 using IConfigurationProvider = AutoMapper.IConfigurationProvider;
 
@@ -120,6 +125,12 @@ namespace ShoppingOnline
             services.AddTransient<IAnnouncementService, AnnouncementService>();
             services.AddTransient<ICommonService, CommonService>();
             services.AddTransient<IBlogService, BlogService>();
+            services.AddTransient<IAdvertisementService, AdvertisementService>();
+            services.AddTransient<IColorDapperService, ColorDapperService>();
+            services.AddTransient<ISizeDapperService, SizeDapperService>();
+            services.AddTransient<ICartService, CartService>();
+            services.AddTransient<IViewRenderService, ViewRenderService>();
+            services.AddTransient<IReportService, ReportService>();
 
             //Principal
             services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>();

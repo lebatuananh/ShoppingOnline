@@ -10,6 +10,23 @@ namespace ShoppingOnline.Data.Entities.Advertisement
     [Table("Advertisements")]
     public class Advertisement : DomainEntity<int>, ISwitchable, ISortable
     {
+        public Advertisement()
+        {
+        }
+
+        public Advertisement(string name, string description, string image, string url, string positionId, Status status, DateTime dateCreated, DateTime dateModified, int sortOrder)
+        {
+            Name = name;
+            Description = description;
+            Image = image;
+            Url = url;
+            PositionId = positionId;
+            Status = status;
+            DateCreated = dateCreated;
+            DateModified = dateModified;
+            SortOrder = sortOrder;
+        }
+
         [StringLength(250)]
         public string Name { get; set; }
 

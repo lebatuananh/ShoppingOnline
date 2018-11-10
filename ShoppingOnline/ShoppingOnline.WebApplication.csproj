@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ShopingOnline.Data\ShoppingOnline.Data.csproj" />
+    <ProjectReference Include="..\ShoppignOnline.Application.Dapper\ShoppignOnline.Application.Dapper.csproj" />
     <ProjectReference Include="..\ShoppingOnline.Application\ShoppingOnline.Application.csproj" />
     <ProjectReference Include="..\ShoppingOnline.Data.EF\ShoppingOnline.Data.EF.csproj" />
     <ProjectReference Include="..\ShoppingOnline.Infrastructure\ShoppingOnline.Infrastructure.csproj" />

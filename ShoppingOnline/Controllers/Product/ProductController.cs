@@ -22,13 +22,13 @@ namespace ShoppingOnline.WebApplication.Controllers.Product
         private readonly ISizeDapperService _sizesDapperService;
 
         public ProductController(IProductCategoryService productCategoryService, IProductService productService, IConfiguration configuration,
-            ICommonService commonService, IColorDapperService colorDapperService, ISizeDapperService sizesDapperService)
+             IColorDapperService colorDapperService, ISizeDapperService sizesDapperService)
         {
-            this._productCategoryService = productCategoryService;
-            this._productService = productService;
-            this._configuration = configuration;
-            this._colorDapperService = colorDapperService;
-            this._sizesDapperService = sizesDapperService;
+            _productCategoryService = productCategoryService;
+            _productService = productService;
+            _configuration = configuration;
+            _colorDapperService = colorDapperService;
+            _sizesDapperService = sizesDapperService;
         }
 
         [Route("products.html")]

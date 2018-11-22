@@ -1,6 +1,6 @@
 ﻿USE [ShoppingOnline]
 GO
-/****** Object:  StoredProcedure [dbo].[GetRevenueDaily]    Script Date: 8/20/2018 9:35:24 AM ******/
+/****** Object:  StoredProcedure [dbo].[GetRevenueDaily]    Script Date: 11/10/2018 9:35:24 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

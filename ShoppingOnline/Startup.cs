@@ -32,14 +32,13 @@ using ShoppingOnline.Application.Systems.Roles;
 using ShoppingOnline.Application.Systems.Users;
 using ShoppingOnline.Data.EF;
 using ShoppingOnline.Data.EF.Abstract;
-using ShoppingOnline.Data.Entities.ECommerce;
 using ShoppingOnline.Data.Entities.System;
 using ShoppingOnline.Infrastructure.Interfaces;
 using ShoppingOnline.WebApplication.Authorization;
 using ShoppingOnline.WebApplication.Helpers;
 using ShoppingOnline.WebApplication.Services;
 using ShoppingOnline.WebApplication.SignalR;
-using IConfigurationProvider = AutoMapper.IConfigurationProvider;
+
 
 namespace ShoppingOnline
 {
@@ -96,7 +95,7 @@ namespace ShoppingOnline
             services.AddAutoMapper();
             services.AddSingleton(Mapper.Configuration);
             services.AddScoped<IMapper>(sp =>
-                new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
+                new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
 
             //MemoryCache
             services.AddMemoryCache();
@@ -131,6 +130,8 @@ namespace ShoppingOnline
             services.AddTransient<ICartService, CartService>();
             services.AddTransient<IViewRenderService, ViewRenderService>();
             services.AddTransient<IReportService, ReportService>();
+
+            services.AddTransient<IEmailSender, EmailSender>();
 
             //Principal
             services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>();
@@ -171,11 +172,11 @@ namespace ShoppingOnline
 //            });
 
             //Recaptcha
-//            services.AddRecaptcha(new RecaptchaOptions()
-//            {
-//                SiteKey = Configuration["Recaptcha:SiteKey"],
-//                SecretKey = Configuration["Recaptcha:SerectKey"]
-//            });
+            services.AddRecaptcha(new RecaptchaOptions()
+            {
+                SiteKey = Configuration["Recaptcha:SiteKey"],
+                SecretKey = Configuration["Recaptcha:SerectKey"]
+            });
 
             //Cache and MultiLanguage
             services.AddMvc(options =>
@@ -234,6 +235,7 @@ namespace ShoppingOnline
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
 
             app.UseAuthentication();
 

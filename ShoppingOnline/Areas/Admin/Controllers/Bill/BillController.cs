@@ -8,16 +8,20 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.SignalR;
 using OfficeOpenXml;
 using ShoppingOnline.Application.Common.Enum;
 using ShoppingOnline.Application.ECommerce.Bills;
 using ShoppingOnline.Application.ECommerce.Bills.Dtos;
+using ShoppingOnline.Application.Systems.Announcements.Dtos;
 using ShoppingOnline.Data.Entities.System;
 using ShoppingOnline.Data.Enum;
 using ShoppingOnline.Utilities.Extensions;
 using ShoppingOnline.Utilities.Helpers;
 using ShoppingOnline.WebApplication.Areas.Admin.Controllers.Base;
 using ShoppingOnline.WebApplication.Authorization;
+using ShoppingOnline.WebApplication.Extensions;
+using ShoppingOnline.WebApplication.SignalR;
 
 namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Bill
 {
@@ -25,14 +29,17 @@ namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Bill
     {
         private readonly IBillService _billService;
         private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly IHubContext<ChatHub> _hubContext;
         private readonly IAuthorizationService _authorizationService;
         private readonly SignInManager<AppUser> _signInManager;
 
         public BillController(IBillService billService, IHostingEnvironment hostingEnvironment,
-            IAuthorizationService authorizationService, SignInManager<AppUser> signInManager)
+            IHubContext<ChatHub> hubContext, IAuthorizationService authorizationService,
+            SignInManager<AppUser> signInManager)
         {
             _billService = billService;
             _hostingEnvironment = hostingEnvironment;
+            _hubContext = hubContext;
             _authorizationService = authorizationService;
             _signInManager = signInManager;
         }
@@ -82,7 +89,21 @@ namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Bill
 
             if (billVm.Id == 0)
             {
-                _billService.Create(billVm);
+                var notificationId = Guid.NewGuid().ToString();
+
+                var announcement = new AnnouncementViewModel()
+                {
+                    Title = "New bill",
+                    DateCreated = DateTime.Now,
+                    Content = $"New bill has been created",
+                    Id = notificationId,
+                    UserId = User.GetUserId()
+                };
+
+
+                _billService.Create(billVm, announcement);
+
+                await _hubContext.Clients.All.SendAsync("ReceiveMessage", announcement);
             }
             else
             {

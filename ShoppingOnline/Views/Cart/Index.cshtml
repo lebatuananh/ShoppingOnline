@@ -1,4 +1,3 @@
-
 @{
     ViewData["Title"] = "Shopping cart";
     ViewData["MetaDescription"] = "Shopping cart";
@@ -30,22 +29,30 @@
                         <div class="table-responsive">
                             <table class="table table-bordered cart_summary" id="shopping-cart">
                                 <thead>
-                                    <tr>
-                                        <th class="cart_product">Product</th>
-                                        <th>Description</th>
-                                        <th>Unit price</th>
-                                        <th>Quantity</th>
-                                        <th>Total</th>
-                                        <th class="action"><i class="fa fa-trash-o"></i></th>
-                                    </tr>
+                                <tr>
+                                    <th class="cart_product">Product</th>
+                                    <th>Description</th>
+                                    <th>Unit price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th class="action">
+                                        <i class="fa fa-trash-o"></i>
+                                    </th>
+                                </tr>
                                 </thead>
                                 <tbody id="table-cart-content"></tbody>
                                 <tfoot>
-                                    <tr>
-                                        <td colspan="3"><strong>Total</strong></td>
-                                        <td colspan="2" style="text-align:right"><strong><span id="lblTotalAmount"></span> </strong></td>
-                                        <td>&nbsp;</td>
-                                    </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <strong>Total</strong>
+                                    </td>
+                                    <td colspan="2" style="text-align: right">
+                                        <strong>
+                                            <span id="lblTotalAmount"></span>
+                                        </strong>
+                                    </td>
+                                    <td>&nbsp;</td>
+                                </tr>
                                 </tfoot>
                             </table>
                             <script id="template-cart" type="x-tmpl-mustache">

@@ -26,7 +26,7 @@ namespace ShoppingOnline.WebApplication.Controllers.Account
         private readonly ILogger _logger;
 
         public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager,
-            IEmailSender emailSender, ILogger logger)
+            IEmailSender emailSender, ILogger<AccountController> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;

@@ -6,7 +6,9 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using ShoppingOnline.Application.ECommerce.Bills.Dtos;
 using ShoppingOnline.Application.ECommerce.Products.Dtos;
+using ShoppingOnline.Application.Systems.Announcements.Dtos;
 using ShoppingOnline.Data.Entities.ECommerce;
+using ShoppingOnline.Data.Entities.System;
 using ShoppingOnline.Data.Enum;
 using ShoppingOnline.Infrastructure.Interfaces;
 using ShoppingOnline.Utilities.Dtos;
@@ -20,27 +22,34 @@ namespace ShoppingOnline.Application.ECommerce.Bills
         private readonly IRepository<Color, int> _colorRepository;
         private readonly IRepository<Size, int> _sizeRepository;
         private readonly IRepository<Product, int> _productRepository;
+        private readonly IRepository<Announcement, string> _announcementRepository;
         private readonly IUnitOfWork _unitOfWork;
 
         public BillService(IRepository<Bill, int> billRepository, IRepository<BillDetail, int> billDetailRepository,
             IRepository<Color, int> colorRepository, IRepository<Size, int> sizeRepository,
-            IRepository<Product, int> productRepository, IUnitOfWork unitOfWork)
+            IRepository<Product, int> productRepository, IRepository<Announcement, string> announcementRepository,
+            IUnitOfWork unitOfWork)
         {
             _billRepository = billRepository;
             _billDetailRepository = billDetailRepository;
             _colorRepository = colorRepository;
             _sizeRepository = sizeRepository;
             _productRepository = productRepository;
+            _announcementRepository = announcementRepository;
             _unitOfWork = unitOfWork;
         }
 
-        public void Create(BillViewModel billVm)
+        public void Create(BillViewModel billVm, AnnouncementViewModel announcementVm)
         {
             var order = Mapper.Map<BillViewModel, Bill>(billVm);
             var orderDetail = Mapper.Map<List<BillDetailViewModel>, List<BillDetail>>(billVm.BillDetails);
 
             order.BillDetails = orderDetail;
+
+            var announcement = Mapper.Map<AnnouncementViewModel, Announcement>(announcementVm);
+
             _billRepository.Add(order);
+            _announcementRepository.Add(announcement);
         }
 
         public void Update(BillViewModel billVm)

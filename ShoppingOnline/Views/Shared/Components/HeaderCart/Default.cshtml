@@ -1,4 +1,3 @@
-@using Microsoft.AspNetCore.Mvc.Localization
 @model System.Collections.Generic.List<ShoppingOnline.WebApplication.Models.ShoppingCartViewModel>
 @inject IViewLocalizer Localizer
 
@@ -49,7 +48,6 @@
             else
             {
                 <p>@Localizer["NoProductCart"]</p>
-
             }
         </div>
     </div>

@@ -1,0 +1,874 @@
+2018-11-21T16:55:42.8553658+07:00 0HLIFITVN4IPR:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/   (ca22a1cb)
+2018-11-21T16:55:43.1571780+07:00 0HLIFITVN4IPR:00000001 [INF] "Identity.Application" was not authenticated. Failure message: "Ticket expired" (48071232)
+2018-11-21T16:55:43.7669329+07:00 0HLIFITVN4IPR:00000001 [INF] Route matched with "{action = \"Index\", controller = \"Home\", area = \"\"}". Executing action "ShoppingOnline.WebApplication.Controllers.Home.HomeController.Index (ShoppingOnline.WebApplication)" (a44c0341)
+2018-11-21T16:55:43.7934844+07:00 0HLIFITVN4IPR:00000001 [INF] Executing action method "ShoppingOnline.WebApplication.Controllers.Home.HomeController.Index (ShoppingOnline.WebApplication)" - Validation state: Valid (dad538d7)
+2018-11-21T16:55:44.1982126+07:00 0HLIFITVN4IPR:00000001 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2018-11-21T16:55:44.4189820+07:00 0HLIFITVN4IPR:00000001 [WRN] The Include operation for navigation '"[c].Products"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2018-11-21T16:55:44.7999208+07:00 0HLIFITVN4IPR:00000001 [INF] Executed DbCommand ("29"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [c].[Id], [c].[Name], [c].[Description], [c].[ParentId], [c].[HomeOrder], [c].[Image], [c].[HomeFlag], [c].[DateCreated], [c].[DateModified], [c].[SortOrder], [c].[Status], [c].[SeoPageTitle], [c].[SeoAlias], [c].[SeoKeywords], [c].[SeoDescription]
+FROM [ProductCategories] AS [c]
+WHERE [c].[HomeFlag] = 1
+ORDER BY [c].[HomeOrder], [c].[Id]" (0723d8ff)
+2018-11-21T16:55:45.1811246+07:00 0HLIFITVN4IPR:00000001 [INF] Executed DbCommand ("145"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) AND ([x].[HotFlag] = 1)
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2018-11-21T16:55:45.4130932+07:00 0HLIFITVN4IPR:00000001 [INF] Executed DbCommand ("15"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2018-11-21T16:55:45.5126747+07:00 0HLIFITVN4IPR:00000001 [INF] Executed DbCommand ("49"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [x.ProductTags].[Id] AS [Id1], [x.ProductTags].[ProductId], [x.ProductTags].[TagId], CASE
+    WHEN [x.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id]
+) AS [t] ON [x.ProductTags].[ProductId] = [t].[Id]
+ORDER BY [t].[DateCreated] DESC, [t].[Id]" (0723d8ff)
+2018-11-21T16:55:45.5698931+07:00 0HLIFITVN4IPR:00000001 [INF] Executed DbCommand ("27"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t0].[DateCreated], [t0].[Id], [t0].[Id0], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[ViewCount], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Status]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x1].[DateCreated], [x1].[Id], [x.ProductCategory1].[Id] AS [Id0]
+    FROM [Products] AS [x1]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory1] ON [x1].[CategoryId] = [x.ProductCategory1].[Id]
+    WHERE [x1].[Status] = 1
+    ORDER BY [x1].[DateCreated] DESC, [x1].[Id], [x.ProductCategory1].[Id]
+) AS [t0] ON [x.ProductCategory.Products].[CategoryId] = [t0].[Id0]
+ORDER BY [t0].[DateCreated] DESC, [t0].[Id], [t0].[Id0], [x.ProductCategory.Products].[Id]" (0723d8ff)
+2018-11-21T16:55:45.6266854+07:00 0HLIFITVN4IPR:00000001 [INF] Executed DbCommand ("20"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[DateCreated], [t2].[Id], [t2].[Id0], [t2].[Id1], [x.ProductCategory.Products.ProductTags].[Id] AS [Id3], [x.ProductCategory.Products.ProductTags].[ProductId], [x.ProductCategory.Products.ProductTags].[TagId], CASE
+    WHEN [x.ProductCategory.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag0].[Name], [dto.Tag0].[Type]
+FROM [ProductTags] AS [x.ProductCategory.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag0] ON [x.ProductCategory.Products.ProductTags].[TagId] = [dto.Tag0].[Id]
+INNER JOIN (
+    SELECT [t1].[DateCreated], [t1].[Id], [t1].[Id0], [x.ProductCategory.Products0].[Id] AS [Id1]
+    FROM [Products] AS [x.ProductCategory.Products0]
+    INNER JOIN (
+        SELECT TOP(@__p_0) [x2].[DateCreated], [x2].[Id], [x.ProductCategory2].[Id] AS [Id0]
+        FROM [Products] AS [x2]
+        INNER JOIN [ProductCategories] AS [x.ProductCategory2] ON [x2].[CategoryId] = [x.ProductCategory2].[Id]
+        WHERE [x2].[Status] = 1
+        ORDER BY [x2].[DateCreated] DESC, [x2].[Id], [x.ProductCategory2].[Id]
+    ) AS [t1] ON [x.ProductCategory.Products0].[CategoryId] = [t1].[Id0]
+) AS [t2] ON [x.ProductCategory.Products.ProductTags].[ProductId] = [t2].[Id1]
+ORDER BY [t2].[DateCreated] DESC, [t2].[Id], [t2].[Id0], [t2].[Id1]" (0723d8ff)
+2018-11-21T16:55:45.7723249+07:00 0HLIFITVN4IPR:00000001 [INF] Executed DbCommand ("17"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[Image], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[DateCreated], [x].[DateModified], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [Blogs] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC, [x].[Id]" (0723d8ff)
+2018-11-21T16:55:45.8404153+07:00 0HLIFITVN4IPR:00000001 [INF] Executed DbCommand ("5"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Image], [x].[Url], [x].[DisplayOrder], [x].[Status], [x].[Content], [x].[GroupAlias]
+FROM [Slides] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)" (0723d8ff)
+2018-11-21T16:55:46.0538439+07:00 0HLIFITVN4IPR:00000001 [INF] Executed DbCommand ("128"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [t].*
+FROM (
+    SELECT TOP(@__p_0) [n].[Id], [n].[DateCreated], [n].[DateModified], [n].[Description], [n].[Image], [n].[Name], [n].[PositionId], [n].[SortOrder], [n].[Status], [n].[Url]
+    FROM [Advertisements] AS [n]
+    WHERE [n].[Status] = 1
+    ORDER BY [n].[SortOrder]
+) AS [t]
+ORDER BY [t].[SortOrder]" (0723d8ff)
+2018-11-21T16:55:46.2952297+07:00 0HLIFITVN4IPR:00000001 [INF] Executed action method "ShoppingOnline.WebApplication.Controllers.Home.HomeController.Index (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 2472.7352ms. (50a9e262)
+2018-11-21T16:55:46.3684782+07:00 0HLIFITVN4IPR:00000001 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2018-11-21T16:56:17.6068679+07:00 0HLIFITVN4IPR:00000001 [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2018-11-21T16:56:17.7082158+07:00 0HLIFITVN4IPR:00000001 [INF] Executed DbCommand ("85"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id], [x.Products].[Id]" (0723d8ff)
+2018-11-21T16:56:17.7662895+07:00 0HLIFITVN4IPR:00000001 [INF] Executed DbCommand ("39"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t1].[ParentId], [t1].[Id], [t1].[Id0], [x.Products.ProductTags].[Id] AS [Id2], [x.Products.ProductTags].[ProductId], [x.Products.ProductTags].[TagId], CASE
+    WHEN [x.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.Products.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT [t0].[ParentId], [t0].[Id], [x.Products0].[Id] AS [Id0]
+    FROM [Products] AS [x.Products0]
+    INNER JOIN (
+        SELECT [x1].[ParentId], [x1].[Id]
+        FROM [ProductCategories] AS [x1]
+    ) AS [t0] ON [x.Products0].[CategoryId] = [t0].[Id]
+) AS [t1] ON [x.Products.ProductTags].[ProductId] = [t1].[Id0]
+ORDER BY [t1].[ParentId], [t1].[Id], [t1].[Id0]" (0723d8ff)
+2018-11-21T16:56:17.9184603+07:00 0HLIFITVN4IPR:00000001 [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2018-11-21T16:56:17.9826214+07:00 0HLIFITVN4IPR:00000001 [INF] Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id], [x.Products].[Id]" (0723d8ff)
+2018-11-21T16:56:18.0201214+07:00 0HLIFITVN4IPR:00000001 [INF] Executed DbCommand ("24"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t1].[ParentId], [t1].[Id], [t1].[Id0], [x.Products.ProductTags].[Id] AS [Id2], [x.Products.ProductTags].[ProductId], [x.Products.ProductTags].[TagId], CASE
+    WHEN [x.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.Products.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT [t0].[ParentId], [t0].[Id], [x.Products0].[Id] AS [Id0]
+    FROM [Products] AS [x.Products0]
+    INNER JOIN (
+        SELECT [x1].[ParentId], [x1].[Id]
+        FROM [ProductCategories] AS [x1]
+    ) AS [t0] ON [x.Products0].[CategoryId] = [t0].[Id]
+) AS [t1] ON [x.Products.ProductTags].[ProductId] = [t1].[Id0]
+ORDER BY [t1].[ParentId], [t1].[Id], [t1].[Id0]" (0723d8ff)
+2018-11-21T16:56:18.0777264+07:00 0HLIFITVN4IPR:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2018-11-21T16:56:18.1002665+07:00 0HLIFITVN4IPR:00000001 [INF] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id], [x.Products].[Id]" (0723d8ff)
+2018-11-21T16:56:18.1372793+07:00 0HLIFITVN4IPR:00000001 [INF] Executed DbCommand ("31"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t1].[ParentId], [t1].[Id], [t1].[Id0], [x.Products.ProductTags].[Id] AS [Id2], [x.Products.ProductTags].[ProductId], [x.Products.ProductTags].[TagId], CASE
+    WHEN [x.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.Products.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT [t0].[ParentId], [t0].[Id], [x.Products0].[Id] AS [Id0]
+    FROM [Products] AS [x.Products0]
+    INNER JOIN (
+        SELECT [x1].[ParentId], [x1].[Id]
+        FROM [ProductCategories] AS [x1]
+    ) AS [t0] ON [x.Products0].[CategoryId] = [t0].[Id]
+) AS [t1] ON [x.Products.ProductTags].[ProductId] = [t1].[Id0]
+ORDER BY [t1].[ParentId], [t1].[Id], [t1].[Id0]" (0723d8ff)
+2018-11-21T16:56:18.1674117+07:00 0HLIFITVN4IPR:00000001 [INF] Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2018-11-21T16:56:18.1866889+07:00 0HLIFITVN4IPR:00000001 [INF] Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id], [x.Products].[Id]" (0723d8ff)
+2018-11-21T16:56:18.2145686+07:00 0HLIFITVN4IPR:00000001 [INF] Executed DbCommand ("17"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t1].[ParentId], [t1].[Id], [t1].[Id0], [x.Products.ProductTags].[Id] AS [Id2], [x.Products.ProductTags].[ProductId], [x.Products.ProductTags].[TagId], CASE
+    WHEN [x.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.Products.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT [t0].[ParentId], [t0].[Id], [x.Products0].[Id] AS [Id0]
+    FROM [Products] AS [x.Products0]
+    INNER JOIN (
+        SELECT [x1].[ParentId], [x1].[Id]
+        FROM [ProductCategories] AS [x1]
+    ) AS [t0] ON [x.Products0].[CategoryId] = [t0].[Id]
+) AS [t1] ON [x.Products.ProductTags].[ProductId] = [t1].[Id0]
+ORDER BY [t1].[ParentId], [t1].[Id], [t1].[Id0]" (0723d8ff)
+2018-11-21T16:56:18.5822106+07:00 0HLIFITVN4IPR:00000001 [INF] Executed ViewResult - view "Index" executed in 32254.6584ms. (f66409e9)
+2018-11-21T16:56:18.6086019+07:00 0HLIFITVN4IPR:00000001 [INF] Executed action "ShoppingOnline.WebApplication.Controllers.Home.HomeController.Index (ShoppingOnline.WebApplication)" in 34815.5295ms (afa2e885)
+2018-11-21T16:56:18.6769201+07:00 0HLIFITVN4IPV:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/flag-german.jpg   (ca22a1cb)
+2018-11-21T16:56:18.6843490+07:00 0HLIFITVN4IPR:00000001 [INF] Request finished in 35865.822ms 200 text/html; charset=utf-8 (791a596a)
+2018-11-21T16:56:18.6965954+07:00 0HLIFITVN4IQ0:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/flag-english.jpg   (ca22a1cb)
+2018-11-21T16:56:18.7070238+07:00 0HLIFITVN4IPS:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/style.css   (ca22a1cb)
+2018-11-21T16:56:18.7172638+07:00 0HLIFITVN4IPT:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/notifyjs/dist/styles/metro/notify-metro.css   (ca22a1cb)
+2018-11-21T16:56:18.7247594+07:00 0HLIFITVN4IQ0:00000001 [INF] The file "/client-side/images/flag-english.jpg" was not modified (f1f8d725)
+2018-11-21T16:56:18.7318095+07:00 0HLIFITVN4IPT:00000001 [INF] The file "/lib/notifyjs/dist/styles/metro/notify-metro.css" was not modified (f1f8d725)
+2018-11-21T16:56:18.7403374+07:00 0HLIFITVN4IQ0:00000001 [INF] Request finished in 53.641ms 304 image/jpeg (791a596a)
+2018-11-21T16:56:18.7483148+07:00 0HLIFITVN4IPT:00000001 [INF] Request finished in 24.921ms 304 text/css (791a596a)
+2018-11-21T16:56:18.7618203+07:00 0HLIFITVN4IPS:00000001 [INF] The file "/client-side/style.css" was not modified (f1f8d725)
+2018-11-21T16:56:18.7709423+07:00 0HLIFITVN4IPU:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/flag-default.jpg   (ca22a1cb)
+2018-11-21T16:56:18.8368009+07:00 0HLIFITVN4IPS:00000001 [INF] Request finished in 88.8998ms 304 text/css (791a596a)
+2018-11-21T16:56:18.8659572+07:00 0HLIFITVN4IPR:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/flag-brazil.jpg   (ca22a1cb)
+2018-11-21T16:56:18.8725541+07:00 0HLIFITVN4IPU:00000001 [INF] Sending file. Request path: '"/client-side/images/flag-default.jpg"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\images\flag-default.jpg"' (27b0a520)
+2018-11-21T16:56:18.8746127+07:00 0HLIFITVN4IPV:00000001 [INF] Sending file. Request path: '"/client-side/images/flag-german.jpg"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\images\flag-german.jpg"' (27b0a520)
+2018-11-21T16:56:18.8788292+07:00 0HLIFITVN4IPS:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/js/owl.carousel.min.js   (ca22a1cb)
+2018-11-21T16:56:18.8868455+07:00 0HLIFITVN4IQ0:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/js/jquery.min.js   (ca22a1cb)
+2018-11-21T16:56:18.8905216+07:00 0HLIFITVN4IPU:00000001 [INF] Request finished in 131.3359ms 200 image/jpeg (791a596a)
+2018-11-21T16:56:18.8953411+07:00 0HLIFITVN4IPV:00000001 [INF] Request finished in 214.626ms 200 image/jpeg (791a596a)
+2018-11-21T16:56:18.9069798+07:00 0HLIFITVN4IPS:00000002 [INF] Sending file. Request path: '"/client-side/js/owl.carousel.min.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\js\owl.carousel.min.js"' (27b0a520)
+2018-11-21T16:56:18.9172166+07:00 0HLIFITVN4IPT:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/js/bootstrap.min.js   (ca22a1cb)
+2018-11-21T16:56:18.9312855+07:00 0HLIFITVN4IPS:00000002 [INF] Request finished in 38.169ms 200 application/javascript (791a596a)
+2018-11-21T16:56:18.9465309+07:00 0HLIFITVN4IPV:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/bootstrap.min.css   (ca22a1cb)
+2018-11-21T16:56:19.1412228+07:00 0HLIFITVN4IPU:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/animate.css   (ca22a1cb)
+2018-11-21T16:56:19.1669283+07:00 0HLIFITVN4IPS:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/font-awesome.min.css   (ca22a1cb)
+2018-11-21T16:56:19.2208621+07:00 0HLIFITVN4IPT:00000002 [INF] Sending file. Request path: '"/client-side/js/bootstrap.min.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\js\bootstrap.min.js"' (27b0a520)
+2018-11-21T16:56:19.2675348+07:00 0HLIFITVN4IPT:00000002 [INF] Request finished in 330.294ms 200 application/javascript (791a596a)
+2018-11-21T16:56:19.3014674+07:00 0HLIFITVN4IPT:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/simple-line-icons.css   (ca22a1cb)
+2018-11-21T16:56:19.3081019+07:00 0HLIFITVN4IPS:00000003 [INF] Sending file. Request path: '"/client-side/css/font-awesome.min.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\font-awesome.min.css"' (27b0a520)
+2018-11-21T16:56:19.3137695+07:00 0HLIFITVN4IPU:00000002 [INF] Sending file. Request path: '"/client-side/css/animate.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\animate.css"' (27b0a520)
+2018-11-21T16:56:19.3475285+07:00 0HLIFITVN4IPS:00000003 [INF] Request finished in 275.777ms 200 text/css (791a596a)
+2018-11-21T16:56:19.3600379+07:00 0HLIFITVN4IPV:00000002 [INF] Sending file. Request path: '"/client-side/css/bootstrap.min.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\bootstrap.min.css"' (27b0a520)
+2018-11-21T16:56:19.3725866+07:00 0HLIFITVN4IPS:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/pe-icon-7-stroke.min.css   (ca22a1cb)
+2018-11-21T16:56:19.3790907+07:00 0HLIFITVN4IPV:00000002 [INF] Request finished in 464.5836ms 200 text/css (791a596a)
+2018-11-21T16:56:19.5023041+07:00 0HLIFITVN4IPU:00000002 [INF] Request finished in 382.2897ms 200 text/css (791a596a)
+2018-11-21T16:56:19.5400123+07:00 0HLIFITVN4IPV:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/revolution-slider.css   (ca22a1cb)
+2018-11-21T16:56:19.5706407+07:00 0HLIFITVN4IPU:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/jquery-ui.css   (ca22a1cb)
+2018-11-21T16:56:19.5942674+07:00 0HLIFITVN4IPT:00000003 [INF] Sending file. Request path: '"/client-side/css/simple-line-icons.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\simple-line-icons.css"' (27b0a520)
+2018-11-21T16:56:19.6031841+07:00 0HLIFITVN4IPR:00000002 [INF] Sending file. Request path: '"/client-side/images/flag-brazil.jpg"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\images\flag-brazil.jpg"' (27b0a520)
+2018-11-21T16:56:19.6105360+07:00 0HLIFITVN4IPT:00000003 [INF] Request finished in 326.5015ms 200 text/css (791a596a)
+2018-11-21T16:56:19.6164996+07:00 0HLIFITVN4IPU:00000003 [INF] Sending file. Request path: '"/client-side/css/jquery-ui.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\jquery-ui.css"' (27b0a520)
+2018-11-21T16:56:19.6203921+07:00 0HLIFITVN4IPV:00000003 [INF] Sending file. Request path: '"/client-side/css/revolution-slider.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\revolution-slider.css"' (27b0a520)
+2018-11-21T16:56:19.6246891+07:00 0HLIFITVN4IPU:00000003 [INF] Request finished in 113.981ms 200 text/css (791a596a)
+2018-11-21T16:56:19.6363328+07:00 0HLIFITVN4IPV:00000003 [INF] Request finished in 241.0557ms 200 text/css (791a596a)
+2018-11-21T16:56:19.6506208+07:00 0HLIFITVN4IPU:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/owl.transitions.css   (ca22a1cb)
+2018-11-21T16:56:19.6953964+07:00 0HLIFITVN4IPV:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/owl.carousel.css   (ca22a1cb)
+2018-11-21T16:56:19.7012715+07:00 0HLIFITVN4IPU:00000004 [INF] The file "/client-side/css/owl.transitions.css" was not modified (f1f8d725)
+2018-11-21T16:56:19.7103490+07:00 0HLIFITVN4IPV:00000004 [INF] The file "/client-side/css/owl.carousel.css" was not modified (f1f8d725)
+2018-11-21T16:56:19.7227093+07:00 0HLIFITVN4IPU:00000004 [INF] Request finished in 76.5241ms 304 text/css (791a596a)
+2018-11-21T16:56:19.7291951+07:00 0HLIFITVN4IPV:00000004 [INF] Request finished in 73.9967ms 304 text/css (791a596a)
+2018-11-21T16:56:19.7397503+07:00 0HLIFITVN4IPU:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/flexslider.css   (ca22a1cb)
+2018-11-21T16:56:19.7523987+07:00 0HLIFITVN4IPV:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/shortcodes/featured-box.css   (ca22a1cb)
+2018-11-21T16:56:19.7576286+07:00 0HLIFITVN4IPU:00000005 [INF] The file "/client-side/css/flexslider.css" was not modified (f1f8d725)
+2018-11-21T16:56:19.7769244+07:00 0HLIFITVN4IPT:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/blog.css   (ca22a1cb)
+2018-11-21T16:56:19.7847643+07:00 0HLIFITVN4IPR:00000002 [INF] Request finished in 826.4587ms 200 image/jpeg (791a596a)
+2018-11-21T16:56:19.8108774+07:00 0HLIFITVN4IPV:00000005 [INF] Sending file. Request path: '"/client-side/css/shortcodes/featured-box.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\shortcodes\featured-box.css"' (27b0a520)
+2018-11-21T16:56:19.8220075+07:00 0HLIFITVN4IPU:00000005 [INF] Request finished in 34.777ms 304 text/css (791a596a)
+2018-11-21T16:56:19.8496871+07:00 0HLIFITVN4IPT:00000004 [INF] Sending file. Request path: '"/client-side/css/blog.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\blog.css"' (27b0a520)
+2018-11-21T16:56:19.8562024+07:00 0HLIFITVN4IPV:00000005 [INF] Request finished in 81.4645ms 200 text/css (791a596a)
+2018-11-21T16:56:19.8635710+07:00 0HLIFITVN4IPU:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/shortcodes/pricing-table.css   (ca22a1cb)
+2018-11-21T16:56:19.8699057+07:00 0HLIFITVN4IPV:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/shortcodes/tooltip.css   (ca22a1cb)
+2018-11-21T16:56:19.8908834+07:00 0HLIFITVN4IPT:00000004 [INF] Request finished in 238.9448ms 200 text/css (791a596a)
+2018-11-21T16:56:19.9727020+07:00 0HLIFITVN4IPR:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/shortcodes/shortcodes.css   (ca22a1cb)
+2018-11-21T16:56:19.9793816+07:00 0HLIFITVN4IPT:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/shortcodes/post.css   (ca22a1cb)
+2018-11-21T16:56:20.0321382+07:00 0HLIFITVN4IPV:00000006 [INF] Sending file. Request path: '"/client-side/css/shortcodes/tooltip.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\shortcodes\tooltip.css"' (27b0a520)
+2018-11-21T16:56:20.0438535+07:00 0HLIFITVN4IPU:00000006 [INF] Sending file. Request path: '"/client-side/css/shortcodes/pricing-table.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\shortcodes\pricing-table.css"' (27b0a520)
+2018-11-21T16:56:20.0496981+07:00 0HLIFITVN4IPV:00000006 [INF] Request finished in 175.7655ms 200 text/css (791a596a)
+2018-11-21T16:56:20.0604774+07:00 0HLIFITVN4IPU:00000006 [INF] Request finished in 221.6296ms 200 text/css (791a596a)
+2018-11-21T16:56:20.0664815+07:00 0HLIFITVN4IPV:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/responsive.css   (ca22a1cb)
+2018-11-21T16:56:20.0757396+07:00 0HLIFITVN4IPR:00000003 [INF] Sending file. Request path: '"/client-side/css/shortcodes/shortcodes.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\shortcodes\shortcodes.css"' (27b0a520)
+2018-11-21T16:56:20.1036505+07:00 0HLIFITVN4IPU:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/style.css   (ca22a1cb)
+2018-11-21T16:56:20.1099305+07:00 0HLIFITVN4IPR:00000003 [INF] Request finished in 290.7616ms 200 text/css (791a596a)
+2018-11-21T16:56:20.1157026+07:00 0HLIFITVN4IPT:00000005 [INF] Sending file. Request path: '"/client-side/css/shortcodes/post.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\shortcodes\post.css"' (27b0a520)
+2018-11-21T16:56:20.1293111+07:00 0HLIFITVN4IPV:00000007 [INF] Sending file. Request path: '"/client-side/css/responsive.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\responsive.css"' (27b0a520)
+2018-11-21T16:56:20.1342320+07:00 0HLIFITVN4IPR:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/shortcode.css   (ca22a1cb)
+2018-11-21T16:56:20.1398093+07:00 0HLIFITVN4IPV:00000007 [INF] Request finished in 79.402ms 200 text/css (791a596a)
+2018-11-21T16:56:20.1462625+07:00 0HLIFITVN4IPR:00000004 [INF] The file "/client-side/css/shortcode.css" was not modified (f1f8d725)
+2018-11-21T16:56:20.1854733+07:00 0HLIFITVN4IPV:00000008 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/js/mobile-menu.js   (ca22a1cb)
+2018-11-21T16:56:20.2120743+07:00 0HLIFITVN4IPR:00000004 [INF] Request finished in 36.3145ms 304 text/css (791a596a)
+2018-11-21T16:56:20.2517018+07:00 0HLIFITVN4IPT:00000005 [INF] Request finished in 224.6779ms 200 text/css (791a596a)
+2018-11-21T16:56:20.2653549+07:00 0HLIFITVN4IPR:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/js/jquery-ui.js   (ca22a1cb)
+2018-11-21T16:56:20.2764691+07:00 0HLIFITVN4IPV:00000008 [INF] Sending file. Request path: '"/client-side/js/mobile-menu.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\js\mobile-menu.js"' (27b0a520)
+2018-11-21T16:56:20.3057020+07:00 0HLIFITVN4IPT:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/quick_view_popup.css   (ca22a1cb)
+2018-11-21T16:56:20.3365110+07:00 0HLIFITVN4IPV:00000008 [INF] Request finished in 136.4897ms 200 application/javascript (791a596a)
+2018-11-21T16:56:20.3450909+07:00 0HLIFITVN4IPT:00000006 [INF] The file "/client-side/css/quick_view_popup.css" was not modified (f1f8d725)
+2018-11-21T16:56:20.3651581+07:00 0HLIFITVN4IPV:00000009 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/js/main.js   (ca22a1cb)
+2018-11-21T16:56:20.3768549+07:00 0HLIFITVN4IPT:00000006 [INF] Request finished in 93.3838ms 304 text/css (791a596a)
+2018-11-21T16:56:20.3988845+07:00 0HLIFITVN4IPT:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/js/countdown.js   (ca22a1cb)
+2018-11-21T16:56:20.4575944+07:00 0HLIFITVN4IPT:00000007 [INF] The file "/client-side/js/countdown.js" was not modified (f1f8d725)
+2018-11-21T16:56:20.4755928+07:00 0HLIFITVN4IPS:00000004 [INF] Sending file. Request path: '"/client-side/css/pe-icon-7-stroke.min.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\pe-icon-7-stroke.min.css"' (27b0a520)
+2018-11-21T16:56:20.4963044+07:00 0HLIFITVN4IPT:00000007 [INF] Request finished in 76.9122ms 304 application/javascript (791a596a)
+2018-11-21T16:56:20.5005707+07:00 0HLIFITVN4IPS:00000004 [INF] Request finished in 1127.8761ms 200 text/css (791a596a)
+2018-11-21T16:56:20.5067825+07:00 0HLIFITVN4IPT:00000008 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app-client/shared/localize/resources.vi-VN.js   (ca22a1cb)
+2018-11-21T16:56:20.5179489+07:00 0HLIFITVN4IPS:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/notifyjs/dist/notify.js   (ca22a1cb)
+2018-11-21T16:56:20.5217532+07:00 0HLIFITVN4IPT:00000008 [INF] The file "/app-client/shared/localize/resources.vi-VN.js" was not modified (f1f8d725)
+2018-11-21T16:56:20.5738043+07:00 0HLIFITVN4IPT:00000008 [INF] Request finished in 25.378ms 304 application/javascript (791a596a)
+2018-11-21T16:56:20.6661622+07:00 0HLIFITVN4IPT:00000009 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app-client/shared/core.js   (ca22a1cb)
+2018-11-21T16:56:21.0197212+07:00 0HLIFITVN4IPV:00000009 [INF] Sending file. Request path: '"/client-side/js/main.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\js\main.js"' (27b0a520)
+2018-11-21T16:56:21.0241729+07:00 0HLIFITVN4IQ0:00000002 [INF] Sending file. Request path: '"/client-side/js/jquery.min.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\js\jquery.min.js"' (27b0a520)
+2018-11-21T16:56:21.0327152+07:00 0HLIFITVN4IPS:00000005 [INF] Sending file. Request path: '"/lib/notifyjs/dist/notify.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\notifyjs\dist\notify.js"' (27b0a520)
+2018-11-21T16:56:21.0431362+07:00 0HLIFITVN4IQ0:00000002 [INF] Request finished in 2165.9404ms 200 application/javascript (791a596a)
+2018-11-21T16:56:21.0614065+07:00 0HLIFITVN4IPS:00000005 [INF] Request finished in 531.9259ms 200 application/javascript (791a596a)
+2018-11-21T16:56:21.0655011+07:00 0HLIFITVN4IQ0:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app-client/controllers/home/index.js   (ca22a1cb)
+2018-11-21T16:56:21.0698653+07:00 0HLIFITVN4IPS:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/js/revolution-slider.js   (ca22a1cb)
+2018-11-21T16:56:21.0820964+07:00 0HLIFITVN4IQ0:00000003 [INF] The file "/app-client/controllers/home/index.js" was not modified (f1f8d725)
+2018-11-21T16:56:21.1011455+07:00 0HLIFITVN4IPV:00000009 [INF] Request finished in 683.0449ms 200 application/javascript (791a596a)
+2018-11-21T16:56:21.1083406+07:00 0HLIFITVN4IQ0:00000003 [INF] Request finished in 26.3092ms 304 application/javascript (791a596a)
+2018-11-21T16:56:21.1152457+07:00 0HLIFITVN4IPV:0000000A [INF] Request starting HTTP/1.1 GET https://localhost:5001/app-client/controllers/base/index.js   (ca22a1cb)
+2018-11-21T16:56:21.1231373+07:00 0HLIFITVN4IQ0:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/flag-chile.jpg   (ca22a1cb)
+2018-11-21T16:56:21.1286317+07:00 0HLIFITVN4IPV:0000000A [INF] The file "/app-client/controllers/base/index.js" was not modified (f1f8d725)
+2018-11-21T16:56:21.1703619+07:00 0HLIFITVN4IPV:0000000A [INF] Request finished in 33.0403ms 304 application/javascript (791a596a)
+2018-11-21T16:56:21.1991176+07:00 0HLIFITVN4IPT:00000009 [INF] Sending file. Request path: '"/app-client/shared/core.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\app-client\shared\core.js"' (27b0a520)
+2018-11-21T16:56:21.2028410+07:00 0HLIFITVN4IPV:0000000B [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/flag-spain.jpg   (ca22a1cb)
+2018-11-21T16:56:21.2047150+07:00 0HLIFITVN4IPT:00000009 [INF] Request finished in 625.1124ms 200 application/javascript (791a596a)
+2018-11-21T16:56:21.2105184+07:00 0HLIFITVN4IPT:0000000A [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/logo.png   (ca22a1cb)
+2018-11-21T16:56:21.2192618+07:00 0HLIFITVN4IPT:0000000A [INF] The file "/client-side/images/logo.png" was not modified (f1f8d725)
+2018-11-21T16:56:21.2346200+07:00 0HLIFITVN4IPT:0000000A [INF] Request finished in 14.0128ms 304 image/png (791a596a)
+2018-11-21T16:56:21.2386262+07:00 0HLIFITVN4IPT:0000000B [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/products/product-1.jpg   (ca22a1cb)
+2018-11-21T16:56:21.8837201+07:00 0HLIFITVN4IQ0:00000004 [INF] Sending file. Request path: '"/client-side/images/flag-chile.jpg"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\images\flag-chile.jpg"' (27b0a520)
+2018-11-21T16:56:21.8915030+07:00 0HLIFITVN4IPR:00000005 [INF] Sending file. Request path: '"/client-side/js/jquery-ui.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\js\jquery-ui.js"' (27b0a520)
+2018-11-21T16:56:21.8980442+07:00 0HLIFITVN4IQ0:00000004 [INF] Request finished in 775.248ms 200 image/jpeg (791a596a)
+2018-11-21T16:56:21.9034611+07:00 0HLIFITVN4IPR:00000005 [INF] Request finished in 1679.3656ms 200 application/javascript (791a596a)
+2018-11-21T16:56:22.0679956+07:00 0HLIFITVN4IPT:0000000B [INF] Sending file. Request path: '"/client-side/images/products/product-1.jpg"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\images\products\product-1.jpg"' (27b0a520)
+2018-11-21T16:56:22.1107717+07:00 0HLIFITVN4IPR:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/slider/slide-3.jpg   (ca22a1cb)
+2018-11-21T16:56:22.1403579+07:00 0HLIFITVN4IQ0:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/banner-left.jpg   (ca22a1cb)
+2018-11-21T16:56:22.1678611+07:00 0HLIFITVN4IPT:0000000B [INF] Request finished in 833.2239ms 200 image/jpeg (791a596a)
+2018-11-21T16:56:22.2086074+07:00 0HLIFITVN4IPV:0000000B [INF] Sending file. Request path: '"/client-side/images/flag-spain.jpg"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\images\flag-spain.jpg"' (27b0a520)
+2018-11-21T16:56:22.2217314+07:00 0HLIFITVN4IPT:0000000C [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/slider/slide-2.jpg   (ca22a1cb)
+2018-11-21T16:56:22.2358924+07:00 0HLIFITVN4IQ0:00000005 [INF] Sending file. Request path: '"/client-side/images/banner-left.jpg"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\images\banner-left.jpg"' (27b0a520)
+2018-11-21T16:56:22.2408717+07:00 0HLIFITVN4IPV:0000000B [INF] Request finished in 1038.1457ms 200 image/jpeg (791a596a)
+2018-11-21T16:56:22.2539165+07:00 0HLIFITVN4IQ0:00000005 [INF] Request finished in 192.5454ms 200 image/jpeg (791a596a)
+2018-11-21T16:56:22.2674277+07:00 0HLIFITVN4IPV:0000000C [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/slider/slide-1.jpg   (ca22a1cb)
+2018-11-21T16:56:22.2726675+07:00 0HLIFITVN4IQ0:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/sub1.jpg   (ca22a1cb)
+2018-11-21T16:56:23.0698482+07:00 0HLIFITVN4IQ0:00000006 [INF] Sending file. Request path: '"/client-side/images/sub1.jpg"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\images\sub1.jpg"' (27b0a520)
+2018-11-21T16:56:23.0763726+07:00 0HLIFITVN4IQ0:00000006 [INF] Request finished in 812.7574ms 200 image/jpeg (791a596a)
+2018-11-21T16:56:23.0886006+07:00 0HLIFITVN4IQ0:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/footer-logo.png   (ca22a1cb)
+2018-11-21T16:56:23.1006221+07:00 0HLIFITVN4IQ0:00000007 [INF] The file "/client-side/images/footer-logo.png" was not modified (f1f8d725)
+2018-11-21T16:56:23.1132081+07:00 0HLIFITVN4IQ0:00000007 [INF] Request finished in 24.2042ms 304 image/png (791a596a)
+2018-11-21T16:56:23.1182843+07:00 0HLIFITVN4IQ0:00000008 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/visa.png   (ca22a1cb)
+2018-11-21T16:56:23.1271498+07:00 0HLIFITVN4IQ0:00000008 [INF] The file "/client-side/images/visa.png" was not modified (f1f8d725)
+2018-11-21T16:56:23.1455736+07:00 0HLIFITVN4IQ0:00000008 [INF] Request finished in 14.0022ms 304 image/png (791a596a)
+2018-11-21T16:56:23.1635560+07:00 0HLIFITVN4IQ0:00000009 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/paypal.png   (ca22a1cb)
+2018-11-21T16:56:23.1708398+07:00 0HLIFITVN4IQ0:00000009 [INF] The file "/client-side/images/paypal.png" was not modified (f1f8d725)
+2018-11-21T16:56:23.1866084+07:00 0HLIFITVN4IQ0:00000009 [INF] Request finished in 25.2247ms 304 image/png (791a596a)
+2018-11-21T16:56:23.1984669+07:00 0HLIFITVN4IQ0:0000000A [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/discover.png   (ca22a1cb)
+2018-11-21T16:56:23.2117581+07:00 0HLIFITVN4IQ0:0000000A [INF] The file "/client-side/images/discover.png" was not modified (f1f8d725)
+2018-11-21T16:56:23.2604772+07:00 0HLIFITVN4IQ0:0000000A [INF] Request finished in 25.1152ms 304 image/png (791a596a)
+2018-11-21T16:56:23.2651117+07:00 0HLIFITVN4IQ0:0000000B [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/master-card.png   (ca22a1cb)
+2018-11-21T16:56:23.2699849+07:00 0HLIFITVN4IQ0:0000000B [INF] The file "/client-side/images/master-card.png" was not modified (f1f8d725)
+2018-11-21T16:56:23.2779920+07:00 0HLIFITVN4IQ0:0000000B [INF] Request finished in 9.0513ms 304 image/png (791a596a)
+2018-11-21T16:56:23.7009651+07:00 0HLIFITVN4IPT:0000000C [INF] Sending file. Request path: '"/client-side/images/slider/slide-2.jpg"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\images\slider\slide-2.jpg"' (27b0a520)
+2018-11-21T16:56:23.7126794+07:00 0HLIFITVN4IPV:0000000C [INF] Sending file. Request path: '"/client-side/images/slider/slide-1.jpg"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\images\slider\slide-1.jpg"' (27b0a520)
+2018-11-21T16:56:23.7376937+07:00 0HLIFITVN4IPU:00000007 [INF] Sending file. Request path: '"/client-side/css/style.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\style.css"' (27b0a520)
+2018-11-21T16:56:23.7768807+07:00 0HLIFITVN4IPV:0000000C [INF] Request finished in 1471.5918ms 200 image/jpeg (791a596a)
+2018-11-21T16:56:23.8066974+07:00 0HLIFITVN4IPV:0000000D [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/bg_text_des.png   (ca22a1cb)
+2018-11-21T16:56:23.8323628+07:00 0HLIFITVN4IPU:00000007 [INF] Request finished in 3676.9704ms 200 text/css (791a596a)
+2018-11-21T16:56:23.8370343+07:00 0HLIFITVN4IPV:0000000D [INF] The file "/client-side/images/bg_text_des.png" was not modified (f1f8d725)
+2018-11-21T16:56:23.8421903+07:00 0HLIFITVN4IPU:00000008 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/select-arrow.png   (ca22a1cb)
+2018-11-21T16:56:23.8495491+07:00 0HLIFITVN4IPV:0000000D [INF] Request finished in 60.1862ms 304 image/png (791a596a)
+2018-11-21T16:56:23.8535681+07:00 0HLIFITVN4IPU:00000008 [INF] The file "/client-side/images/select-arrow.png" was not modified (f1f8d725)
+2018-11-21T16:56:23.8640483+07:00 0HLIFITVN4IQ0:0000000C [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/fonts/pe-icon-7-stroke/Pe-icon-7-stroke.woff?d7yf1v   (ca22a1cb)
+2018-11-21T16:56:23.8700640+07:00 0HLIFITVN4IPU:00000008 [INF] Request finished in 21.1444ms 304 image/png (791a596a)
+2018-11-21T16:56:23.8755883+07:00 0HLIFITVN4IPR:00000006 [INF] Sending file. Request path: '"/client-side/images/slider/slide-3.jpg"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\images\slider\slide-3.jpg"' (27b0a520)
+2018-11-21T16:56:23.8798730+07:00 0HLIFITVN4IPT:0000000C [INF] Request finished in 1533.0015ms 200 image/jpeg (791a596a)
+2018-11-21T16:56:23.8843709+07:00 0HLIFITVN4IPR:00000006 [INF] Request finished in 1971.7327ms 200 image/jpeg (791a596a)
+2018-11-21T16:56:23.9067414+07:00 0HLIFITVN4IPT:0000000D [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/fonts/font-awesome/fontawesome-webfont.woff2?v=4.7.0   (ca22a1cb)
+2018-11-21T16:56:23.9417372+07:00 0HLIFITVN4IQ0:0000000C [INF] Sending file. Request path: '"/client-side/fonts/pe-icon-7-stroke/Pe-icon-7-stroke.woff"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\fonts\pe-icon-7-stroke\Pe-icon-7-stroke.woff"' (27b0a520)
+2018-11-21T16:56:24.0196994+07:00 0HLIFITVN4IPR:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/fonts/simple-line-icons/Simple-Line-Icons.woff2?v=2.4.0   (ca22a1cb)
+2018-11-21T16:56:24.0371421+07:00 0HLIFITVN4IQ0:0000000C [INF] Request finished in 116.3316ms 200 application/font-woff (791a596a)
+2018-11-21T16:56:24.0877181+07:00 0HLIFITVN4IPT:0000000D [INF] Sending file. Request path: '"/client-side/fonts/font-awesome/fontawesome-webfont.woff2"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\fonts\font-awesome\fontawesome-webfont.woff2"' (27b0a520)
+2018-11-21T16:56:24.0961436+07:00 0HLIFITVN4IPR:00000007 [INF] Sending file. Request path: '"/client-side/fonts/simple-line-icons/Simple-Line-Icons.woff2"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\fonts\simple-line-icons\Simple-Line-Icons.woff2"' (27b0a520)
+2018-11-21T16:56:24.1010499+07:00 0HLIFITVN4IPT:0000000D [INF] Request finished in 207.7896ms 200 font/woff2 (791a596a)
+2018-11-21T16:56:24.1051936+07:00 0HLIFITVN4IPR:00000007 [INF] Request finished in 211.63ms 200 font/woff2 (791a596a)
+2018-11-21T16:56:24.2318258+07:00 0HLIFITVN4IPS:00000006 [INF] Sending file. Request path: '"/client-side/js/revolution-slider.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\js\revolution-slider.js"' (27b0a520)
+2018-11-21T16:56:24.4111878+07:00 0HLIFITVN4IPS:00000006 [INF] Request finished in 3170.1997ms 200 application/javascript (791a596a)
+2018-11-21T16:56:25.4666370+07:00 0HLIFITVN4IPS:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/favicon.ico   (ca22a1cb)
+2018-11-21T16:56:25.5074530+07:00 0HLIFITVN4IPS:00000007 [INF] The file "/client-side/favicon.ico" was not modified (f1f8d725)
+2018-11-21T16:56:25.5203183+07:00 0HLIFITVN4IPS:00000007 [INF] Request finished in 59.2189ms 304 image/x-icon (791a596a)
+2018-11-21T16:56:29.3326086+07:00 0HLIFITVN4IQ1:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/grabbing.png   (ca22a1cb)
+2018-11-21T16:56:29.3428707+07:00 0HLIFITVN4IQ1:00000001 [INF] "Identity.Application" was not authenticated. Failure message: "Ticket expired" (48071232)
+2018-11-21T16:56:29.3516153+07:00 0HLIFITVN4IQ1:00000001 [INF] Request finished in 17.3113ms 404  (791a596a)
+2018-11-21T16:56:29.4584207+07:00 0HLIFITVN4IQ1:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/san-pham-20-p.20.html   (ca22a1cb)
+2018-11-21T16:56:29.4646069+07:00 0HLIFITVN4IQ1:00000002 [INF] "Identity.Application" was not authenticated. Failure message: "Ticket expired" (48071232)
+2018-11-21T16:56:29.4965936+07:00 0HLIFITVN4IQ1:00000002 [INF] Route matched with "{action = \"Details\", controller = \"Product\", area = \"\"}". Executing action "ShoppingOnline.WebApplication.Controllers.Product.ProductController.Details (ShoppingOnline.WebApplication)" (a44c0341)
+2018-11-21T16:56:29.5512636+07:00 0HLIFITVN4IQ1:00000002 [INF] Executing action method "ShoppingOnline.WebApplication.Controllers.Product.ProductController.Details (ShoppingOnline.WebApplication)" with arguments (["20"]) - Validation state: Valid (4e3479ed)
+2018-11-21T16:56:29.5627229+07:00 0HLIFITVN4IQ1:00000002 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2018-11-21T16:56:29.5924239+07:00 0HLIFITVN4IQ1:00000002 [INF] Executed DbCommand ("5"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Image], [x].[Name], [x].[OriginalPrice], [x].[Price], [x].[PromotionPrice], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[Status], [x].[Tags], [x].[Unit], [x].[ViewCount]
+FROM [Products] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2018-11-21T16:56:29.7600105+07:00 0HLIFITVN4IQ1:00000002 [INF] Executed DbCommand ("4"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [p].[Id], [p].[DateCreated], [p].[DateModified], [p].[Description], [p].[HomeFlag], [p].[HomeOrder], [p].[Image], [p].[Name], [p].[ParentId], [p].[SeoAlias], [p].[SeoDescription], [p].[SeoKeywords], [p].[SeoPageTitle], [p].[SortOrder], [p].[Status]
+FROM [ProductCategories] AS [p]
+WHERE [p].[Id] = @__id_0" (0723d8ff)
+2018-11-21T16:56:30.0297518+07:00 0HLIFITVN4IQ1:00000002 [INF] Executed DbCommand ("27"ms) [Parameters=["@__productId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [n].[Id], [n].[ProductId], CASE
+    WHEN [n].[ProductId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [n.Product].[Name], [n.Product].[CategoryId], [n.Product].[Image], [n.Product].[Price], [n.Product].[PromotionPrice], [n.Product].[OriginalPrice], [n.Product].[Description], [n.Product].[Content], [n.Product].[HomeFlag], [n.Product].[HotFlag], [n.Product].[ViewCount], [n.Product].[Tags], [n.Product].[Unit], CASE
+    WHEN [n.Product].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [n.Product.ProductCategory].[Id] AS [Id0], [n.Product.ProductCategory].[Name] AS [Name0], [n.Product.ProductCategory].[Description] AS [Description0], [n.Product.ProductCategory].[ParentId], [n.Product.ProductCategory].[HomeOrder], [n.Product.ProductCategory].[Image] AS [Image0], [n.Product.ProductCategory].[HomeFlag] AS [HomeFlag0], [n.Product.ProductCategory].[DateCreated], [n.Product.ProductCategory].[DateModified], [n.Product.ProductCategory].[SortOrder], [n.Product.ProductCategory].[Status], [n.Product.ProductCategory].[SeoPageTitle], [n.Product.ProductCategory].[SeoAlias], [n.Product.ProductCategory].[SeoKeywords], [n.Product.ProductCategory].[SeoDescription], [n.Product].[SeoPageTitle] AS [SeoPageTitle0], [n.Product].[SeoAlias] AS [SeoAlias0], [n.Product].[SeoKeywords] AS [SeoKeywords0], [n.Product].[SeoDescription] AS [SeoDescription0], [n.Product].[DateCreated] AS [DateCreated0], [n.Product].[DateModified] AS [DateModified0], [n.Product].[Status] AS [Status0], [n].[Path], [n].[Caption], [n.Product].[Id]
+FROM [ProductImages] AS [n]
+INNER JOIN [Products] AS [n.Product] ON [n].[ProductId] = [n.Product].[Id]
+INNER JOIN [ProductCategories] AS [n.Product.ProductCategory] ON [n.Product].[CategoryId] = [n.Product.ProductCategory].[Id]
+WHERE [n].[ProductId] = @__productId_0
+ORDER BY [n].[Id], [n.Product].[Id], [n.Product.ProductCategory].[Id]" (0723d8ff)
+2018-11-21T16:56:30.0784270+07:00 0HLIFITVN4IQ1:00000002 [INF] Executed DbCommand ("4"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [p].[Id], [p].[CategoryId], [p].[Content], [p].[DateCreated], [p].[DateModified], [p].[Description], [p].[HomeFlag], [p].[HotFlag], [p].[Image], [p].[Name], [p].[OriginalPrice], [p].[Price], [p].[PromotionPrice], [p].[SeoAlias], [p].[SeoDescription], [p].[SeoKeywords], [p].[SeoPageTitle], [p].[Status], [p].[Tags], [p].[Unit], [p].[ViewCount]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0" (0723d8ff)
+2018-11-21T16:56:30.1188358+07:00 0HLIFITVN4IQ1:00000002 [WRN] Query: '"(from Product n in DbSet<Product> where (int)[n].Status == 1 && [n].CategoryId == __product_Category..."' uses a row limiting operation (Skip/Take) without OrderBy which may lead to unpredictable results. (32148ccc)
+2018-11-21T16:56:30.2845348+07:00 0HLIFITVN4IQ1:00000002 [INF] Executed DbCommand ("12"ms) [Parameters=["@__p_2='?' (DbType = Int32), @__product_CategoryId_0='?' (DbType = Int32), @__productId_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_2) [n].[Id], [n].[Name], [n].[CategoryId], [n].[Image], [n].[Price], [n].[PromotionPrice], [n].[OriginalPrice], [n].[Description], [n].[Content], [n].[HomeFlag], [n].[HotFlag], [n].[ViewCount], [n].[Tags], [n].[Unit], CASE
+    WHEN [n].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [n.ProductCategory].[Name] AS [Name0], [n.ProductCategory].[Description] AS [Description0], [n.ProductCategory].[ParentId], [n.ProductCategory].[HomeOrder], [n.ProductCategory].[Image] AS [Image0], [n.ProductCategory].[HomeFlag] AS [HomeFlag0], [n.ProductCategory].[DateCreated], [n.ProductCategory].[DateModified], [n.ProductCategory].[SortOrder], [n.ProductCategory].[Status], [n.ProductCategory].[SeoPageTitle], [n.ProductCategory].[SeoAlias], [n.ProductCategory].[SeoKeywords], [n.ProductCategory].[SeoDescription], [n].[SeoPageTitle] AS [SeoPageTitle0], [n].[SeoAlias] AS [SeoAlias0], [n].[SeoKeywords] AS [SeoKeywords0], [n].[SeoDescription] AS [SeoDescription0], [n].[DateCreated] AS [DateCreated0], [n].[DateModified] AS [DateModified0], [n].[Status] AS [Status0], [n.ProductCategory].[Id]
+FROM [Products] AS [n]
+INNER JOIN [ProductCategories] AS [n.ProductCategory] ON [n].[CategoryId] = [n.ProductCategory].[Id]
+WHERE (([n].[Status] = 1) AND ([n].[CategoryId] = @__product_CategoryId_0)) AND ([n].[Id] <> @__productId_1)
+ORDER BY [n].[Id], [n.ProductCategory].[Id]" (0723d8ff)
+2018-11-21T16:56:30.3050360+07:00 0HLIFITVN4IQ1:00000002 [INF] Executed DbCommand ("11"ms) [Parameters=["@__p_2='?' (DbType = Int32), @__product_CategoryId_0='?' (DbType = Int32), @__productId_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [n.ProductTags].[Id] AS [Id1], [n.ProductTags].[ProductId], [n.ProductTags].[TagId], CASE
+    WHEN [n.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [n.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [n.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT TOP(@__p_2) [n0].[Id]
+    FROM [Products] AS [n0]
+    INNER JOIN [ProductCategories] AS [n.ProductCategory0] ON [n0].[CategoryId] = [n.ProductCategory0].[Id]
+    WHERE (([n0].[Status] = 1) AND ([n0].[CategoryId] = @__product_CategoryId_0)) AND ([n0].[Id] <> @__productId_1)
+    ORDER BY [n0].[Id]
+) AS [t] ON [n.ProductTags].[ProductId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-11-21T16:56:30.3273647+07:00 0HLIFITVN4IQ1:00000002 [INF] Executed DbCommand ("11"ms) [Parameters=["@__p_2='?' (DbType = Int32), @__product_CategoryId_0='?' (DbType = Int32), @__productId_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t0].[Id], [t0].[Id0], [n.ProductCategory.Products].[Id] AS [Id1], [n.ProductCategory.Products].[Name], [n.ProductCategory.Products].[CategoryId], [n.ProductCategory.Products].[Image], [n.ProductCategory.Products].[Price], [n.ProductCategory.Products].[PromotionPrice], [n.ProductCategory.Products].[OriginalPrice], [n.ProductCategory.Products].[Description], [n.ProductCategory.Products].[Content], [n.ProductCategory.Products].[HomeFlag], [n.ProductCategory.Products].[HotFlag], [n.ProductCategory.Products].[ViewCount], [n.ProductCategory.Products].[Tags], [n.ProductCategory.Products].[Unit], [n.ProductCategory.Products].[SeoPageTitle], [n.ProductCategory.Products].[SeoAlias], [n.ProductCategory.Products].[SeoKeywords], [n.ProductCategory.Products].[SeoDescription], [n.ProductCategory.Products].[DateCreated], [n.ProductCategory.Products].[DateModified], [n.ProductCategory.Products].[Status]
+FROM [Products] AS [n.ProductCategory.Products]
+INNER JOIN (
+    SELECT TOP(@__p_2) [n1].[Id], [n.ProductCategory1].[Id] AS [Id0]
+    FROM [Products] AS [n1]
+    INNER JOIN [ProductCategories] AS [n.ProductCategory1] ON [n1].[CategoryId] = [n.ProductCategory1].[Id]
+    WHERE (([n1].[Status] = 1) AND ([n1].[CategoryId] = @__product_CategoryId_0)) AND ([n1].[Id] <> @__productId_1)
+    ORDER BY [n1].[Id], [n.ProductCategory1].[Id]
+) AS [t0] ON [n.ProductCategory.Products].[CategoryId] = [t0].[Id0]
+ORDER BY [t0].[Id], [t0].[Id0], [n.ProductCategory.Products].[Id]" (0723d8ff)
+2018-11-21T16:56:30.3808989+07:00 0HLIFITVN4IQ1:00000002 [INF] Executed DbCommand ("30"ms) [Parameters=["@__p_2='?' (DbType = Int32), @__product_CategoryId_0='?' (DbType = Int32), @__productId_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[Id], [t2].[Id0], [t2].[Id1], [n.ProductCategory.Products.ProductTags].[Id] AS [Id3], [n.ProductCategory.Products.ProductTags].[ProductId], [n.ProductCategory.Products.ProductTags].[TagId], CASE
+    WHEN [n.ProductCategory.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag0].[Name], [dto.Tag0].[Type]
+FROM [ProductTags] AS [n.ProductCategory.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag0] ON [n.ProductCategory.Products.ProductTags].[TagId] = [dto.Tag0].[Id]
+INNER JOIN (
+    SELECT [t1].[Id], [t1].[Id0], [n.ProductCategory.Products0].[Id] AS [Id1]
+    FROM [Products] AS [n.ProductCategory.Products0]
+    INNER JOIN (
+        SELECT TOP(@__p_2) [n2].[Id], [n.ProductCategory2].[Id] AS [Id0]
+        FROM [Products] AS [n2]
+        INNER JOIN [ProductCategories] AS [n.ProductCategory2] ON [n2].[CategoryId] = [n.ProductCategory2].[Id]
+        WHERE (([n2].[Status] = 1) AND ([n2].[CategoryId] = @__product_CategoryId_0)) AND ([n2].[Id] <> @__productId_1)
+        ORDER BY [n2].[Id], [n.ProductCategory2].[Id]
+    ) AS [t1] ON [n.ProductCategory.Products0].[CategoryId] = [t1].[Id0]
+) AS [t2] ON [n.ProductCategory.Products.ProductTags].[ProductId] = [t2].[Id1]
+ORDER BY [t2].[Id], [t2].[Id0], [t2].[Id1]" (0723d8ff)
+2018-11-21T16:56:30.4064641+07:00 0HLIFITVN4IQ1:00000002 [WRN] Query: '"(from Product n in DbSet<Product> where [n].PromotionPrice != null select new ProductViewModel{ { 
+..."' uses a row limiting operation (Skip/Take) without OrderBy which may lead to unpredictable results. (32148ccc)
+2018-11-21T16:56:30.5572641+07:00 0HLIFITVN4IQ1:00000002 [INF] Executed DbCommand ("10"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [n].[Id], [n].[Name], [n].[CategoryId], [n].[Image], [n].[Price], [n].[PromotionPrice], [n].[OriginalPrice], [n].[Description], [n].[Content], [n].[HomeFlag], [n].[HotFlag], [n].[ViewCount], [n].[Tags], [n].[Unit], CASE
+    WHEN [n].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [n.ProductCategory].[Name] AS [Name0], [n.ProductCategory].[Description] AS [Description0], [n.ProductCategory].[ParentId], [n.ProductCategory].[HomeOrder], [n.ProductCategory].[Image] AS [Image0], [n.ProductCategory].[HomeFlag] AS [HomeFlag0], [n.ProductCategory].[DateCreated], [n.ProductCategory].[DateModified], [n.ProductCategory].[SortOrder], [n.ProductCategory].[Status], [n.ProductCategory].[SeoPageTitle], [n.ProductCategory].[SeoAlias], [n.ProductCategory].[SeoKeywords], [n.ProductCategory].[SeoDescription], [n].[SeoPageTitle] AS [SeoPageTitle0], [n].[SeoAlias] AS [SeoAlias0], [n].[SeoKeywords] AS [SeoKeywords0], [n].[SeoDescription] AS [SeoDescription0], [n].[DateCreated] AS [DateCreated0], [n].[DateModified] AS [DateModified0], [n].[Status] AS [Status0], [n.ProductCategory].[Id]
+FROM [Products] AS [n]
+INNER JOIN [ProductCategories] AS [n.ProductCategory] ON [n].[CategoryId] = [n.ProductCategory].[Id]
+WHERE [n].[PromotionPrice] IS NOT NULL
+ORDER BY [n].[Id], [n.ProductCategory].[Id]" (0723d8ff)
+2018-11-21T16:56:30.5813628+07:00 0HLIFITVN4IQ1:00000002 [INF] Executed DbCommand ("16"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [n.ProductTags].[Id] AS [Id1], [n.ProductTags].[ProductId], [n.ProductTags].[TagId], CASE
+    WHEN [n.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [n.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [n.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT TOP(@__p_0) [n0].[Id]
+    FROM [Products] AS [n0]
+    INNER JOIN [ProductCategories] AS [n.ProductCategory0] ON [n0].[CategoryId] = [n.ProductCategory0].[Id]
+    WHERE [n0].[PromotionPrice] IS NOT NULL
+    ORDER BY [n0].[Id]
+) AS [t] ON [n.ProductTags].[ProductId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-11-21T16:56:30.6036140+07:00 0HLIFITVN4IQ1:00000002 [INF] Executed DbCommand ("14"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t0].[Id], [t0].[Id0], [n.ProductCategory.Products].[Id] AS [Id1], [n.ProductCategory.Products].[Name], [n.ProductCategory.Products].[CategoryId], [n.ProductCategory.Products].[Image], [n.ProductCategory.Products].[Price], [n.ProductCategory.Products].[PromotionPrice], [n.ProductCategory.Products].[OriginalPrice], [n.ProductCategory.Products].[Description], [n.ProductCategory.Products].[Content], [n.ProductCategory.Products].[HomeFlag], [n.ProductCategory.Products].[HotFlag], [n.ProductCategory.Products].[ViewCount], [n.ProductCategory.Products].[Tags], [n.ProductCategory.Products].[Unit], [n.ProductCategory.Products].[SeoPageTitle], [n.ProductCategory.Products].[SeoAlias], [n.ProductCategory.Products].[SeoKeywords], [n.ProductCategory.Products].[SeoDescription], [n.ProductCategory.Products].[DateCreated], [n.ProductCategory.Products].[DateModified], [n.ProductCategory.Products].[Status]
+FROM [Products] AS [n.ProductCategory.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [n1].[Id], [n.ProductCategory1].[Id] AS [Id0]
+    FROM [Products] AS [n1]
+    INNER JOIN [ProductCategories] AS [n.ProductCategory1] ON [n1].[CategoryId] = [n.ProductCategory1].[Id]
+    WHERE [n1].[PromotionPrice] IS NOT NULL
+    ORDER BY [n1].[Id], [n.ProductCategory1].[Id]
+) AS [t0] ON [n.ProductCategory.Products].[CategoryId] = [t0].[Id0]
+ORDER BY [t0].[Id], [t0].[Id0], [n.ProductCategory.Products].[Id]" (0723d8ff)
+2018-11-21T16:56:30.6334355+07:00 0HLIFITVN4IQ1:00000002 [INF] Executed DbCommand ("22"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[Id], [t2].[Id0], [t2].[Id1], [n.ProductCategory.Products.ProductTags].[Id] AS [Id3], [n.ProductCategory.Products.ProductTags].[ProductId], [n.ProductCategory.Products.ProductTags].[TagId], CASE
+    WHEN [n.ProductCategory.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag0].[Name], [dto.Tag0].[Type]
+FROM [ProductTags] AS [n.ProductCategory.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag0] ON [n.ProductCategory.Products.ProductTags].[TagId] = [dto.Tag0].[Id]
+INNER JOIN (
+    SELECT [t1].[Id], [t1].[Id0], [n.ProductCategory.Products0].[Id] AS [Id1]
+    FROM [Products] AS [n.ProductCategory.Products0]
+    INNER JOIN (
+        SELECT TOP(@__p_0) [n2].[Id], [n.ProductCategory2].[Id] AS [Id0]
+        FROM [Products] AS [n2]
+        INNER JOIN [ProductCategories] AS [n.ProductCategory2] ON [n2].[CategoryId] = [n.ProductCategory2].[Id]
+        WHERE [n2].[PromotionPrice] IS NOT NULL
+        ORDER BY [n2].[Id], [n.ProductCategory2].[Id]
+    ) AS [t1] ON [n.ProductCategory.Products0].[CategoryId] = [t1].[Id0]
+) AS [t2] ON [n.ProductCategory.Products.ProductTags].[ProductId] = [t2].[Id1]
+ORDER BY [t2].[Id], [t2].[Id0], [t2].[Id1]" (0723d8ff)
+2018-11-21T16:56:30.8874885+07:00 0HLIFITVN4IQ1:00000002 [INF] Executed DbCommand ("7"ms) [Parameters=["@__productId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name]
+FROM [Tags] AS [t]
+INNER JOIN [ProductTags] AS [pt] ON [t].[Id] = [pt].[TagId]
+WHERE [pt].[ProductId] = @__productId_0" (0723d8ff)
+2018-11-21T16:56:30.9919404+07:00 0HLIFITVN4IQ1:00000002 [INF] Executed action method "ShoppingOnline.WebApplication.Controllers.Product.ProductController.Details (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 1342.0607ms. (50a9e262)
+2018-11-21T16:56:31.0085572+07:00 0HLIFITVN4IQ1:00000002 [INF] Executing ViewResult, running view "Details". (c83d0e25)
+2018-11-21T16:56:31.1212998+07:00 0HLIFITVN4IQ1:00000002 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2018-11-21T16:56:31.1401783+07:00 0HLIFITVN4IQ1:00000002 [INF] Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id], [x.Products].[Id]" (0723d8ff)
+2018-11-21T16:56:31.1626787+07:00 0HLIFITVN4IQ1:00000002 [INF] Executed DbCommand ("15"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t1].[ParentId], [t1].[Id], [t1].[Id0], [x.Products.ProductTags].[Id] AS [Id2], [x.Products.ProductTags].[ProductId], [x.Products.ProductTags].[TagId], CASE
+    WHEN [x.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.Products.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT [t0].[ParentId], [t0].[Id], [x.Products0].[Id] AS [Id0]
+    FROM [Products] AS [x.Products0]
+    INNER JOIN (
+        SELECT [x1].[ParentId], [x1].[Id]
+        FROM [ProductCategories] AS [x1]
+    ) AS [t0] ON [x.Products0].[CategoryId] = [t0].[Id]
+) AS [t1] ON [x.Products.ProductTags].[ProductId] = [t1].[Id0]
+ORDER BY [t1].[ParentId], [t1].[Id], [t1].[Id0]" (0723d8ff)
+2018-11-21T16:56:31.1820738+07:00 0HLIFITVN4IQ1:00000002 [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2018-11-21T16:56:31.2039458+07:00 0HLIFITVN4IQ1:00000002 [INF] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id], [x.Products].[Id]" (0723d8ff)
+2018-11-21T16:56:31.2281412+07:00 0HLIFITVN4IQ1:00000002 [INF] Executed DbCommand ("16"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t1].[ParentId], [t1].[Id], [t1].[Id0], [x.Products.ProductTags].[Id] AS [Id2], [x.Products.ProductTags].[ProductId], [x.Products.ProductTags].[TagId], CASE
+    WHEN [x.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.Products.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT [t0].[ParentId], [t0].[Id], [x.Products0].[Id] AS [Id0]
+    FROM [Products] AS [x.Products0]
+    INNER JOIN (
+        SELECT [x1].[ParentId], [x1].[Id]
+        FROM [ProductCategories] AS [x1]
+    ) AS [t0] ON [x.Products0].[CategoryId] = [t0].[Id]
+) AS [t1] ON [x.Products.ProductTags].[ProductId] = [t1].[Id0]
+ORDER BY [t1].[ParentId], [t1].[Id], [t1].[Id0]" (0723d8ff)
+2018-11-21T16:56:31.2414998+07:00 0HLIFITVN4IQ1:00000002 [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2018-11-21T16:56:31.2550932+07:00 0HLIFITVN4IQ1:00000002 [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id], [x.Products].[Id]" (0723d8ff)
+2018-11-21T16:56:31.2734318+07:00 0HLIFITVN4IQ1:00000002 [INF] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t1].[ParentId], [t1].[Id], [t1].[Id0], [x.Products.ProductTags].[Id] AS [Id2], [x.Products.ProductTags].[ProductId], [x.Products.ProductTags].[TagId], CASE
+    WHEN [x.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.Products.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT [t0].[ParentId], [t0].[Id], [x.Products0].[Id] AS [Id0]
+    FROM [Products] AS [x.Products0]
+    INNER JOIN (
+        SELECT [x1].[ParentId], [x1].[Id]
+        FROM [ProductCategories] AS [x1]
+    ) AS [t0] ON [x.Products0].[CategoryId] = [t0].[Id]
+) AS [t1] ON [x.Products.ProductTags].[ProductId] = [t1].[Id0]
+ORDER BY [t1].[ParentId], [t1].[Id], [t1].[Id0]" (0723d8ff)
+2018-11-21T16:56:31.3092630+07:00 0HLIFITVN4IQ1:00000002 [INF] Executed ViewResult - view "Details" executed in 304.7126ms. (f66409e9)
+2018-11-21T16:56:31.3296971+07:00 0HLIFITVN4IQ1:00000002 [INF] Executed action "ShoppingOnline.WebApplication.Controllers.Product.ProductController.Details (ShoppingOnline.WebApplication)" in 1813.3766ms (afa2e885)
+2018-11-21T16:56:31.3699643+07:00 0HLIFITVN4IQ1:00000002 [INF] Request finished in 1876.2567ms 200 text/html; charset=utf-8 (791a596a)
+2018-11-21T16:56:31.3791203+07:00 0HLIFITVN4IQ2:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/slick-carousel/slick/slick.css   (ca22a1cb)
+2018-11-21T16:56:31.3850299+07:00 0HLIFITVN4IQ1:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/slick-carousel/slick/slick-theme.css   (ca22a1cb)
+2018-11-21T16:56:31.3885305+07:00 0HLIFITVN4IQ2:00000001 [INF] The file "/lib/slick-carousel/slick/slick.css" was not modified (f1f8d725)
+2018-11-21T16:56:31.3976597+07:00 0HLIFITVN4IQ1:00000003 [INF] The file "/lib/slick-carousel/slick/slick-theme.css" was not modified (f1f8d725)
+2018-11-21T16:56:31.4069590+07:00 0HLIFITVN4IQ5:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app-client/controllers/product/details.js?v=9WwvQ4hqkJnFC2X9-ExF3I0sQVR64qnadQRHweVzykc   (ca22a1cb)
+2018-11-21T16:56:31.4119416+07:00 0HLIFITVN4IQ4:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jquery-validation/dist/jquery.validate.js   (ca22a1cb)
+2018-11-21T16:56:31.4165985+07:00 0HLIFITVN4IQ3:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/slick-carousel/slick/slick.js   (ca22a1cb)
+2018-11-21T16:56:31.4219422+07:00 0HLIFITVN4IQ5:00000001 [INF] The file "/app-client/controllers/product/details.js" was not modified (f1f8d725)
+2018-11-21T16:56:31.4392092+07:00 0HLIFITVN4IQ2:00000001 [INF] Request finished in 36.5615ms 304 text/css (791a596a)
+2018-11-21T16:56:31.4495299+07:00 0HLIFITVN4IQ5:00000001 [INF] Request finished in 32.7331ms 304 application/javascript (791a596a)
+2018-11-21T16:56:31.4790139+07:00 0HLIFITVN4IQ1:00000003 [INF] Request finished in 27.6401ms 304 text/css (791a596a)
+2018-11-21T16:56:31.4961566+07:00 0HLIFITVN4IQ4:00000001 [INF] Sending file. Request path: '"/lib/jquery-validation/dist/jquery.validate.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\jquery-validation\dist\jquery.validate.js"' (27b0a520)
+2018-11-21T16:56:31.5200109+07:00 0HLIFITVN4IQ3:00000001 [INF] Sending file. Request path: '"/lib/slick-carousel/slick/slick.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\slick-carousel\slick\slick.js"' (27b0a520)
+2018-11-21T16:56:31.5261392+07:00 0HLIFITVN4IQ4:00000001 [INF] Request finished in 98.3622ms 200 application/javascript (791a596a)
+2018-11-21T16:56:31.5281987+07:00 0HLIFITVN4IQ3:00000001 [INF] Request finished in 113.1572ms 200 application/javascript (791a596a)
+2018-11-21T16:56:31.9315018+07:00 0HLIFITVN4IQ3:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/slick-carousel/slick/ajax-loader.gif   (ca22a1cb)
+2018-11-21T16:56:31.9419171+07:00 0HLIFITVN4IQ3:00000002 [INF] The file "/lib/slick-carousel/slick/ajax-loader.gif" was not modified (f1f8d725)
+2018-11-21T16:56:31.9575613+07:00 0HLIFITVN4IQ3:00000002 [INF] Request finished in 43.7245ms 304 image/gif (791a596a)
+2018-11-21T16:56:52.3583563+07:00 0HLIFITVN4IQ6:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/san-pham-17-p.2.html   (ca22a1cb)
+2018-11-21T16:56:52.3662519+07:00 0HLIFITVN4IQ6:00000001 [INF] "Identity.Application" was not authenticated. Failure message: "Ticket expired" (48071232)
+2018-11-21T16:56:52.3814492+07:00 0HLIFITVN4IQ6:00000001 [INF] Route matched with "{action = \"Details\", controller = \"Product\", area = \"\"}". Executing action "ShoppingOnline.WebApplication.Controllers.Product.ProductController.Details (ShoppingOnline.WebApplication)" (a44c0341)
+2018-11-21T16:56:52.3923772+07:00 0HLIFITVN4IQ6:00000001 [INF] Executing action method "ShoppingOnline.WebApplication.Controllers.Product.ProductController.Details (ShoppingOnline.WebApplication)" with arguments (["2"]) - Validation state: Valid (4e3479ed)
+2018-11-21T16:56:52.3991795+07:00 0HLIFITVN4IQ6:00000001 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2018-11-21T16:56:52.4156158+07:00 0HLIFITVN4IQ6:00000001 [INF] Executed DbCommand ("5"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Image], [x].[Name], [x].[OriginalPrice], [x].[Price], [x].[PromotionPrice], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[Status], [x].[Tags], [x].[Unit], [x].[ViewCount]
+FROM [Products] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2018-11-21T16:56:52.4265914+07:00 0HLIFITVN4IQ6:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [p].[Id], [p].[DateCreated], [p].[DateModified], [p].[Description], [p].[HomeFlag], [p].[HomeOrder], [p].[Image], [p].[Name], [p].[ParentId], [p].[SeoAlias], [p].[SeoDescription], [p].[SeoKeywords], [p].[SeoPageTitle], [p].[SortOrder], [p].[Status]
+FROM [ProductCategories] AS [p]
+WHERE [p].[Id] = @__id_0" (0723d8ff)
+2018-11-21T16:56:52.4492169+07:00 0HLIFITVN4IQ6:00000001 [INF] Executed DbCommand ("15"ms) [Parameters=["@__productId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [n].[Id], [n].[ProductId], CASE
+    WHEN [n].[ProductId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [n.Product].[Name], [n.Product].[CategoryId], [n.Product].[Image], [n.Product].[Price], [n.Product].[PromotionPrice], [n.Product].[OriginalPrice], [n.Product].[Description], [n.Product].[Content], [n.Product].[HomeFlag], [n.Product].[HotFlag], [n.Product].[ViewCount], [n.Product].[Tags], [n.Product].[Unit], CASE
+    WHEN [n.Product].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [n.Product.ProductCategory].[Id] AS [Id0], [n.Product.ProductCategory].[Name] AS [Name0], [n.Product.ProductCategory].[Description] AS [Description0], [n.Product.ProductCategory].[ParentId], [n.Product.ProductCategory].[HomeOrder], [n.Product.ProductCategory].[Image] AS [Image0], [n.Product.ProductCategory].[HomeFlag] AS [HomeFlag0], [n.Product.ProductCategory].[DateCreated], [n.Product.ProductCategory].[DateModified], [n.Product.ProductCategory].[SortOrder], [n.Product.ProductCategory].[Status], [n.Product.ProductCategory].[SeoPageTitle], [n.Product.ProductCategory].[SeoAlias], [n.Product.ProductCategory].[SeoKeywords], [n.Product.ProductCategory].[SeoDescription], [n.Product].[SeoPageTitle] AS [SeoPageTitle0], [n.Product].[SeoAlias] AS [SeoAlias0], [n.Product].[SeoKeywords] AS [SeoKeywords0], [n.Product].[SeoDescription] AS [SeoDescription0], [n.Product].[DateCreated] AS [DateCreated0], [n.Product].[DateModified] AS [DateModified0], [n.Product].[Status] AS [Status0], [n].[Path], [n].[Caption], [n.Product].[Id]
+FROM [ProductImages] AS [n]
+INNER JOIN [Products] AS [n.Product] ON [n].[ProductId] = [n.Product].[Id]
+INNER JOIN [ProductCategories] AS [n.Product.ProductCategory] ON [n.Product].[CategoryId] = [n.Product.ProductCategory].[Id]
+WHERE [n].[ProductId] = @__productId_0
+ORDER BY [n].[Id], [n.Product].[Id], [n.Product.ProductCategory].[Id]" (0723d8ff)
+2018-11-21T16:56:52.4662037+07:00 0HLIFITVN4IQ6:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [p].[Id], [p].[CategoryId], [p].[Content], [p].[DateCreated], [p].[DateModified], [p].[Description], [p].[HomeFlag], [p].[HotFlag], [p].[Image], [p].[Name], [p].[OriginalPrice], [p].[Price], [p].[PromotionPrice], [p].[SeoAlias], [p].[SeoDescription], [p].[SeoKeywords], [p].[SeoPageTitle], [p].[Status], [p].[Tags], [p].[Unit], [p].[ViewCount]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0" (0723d8ff)
+2018-11-21T16:56:52.4865479+07:00 0HLIFITVN4IQ6:00000001 [INF] Executed DbCommand ("8"ms) [Parameters=["@__p_2='?' (DbType = Int32), @__product_CategoryId_0='?' (DbType = Int32), @__productId_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_2) [n].[Id], [n].[Name], [n].[CategoryId], [n].[Image], [n].[Price], [n].[PromotionPrice], [n].[OriginalPrice], [n].[Description], [n].[Content], [n].[HomeFlag], [n].[HotFlag], [n].[ViewCount], [n].[Tags], [n].[Unit], CASE
+    WHEN [n].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [n.ProductCategory].[Name] AS [Name0], [n.ProductCategory].[Description] AS [Description0], [n.ProductCategory].[ParentId], [n.ProductCategory].[HomeOrder], [n.ProductCategory].[Image] AS [Image0], [n.ProductCategory].[HomeFlag] AS [HomeFlag0], [n.ProductCategory].[DateCreated], [n.ProductCategory].[DateModified], [n.ProductCategory].[SortOrder], [n.ProductCategory].[Status], [n.ProductCategory].[SeoPageTitle], [n.ProductCategory].[SeoAlias], [n.ProductCategory].[SeoKeywords], [n.ProductCategory].[SeoDescription], [n].[SeoPageTitle] AS [SeoPageTitle0], [n].[SeoAlias] AS [SeoAlias0], [n].[SeoKeywords] AS [SeoKeywords0], [n].[SeoDescription] AS [SeoDescription0], [n].[DateCreated] AS [DateCreated0], [n].[DateModified] AS [DateModified0], [n].[Status] AS [Status0], [n.ProductCategory].[Id]
+FROM [Products] AS [n]
+INNER JOIN [ProductCategories] AS [n.ProductCategory] ON [n].[CategoryId] = [n.ProductCategory].[Id]
+WHERE (([n].[Status] = 1) AND ([n].[CategoryId] = @__product_CategoryId_0)) AND ([n].[Id] <> @__productId_1)
+ORDER BY [n].[Id], [n.ProductCategory].[Id]" (0723d8ff)
+2018-11-21T16:56:52.5107961+07:00 0HLIFITVN4IQ6:00000001 [INF] Executed DbCommand ("20"ms) [Parameters=["@__p_2='?' (DbType = Int32), @__product_CategoryId_0='?' (DbType = Int32), @__productId_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [n.ProductTags].[Id] AS [Id1], [n.ProductTags].[ProductId], [n.ProductTags].[TagId], CASE
+    WHEN [n.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [n.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [n.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT TOP(@__p_2) [n0].[Id]
+    FROM [Products] AS [n0]
+    INNER JOIN [ProductCategories] AS [n.ProductCategory0] ON [n0].[CategoryId] = [n.ProductCategory0].[Id]
+    WHERE (([n0].[Status] = 1) AND ([n0].[CategoryId] = @__product_CategoryId_0)) AND ([n0].[Id] <> @__productId_1)
+    ORDER BY [n0].[Id]
+) AS [t] ON [n.ProductTags].[ProductId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-11-21T16:56:52.5250433+07:00 0HLIFITVN4IQ6:00000001 [INF] Executed DbCommand ("10"ms) [Parameters=["@__p_2='?' (DbType = Int32), @__product_CategoryId_0='?' (DbType = Int32), @__productId_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t0].[Id], [t0].[Id0], [n.ProductCategory.Products].[Id] AS [Id1], [n.ProductCategory.Products].[Name], [n.ProductCategory.Products].[CategoryId], [n.ProductCategory.Products].[Image], [n.ProductCategory.Products].[Price], [n.ProductCategory.Products].[PromotionPrice], [n.ProductCategory.Products].[OriginalPrice], [n.ProductCategory.Products].[Description], [n.ProductCategory.Products].[Content], [n.ProductCategory.Products].[HomeFlag], [n.ProductCategory.Products].[HotFlag], [n.ProductCategory.Products].[ViewCount], [n.ProductCategory.Products].[Tags], [n.ProductCategory.Products].[Unit], [n.ProductCategory.Products].[SeoPageTitle], [n.ProductCategory.Products].[SeoAlias], [n.ProductCategory.Products].[SeoKeywords], [n.ProductCategory.Products].[SeoDescription], [n.ProductCategory.Products].[DateCreated], [n.ProductCategory.Products].[DateModified], [n.ProductCategory.Products].[Status]
+FROM [Products] AS [n.ProductCategory.Products]
+INNER JOIN (
+    SELECT TOP(@__p_2) [n1].[Id], [n.ProductCategory1].[Id] AS [Id0]
+    FROM [Products] AS [n1]
+    INNER JOIN [ProductCategories] AS [n.ProductCategory1] ON [n1].[CategoryId] = [n.ProductCategory1].[Id]
+    WHERE (([n1].[Status] = 1) AND ([n1].[CategoryId] = @__product_CategoryId_0)) AND ([n1].[Id] <> @__productId_1)
+    ORDER BY [n1].[Id], [n.ProductCategory1].[Id]
+) AS [t0] ON [n.ProductCategory.Products].[CategoryId] = [t0].[Id0]
+ORDER BY [t0].[Id], [t0].[Id0], [n.ProductCategory.Products].[Id]" (0723d8ff)
+2018-11-21T16:56:52.5475627+07:00 0HLIFITVN4IQ6:00000001 [INF] Executed DbCommand ("16"ms) [Parameters=["@__p_2='?' (DbType = Int32), @__product_CategoryId_0='?' (DbType = Int32), @__productId_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[Id], [t2].[Id0], [t2].[Id1], [n.ProductCategory.Products.ProductTags].[Id] AS [Id3], [n.ProductCategory.Products.ProductTags].[ProductId], [n.ProductCategory.Products.ProductTags].[TagId], CASE
+    WHEN [n.ProductCategory.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag0].[Name], [dto.Tag0].[Type]
+FROM [ProductTags] AS [n.ProductCategory.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag0] ON [n.ProductCategory.Products.ProductTags].[TagId] = [dto.Tag0].[Id]
+INNER JOIN (
+    SELECT [t1].[Id], [t1].[Id0], [n.ProductCategory.Products0].[Id] AS [Id1]
+    FROM [Products] AS [n.ProductCategory.Products0]
+    INNER JOIN (
+        SELECT TOP(@__p_2) [n2].[Id], [n.ProductCategory2].[Id] AS [Id0]
+        FROM [Products] AS [n2]
+        INNER JOIN [ProductCategories] AS [n.ProductCategory2] ON [n2].[CategoryId] = [n.ProductCategory2].[Id]
+        WHERE (([n2].[Status] = 1) AND ([n2].[CategoryId] = @__product_CategoryId_0)) AND ([n2].[Id] <> @__productId_1)
+        ORDER BY [n2].[Id], [n.ProductCategory2].[Id]
+    ) AS [t1] ON [n.ProductCategory.Products0].[CategoryId] = [t1].[Id0]
+) AS [t2] ON [n.ProductCategory.Products.ProductTags].[ProductId] = [t2].[Id1]
+ORDER BY [t2].[Id], [t2].[Id0], [t2].[Id1]" (0723d8ff)
+2018-11-21T16:56:52.5650200+07:00 0HLIFITVN4IQ6:00000001 [INF] Executed DbCommand ("5"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [n].[Id], [n].[Name], [n].[CategoryId], [n].[Image], [n].[Price], [n].[PromotionPrice], [n].[OriginalPrice], [n].[Description], [n].[Content], [n].[HomeFlag], [n].[HotFlag], [n].[ViewCount], [n].[Tags], [n].[Unit], CASE
+    WHEN [n].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [n.ProductCategory].[Name] AS [Name0], [n.ProductCategory].[Description] AS [Description0], [n.ProductCategory].[ParentId], [n.ProductCategory].[HomeOrder], [n.ProductCategory].[Image] AS [Image0], [n.ProductCategory].[HomeFlag] AS [HomeFlag0], [n.ProductCategory].[DateCreated], [n.ProductCategory].[DateModified], [n.ProductCategory].[SortOrder], [n.ProductCategory].[Status], [n.ProductCategory].[SeoPageTitle], [n.ProductCategory].[SeoAlias], [n.ProductCategory].[SeoKeywords], [n.ProductCategory].[SeoDescription], [n].[SeoPageTitle] AS [SeoPageTitle0], [n].[SeoAlias] AS [SeoAlias0], [n].[SeoKeywords] AS [SeoKeywords0], [n].[SeoDescription] AS [SeoDescription0], [n].[DateCreated] AS [DateCreated0], [n].[DateModified] AS [DateModified0], [n].[Status] AS [Status0], [n.ProductCategory].[Id]
+FROM [Products] AS [n]
+INNER JOIN [ProductCategories] AS [n.ProductCategory] ON [n].[CategoryId] = [n.ProductCategory].[Id]
+WHERE [n].[PromotionPrice] IS NOT NULL
+ORDER BY [n].[Id], [n.ProductCategory].[Id]" (0723d8ff)
+2018-11-21T16:56:52.5876285+07:00 0HLIFITVN4IQ6:00000001 [INF] Executed DbCommand ("14"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [n.ProductTags].[Id] AS [Id1], [n.ProductTags].[ProductId], [n.ProductTags].[TagId], CASE
+    WHEN [n.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [n.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [n.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT TOP(@__p_0) [n0].[Id]
+    FROM [Products] AS [n0]
+    INNER JOIN [ProductCategories] AS [n.ProductCategory0] ON [n0].[CategoryId] = [n.ProductCategory0].[Id]
+    WHERE [n0].[PromotionPrice] IS NOT NULL
+    ORDER BY [n0].[Id]
+) AS [t] ON [n.ProductTags].[ProductId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-11-21T16:56:52.6032452+07:00 0HLIFITVN4IQ6:00000001 [INF] Executed DbCommand ("7"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t0].[Id], [t0].[Id0], [n.ProductCategory.Products].[Id] AS [Id1], [n.ProductCategory.Products].[Name], [n.ProductCategory.Products].[CategoryId], [n.ProductCategory.Products].[Image], [n.ProductCategory.Products].[Price], [n.ProductCategory.Products].[PromotionPrice], [n.ProductCategory.Products].[OriginalPrice], [n.ProductCategory.Products].[Description], [n.ProductCategory.Products].[Content], [n.ProductCategory.Products].[HomeFlag], [n.ProductCategory.Products].[HotFlag], [n.ProductCategory.Products].[ViewCount], [n.ProductCategory.Products].[Tags], [n.ProductCategory.Products].[Unit], [n.ProductCategory.Products].[SeoPageTitle], [n.ProductCategory.Products].[SeoAlias], [n.ProductCategory.Products].[SeoKeywords], [n.ProductCategory.Products].[SeoDescription], [n.ProductCategory.Products].[DateCreated], [n.ProductCategory.Products].[DateModified], [n.ProductCategory.Products].[Status]
+FROM [Products] AS [n.ProductCategory.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [n1].[Id], [n.ProductCategory1].[Id] AS [Id0]
+    FROM [Products] AS [n1]
+    INNER JOIN [ProductCategories] AS [n.ProductCategory1] ON [n1].[CategoryId] = [n.ProductCategory1].[Id]
+    WHERE [n1].[PromotionPrice] IS NOT NULL
+    ORDER BY [n1].[Id], [n.ProductCategory1].[Id]
+) AS [t0] ON [n.ProductCategory.Products].[CategoryId] = [t0].[Id0]
+ORDER BY [t0].[Id], [t0].[Id0], [n.ProductCategory.Products].[Id]" (0723d8ff)
+2018-11-21T16:56:52.6241544+07:00 0HLIFITVN4IQ6:00000001 [INF] Executed DbCommand ("15"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[Id], [t2].[Id0], [t2].[Id1], [n.ProductCategory.Products.ProductTags].[Id] AS [Id3], [n.ProductCategory.Products.ProductTags].[ProductId], [n.ProductCategory.Products.ProductTags].[TagId], CASE
+    WHEN [n.ProductCategory.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag0].[Name], [dto.Tag0].[Type]
+FROM [ProductTags] AS [n.ProductCategory.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag0] ON [n.ProductCategory.Products.ProductTags].[TagId] = [dto.Tag0].[Id]
+INNER JOIN (
+    SELECT [t1].[Id], [t1].[Id0], [n.ProductCategory.Products0].[Id] AS [Id1]
+    FROM [Products] AS [n.ProductCategory.Products0]
+    INNER JOIN (
+        SELECT TOP(@__p_0) [n2].[Id], [n.ProductCategory2].[Id] AS [Id0]
+        FROM [Products] AS [n2]
+        INNER JOIN [ProductCategories] AS [n.ProductCategory2] ON [n2].[CategoryId] = [n.ProductCategory2].[Id]
+        WHERE [n2].[PromotionPrice] IS NOT NULL
+        ORDER BY [n2].[Id], [n.ProductCategory2].[Id]
+    ) AS [t1] ON [n.ProductCategory.Products0].[CategoryId] = [t1].[Id0]
+) AS [t2] ON [n.ProductCategory.Products.ProductTags].[ProductId] = [t2].[Id1]
+ORDER BY [t2].[Id], [t2].[Id0], [t2].[Id1]" (0723d8ff)
+2018-11-21T16:56:52.6703130+07:00 0HLIFITVN4IQ6:00000001 [INF] Executed DbCommand ("5"ms) [Parameters=["@__productId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name]
+FROM [Tags] AS [t]
+INNER JOIN [ProductTags] AS [pt] ON [t].[Id] = [pt].[TagId]
+WHERE [pt].[ProductId] = @__productId_0" (0723d8ff)
+2018-11-21T16:56:52.6752535+07:00 0HLIFITVN4IQ6:00000001 [INF] Executed action method "ShoppingOnline.WebApplication.Controllers.Product.ProductController.Details (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 278.1814ms. (50a9e262)
+2018-11-21T16:56:52.6819906+07:00 0HLIFITVN4IQ6:00000001 [INF] Executing ViewResult, running view "Details". (c83d0e25)
+2018-11-21T16:56:52.6905932+07:00 0HLIFITVN4IQ6:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2018-11-21T16:56:52.7023390+07:00 0HLIFITVN4IQ6:00000001 [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id], [x.Products].[Id]" (0723d8ff)
+2018-11-21T16:56:52.7230447+07:00 0HLIFITVN4IQ6:00000001 [INF] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t1].[ParentId], [t1].[Id], [t1].[Id0], [x.Products.ProductTags].[Id] AS [Id2], [x.Products.ProductTags].[ProductId], [x.Products.ProductTags].[TagId], CASE
+    WHEN [x.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.Products.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT [t0].[ParentId], [t0].[Id], [x.Products0].[Id] AS [Id0]
+    FROM [Products] AS [x.Products0]
+    INNER JOIN (
+        SELECT [x1].[ParentId], [x1].[Id]
+        FROM [ProductCategories] AS [x1]
+    ) AS [t0] ON [x.Products0].[CategoryId] = [t0].[Id]
+) AS [t1] ON [x.Products.ProductTags].[ProductId] = [t1].[Id0]
+ORDER BY [t1].[ParentId], [t1].[Id], [t1].[Id0]" (0723d8ff)
+2018-11-21T16:56:52.7345962+07:00 0HLIFITVN4IQ6:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2018-11-21T16:56:52.7418615+07:00 0HLIFITVN4IQ6:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id], [x.Products].[Id]" (0723d8ff)
+2018-11-21T16:56:52.7488521+07:00 0HLIFITVN4IQ6:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t1].[ParentId], [t1].[Id], [t1].[Id0], [x.Products.ProductTags].[Id] AS [Id2], [x.Products.ProductTags].[ProductId], [x.Products.ProductTags].[TagId], CASE
+    WHEN [x.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.Products.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT [t0].[ParentId], [t0].[Id], [x.Products0].[Id] AS [Id0]
+    FROM [Products] AS [x.Products0]
+    INNER JOIN (
+        SELECT [x1].[ParentId], [x1].[Id]
+        FROM [ProductCategories] AS [x1]
+    ) AS [t0] ON [x.Products0].[CategoryId] = [t0].[Id]
+) AS [t1] ON [x.Products.ProductTags].[ProductId] = [t1].[Id0]
+ORDER BY [t1].[ParentId], [t1].[Id], [t1].[Id0]" (0723d8ff)
+2018-11-21T16:56:52.7591924+07:00 0HLIFITVN4IQ6:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2018-11-21T16:56:52.7690060+07:00 0HLIFITVN4IQ6:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id], [x.Products].[Id]" (0723d8ff)
+2018-11-21T16:56:52.7842080+07:00 0HLIFITVN4IQ6:00000001 [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t1].[ParentId], [t1].[Id], [t1].[Id0], [x.Products.ProductTags].[Id] AS [Id2], [x.Products.ProductTags].[ProductId], [x.Products.ProductTags].[TagId], CASE
+    WHEN [x.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.Products.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT [t0].[ParentId], [t0].[Id], [x.Products0].[Id] AS [Id0]
+    FROM [Products] AS [x.Products0]
+    INNER JOIN (
+        SELECT [x1].[ParentId], [x1].[Id]
+        FROM [ProductCategories] AS [x1]
+    ) AS [t0] ON [x.Products0].[CategoryId] = [t0].[Id]
+) AS [t1] ON [x.Products.ProductTags].[ProductId] = [t1].[Id0]
+ORDER BY [t1].[ParentId], [t1].[Id], [t1].[Id0]" (0723d8ff)
+2018-11-21T16:56:52.8161450+07:00 0HLIFITVN4IQ6:00000001 [INF] Executed ViewResult - view "Details" executed in 117.3716ms. (f66409e9)
+2018-11-21T16:56:52.8441608+07:00 0HLIFITVN4IQ6:00000001 [INF] Executed action "ShoppingOnline.WebApplication.Controllers.Product.ProductController.Details (ShoppingOnline.WebApplication)" in 434.6917ms (afa2e885)
+2018-11-21T16:56:52.8667808+07:00 0HLIFITVN4IQ6:00000001 [INF] Request finished in 490.2821ms 200 text/html; charset=utf-8 (791a596a)

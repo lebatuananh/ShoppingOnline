@@ -1,0 +1,1244 @@
+2018-11-15T17:43:12.1129895+07:00 0HLIASSHHV4QC:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/   (ca22a1cb)
+2018-11-15T17:43:12.3519215+07:00 0HLIASSHHV4QC:00000001 [INF] "Identity.Application" was not authenticated. Failure message: "Ticket expired" (48071232)
+2018-11-15T17:43:14.2318320+07:00 0HLIASSHHV4QC:00000001 [INF] Route matched with "{action = \"Index\", controller = \"Home\", area = \"\"}". Executing action "ShoppingOnline.WebApplication.Controllers.Home.HomeController.Index (ShoppingOnline.WebApplication)" (a44c0341)
+2018-11-15T17:43:14.2684248+07:00 0HLIASSHHV4QC:00000001 [INF] Executing action method "ShoppingOnline.WebApplication.Controllers.Home.HomeController.Index (ShoppingOnline.WebApplication)" - Validation state: Valid (dad538d7)
+2018-11-15T17:43:14.7620387+07:00 0HLIASSHHV4QC:00000001 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2018-11-15T17:43:14.9931276+07:00 0HLIASSHHV4QC:00000001 [WRN] The Include operation for navigation '"[c].Products"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2018-11-15T17:43:15.3890329+07:00 0HLIASSHHV4QC:00000001 [INF] Executed DbCommand ("9"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [c].[Id], [c].[Name], [c].[Description], [c].[ParentId], [c].[HomeOrder], [c].[Image], [c].[HomeFlag], [c].[DateCreated], [c].[DateModified], [c].[SortOrder], [c].[Status], [c].[SeoPageTitle], [c].[SeoAlias], [c].[SeoKeywords], [c].[SeoDescription]
+FROM [ProductCategories] AS [c]
+WHERE [c].[HomeFlag] = 1
+ORDER BY [c].[HomeOrder], [c].[Id]" (0723d8ff)
+2018-11-15T17:43:15.6274419+07:00 0HLIASSHHV4QC:00000001 [INF] Executed DbCommand ("15"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) AND ([x].[HotFlag] = 1)
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2018-11-15T17:43:15.8523735+07:00 0HLIASSHHV4QC:00000001 [INF] Executed DbCommand ("11"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2018-11-15T17:43:15.8948754+07:00 0HLIASSHHV4QC:00000001 [INF] Executed DbCommand ("17"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [x.ProductTags].[Id] AS [Id1], [x.ProductTags].[ProductId], [x.ProductTags].[TagId], CASE
+    WHEN [x.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id]
+) AS [t] ON [x.ProductTags].[ProductId] = [t].[Id]
+ORDER BY [t].[DateCreated] DESC, [t].[Id]" (0723d8ff)
+2018-11-15T17:43:15.9325915+07:00 0HLIASSHHV4QC:00000001 [INF] Executed DbCommand ("15"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t0].[DateCreated], [t0].[Id], [t0].[Id0], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[ViewCount], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Status]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x1].[DateCreated], [x1].[Id], [x.ProductCategory1].[Id] AS [Id0]
+    FROM [Products] AS [x1]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory1] ON [x1].[CategoryId] = [x.ProductCategory1].[Id]
+    WHERE [x1].[Status] = 1
+    ORDER BY [x1].[DateCreated] DESC, [x1].[Id], [x.ProductCategory1].[Id]
+) AS [t0] ON [x.ProductCategory.Products].[CategoryId] = [t0].[Id0]
+ORDER BY [t0].[DateCreated] DESC, [t0].[Id], [t0].[Id0], [x.ProductCategory.Products].[Id]" (0723d8ff)
+2018-11-15T17:43:15.9819537+07:00 0HLIASSHHV4QC:00000001 [INF] Executed DbCommand ("20"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[DateCreated], [t2].[Id], [t2].[Id0], [t2].[Id1], [x.ProductCategory.Products.ProductTags].[Id] AS [Id3], [x.ProductCategory.Products.ProductTags].[ProductId], [x.ProductCategory.Products.ProductTags].[TagId], CASE
+    WHEN [x.ProductCategory.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag0].[Name], [dto.Tag0].[Type]
+FROM [ProductTags] AS [x.ProductCategory.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag0] ON [x.ProductCategory.Products.ProductTags].[TagId] = [dto.Tag0].[Id]
+INNER JOIN (
+    SELECT [t1].[DateCreated], [t1].[Id], [t1].[Id0], [x.ProductCategory.Products0].[Id] AS [Id1]
+    FROM [Products] AS [x.ProductCategory.Products0]
+    INNER JOIN (
+        SELECT TOP(@__p_0) [x2].[DateCreated], [x2].[Id], [x.ProductCategory2].[Id] AS [Id0]
+        FROM [Products] AS [x2]
+        INNER JOIN [ProductCategories] AS [x.ProductCategory2] ON [x2].[CategoryId] = [x.ProductCategory2].[Id]
+        WHERE [x2].[Status] = 1
+        ORDER BY [x2].[DateCreated] DESC, [x2].[Id], [x.ProductCategory2].[Id]
+    ) AS [t1] ON [x.ProductCategory.Products0].[CategoryId] = [t1].[Id0]
+) AS [t2] ON [x.ProductCategory.Products.ProductTags].[ProductId] = [t2].[Id1]
+ORDER BY [t2].[DateCreated] DESC, [t2].[Id], [t2].[Id0], [t2].[Id1]" (0723d8ff)
+2018-11-15T17:43:16.0885668+07:00 0HLIASSHHV4QC:00000001 [INF] Executed DbCommand ("5"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[Image], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[DateCreated], [x].[DateModified], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [Blogs] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC, [x].[Id]" (0723d8ff)
+2018-11-15T17:43:16.1411621+07:00 0HLIASSHHV4QC:00000001 [INF] Executed DbCommand ("5"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Image], [x].[Url], [x].[DisplayOrder], [x].[Status], [x].[Content], [x].[GroupAlias]
+FROM [Slides] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)" (0723d8ff)
+2018-11-15T17:43:16.2360568+07:00 0HLIASSHHV4QC:00000001 [INF] Executed DbCommand ("8"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [t].*
+FROM (
+    SELECT TOP(@__p_0) [n].[Id], [n].[DateCreated], [n].[DateModified], [n].[Description], [n].[Image], [n].[Name], [n].[PositionId], [n].[SortOrder], [n].[Status], [n].[Url]
+    FROM [Advertisements] AS [n]
+    WHERE [n].[Status] = 1
+    ORDER BY [n].[SortOrder]
+) AS [t]
+ORDER BY [t].[SortOrder]" (0723d8ff)
+2018-11-15T17:43:16.4569235+07:00 0HLIASSHHV4QC:00000001 [INF] Executed action method "ShoppingOnline.WebApplication.Controllers.Home.HomeController.Index (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 2176.756ms. (50a9e262)
+2018-11-15T17:43:16.6007804+07:00 0HLIASSHHV4QC:00000001 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2018-11-15T17:43:16.9643900+07:00 0HLIASSHHV4QC:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2018-11-15T17:43:16.9816504+07:00 0HLIASSHHV4QC:00000001 [INF] Executed DbCommand ("9"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id], [x.Products].[Id]" (0723d8ff)
+2018-11-15T17:43:17.0244505+07:00 0HLIASSHHV4QC:00000001 [INF] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t1].[ParentId], [t1].[Id], [t1].[Id0], [x.Products.ProductTags].[Id] AS [Id2], [x.Products.ProductTags].[ProductId], [x.Products.ProductTags].[TagId], CASE
+    WHEN [x.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.Products.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT [t0].[ParentId], [t0].[Id], [x.Products0].[Id] AS [Id0]
+    FROM [Products] AS [x.Products0]
+    INNER JOIN (
+        SELECT [x1].[ParentId], [x1].[Id]
+        FROM [ProductCategories] AS [x1]
+    ) AS [t0] ON [x.Products0].[CategoryId] = [t0].[Id]
+) AS [t1] ON [x.Products.ProductTags].[ProductId] = [t1].[Id0]
+ORDER BY [t1].[ParentId], [t1].[Id], [t1].[Id0]" (0723d8ff)
+2018-11-15T17:43:17.2071284+07:00 0HLIASSHHV4QC:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2018-11-15T17:43:17.2212010+07:00 0HLIASSHHV4QC:00000001 [INF] Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id], [x.Products].[Id]" (0723d8ff)
+2018-11-15T17:43:17.2461750+07:00 0HLIASSHHV4QC:00000001 [INF] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t1].[ParentId], [t1].[Id], [t1].[Id0], [x.Products.ProductTags].[Id] AS [Id2], [x.Products.ProductTags].[ProductId], [x.Products.ProductTags].[TagId], CASE
+    WHEN [x.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.Products.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT [t0].[ParentId], [t0].[Id], [x.Products0].[Id] AS [Id0]
+    FROM [Products] AS [x.Products0]
+    INNER JOIN (
+        SELECT [x1].[ParentId], [x1].[Id]
+        FROM [ProductCategories] AS [x1]
+    ) AS [t0] ON [x.Products0].[CategoryId] = [t0].[Id]
+) AS [t1] ON [x.Products.ProductTags].[ProductId] = [t1].[Id0]
+ORDER BY [t1].[ParentId], [t1].[Id], [t1].[Id0]" (0723d8ff)
+2018-11-15T17:43:17.2908105+07:00 0HLIASSHHV4QC:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2018-11-15T17:43:17.3060833+07:00 0HLIASSHHV4QC:00000001 [INF] Executed DbCommand ("11"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id], [x.Products].[Id]" (0723d8ff)
+2018-11-15T17:43:17.3243825+07:00 0HLIASSHHV4QC:00000001 [INF] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t1].[ParentId], [t1].[Id], [t1].[Id0], [x.Products.ProductTags].[Id] AS [Id2], [x.Products.ProductTags].[ProductId], [x.Products.ProductTags].[TagId], CASE
+    WHEN [x.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.Products.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT [t0].[ParentId], [t0].[Id], [x.Products0].[Id] AS [Id0]
+    FROM [Products] AS [x.Products0]
+    INNER JOIN (
+        SELECT [x1].[ParentId], [x1].[Id]
+        FROM [ProductCategories] AS [x1]
+    ) AS [t0] ON [x.Products0].[CategoryId] = [t0].[Id]
+) AS [t1] ON [x.Products.ProductTags].[ProductId] = [t1].[Id0]
+ORDER BY [t1].[ParentId], [t1].[Id], [t1].[Id0]" (0723d8ff)
+2018-11-15T17:43:17.3454113+07:00 0HLIASSHHV4QC:00000001 [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2018-11-15T17:43:17.3756903+07:00 0HLIASSHHV4QC:00000001 [INF] Executed DbCommand ("9"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id], [x.Products].[Id]" (0723d8ff)
+2018-11-15T17:43:17.4122576+07:00 0HLIASSHHV4QC:00000001 [INF] Executed DbCommand ("22"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t1].[ParentId], [t1].[Id], [t1].[Id0], [x.Products.ProductTags].[Id] AS [Id2], [x.Products.ProductTags].[ProductId], [x.Products.ProductTags].[TagId], CASE
+    WHEN [x.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.Products.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT [t0].[ParentId], [t0].[Id], [x.Products0].[Id] AS [Id0]
+    FROM [Products] AS [x.Products0]
+    INNER JOIN (
+        SELECT [x1].[ParentId], [x1].[Id]
+        FROM [ProductCategories] AS [x1]
+    ) AS [t0] ON [x.Products0].[CategoryId] = [t0].[Id]
+) AS [t1] ON [x.Products.ProductTags].[ProductId] = [t1].[Id0]
+ORDER BY [t1].[ParentId], [t1].[Id], [t1].[Id0]" (0723d8ff)
+2018-11-15T17:43:17.5978566+07:00 0HLIASSHHV4QC:00000001 [INF] Executed ViewResult - view "Index" executed in 1120.3109ms. (f66409e9)
+2018-11-15T17:43:17.6055920+07:00 0HLIASSHHV4QC:00000001 [INF] Executed action "ShoppingOnline.WebApplication.Controllers.Home.HomeController.Index (ShoppingOnline.WebApplication)" in 3365.999ms (afa2e885)
+2018-11-15T17:43:17.6207468+07:00 0HLIASSHHV4QC:00000001 [INF] Request finished in 5528.6165ms 200 text/html; charset=utf-8 (791a596a)
+2018-11-15T17:43:17.7704888+07:00 0HLIASSHHV4QC:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/flag-english.jpg   (ca22a1cb)
+2018-11-15T17:43:17.7883743+07:00 0HLIASSHHV4QB:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/notifyjs/dist/styles/metro/notify-metro.css   (ca22a1cb)
+2018-11-15T17:43:17.8642347+07:00 0HLIASSHHV4QB:00000001 [INF] The file "/lib/notifyjs/dist/styles/metro/notify-metro.css" was not modified (f1f8d725)
+2018-11-15T17:43:17.8711073+07:00 0HLIASSHHV4QD:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/style.css   (ca22a1cb)
+2018-11-15T17:43:17.8758293+07:00 0HLIASSHHV4QE:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/flag-default.jpg   (ca22a1cb)
+2018-11-15T17:43:17.8825159+07:00 0HLIASSHHV4QD:00000001 [INF] The file "/client-side/style.css" was not modified (f1f8d725)
+2018-11-15T17:43:17.8895769+07:00 0HLIASSHHV4QB:00000001 [INF] Request finished in 130.054ms 304 text/css (791a596a)
+2018-11-15T17:43:17.9729021+07:00 0HLIASSHHV4QD:00000001 [INF] Request finished in 32.7137ms 304 text/css (791a596a)
+2018-11-15T17:43:18.0086799+07:00 0HLIASSHHV4QC:00000002 [INF] Sending file. Request path: '"/client-side/images/flag-english.jpg"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\images\flag-english.jpg"' (27b0a520)
+2018-11-15T17:43:18.0249407+07:00 0HLIASSHHV4QE:00000001 [INF] Sending file. Request path: '"/client-side/images/flag-default.jpg"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\images\flag-default.jpg"' (27b0a520)
+2018-11-15T17:43:18.0375487+07:00 0HLIASSHHV4QC:00000002 [INF] Request finished in 281.5859ms 200 image/jpeg (791a596a)
+2018-11-15T17:43:18.0481475+07:00 0HLIASSHHV4QF:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/simple-line-icons.css   (ca22a1cb)
+2018-11-15T17:43:18.0522267+07:00 0HLIASSHHV4QC:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/font-awesome.min.css   (ca22a1cb)
+2018-11-15T17:43:18.0753752+07:00 0HLIASSHHV4QE:00000001 [INF] Request finished in 175.2284ms 200 image/jpeg (791a596a)
+2018-11-15T17:43:18.0874144+07:00 0HLIASSHHV4QB:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/animate.css   (ca22a1cb)
+2018-11-15T17:43:18.1065941+07:00 0HLIASSHHV4QE:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/pe-icon-7-stroke.min.css   (ca22a1cb)
+2018-11-15T17:43:18.1167022+07:00 0HLIASSHHV4QG:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/owl.transitions.css   (ca22a1cb)
+2018-11-15T17:43:18.1219904+07:00 0HLIASSHHV4QF:00000001 [INF] Sending file. Request path: '"/client-side/css/simple-line-icons.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\simple-line-icons.css"' (27b0a520)
+2018-11-15T17:43:18.1329147+07:00 0HLIASSHHV4QC:00000003 [INF] Sending file. Request path: '"/client-side/css/font-awesome.min.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\font-awesome.min.css"' (27b0a520)
+2018-11-15T17:43:18.1397933+07:00 0HLIASSHHV4QF:00000001 [INF] Request finished in 99.4432ms 200 text/css (791a596a)
+2018-11-15T17:43:18.2414218+07:00 0HLIASSHHV4QC:00000003 [INF] Request finished in 95.1807ms 200 text/css (791a596a)
+2018-11-15T17:43:18.2498192+07:00 0HLIASSHHV4QG:00000001 [INF] Sending file. Request path: '"/client-side/css/owl.transitions.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\owl.transitions.css"' (27b0a520)
+2018-11-15T17:43:18.2586234+07:00 0HLIASSHHV4QE:00000002 [INF] Sending file. Request path: '"/client-side/css/pe-icon-7-stroke.min.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\pe-icon-7-stroke.min.css"' (27b0a520)
+2018-11-15T17:43:18.2682430+07:00 0HLIASSHHV4QC:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/revolution-slider.css   (ca22a1cb)
+2018-11-15T17:43:18.2737505+07:00 0HLIASSHHV4QG:00000001 [INF] Request finished in 142.2771ms 200 text/css (791a596a)
+2018-11-15T17:43:18.2820724+07:00 0HLIASSHHV4QE:00000002 [INF] Request finished in 183.2506ms 200 text/css (791a596a)
+2018-11-15T17:43:18.2865249+07:00 0HLIASSHHV4QG:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/flexslider.css   (ca22a1cb)
+2018-11-15T17:43:18.2905563+07:00 0HLIASSHHV4QF:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/jquery-ui.css   (ca22a1cb)
+2018-11-15T17:43:18.2990749+07:00 0HLIASSHHV4QC:00000004 [INF] Sending file. Request path: '"/client-side/css/revolution-slider.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\revolution-slider.css"' (27b0a520)
+2018-11-15T17:43:18.3031573+07:00 0HLIASSHHV4QE:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/quick_view_popup.css   (ca22a1cb)
+2018-11-15T17:43:18.3070360+07:00 0HLIASSHHV4QC:00000004 [INF] Request finished in 52.4039ms 200 text/css (791a596a)
+2018-11-15T17:43:18.3361804+07:00 0HLIASSHHV4QB:00000002 [INF] Sending file. Request path: '"/client-side/css/animate.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\animate.css"' (27b0a520)
+2018-11-15T17:43:18.3624655+07:00 0HLIASSHHV4QG:00000002 [INF] Sending file. Request path: '"/client-side/css/flexslider.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\flexslider.css"' (27b0a520)
+2018-11-15T17:43:18.3685586+07:00 0HLIASSHHV4QF:00000002 [INF] Sending file. Request path: '"/client-side/css/jquery-ui.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\jquery-ui.css"' (27b0a520)
+2018-11-15T17:43:18.3795191+07:00 0HLIASSHHV4QG:00000002 [INF] Request finished in 88.6275ms 200 text/css (791a596a)
+2018-11-15T17:43:18.3880235+07:00 0HLIASSHHV4QF:00000002 [INF] Request finished in 92.0632ms 200 text/css (791a596a)
+2018-11-15T17:43:18.4045240+07:00 0HLIASSHHV4QG:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/shortcodes/shortcodes.css   (ca22a1cb)
+2018-11-15T17:43:18.4314072+07:00 0HLIASSHHV4QC:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/shortcode.css   (ca22a1cb)
+2018-11-15T17:43:18.4543825+07:00 0HLIASSHHV4QE:00000003 [INF] Sending file. Request path: '"/client-side/css/quick_view_popup.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\quick_view_popup.css"' (27b0a520)
+2018-11-15T17:43:18.4620119+07:00 0HLIASSHHV4QB:00000002 [INF] Request finished in 335.3805ms 200 text/css (791a596a)
+2018-11-15T17:43:18.4995153+07:00 0HLIASSHHV4QF:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/shortcodes/featured-box.css   (ca22a1cb)
+2018-11-15T17:43:18.5299419+07:00 0HLIASSHHV4QC:00000005 [INF] Sending file. Request path: '"/client-side/css/shortcode.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\shortcode.css"' (27b0a520)
+2018-11-15T17:43:18.5324296+07:00 0HLIASSHHV4QE:00000003 [INF] Request finished in 170.4312ms 200 text/css (791a596a)
+2018-11-15T17:43:18.5363802+07:00 0HLIASSHHV4QB:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/blog.css   (ca22a1cb)
+2018-11-15T17:43:18.5400218+07:00 0HLIASSHHV4QC:00000005 [INF] Request finished in 142.0137ms 200 text/css (791a596a)
+2018-11-15T17:43:18.5481285+07:00 0HLIASSHHV4QE:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/shortcodes/pricing-table.css   (ca22a1cb)
+2018-11-15T17:43:18.5574611+07:00 0HLIASSHHV4QF:00000003 [INF] Sending file. Request path: '"/client-side/css/shortcodes/featured-box.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\shortcodes\featured-box.css"' (27b0a520)
+2018-11-15T17:43:18.5778744+07:00 0HLIASSHHV4QB:00000003 [INF] Sending file. Request path: '"/client-side/css/blog.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\blog.css"' (27b0a520)
+2018-11-15T17:43:18.5812356+07:00 0HLIASSHHV4QF:00000003 [INF] Request finished in 103.0289ms 200 text/css (791a596a)
+2018-11-15T17:43:18.5857485+07:00 0HLIASSHHV4QD:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/bootstrap.min.css   (ca22a1cb)
+2018-11-15T17:43:18.6220298+07:00 0HLIASSHHV4QE:00000004 [INF] Sending file. Request path: '"/client-side/css/shortcodes/pricing-table.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\shortcodes\pricing-table.css"' (27b0a520)
+2018-11-15T17:43:18.6247897+07:00 0HLIASSHHV4QB:00000003 [INF] Request finished in 115.6815ms 200 text/css (791a596a)
+2018-11-15T17:43:18.6371236+07:00 0HLIASSHHV4QC:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/shortcodes/tooltip.css   (ca22a1cb)
+2018-11-15T17:43:18.6512920+07:00 0HLIASSHHV4QE:00000004 [INF] Request finished in 89.4231ms 200 text/css (791a596a)
+2018-11-15T17:43:18.6530431+07:00 0HLIASSHHV4QF:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/shortcodes/post.css   (ca22a1cb)
+2018-11-15T17:43:18.6574838+07:00 0HLIASSHHV4QB:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/style.css   (ca22a1cb)
+2018-11-15T17:43:18.6664093+07:00 0HLIASSHHV4QC:00000006 [INF] Sending file. Request path: '"/client-side/css/shortcodes/tooltip.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\shortcodes\tooltip.css"' (27b0a520)
+2018-11-15T17:43:18.6915790+07:00 0HLIASSHHV4QE:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/responsive.css   (ca22a1cb)
+2018-11-15T17:43:18.7023283+07:00 0HLIASSHHV4QC:00000006 [INF] Request finished in 59.0151ms 200 text/css (791a596a)
+2018-11-15T17:43:18.7081994+07:00 0HLIASSHHV4QF:00000004 [INF] Sending file. Request path: '"/client-side/css/shortcodes/post.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\shortcodes\post.css"' (27b0a520)
+2018-11-15T17:43:18.7441577+07:00 0HLIASSHHV4QF:00000004 [INF] Request finished in 71.3379ms 200 text/css (791a596a)
+2018-11-15T17:43:18.7498608+07:00 0HLIASSHHV4QC:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/owl.carousel.css   (ca22a1cb)
+2018-11-15T17:43:18.7567434+07:00 0HLIASSHHV4QE:00000005 [INF] Sending file. Request path: '"/client-side/css/responsive.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\responsive.css"' (27b0a520)
+2018-11-15T17:43:18.7774955+07:00 0HLIASSHHV4QC:00000007 [INF] The file "/client-side/css/owl.carousel.css" was not modified (f1f8d725)
+2018-11-15T17:43:18.7810663+07:00 0HLIASSHHV4QE:00000005 [INF] Request finished in 86.1352ms 200 text/css (791a596a)
+2018-11-15T17:43:18.7850213+07:00 0HLIASSHHV4QF:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/js/jquery.min.js   (ca22a1cb)
+2018-11-15T17:43:18.7887738+07:00 0HLIASSHHV4QC:00000007 [INF] Request finished in 44.7763ms 304 text/css (791a596a)
+2018-11-15T17:43:18.7907254+07:00 0HLIASSHHV4QB:00000004 [INF] Sending file. Request path: '"/client-side/css/style.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\style.css"' (27b0a520)
+2018-11-15T17:43:18.7993610+07:00 0HLIASSHHV4QB:00000004 [INF] Request finished in 137.4495ms 200 text/css (791a596a)
+2018-11-15T17:43:18.8199531+07:00 0HLIASSHHV4QG:00000003 [INF] Sending file. Request path: '"/client-side/css/shortcodes/shortcodes.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\shortcodes\shortcodes.css"' (27b0a520)
+2018-11-15T17:43:18.8297989+07:00 0HLIASSHHV4QE:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/js/bootstrap.min.js   (ca22a1cb)
+2018-11-15T17:43:18.8468363+07:00 0HLIASSHHV4QG:00000003 [INF] Request finished in 440.2971ms 200 text/css (791a596a)
+2018-11-15T17:43:18.9664119+07:00 0HLIASSHHV4QE:00000006 [INF] Sending file. Request path: '"/client-side/js/bootstrap.min.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\js\bootstrap.min.js"' (27b0a520)
+2018-11-15T17:43:18.9999720+07:00 0HLIASSHHV4QF:00000005 [INF] Sending file. Request path: '"/client-side/js/jquery.min.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\js\jquery.min.js"' (27b0a520)
+2018-11-15T17:43:19.0131701+07:00 0HLIASSHHV4QE:00000006 [INF] Request finished in 154.0051ms 200 application/javascript (791a596a)
+2018-11-15T17:43:19.0179551+07:00 0HLIASSHHV4QF:00000005 [INF] Request finished in 222.8862ms 200 application/javascript (791a596a)
+2018-11-15T17:43:19.0207017+07:00 0HLIASSHHV4QE:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/js/owl.carousel.min.js   (ca22a1cb)
+2018-11-15T17:43:19.0683841+07:00 0HLIASSHHV4QF:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/js/mobile-menu.js   (ca22a1cb)
+2018-11-15T17:43:19.1487722+07:00 0HLIASSHHV4QE:00000007 [INF] Sending file. Request path: '"/client-side/js/owl.carousel.min.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\js\owl.carousel.min.js"' (27b0a520)
+2018-11-15T17:43:19.1546514+07:00 0HLIASSHHV4QF:00000006 [INF] Sending file. Request path: '"/client-side/js/mobile-menu.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\js\mobile-menu.js"' (27b0a520)
+2018-11-15T17:43:19.1646397+07:00 0HLIASSHHV4QE:00000007 [INF] Request finished in 135.4198ms 200 application/javascript (791a596a)
+2018-11-15T17:43:19.1706099+07:00 0HLIASSHHV4QF:00000006 [INF] Request finished in 90.7461ms 200 application/javascript (791a596a)
+2018-11-15T17:43:19.1778157+07:00 0HLIASSHHV4QE:00000008 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/js/jquery-ui.js   (ca22a1cb)
+2018-11-15T17:43:19.2027130+07:00 0HLIASSHHV4QF:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/js/main.js   (ca22a1cb)
+2018-11-15T17:43:19.3601251+07:00 0HLIASSHHV4QE:00000008 [INF] Sending file. Request path: '"/client-side/js/jquery-ui.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\js\jquery-ui.js"' (27b0a520)
+2018-11-15T17:43:19.3654153+07:00 0HLIASSHHV4QF:00000007 [INF] Sending file. Request path: '"/client-side/js/main.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\js\main.js"' (27b0a520)
+2018-11-15T17:43:19.3707255+07:00 0HLIASSHHV4QE:00000008 [INF] Request finished in 195.362ms 200 application/javascript (791a596a)
+2018-11-15T17:43:19.3775668+07:00 0HLIASSHHV4QF:00000007 [INF] Request finished in 181.2047ms 200 application/javascript (791a596a)
+2018-11-15T17:43:19.3821813+07:00 0HLIASSHHV4QE:00000009 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/notifyjs/dist/notify.js   (ca22a1cb)
+2018-11-15T17:43:19.3853209+07:00 0HLIASSHHV4QF:00000008 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/js/countdown.js   (ca22a1cb)
+2018-11-15T17:43:19.4536334+07:00 0HLIASSHHV4QE:00000009 [INF] Sending file. Request path: '"/lib/notifyjs/dist/notify.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\notifyjs\dist\notify.js"' (27b0a520)
+2018-11-15T17:43:19.4707396+07:00 0HLIASSHHV4QF:00000008 [INF] Sending file. Request path: '"/client-side/js/countdown.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\js\countdown.js"' (27b0a520)
+2018-11-15T17:43:19.4981436+07:00 0HLIASSHHV4QE:00000009 [INF] Request finished in 82.7625ms 200 application/javascript (791a596a)
+2018-11-15T17:43:19.5117424+07:00 0HLIASSHHV4QF:00000008 [INF] Request finished in 92.5279ms 200 application/javascript (791a596a)
+2018-11-15T17:43:19.5196050+07:00 0HLIASSHHV4QF:00000009 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app-client/shared/core.js   (ca22a1cb)
+2018-11-15T17:43:19.5197375+07:00 0HLIASSHHV4QE:0000000A [INF] Request starting HTTP/1.1 GET https://localhost:5001/app-client/shared/localize/resources.vi-VN.js   (ca22a1cb)
+2018-11-15T17:43:19.5242430+07:00 0HLIASSHHV4QE:0000000A [INF] The file "/app-client/shared/localize/resources.vi-VN.js" was not modified (f1f8d725)
+2018-11-15T17:43:19.5322204+07:00 0HLIASSHHV4QE:0000000A [INF] Request finished in 10.437ms 304 application/javascript (791a596a)
+2018-11-15T17:43:19.5564625+07:00 0HLIASSHHV4QF:00000009 [INF] Sending file. Request path: '"/app-client/shared/core.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\app-client\shared\core.js"' (27b0a520)
+2018-11-15T17:43:19.5665782+07:00 0HLIASSHHV4QF:00000009 [INF] Request finished in 44.4191ms 200 application/javascript (791a596a)
+2018-11-15T17:43:19.5684672+07:00 0HLIASSHHV4QE:0000000B [INF] Request starting HTTP/1.1 GET https://localhost:5001/app-client/controllers/base/index.js   (ca22a1cb)
+2018-11-15T17:43:19.5733377+07:00 0HLIASSHHV4QE:0000000B [INF] The file "/app-client/controllers/base/index.js" was not modified (f1f8d725)
+2018-11-15T17:43:19.6146343+07:00 0HLIASSHHV4QE:0000000B [INF] Request finished in 14.7386ms 304 application/javascript (791a596a)
+2018-11-15T17:43:19.6200227+07:00 0HLIASSHHV4QF:0000000A [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/js/revolution-slider.js   (ca22a1cb)
+2018-11-15T17:43:19.6268202+07:00 0HLIASSHHV4QE:0000000C [INF] Request starting HTTP/1.1 GET https://localhost:5001/app-client/controllers/home/index.js   (ca22a1cb)
+2018-11-15T17:43:19.6325165+07:00 0HLIASSHHV4QD:00000002 [INF] Sending file. Request path: '"/client-side/css/bootstrap.min.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\css\bootstrap.min.css"' (27b0a520)
+2018-11-15T17:43:19.6363410+07:00 0HLIASSHHV4QE:0000000C [INF] The file "/app-client/controllers/home/index.js" was not modified (f1f8d725)
+2018-11-15T17:43:19.6428154+07:00 0HLIASSHHV4QD:00000002 [INF] Request finished in 1075.1792ms 200 text/css (791a596a)
+2018-11-15T17:43:19.6657196+07:00 0HLIASSHHV4QE:0000000C [INF] Request finished in 21.5022ms 304 application/javascript (791a596a)
+2018-11-15T17:43:19.6732593+07:00 0HLIASSHHV4QE:0000000D [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/flag-german.jpg   (ca22a1cb)
+2018-11-15T17:43:19.6815738+07:00 0HLIASSHHV4QF:0000000A [INF] Sending file. Request path: '"/client-side/js/revolution-slider.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\js\revolution-slider.js"' (27b0a520)
+2018-11-15T17:43:19.7073589+07:00 0HLIASSHHV4QF:0000000A [INF] Request finished in 93.1096ms 200 application/javascript (791a596a)
+2018-11-15T17:43:19.7167934+07:00 0HLIASSHHV4QC:00000008 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/logo.png   (ca22a1cb)
+2018-11-15T17:43:19.7357774+07:00 0HLIASSHHV4QE:0000000D [INF] Sending file. Request path: '"/client-side/images/flag-german.jpg"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\images\flag-german.jpg"' (27b0a520)
+2018-11-15T17:43:19.7487527+07:00 0HLIASSHHV4QB:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/flag-spain.jpg   (ca22a1cb)
+2018-11-15T17:43:19.7594690+07:00 0HLIASSHHV4QE:0000000D [INF] Request finished in 68.9936ms 200 image/jpeg (791a596a)
+2018-11-15T17:43:19.7641321+07:00 0HLIASSHHV4QG:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/flag-chile.jpg   (ca22a1cb)
+2018-11-15T17:43:19.7695369+07:00 0HLIASSHHV4QE:0000000E [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/products/product-1.jpg   (ca22a1cb)
+2018-11-15T17:43:19.7770629+07:00 0HLIASSHHV4QC:00000008 [INF] Sending file. Request path: '"/client-side/images/logo.png"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\images\logo.png"' (27b0a520)
+2018-11-15T17:43:19.7826387+07:00 0HLIASSHHV4QD:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/flag-brazil.jpg   (ca22a1cb)
+2018-11-15T17:43:19.8116391+07:00 0HLIASSHHV4QC:00000008 [INF] Request finished in 73.9369ms 200 image/png (791a596a)
+2018-11-15T17:43:19.8378559+07:00 0HLIASSHHV4QG:00000004 [INF] Sending file. Request path: '"/client-side/images/flag-chile.jpg"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\images\flag-chile.jpg"' (27b0a520)
+2018-11-15T17:43:19.8450863+07:00 0HLIASSHHV4QC:00000009 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/banner-left.jpg   (ca22a1cb)
+2018-11-15T17:43:19.8610219+07:00 0HLIASSHHV4QG:00000004 [INF] Request finished in 134.7344ms 200 image/jpeg (791a596a)
+2018-11-15T17:43:19.8834437+07:00 0HLIASSHHV4QD:00000003 [INF] Sending file. Request path: '"/client-side/images/flag-brazil.jpg"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\images\flag-brazil.jpg"' (27b0a520)
+2018-11-15T17:43:19.9099305+07:00 0HLIASSHHV4QG:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/slider/slide-1.jpg   (ca22a1cb)
+2018-11-15T17:43:19.9315844+07:00 0HLIASSHHV4QD:00000003 [INF] Request finished in 163.5144ms 200 image/jpeg (791a596a)
+2018-11-15T17:43:19.9363973+07:00 0HLIASSHHV4QB:00000005 [INF] Sending file. Request path: '"/client-side/images/flag-spain.jpg"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\images\flag-spain.jpg"' (27b0a520)
+2018-11-15T17:43:19.9419163+07:00 0HLIASSHHV4QD:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/slider/slide-2.jpg   (ca22a1cb)
+2018-11-15T17:43:19.9526527+07:00 0HLIASSHHV4QB:00000005 [INF] Request finished in 233.2947ms 200 image/jpeg (791a596a)
+2018-11-15T17:43:19.9796598+07:00 0HLIASSHHV4QE:0000000E [INF] Sending file. Request path: '"/client-side/images/products/product-1.jpg"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\images\products\product-1.jpg"' (27b0a520)
+2018-11-15T17:43:20.0327196+07:00 0HLIASSHHV4QB:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/slider/slide-3.jpg   (ca22a1cb)
+2018-11-15T17:43:20.0679245+07:00 0HLIASSHHV4QC:00000009 [INF] Sending file. Request path: '"/client-side/images/banner-left.jpg"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\images\banner-left.jpg"' (27b0a520)
+2018-11-15T17:43:20.0759745+07:00 0HLIASSHHV4QG:00000005 [INF] Sending file. Request path: '"/client-side/images/slider/slide-1.jpg"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\images\slider\slide-1.jpg"' (27b0a520)
+2018-11-15T17:43:20.0829703+07:00 0HLIASSHHV4QC:00000009 [INF] Request finished in 256.1347ms 200 image/jpeg (791a596a)
+2018-11-15T17:43:20.1014123+07:00 0HLIASSHHV4QG:00000005 [INF] Request finished in 214.8497ms 200 image/jpeg (791a596a)
+2018-11-15T17:43:20.1237864+07:00 0HLIASSHHV4QC:0000000A [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/footer-logo.png   (ca22a1cb)
+2018-11-15T17:43:20.2544652+07:00 0HLIASSHHV4QG:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/visa.png   (ca22a1cb)
+2018-11-15T17:43:20.2961730+07:00 0HLIASSHHV4QE:0000000E [INF] Request finished in 220.0582ms 200 image/jpeg (791a596a)
+2018-11-15T17:43:20.4671129+07:00 0HLIASSHHV4QG:00000006 [INF] The file "/client-side/images/visa.png" was not modified (f1f8d725)
+2018-11-15T17:43:20.6680011+07:00 0HLIASSHHV4QE:0000000F [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/sub1.jpg   (ca22a1cb)
+2018-11-15T17:43:20.6873153+07:00 0HLIASSHHV4QG:00000006 [INF] Request finished in 362.963ms 304 image/png (791a596a)
+2018-11-15T17:43:20.6958761+07:00 0HLIASSHHV4QC:0000000A [INF] Sending file. Request path: '"/client-side/images/footer-logo.png"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\images\footer-logo.png"' (27b0a520)
+2018-11-15T17:43:20.7005573+07:00 0HLIASSHHV4QG:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/select-arrow.png   (ca22a1cb)
+2018-11-15T17:43:20.7088421+07:00 0HLIASSHHV4QC:0000000A [INF] Request finished in 612.7786ms 200 image/png (791a596a)
+2018-11-15T17:43:20.7508643+07:00 0HLIASSHHV4QG:00000007 [INF] The file "/client-side/images/select-arrow.png" was not modified (f1f8d725)
+2018-11-15T17:43:20.7614237+07:00 0HLIASSHHV4QD:00000004 [INF] Sending file. Request path: '"/client-side/images/slider/slide-2.jpg"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\images\slider\slide-2.jpg"' (27b0a520)
+2018-11-15T17:43:20.7714227+07:00 0HLIASSHHV4QG:00000007 [INF] Request finished in 65.647ms 304 image/png (791a596a)
+2018-11-15T17:43:20.7773695+07:00 0HLIASSHHV4QD:00000004 [INF] Request finished in 829.675ms 200 image/jpeg (791a596a)
+2018-11-15T17:43:20.7976434+07:00 0HLIASSHHV4QC:0000000B [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/bg_text_des.png   (ca22a1cb)
+2018-11-15T17:43:20.8023986+07:00 0HLIASSHHV4QD:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/paypal.png   (ca22a1cb)
+2018-11-15T17:43:20.8049856+07:00 0HLIASSHHV4QC:0000000B [INF] The file "/client-side/images/bg_text_des.png" was not modified (f1f8d725)
+2018-11-15T17:43:20.8185724+07:00 0HLIASSHHV4QD:00000005 [INF] The file "/client-side/images/paypal.png" was not modified (f1f8d725)
+2018-11-15T17:43:20.8495999+07:00 0HLIASSHHV4QC:0000000B [INF] Request finished in 101.8685ms 304 image/png (791a596a)
+2018-11-15T17:43:20.8543971+07:00 0HLIASSHHV4QD:00000005 [INF] Request finished in 41.2748ms 304 image/png (791a596a)
+2018-11-15T17:43:20.8605212+07:00 0HLIASSHHV4QG:00000008 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/discover.png   (ca22a1cb)
+2018-11-15T17:43:20.8670779+07:00 0HLIASSHHV4QD:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/fonts/font-awesome/fontawesome-webfont.woff2?v=4.7.0   (ca22a1cb)
+2018-11-15T17:43:20.8728231+07:00 0HLIASSHHV4QG:00000008 [INF] The file "/client-side/images/discover.png" was not modified (f1f8d725)
+2018-11-15T17:43:20.9508646+07:00 0HLIASSHHV4QC:0000000C [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/images/master-card.png   (ca22a1cb)
+2018-11-15T17:43:21.0175034+07:00 0HLIASSHHV4QG:00000008 [INF] Request finished in 107.6905ms 304 image/png (791a596a)
+2018-11-15T17:43:21.0265874+07:00 0HLIASSHHV4QE:0000000F [INF] Sending file. Request path: '"/client-side/images/sub1.jpg"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\images\sub1.jpg"' (27b0a520)
+2018-11-15T17:43:21.0325448+07:00 0HLIASSHHV4QD:00000006 [INF] Sending file. Request path: '"/client-side/fonts/font-awesome/fontawesome-webfont.woff2"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\fonts\font-awesome\fontawesome-webfont.woff2"' (27b0a520)
+2018-11-15T17:43:21.0369360+07:00 0HLIASSHHV4QE:0000000F [INF] Request finished in 730.2502ms 200 image/jpeg (791a596a)
+2018-11-15T17:43:21.0447227+07:00 0HLIASSHHV4QD:00000006 [INF] Request finished in 177.5321ms 200 font/woff2 (791a596a)
+2018-11-15T17:43:21.0519468+07:00 0HLIASSHHV4QE:00000010 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/fonts/pe-icon-7-stroke/Pe-icon-7-stroke.woff?d7yf1v   (ca22a1cb)
+2018-11-15T17:43:21.0607100+07:00 0HLIASSHHV4QC:0000000C [INF] The file "/client-side/images/master-card.png" was not modified (f1f8d725)
+2018-11-15T17:43:21.0861633+07:00 0HLIASSHHV4QG:00000009 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/fonts/simple-line-icons/Simple-Line-Icons.woff2?v=2.4.0   (ca22a1cb)
+2018-11-15T17:43:21.1024900+07:00 0HLIASSHHV4QC:0000000C [INF] Request finished in 193.3489ms 304 image/png (791a596a)
+2018-11-15T17:43:21.1223081+07:00 0HLIASSHHV4QE:00000010 [INF] Sending file. Request path: '"/client-side/fonts/pe-icon-7-stroke/Pe-icon-7-stroke.woff"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\fonts\pe-icon-7-stroke\Pe-icon-7-stroke.woff"' (27b0a520)
+2018-11-15T17:43:21.1300337+07:00 0HLIASSHHV4QG:00000009 [INF] Sending file. Request path: '"/client-side/fonts/simple-line-icons/Simple-Line-Icons.woff2"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\fonts\simple-line-icons\Simple-Line-Icons.woff2"' (27b0a520)
+2018-11-15T17:43:21.1357398+07:00 0HLIASSHHV4QE:00000010 [INF] Request finished in 85.2038ms 200 application/font-woff (791a596a)
+2018-11-15T17:43:21.1446028+07:00 0HLIASSHHV4QG:00000009 [INF] Request finished in 112.3851ms 200 font/woff2 (791a596a)
+2018-11-15T17:43:21.1635609+07:00 0HLIASSHHV4QB:00000006 [INF] Sending file. Request path: '"/client-side/images/slider/slide-3.jpg"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\images\slider\slide-3.jpg"' (27b0a520)
+2018-11-15T17:43:21.1695072+07:00 0HLIASSHHV4QB:00000006 [INF] Request finished in 1210.6639ms 200 image/jpeg (791a596a)
+2018-11-15T17:43:23.5807417+07:00 0HLIASSHHV4QF:0000000B [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/favicon.ico   (ca22a1cb)
+2018-11-15T17:43:23.6513566+07:00 0HLIASSHHV4QF:0000000B [INF] Sending file. Request path: '"/client-side/favicon.ico"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\client-side\favicon.ico"' (27b0a520)
+2018-11-15T17:43:23.6591792+07:00 0HLIASSHHV4QF:0000000B [INF] Request finished in 75.7055ms 200 image/x-icon (791a596a)
+2018-11-15T17:43:34.2981410+07:00 0HLIASSHHV4QH:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/client-side/css/grabbing.png   (ca22a1cb)
+2018-11-15T17:43:34.3048004+07:00 0HLIASSHHV4QH:00000001 [INF] "Identity.Application" was not authenticated. Failure message: "Ticket expired" (48071232)
+2018-11-15T17:43:34.3167883+07:00 0HLIASSHHV4QH:00000001 [INF] Request finished in 15.7851ms 404  (791a596a)
+2018-11-15T17:43:34.3893038+07:00 0HLIASSHHV4QH:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/san-pham-20-p.20.html   (ca22a1cb)
+2018-11-15T17:43:34.3990975+07:00 0HLIASSHHV4QH:00000002 [INF] "Identity.Application" was not authenticated. Failure message: "Ticket expired" (48071232)
+2018-11-15T17:43:34.4361358+07:00 0HLIASSHHV4QH:00000002 [INF] Route matched with "{action = \"Details\", controller = \"Product\", area = \"\"}". Executing action "ShoppingOnline.WebApplication.Controllers.Product.ProductController.Details (ShoppingOnline.WebApplication)" (a44c0341)
+2018-11-15T17:43:34.4964112+07:00 0HLIASSHHV4QH:00000002 [INF] Executing action method "ShoppingOnline.WebApplication.Controllers.Product.ProductController.Details (ShoppingOnline.WebApplication)" with arguments (["20"]) - Validation state: Valid (4e3479ed)
+2018-11-15T17:43:34.5069270+07:00 0HLIASSHHV4QH:00000002 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2018-11-15T17:43:34.5387877+07:00 0HLIASSHHV4QH:00000002 [INF] Executed DbCommand ("4"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[CategoryId], [x].[Content], [x].[DateCreated], [x].[DateModified], [x].[Description], [x].[HomeFlag], [x].[HotFlag], [x].[Image], [x].[Name], [x].[OriginalPrice], [x].[Price], [x].[PromotionPrice], [x].[SeoAlias], [x].[SeoDescription], [x].[SeoKeywords], [x].[SeoPageTitle], [x].[Status], [x].[Tags], [x].[Unit], [x].[ViewCount]
+FROM [Products] AS [x]
+WHERE [x].[Id] = @__id_0" (0723d8ff)
+2018-11-15T17:43:34.7404707+07:00 0HLIASSHHV4QH:00000002 [INF] Executed DbCommand ("3"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [p].[Id], [p].[DateCreated], [p].[DateModified], [p].[Description], [p].[HomeFlag], [p].[HomeOrder], [p].[Image], [p].[Name], [p].[ParentId], [p].[SeoAlias], [p].[SeoDescription], [p].[SeoKeywords], [p].[SeoPageTitle], [p].[SortOrder], [p].[Status]
+FROM [ProductCategories] AS [p]
+WHERE [p].[Id] = @__id_0" (0723d8ff)
+2018-11-15T17:43:35.0170945+07:00 0HLIASSHHV4QH:00000002 [INF] Executed DbCommand ("16"ms) [Parameters=["@__productId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [n].[Id], [n].[ProductId], CASE
+    WHEN [n].[ProductId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [n.Product].[Name], [n.Product].[CategoryId], [n.Product].[Image], [n.Product].[Price], [n.Product].[PromotionPrice], [n.Product].[OriginalPrice], [n.Product].[Description], [n.Product].[Content], [n.Product].[HomeFlag], [n.Product].[HotFlag], [n.Product].[ViewCount], [n.Product].[Tags], [n.Product].[Unit], CASE
+    WHEN [n.Product].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [n.Product.ProductCategory].[Id] AS [Id0], [n.Product.ProductCategory].[Name] AS [Name0], [n.Product.ProductCategory].[Description] AS [Description0], [n.Product.ProductCategory].[ParentId], [n.Product.ProductCategory].[HomeOrder], [n.Product.ProductCategory].[Image] AS [Image0], [n.Product.ProductCategory].[HomeFlag] AS [HomeFlag0], [n.Product.ProductCategory].[DateCreated], [n.Product.ProductCategory].[DateModified], [n.Product.ProductCategory].[SortOrder], [n.Product.ProductCategory].[Status], [n.Product.ProductCategory].[SeoPageTitle], [n.Product.ProductCategory].[SeoAlias], [n.Product.ProductCategory].[SeoKeywords], [n.Product.ProductCategory].[SeoDescription], [n.Product].[SeoPageTitle] AS [SeoPageTitle0], [n.Product].[SeoAlias] AS [SeoAlias0], [n.Product].[SeoKeywords] AS [SeoKeywords0], [n.Product].[SeoDescription] AS [SeoDescription0], [n.Product].[DateCreated] AS [DateCreated0], [n.Product].[DateModified] AS [DateModified0], [n.Product].[Status] AS [Status0], [n].[Path], [n].[Caption], [n.Product].[Id]
+FROM [ProductImages] AS [n]
+INNER JOIN [Products] AS [n.Product] ON [n].[ProductId] = [n.Product].[Id]
+INNER JOIN [ProductCategories] AS [n.Product.ProductCategory] ON [n.Product].[CategoryId] = [n.Product.ProductCategory].[Id]
+WHERE [n].[ProductId] = @__productId_0
+ORDER BY [n].[Id], [n.Product].[Id], [n.Product.ProductCategory].[Id]" (0723d8ff)
+2018-11-15T17:43:35.0800322+07:00 0HLIASSHHV4QH:00000002 [INF] Executed DbCommand ("4"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [p].[Id], [p].[CategoryId], [p].[Content], [p].[DateCreated], [p].[DateModified], [p].[Description], [p].[HomeFlag], [p].[HotFlag], [p].[Image], [p].[Name], [p].[OriginalPrice], [p].[Price], [p].[PromotionPrice], [p].[SeoAlias], [p].[SeoDescription], [p].[SeoKeywords], [p].[SeoPageTitle], [p].[Status], [p].[Tags], [p].[Unit], [p].[ViewCount]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0" (0723d8ff)
+2018-11-15T17:43:35.1083883+07:00 0HLIASSHHV4QH:00000002 [WRN] Query: '"(from Product n in DbSet<Product> where (int)[n].Status == 1 && [n].CategoryId == __product_Category..."' uses a row limiting operation (Skip/Take) without OrderBy which may lead to unpredictable results. (32148ccc)
+2018-11-15T17:43:35.2950521+07:00 0HLIASSHHV4QH:00000002 [INF] Executed DbCommand ("10"ms) [Parameters=["@__p_2='?' (DbType = Int32), @__product_CategoryId_0='?' (DbType = Int32), @__productId_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_2) [n].[Id], [n].[Name], [n].[CategoryId], [n].[Image], [n].[Price], [n].[PromotionPrice], [n].[OriginalPrice], [n].[Description], [n].[Content], [n].[HomeFlag], [n].[HotFlag], [n].[ViewCount], [n].[Tags], [n].[Unit], CASE
+    WHEN [n].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [n.ProductCategory].[Name] AS [Name0], [n.ProductCategory].[Description] AS [Description0], [n.ProductCategory].[ParentId], [n.ProductCategory].[HomeOrder], [n.ProductCategory].[Image] AS [Image0], [n.ProductCategory].[HomeFlag] AS [HomeFlag0], [n.ProductCategory].[DateCreated], [n.ProductCategory].[DateModified], [n.ProductCategory].[SortOrder], [n.ProductCategory].[Status], [n.ProductCategory].[SeoPageTitle], [n.ProductCategory].[SeoAlias], [n.ProductCategory].[SeoKeywords], [n.ProductCategory].[SeoDescription], [n].[SeoPageTitle] AS [SeoPageTitle0], [n].[SeoAlias] AS [SeoAlias0], [n].[SeoKeywords] AS [SeoKeywords0], [n].[SeoDescription] AS [SeoDescription0], [n].[DateCreated] AS [DateCreated0], [n].[DateModified] AS [DateModified0], [n].[Status] AS [Status0], [n.ProductCategory].[Id]
+FROM [Products] AS [n]
+INNER JOIN [ProductCategories] AS [n.ProductCategory] ON [n].[CategoryId] = [n.ProductCategory].[Id]
+WHERE (([n].[Status] = 1) AND ([n].[CategoryId] = @__product_CategoryId_0)) AND ([n].[Id] <> @__productId_1)
+ORDER BY [n].[Id], [n.ProductCategory].[Id]" (0723d8ff)
+2018-11-15T17:43:35.3245021+07:00 0HLIASSHHV4QH:00000002 [INF] Executed DbCommand ("16"ms) [Parameters=["@__p_2='?' (DbType = Int32), @__product_CategoryId_0='?' (DbType = Int32), @__productId_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [n.ProductTags].[Id] AS [Id1], [n.ProductTags].[ProductId], [n.ProductTags].[TagId], CASE
+    WHEN [n.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [n.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [n.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT TOP(@__p_2) [n0].[Id]
+    FROM [Products] AS [n0]
+    INNER JOIN [ProductCategories] AS [n.ProductCategory0] ON [n0].[CategoryId] = [n.ProductCategory0].[Id]
+    WHERE (([n0].[Status] = 1) AND ([n0].[CategoryId] = @__product_CategoryId_0)) AND ([n0].[Id] <> @__productId_1)
+    ORDER BY [n0].[Id]
+) AS [t] ON [n.ProductTags].[ProductId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-11-15T17:43:35.3897837+07:00 0HLIASSHHV4QH:00000002 [INF] Executed DbCommand ("16"ms) [Parameters=["@__p_2='?' (DbType = Int32), @__product_CategoryId_0='?' (DbType = Int32), @__productId_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t0].[Id], [t0].[Id0], [n.ProductCategory.Products].[Id] AS [Id1], [n.ProductCategory.Products].[Name], [n.ProductCategory.Products].[CategoryId], [n.ProductCategory.Products].[Image], [n.ProductCategory.Products].[Price], [n.ProductCategory.Products].[PromotionPrice], [n.ProductCategory.Products].[OriginalPrice], [n.ProductCategory.Products].[Description], [n.ProductCategory.Products].[Content], [n.ProductCategory.Products].[HomeFlag], [n.ProductCategory.Products].[HotFlag], [n.ProductCategory.Products].[ViewCount], [n.ProductCategory.Products].[Tags], [n.ProductCategory.Products].[Unit], [n.ProductCategory.Products].[SeoPageTitle], [n.ProductCategory.Products].[SeoAlias], [n.ProductCategory.Products].[SeoKeywords], [n.ProductCategory.Products].[SeoDescription], [n.ProductCategory.Products].[DateCreated], [n.ProductCategory.Products].[DateModified], [n.ProductCategory.Products].[Status]
+FROM [Products] AS [n.ProductCategory.Products]
+INNER JOIN (
+    SELECT TOP(@__p_2) [n1].[Id], [n.ProductCategory1].[Id] AS [Id0]
+    FROM [Products] AS [n1]
+    INNER JOIN [ProductCategories] AS [n.ProductCategory1] ON [n1].[CategoryId] = [n.ProductCategory1].[Id]
+    WHERE (([n1].[Status] = 1) AND ([n1].[CategoryId] = @__product_CategoryId_0)) AND ([n1].[Id] <> @__productId_1)
+    ORDER BY [n1].[Id], [n.ProductCategory1].[Id]
+) AS [t0] ON [n.ProductCategory.Products].[CategoryId] = [t0].[Id0]
+ORDER BY [t0].[Id], [t0].[Id0], [n.ProductCategory.Products].[Id]" (0723d8ff)
+2018-11-15T17:43:35.4354316+07:00 0HLIASSHHV4QH:00000002 [INF] Executed DbCommand ("24"ms) [Parameters=["@__p_2='?' (DbType = Int32), @__product_CategoryId_0='?' (DbType = Int32), @__productId_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[Id], [t2].[Id0], [t2].[Id1], [n.ProductCategory.Products.ProductTags].[Id] AS [Id3], [n.ProductCategory.Products.ProductTags].[ProductId], [n.ProductCategory.Products.ProductTags].[TagId], CASE
+    WHEN [n.ProductCategory.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag0].[Name], [dto.Tag0].[Type]
+FROM [ProductTags] AS [n.ProductCategory.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag0] ON [n.ProductCategory.Products.ProductTags].[TagId] = [dto.Tag0].[Id]
+INNER JOIN (
+    SELECT [t1].[Id], [t1].[Id0], [n.ProductCategory.Products0].[Id] AS [Id1]
+    FROM [Products] AS [n.ProductCategory.Products0]
+    INNER JOIN (
+        SELECT TOP(@__p_2) [n2].[Id], [n.ProductCategory2].[Id] AS [Id0]
+        FROM [Products] AS [n2]
+        INNER JOIN [ProductCategories] AS [n.ProductCategory2] ON [n2].[CategoryId] = [n.ProductCategory2].[Id]
+        WHERE (([n2].[Status] = 1) AND ([n2].[CategoryId] = @__product_CategoryId_0)) AND ([n2].[Id] <> @__productId_1)
+        ORDER BY [n2].[Id], [n.ProductCategory2].[Id]
+    ) AS [t1] ON [n.ProductCategory.Products0].[CategoryId] = [t1].[Id0]
+) AS [t2] ON [n.ProductCategory.Products.ProductTags].[ProductId] = [t2].[Id1]
+ORDER BY [t2].[Id], [t2].[Id0], [t2].[Id1]" (0723d8ff)
+2018-11-15T17:43:35.5403215+07:00 0HLIASSHHV4QH:00000002 [WRN] Query: '"(from Product n in DbSet<Product> where [n].PromotionPrice != null select new ProductViewModel{ { 
+..."' uses a row limiting operation (Skip/Take) without OrderBy which may lead to unpredictable results. (32148ccc)
+2018-11-15T17:43:35.7573760+07:00 0HLIASSHHV4QH:00000002 [INF] Executed DbCommand ("9"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [n].[Id], [n].[Name], [n].[CategoryId], [n].[Image], [n].[Price], [n].[PromotionPrice], [n].[OriginalPrice], [n].[Description], [n].[Content], [n].[HomeFlag], [n].[HotFlag], [n].[ViewCount], [n].[Tags], [n].[Unit], CASE
+    WHEN [n].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [n.ProductCategory].[Name] AS [Name0], [n.ProductCategory].[Description] AS [Description0], [n.ProductCategory].[ParentId], [n.ProductCategory].[HomeOrder], [n.ProductCategory].[Image] AS [Image0], [n.ProductCategory].[HomeFlag] AS [HomeFlag0], [n.ProductCategory].[DateCreated], [n.ProductCategory].[DateModified], [n.ProductCategory].[SortOrder], [n.ProductCategory].[Status], [n.ProductCategory].[SeoPageTitle], [n.ProductCategory].[SeoAlias], [n.ProductCategory].[SeoKeywords], [n.ProductCategory].[SeoDescription], [n].[SeoPageTitle] AS [SeoPageTitle0], [n].[SeoAlias] AS [SeoAlias0], [n].[SeoKeywords] AS [SeoKeywords0], [n].[SeoDescription] AS [SeoDescription0], [n].[DateCreated] AS [DateCreated0], [n].[DateModified] AS [DateModified0], [n].[Status] AS [Status0], [n.ProductCategory].[Id]
+FROM [Products] AS [n]
+INNER JOIN [ProductCategories] AS [n.ProductCategory] ON [n].[CategoryId] = [n.ProductCategory].[Id]
+WHERE [n].[PromotionPrice] IS NOT NULL
+ORDER BY [n].[Id], [n.ProductCategory].[Id]" (0723d8ff)
+2018-11-15T17:43:35.7885861+07:00 0HLIASSHHV4QH:00000002 [INF] Executed DbCommand ("12"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [n.ProductTags].[Id] AS [Id1], [n.ProductTags].[ProductId], [n.ProductTags].[TagId], CASE
+    WHEN [n.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [n.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [n.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT TOP(@__p_0) [n0].[Id]
+    FROM [Products] AS [n0]
+    INNER JOIN [ProductCategories] AS [n.ProductCategory0] ON [n0].[CategoryId] = [n.ProductCategory0].[Id]
+    WHERE [n0].[PromotionPrice] IS NOT NULL
+    ORDER BY [n0].[Id]
+) AS [t] ON [n.ProductTags].[ProductId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-11-15T17:43:35.8218641+07:00 0HLIASSHHV4QH:00000002 [INF] Executed DbCommand ("15"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t0].[Id], [t0].[Id0], [n.ProductCategory.Products].[Id] AS [Id1], [n.ProductCategory.Products].[Name], [n.ProductCategory.Products].[CategoryId], [n.ProductCategory.Products].[Image], [n.ProductCategory.Products].[Price], [n.ProductCategory.Products].[PromotionPrice], [n.ProductCategory.Products].[OriginalPrice], [n.ProductCategory.Products].[Description], [n.ProductCategory.Products].[Content], [n.ProductCategory.Products].[HomeFlag], [n.ProductCategory.Products].[HotFlag], [n.ProductCategory.Products].[ViewCount], [n.ProductCategory.Products].[Tags], [n.ProductCategory.Products].[Unit], [n.ProductCategory.Products].[SeoPageTitle], [n.ProductCategory.Products].[SeoAlias], [n.ProductCategory.Products].[SeoKeywords], [n.ProductCategory.Products].[SeoDescription], [n.ProductCategory.Products].[DateCreated], [n.ProductCategory.Products].[DateModified], [n.ProductCategory.Products].[Status]
+FROM [Products] AS [n.ProductCategory.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [n1].[Id], [n.ProductCategory1].[Id] AS [Id0]
+    FROM [Products] AS [n1]
+    INNER JOIN [ProductCategories] AS [n.ProductCategory1] ON [n1].[CategoryId] = [n.ProductCategory1].[Id]
+    WHERE [n1].[PromotionPrice] IS NOT NULL
+    ORDER BY [n1].[Id], [n.ProductCategory1].[Id]
+) AS [t0] ON [n.ProductCategory.Products].[CategoryId] = [t0].[Id0]
+ORDER BY [t0].[Id], [t0].[Id0], [n.ProductCategory.Products].[Id]" (0723d8ff)
+2018-11-15T17:43:35.8651838+07:00 0HLIASSHHV4QH:00000002 [INF] Executed DbCommand ("25"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[Id], [t2].[Id0], [t2].[Id1], [n.ProductCategory.Products.ProductTags].[Id] AS [Id3], [n.ProductCategory.Products.ProductTags].[ProductId], [n.ProductCategory.Products.ProductTags].[TagId], CASE
+    WHEN [n.ProductCategory.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag0].[Name], [dto.Tag0].[Type]
+FROM [ProductTags] AS [n.ProductCategory.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag0] ON [n.ProductCategory.Products.ProductTags].[TagId] = [dto.Tag0].[Id]
+INNER JOIN (
+    SELECT [t1].[Id], [t1].[Id0], [n.ProductCategory.Products0].[Id] AS [Id1]
+    FROM [Products] AS [n.ProductCategory.Products0]
+    INNER JOIN (
+        SELECT TOP(@__p_0) [n2].[Id], [n.ProductCategory2].[Id] AS [Id0]
+        FROM [Products] AS [n2]
+        INNER JOIN [ProductCategories] AS [n.ProductCategory2] ON [n2].[CategoryId] = [n.ProductCategory2].[Id]
+        WHERE [n2].[PromotionPrice] IS NOT NULL
+        ORDER BY [n2].[Id], [n.ProductCategory2].[Id]
+    ) AS [t1] ON [n.ProductCategory.Products0].[CategoryId] = [t1].[Id0]
+) AS [t2] ON [n.ProductCategory.Products.ProductTags].[ProductId] = [t2].[Id1]
+ORDER BY [t2].[Id], [t2].[Id0], [t2].[Id1]" (0723d8ff)
+2018-11-15T17:43:36.1835415+07:00 0HLIASSHHV4QH:00000002 [INF] Executed DbCommand ("7"ms) [Parameters=["@__productId_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name]
+FROM [Tags] AS [t]
+INNER JOIN [ProductTags] AS [pt] ON [t].[Id] = [pt].[TagId]
+WHERE [pt].[ProductId] = @__productId_0" (0723d8ff)
+2018-11-15T17:43:36.1947522+07:00 0HLIASSHHV4QH:00000002 [INF] Executed action method "ShoppingOnline.WebApplication.Controllers.Product.ProductController.Details (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 1690.0273ms. (50a9e262)
+2018-11-15T17:43:36.2666301+07:00 0HLIASSHHV4QH:00000002 [INF] Executing ViewResult, running view "Details". (c83d0e25)
+2018-11-15T17:43:36.3531180+07:00 0HLIASSHHV4QH:00000002 [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2018-11-15T17:43:36.3776141+07:00 0HLIASSHHV4QH:00000002 [INF] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id], [x.Products].[Id]" (0723d8ff)
+2018-11-15T17:43:36.4204518+07:00 0HLIASSHHV4QH:00000002 [INF] Executed DbCommand ("24"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t1].[ParentId], [t1].[Id], [t1].[Id0], [x.Products.ProductTags].[Id] AS [Id2], [x.Products.ProductTags].[ProductId], [x.Products.ProductTags].[TagId], CASE
+    WHEN [x.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.Products.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT [t0].[ParentId], [t0].[Id], [x.Products0].[Id] AS [Id0]
+    FROM [Products] AS [x.Products0]
+    INNER JOIN (
+        SELECT [x1].[ParentId], [x1].[Id]
+        FROM [ProductCategories] AS [x1]
+    ) AS [t0] ON [x.Products0].[CategoryId] = [t0].[Id]
+) AS [t1] ON [x.Products.ProductTags].[ProductId] = [t1].[Id0]
+ORDER BY [t1].[ParentId], [t1].[Id], [t1].[Id0]" (0723d8ff)
+2018-11-15T17:43:36.4487827+07:00 0HLIASSHHV4QH:00000002 [INF] Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2018-11-15T17:43:36.4857965+07:00 0HLIASSHHV4QH:00000002 [INF] Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id], [x.Products].[Id]" (0723d8ff)
+2018-11-15T17:43:36.5353492+07:00 0HLIASSHHV4QH:00000002 [INF] Executed DbCommand ("16"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t1].[ParentId], [t1].[Id], [t1].[Id0], [x.Products.ProductTags].[Id] AS [Id2], [x.Products.ProductTags].[ProductId], [x.Products.ProductTags].[TagId], CASE
+    WHEN [x.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.Products.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT [t0].[ParentId], [t0].[Id], [x.Products0].[Id] AS [Id0]
+    FROM [Products] AS [x.Products0]
+    INNER JOIN (
+        SELECT [x1].[ParentId], [x1].[Id]
+        FROM [ProductCategories] AS [x1]
+    ) AS [t0] ON [x.Products0].[CategoryId] = [t0].[Id]
+) AS [t1] ON [x.Products.ProductTags].[ProductId] = [t1].[Id0]
+ORDER BY [t1].[ParentId], [t1].[Id], [t1].[Id0]" (0723d8ff)
+2018-11-15T17:43:36.5544539+07:00 0HLIASSHHV4QH:00000002 [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2018-11-15T17:43:36.6064940+07:00 0HLIASSHHV4QH:00000002 [INF] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id], [x.Products].[Id]" (0723d8ff)
+2018-11-15T17:43:36.6711878+07:00 0HLIASSHHV4QH:00000002 [INF] Executed DbCommand ("17"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t1].[ParentId], [t1].[Id], [t1].[Id0], [x.Products.ProductTags].[Id] AS [Id2], [x.Products.ProductTags].[ProductId], [x.Products.ProductTags].[TagId], CASE
+    WHEN [x.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.Products.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT [t0].[ParentId], [t0].[Id], [x.Products0].[Id] AS [Id0]
+    FROM [Products] AS [x.Products0]
+    INNER JOIN (
+        SELECT [x1].[ParentId], [x1].[Id]
+        FROM [ProductCategories] AS [x1]
+    ) AS [t0] ON [x.Products0].[CategoryId] = [t0].[Id]
+) AS [t1] ON [x.Products.ProductTags].[ProductId] = [t1].[Id0]
+ORDER BY [t1].[ParentId], [t1].[Id], [t1].[Id0]" (0723d8ff)
+2018-11-15T17:43:36.7134240+07:00 0HLIASSHHV4QH:00000002 [INF] Executed ViewResult - view "Details" executed in 508.8004ms. (f66409e9)
+2018-11-15T17:43:36.7200865+07:00 0HLIASSHHV4QH:00000002 [INF] Executed action "ShoppingOnline.WebApplication.Controllers.Product.ProductController.Details (ShoppingOnline.WebApplication)" in 2277.7437ms (afa2e885)
+2018-11-15T17:43:36.7305907+07:00 0HLIASSHHV4QH:00000002 [INF] Request finished in 2344.0643ms 200 text/html; charset=utf-8 (791a596a)
+2018-11-15T17:43:36.9200330+07:00 0HLIASSHHV4QH:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/slick-carousel/slick/slick-theme.css   (ca22a1cb)
+2018-11-15T17:43:36.9259259+07:00 0HLIASSHHV4QI:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/slick-carousel/slick/slick.js   (ca22a1cb)
+2018-11-15T17:43:36.9340108+07:00 0HLIASSHHV4QJ:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/slick-carousel/slick/slick.css   (ca22a1cb)
+2018-11-15T17:43:36.9448262+07:00 0HLIASSHHV4QJ:00000001 [INF] The file "/lib/slick-carousel/slick/slick.css" was not modified (f1f8d725)
+2018-11-15T17:43:36.9631976+07:00 0HLIASSHHV4QJ:00000001 [INF] Request finished in 28.2244ms 304 text/css (791a596a)
+2018-11-15T17:43:36.9710048+07:00 0HLIASSHHV4QK:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jquery-validation/dist/jquery.validate.js   (ca22a1cb)
+2018-11-15T17:43:36.9795326+07:00 0HLIASSHHV4QH:00000003 [INF] Sending file. Request path: '"/lib/slick-carousel/slick/slick-theme.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\slick-carousel\slick\slick-theme.css"' (27b0a520)
+2018-11-15T17:43:37.0735426+07:00 0HLIASSHHV4QH:00000003 [INF] Request finished in 102.4368ms 200 text/css (791a596a)
+2018-11-15T17:43:37.0923435+07:00 0HLIASSHHV4QI:00000001 [INF] Sending file. Request path: '"/lib/slick-carousel/slick/slick.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\slick-carousel\slick\slick.js"' (27b0a520)
+2018-11-15T17:43:37.0973587+07:00 0HLIASSHHV4QK:00000001 [INF] Sending file. Request path: '"/lib/jquery-validation/dist/jquery.validate.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\jquery-validation\dist\jquery.validate.js"' (27b0a520)
+2018-11-15T17:43:37.1030612+07:00 0HLIASSHHV4QH:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app-client/controllers/product/details.js?v=9WwvQ4hqkJnFC2X9-ExF3I0sQVR64qnadQRHweVzykc   (ca22a1cb)
+2018-11-15T17:43:37.1116823+07:00 0HLIASSHHV4QK:00000001 [INF] Request finished in 146.5613ms 200 application/javascript (791a596a)
+2018-11-15T17:43:37.1374545+07:00 0HLIASSHHV4QH:00000004 [INF] The file "/app-client/controllers/product/details.js" was not modified (f1f8d725)
+2018-11-15T17:43:37.1519544+07:00 0HLIASSHHV4QI:00000001 [INF] Request finished in 212.344ms 200 application/javascript (791a596a)
+2018-11-15T17:43:37.1669051+07:00 0HLIASSHHV4QH:00000004 [INF] Request finished in 64.0083ms 304 application/javascript (791a596a)
+2018-11-15T17:43:37.3776035+07:00 0HLIASSHHV4QH:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/slick-carousel/slick/ajax-loader.gif   (ca22a1cb)
+2018-11-15T17:43:37.4715574+07:00 0HLIASSHHV4QH:00000005 [INF] Sending file. Request path: '"/lib/slick-carousel/slick/ajax-loader.gif"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\slick-carousel\slick\ajax-loader.gif"' (27b0a520)
+2018-11-15T17:43:37.4778084+07:00 0HLIASSHHV4QH:00000005 [INF] Request finished in 100.2156ms 200 image/gif (791a596a)
+2018-11-15T17:43:46.1316144+07:00 0HLIASSHHV4QL:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/role   (ca22a1cb)
+2018-11-15T17:43:46.1402008+07:00 0HLIASSHHV4QL:00000001 [INF] "Identity.Application" was not authenticated. Failure message: "Ticket expired" (48071232)
+2018-11-15T17:43:46.1561307+07:00 0HLIASSHHV4QL:00000001 [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"Role\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.Index (ShoppingOnline.WebApplication)" (a44c0341)
+2018-11-15T17:43:46.1811275+07:00 0HLIASSHHV4QL:00000001 [INF] Authorization failed. (b15dd539)
+2018-11-15T17:43:46.1883476+07:00 0HLIASSHHV4QL:00000001 [INF] Authorization failed for the request at filter '"Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter"'. (8b6446cb)
+2018-11-15T17:43:46.1956278+07:00 0HLIASSHHV4QL:00000001 [INF] Executing ChallengeResult with authentication schemes ([]). (f3dca807)
+2018-11-15T17:43:46.2088109+07:00 0HLIASSHHV4QL:00000001 [INF] AuthenticationScheme: "Identity.Application" was challenged. (d45f1f38)
+2018-11-15T17:43:46.2137927+07:00 0HLIASSHHV4QL:00000001 [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.Index (ShoppingOnline.WebApplication)" in 52.7394ms (afa2e885)
+2018-11-15T17:43:46.2193761+07:00 0HLIASSHHV4QL:00000001 [INF] Request finished in 88.5161ms 302  (791a596a)
+2018-11-15T17:43:46.2332234+07:00 0HLIASSHHV4QL:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/login?ReturnUrl=%2Fadmin%2Frole   (ca22a1cb)
+2018-11-15T17:43:46.2388835+07:00 0HLIASSHHV4QL:00000002 [INF] "Identity.Application" was not authenticated. Failure message: "Ticket expired" (48071232)
+2018-11-15T17:43:46.2467837+07:00 0HLIASSHHV4QL:00000002 [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"Login\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Login.LoginController.Index (ShoppingOnline.WebApplication)" (a44c0341)
+2018-11-15T17:43:46.2565792+07:00 0HLIASSHHV4QL:00000002 [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Login.LoginController.Index (ShoppingOnline.WebApplication)" - Validation state: Valid (dad538d7)
+2018-11-15T17:43:46.2615044+07:00 0HLIASSHHV4QL:00000002 [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Login.LoginController.Index (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.4018ms. (50a9e262)
+2018-11-15T17:43:46.2943713+07:00 0HLIASSHHV4QL:00000002 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2018-11-15T17:43:46.4414668+07:00 0HLIASSHHV4QL:00000002 [INF] Executed ViewResult - view "Index" executed in 175.0765ms. (f66409e9)
+2018-11-15T17:43:46.4466578+07:00 0HLIASSHHV4QL:00000002 [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Login.LoginController.Index (ShoppingOnline.WebApplication)" in 194.7457ms (afa2e885)
+2018-11-15T17:43:46.4548965+07:00 0HLIASSHHV4QL:00000002 [INF] Request finished in 220.4712ms 200 text/html; charset=utf-8 (791a596a)
+2018-11-15T17:43:46.6590298+07:00 0HLIASSHHV4QL:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap/dist/css/bootstrap.min.css   (ca22a1cb)
+2018-11-15T17:43:46.6717815+07:00 0HLIASSHHV4QN:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/animate.css/animate.min.css   (ca22a1cb)
+2018-11-15T17:43:46.6797973+07:00 0HLIASSHHV4QM:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/font-awesome/css/font-awesome.css   (ca22a1cb)
+2018-11-15T17:43:46.6915493+07:00 0HLIASSHHV4QO:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/nprogress/nprogress.css   (ca22a1cb)
+2018-11-15T17:43:46.6941126+07:00 0HLIASSHHV4QP:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin-site/css/custom.min.css   (ca22a1cb)
+2018-11-15T17:43:46.7405830+07:00 0HLIASSHHV4QN:00000001 [INF] Sending file. Request path: '"/lib/animate.css/animate.min.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\animate.css\animate.min.css"' (27b0a520)
+2018-11-15T17:43:46.7472645+07:00 0HLIASSHHV4QQ:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jquery/dist/jquery.min.js   (ca22a1cb)
+2018-11-15T17:43:46.7586620+07:00 0HLIASSHHV4QN:00000001 [INF] Request finished in 101.2629ms 200 text/css (791a596a)
+2018-11-15T17:43:46.7920312+07:00 0HLIASSHHV4QL:00000003 [INF] Sending file. Request path: '"/lib/bootstrap/dist/css/bootstrap.min.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css"' (27b0a520)
+2018-11-15T17:43:46.8092720+07:00 0HLIASSHHV4QM:00000001 [INF] Sending file. Request path: '"/lib/font-awesome/css/font-awesome.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\font-awesome\css\font-awesome.css"' (27b0a520)
+2018-11-15T17:43:46.8192888+07:00 0HLIASSHHV4QO:00000001 [INF] Sending file. Request path: '"/lib/nprogress/nprogress.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\nprogress\nprogress.css"' (27b0a520)
+2018-11-15T17:43:46.8265862+07:00 0HLIASSHHV4QM:00000001 [INF] Request finished in 200.5793ms 200 text/css (791a596a)
+2018-11-15T17:43:46.8354737+07:00 0HLIASSHHV4QQ:00000001 [INF] Sending file. Request path: '"/lib/jquery/dist/jquery.min.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\jquery\dist\jquery.min.js"' (27b0a520)
+2018-11-15T17:43:46.8404630+07:00 0HLIASSHHV4QM:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jquery-validation/dist/additional-methods.js   (ca22a1cb)
+2018-11-15T17:43:46.8451847+07:00 0HLIASSHHV4QQ:00000001 [INF] Request finished in 124.4812ms 200 application/javascript (791a596a)
+2018-11-15T17:43:46.8590845+07:00 0HLIASSHHV4QO:00000001 [INF] Request finished in 146.6198ms 200 text/css (791a596a)
+2018-11-15T17:43:46.8929724+07:00 0HLIASSHHV4QN:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap/dist/js/bootstrap.min.js   (ca22a1cb)
+2018-11-15T17:43:46.9068575+07:00 0HLIASSHHV4QO:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/fastclick/lib/fastclick.js   (ca22a1cb)
+2018-11-15T17:43:46.9332636+07:00 0HLIASSHHV4QL:00000003 [INF] Request finished in 201.8107ms 200 text/css (791a596a)
+2018-11-15T17:43:46.9520780+07:00 0HLIASSHHV4QM:00000002 [INF] Sending file. Request path: '"/lib/jquery-validation/dist/additional-methods.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\jquery-validation\dist\additional-methods.js"' (27b0a520)
+2018-11-15T17:43:46.9714227+07:00 0HLIASSHHV4QM:00000002 [INF] Request finished in 125.3528ms 200 application/javascript (791a596a)
+2018-11-15T17:43:46.9774787+07:00 0HLIASSHHV4QO:00000002 [INF] Sending file. Request path: '"/lib/fastclick/lib/fastclick.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\fastclick\lib\fastclick.js"' (27b0a520)
+2018-11-15T17:43:46.9871477+07:00 0HLIASSHHV4QN:00000002 [INF] Sending file. Request path: '"/lib/bootstrap/dist/js/bootstrap.min.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js"' (27b0a520)
+2018-11-15T17:43:46.9948129+07:00 0HLIASSHHV4QO:00000002 [INF] Request finished in 118.1841ms 200 application/javascript (791a596a)
+2018-11-15T17:43:47.0016508+07:00 0HLIASSHHV4QL:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/shared/core.js   (ca22a1cb)
+2018-11-15T17:43:47.0064861+07:00 0HLIASSHHV4QN:00000002 [INF] Request finished in 228.532ms 200 application/javascript (791a596a)
+2018-11-15T17:43:47.0353143+07:00 0HLIASSHHV4QO:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/controllers/login/index.js?v=OR3oc7v1ieXFvY3Z0iTY6fliiTa4f5MyAkgWPs0CJho   (ca22a1cb)
+2018-11-15T17:43:47.0398352+07:00 0HLIASSHHV4QM:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin-site/js/custom.min.js   (ca22a1cb)
+2018-11-15T17:43:47.0711677+07:00 0HLIASSHHV4QQ:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js   (ca22a1cb)
+2018-11-15T17:43:47.1254158+07:00 0HLIASSHHV4QL:00000004 [INF] Sending file. Request path: '"/app/shared/core.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\app\shared\core.js"' (27b0a520)
+2018-11-15T17:43:47.1428533+07:00 0HLIASSHHV4QO:00000003 [INF] Sending file. Request path: '"/app/controllers/login/index.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\app\controllers\login\index.js"' (27b0a520)
+2018-11-15T17:43:47.1496173+07:00 0HLIASSHHV4QL:00000004 [INF] Request finished in 145.3007ms 200 application/javascript (791a596a)
+2018-11-15T17:43:47.1939923+07:00 0HLIASSHHV4QO:00000003 [INF] Request finished in 141.3323ms 200 application/javascript (791a596a)
+2018-11-15T17:43:47.2071152+07:00 0HLIASSHHV4QQ:00000002 [INF] Sending file. Request path: '"/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js"' (27b0a520)
+2018-11-15T17:43:47.2133319+07:00 0HLIASSHHV4QP:00000001 [INF] Sending file. Request path: '"/admin-site/css/custom.min.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\admin-site\css\custom.min.css"' (27b0a520)
+2018-11-15T17:43:47.2215269+07:00 0HLIASSHHV4QQ:00000002 [INF] Request finished in 167.5457ms 200 application/javascript (791a596a)
+2018-11-15T17:43:47.2354120+07:00 0HLIASSHHV4QP:00000001 [INF] Request finished in 526.5398ms 200 text/css (791a596a)
+2018-11-15T17:43:47.2537706+07:00 0HLIASSHHV4QM:00000003 [INF] Sending file. Request path: '"/admin-site/js/custom.min.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\admin-site\js\custom.min.js"' (27b0a520)
+2018-11-15T17:43:47.2621679+07:00 0HLIASSHHV4QM:00000003 [INF] Request finished in 282.1532ms 200 application/javascript (791a596a)
+2018-11-15T17:43:47.2641830+07:00 0HLIASSHHV4QP:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0   (ca22a1cb)
+2018-11-15T17:43:47.5288007+07:00 0HLIASSHHV4QP:00000002 [INF] Sending file. Request path: '"/lib/font-awesome/fonts/fontawesome-webfont.woff2"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\font-awesome\fonts\fontawesome-webfont.woff2"' (27b0a520)
+2018-11-15T17:43:47.5379296+07:00 0HLIASSHHV4QP:00000002 [INF] Request finished in 272.3345ms 200 font/woff2 (791a596a)
+2018-11-15T17:43:48.2677211+07:00 0HLIASSHHV4QR:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/favicon.ico   (ca22a1cb)
+2018-11-15T17:43:48.3187830+07:00 0HLIASSHHV4QR:00000001 [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\favicon.ico"' (27b0a520)
+2018-11-15T17:43:48.3345715+07:00 0HLIASSHHV4QR:00000001 [INF] Request finished in 57.5356ms 200 image/x-icon (791a596a)
+2018-11-15T17:43:49.6155825+07:00 0HLIASSHHV4QR:00000002 [INF] Request starting HTTP/1.1 POST https://localhost:5001/Admin/Login/Authen application/x-www-form-urlencoded; charset=UTF-8 33 (ca22a1cb)
+2018-11-15T17:43:49.6207943+07:00 0HLIASSHHV4QR:00000002 [INF] "Identity.Application" was not authenticated. Failure message: "Ticket expired" (48071232)
+2018-11-15T17:43:49.6492134+07:00 0HLIASSHHV4QR:00000002 [INF] Route matched with "{area = \"Admin\", action = \"Authen\", controller = \"Login\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Login.LoginController.Authen (ShoppingOnline.WebApplication)" (a44c0341)
+2018-11-15T17:43:49.9573885+07:00 0HLIASSHHV4QR:00000002 [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Login.LoginController.Authen (ShoppingOnline.WebApplication)" with arguments (["ShoppingOnline.WebApplication.Models.AccountViewModel.LoginViewModel"]) - Validation state: Valid (4e3479ed)
+2018-11-15T17:43:49.9758621+07:00 0HLIASSHHV4QR:00000002 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2018-11-15T17:43:50.1529683+07:00 0HLIASSHHV4QR:00000002 [INF] Executed DbCommand ("37"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AppUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2018-11-15T17:43:50.4462633+07:00 0HLIASSHHV4QR:00000002 [INF] Executed DbCommand ("4"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2018-11-15T17:43:50.5249786+07:00 0HLIASSHHV4QR:00000002 [INF] Executed DbCommand ("7"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-11-15T17:43:50.5643500+07:00 0HLIASSHHV4QR:00000002 [INF] Executed DbCommand ("3"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2018-11-15T17:43:50.6225566+07:00 0HLIASSHHV4QR:00000002 [INF] Executed DbCommand ("4"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2018-11-15T17:43:50.6509382+07:00 0HLIASSHHV4QR:00000002 [INF] Executed DbCommand ("9"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2018-11-15T17:43:50.6838895+07:00 0HLIASSHHV4QR:00000002 [INF] AuthenticationScheme: "Identity.Application" signed in. (c66dd7e7)
+2018-11-15T17:43:50.6937408+07:00 0HLIASSHHV4QR:00000002 [INF] User logged in. (fdce0db4)
+2018-11-15T17:43:50.7031609+07:00 0HLIASSHHV4QR:00000002 [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Login.LoginController.Authen (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 741.2205ms. (50a9e262)
+2018-11-15T17:43:50.7248029+07:00 0HLIASSHHV4QR:00000002 [INF] Executing ObjectResult, writing value of type '"ShoppingOnline.Utilities.Dtos.GenericResult"'. (8a1b66c8)
+2018-11-15T17:43:50.8590117+07:00 0HLIASSHHV4QR:00000002 [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Login.LoginController.Authen (ShoppingOnline.WebApplication)" in 1205.2118ms (afa2e885)
+2018-11-15T17:43:50.8703265+07:00 0HLIASSHHV4QR:00000002 [INF] Request finished in 1255.9602ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-15T17:43:50.9300762+07:00 0HLIASSHHV4QR:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/role   (ca22a1cb)
+2018-11-15T17:43:50.9426709+07:00 0HLIASSHHV4QR:00000003 [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"Role\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.Index (ShoppingOnline.WebApplication)" (a44c0341)
+2018-11-15T17:43:50.9804181+07:00 0HLIASSHHV4QR:00000003 [INF] Authorization was successful. (0d575a54)
+2018-11-15T17:43:50.9864459+07:00 0HLIASSHHV4QR:00000003 [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.Index (ShoppingOnline.WebApplication)" - Validation state: Valid (dad538d7)
+2018-11-15T17:43:51.0048283+07:00 0HLIASSHHV4QS:00000001 [INF] Request starting HTTP/1.1 POST https://localhost:5001/Admin/Login/Authen application/x-www-form-urlencoded; charset=UTF-8 33 (ca22a1cb)
+2018-11-15T17:43:51.0238028+07:00 0HLIASSHHV4QS:00000001 [INF] Route matched with "{area = \"Admin\", action = \"Authen\", controller = \"Login\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Login.LoginController.Authen (ShoppingOnline.WebApplication)" (a44c0341)
+2018-11-15T17:43:51.0263988+07:00 0HLIASSHHV4QR:00000003 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2018-11-15T17:43:51.2182153+07:00 0HLIASSHHV4QS:00000001 [INF] Antiforgery token validation failed. "The provided antiforgery token was meant for a different claims-based user than the current user." (843d91fe)
+Microsoft.AspNetCore.Antiforgery.AntiforgeryValidationException: The provided antiforgery token was meant for a different claims-based user than the current user.
+   at Microsoft.AspNetCore.Antiforgery.Internal.DefaultAntiforgery.ValidateTokens(HttpContext httpContext, AntiforgeryTokenSet antiforgeryTokenSet)
+   at Microsoft.AspNetCore.Antiforgery.Internal.DefaultAntiforgery.ValidateRequestAsync(HttpContext httpContext)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.ValidateAntiforgeryTokenAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context)
+2018-11-15T17:43:51.2230118+07:00 0HLIASSHHV4QS:00000001 [INF] Authorization failed for the request at filter '"Microsoft.AspNetCore.Mvc.ViewFeatures.Internal.ValidateAntiforgeryTokenAuthorizationFilter"'. (8b6446cb)
+2018-11-15T17:43:51.2337453+07:00 0HLIASSHHV4QS:00000001 [INF] Executing HttpStatusCodeResult, setting HTTP status code 400 (e28ccfae)
+2018-11-15T17:43:51.2383751+07:00 0HLIASSHHV4QS:00000001 [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Login.LoginController.Authen (ShoppingOnline.WebApplication)" in 208.0573ms (afa2e885)
+2018-11-15T17:43:51.2510000+07:00 0HLIASSHHV4QS:00000001 [INF] Request finished in 239.1539ms 400  (791a596a)
+2018-11-15T17:43:51.2610407+07:00  [INF] Connection id ""0HLIASSHHV4QS"", Request id ""0HLIASSHHV4QS:00000001"": the application completed without reading the entire request body. (54ac9468)
+2018-11-15T17:43:51.3283490+07:00 0HLIASSHHV4QR:00000003 [INF] Executed DbCommand ("21"ms) [Parameters=["@__functionId_1='?' (Size = 128) (DbType = AnsiString)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]
+        INNER JOIN [Permissions] AS [p] ON [f].[Id] = [p].[FunctionId]
+        INNER JOIN [AppRoles] AS [r] ON [p].[RoleId] = [r].[Id]
+        WHERE ([r].[Name] IN (N'Admin') AND ([f].[Id] = @__functionId_1)) AND ([p].[CanRead] = 1))
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-15T17:43:51.3542113+07:00 0HLIASSHHV4QR:00000003 [INF] Authorization was successful. (0d575a54)
+2018-11-15T17:43:51.3623045+07:00 0HLIASSHHV4QR:00000003 [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.Index (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 368.0354ms. (50a9e262)
+2018-11-15T17:43:51.3766619+07:00 0HLIASSHHV4QR:00000003 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2018-11-15T17:43:51.4446765+07:00 0HLIASSHHV4QR:00000003 [INF] Executed DbCommand ("20"ms) [Parameters=["@__functionId_1='?' (Size = 128) (DbType = AnsiString)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]
+        INNER JOIN [Permissions] AS [p] ON [f].[Id] = [p].[FunctionId]
+        INNER JOIN [AppRoles] AS [r] ON [p].[RoleId] = [r].[Id]
+        WHERE ([r].[Name] IN (N'Admin') AND ([f].[Id] = @__functionId_1)) AND ([p].[CanCreate] = 1))
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-15T17:43:51.4535298+07:00 0HLIASSHHV4QR:00000003 [INF] Authorization was successful. (0d575a54)
+2018-11-15T17:43:51.5017155+07:00 0HLIASSHHV4QR:00000003 [INF] Executed DbCommand ("16"ms) [Parameters=["@__functionId_1='?' (Size = 128) (DbType = AnsiString)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]
+        INNER JOIN [Permissions] AS [p] ON [f].[Id] = [p].[FunctionId]
+        INNER JOIN [AppRoles] AS [r] ON [p].[RoleId] = [r].[Id]
+        WHERE ([r].[Name] IN (N'Admin') AND ([f].[Id] = @__functionId_1)) AND ([p].[CanUpdate] = 1))
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-15T17:43:51.5064315+07:00 0HLIASSHHV4QR:00000003 [INF] Authorization was successful. (0d575a54)
+2018-11-15T17:43:51.5385734+07:00 0HLIASSHHV4QR:00000003 [INF] Executed DbCommand ("13"ms) [Parameters=["@__functionId_1='?' (Size = 128) (DbType = AnsiString)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]
+        INNER JOIN [Permissions] AS [p] ON [f].[Id] = [p].[FunctionId]
+        INNER JOIN [AppRoles] AS [r] ON [p].[RoleId] = [r].[Id]
+        WHERE ([r].[Name] IN (N'Admin') AND ([f].[Id] = @__functionId_1)) AND ([p].[CanDelete] = 1))
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-15T17:43:51.5441430+07:00 0HLIASSHHV4QR:00000003 [INF] Authorization was successful. (0d575a54)
+2018-11-15T17:43:51.8289294+07:00 0HLIASSHHV4QR:00000003 [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[URL], [x].[ParentId], [x].[IconCss], [x].[SortOrder], [x].[Status]
+FROM [Functions] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[ParentId]" (0723d8ff)
+2018-11-15T17:43:52.0085281+07:00 0HLIASSHHV4QR:00000003 [INF] Executed ViewResult - view "Index" executed in 640.6382ms. (f66409e9)
+2018-11-15T17:43:52.0217294+07:00 0HLIASSHHV4QR:00000003 [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.Index (ShoppingOnline.WebApplication)" in 1073.3071ms (afa2e885)
+2018-11-15T17:43:52.0346859+07:00 0HLIASSHHV4QR:00000003 [INF] Request finished in 1099.6343ms 200 text/html; charset=utf-8 (791a596a)
+2018-11-15T17:43:52.2131882+07:00 0HLIASSHHV4QR:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/font-awesome/css/font-awesome.min.css   (ca22a1cb)
+2018-11-15T17:43:52.2233985+07:00 0HLIASSHHV4QT:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/skins/moono/editor.css   (ca22a1cb)
+2018-11-15T17:43:52.2341520+07:00 0HLIASSHHV4QS:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap-daterangepicker/daterangepicker.css   (ca22a1cb)
+2018-11-15T17:43:52.2414594+07:00 0HLIASSHHV4QU:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin-site/images/user.png   (ca22a1cb)
+2018-11-15T17:43:52.2529972+07:00 0HLIASSHHV4R0:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/signalr/signalr.js   (ca22a1cb)
+2018-11-15T17:43:52.2582662+07:00 0HLIASSHHV4QR:00000004 [INF] Sending file. Request path: '"/lib/font-awesome/css/font-awesome.min.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\font-awesome\css\font-awesome.min.css"' (27b0a520)
+2018-11-15T17:43:52.2639643+07:00 0HLIASSHHV4QV:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jquery-treegrid/css/jquery.treegrid.css   (ca22a1cb)
+2018-11-15T17:43:52.2664196+07:00 0HLIASSHHV4QR:00000004 [INF] Request finished in 110.8918ms 200 text/css (791a596a)
+2018-11-15T17:43:52.2754061+07:00 0HLIASSHHV4QV:00000001 [INF] Sending file. Request path: '"/lib/jquery-treegrid/css/jquery.treegrid.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\jquery-treegrid\css\jquery.treegrid.css"' (27b0a520)
+2018-11-15T17:43:52.2982419+07:00 0HLIASSHHV4QV:00000001 [INF] Request finished in 64.5483ms 200 text/css (791a596a)
+2018-11-15T17:43:52.3036155+07:00 0HLIASSHHV4QS:00000002 [INF] Sending file. Request path: '"/lib/bootstrap-daterangepicker/daterangepicker.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\bootstrap-daterangepicker\daterangepicker.css"' (27b0a520)
+2018-11-15T17:43:52.3485928+07:00 0HLIASSHHV4QT:00000001 [INF] Sending file. Request path: '"/lib/ckeditor/skins/moono/editor.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\ckeditor\skins\moono\editor.css"' (27b0a520)
+2018-11-15T17:43:52.3834116+07:00 0HLIASSHHV4QS:00000002 [INF] Request finished in 135.9096ms 200 text/css (791a596a)
+2018-11-15T17:43:52.3889283+07:00 0HLIASSHHV4QR:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/moment/min/moment.min.js   (ca22a1cb)
+2018-11-15T17:43:52.3987721+07:00 0HLIASSHHV4QS:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/nprogress/nprogress.js   (ca22a1cb)
+2018-11-15T17:43:52.4031301+07:00 0HLIASSHHV4QV:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jquery-sparkline/dist/jquery.sparkline.min.js   (ca22a1cb)
+2018-11-15T17:43:52.4128616+07:00 0HLIASSHHV4QU:00000001 [INF] Sending file. Request path: '"/admin-site/images/user.png"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\admin-site\images\user.png"' (27b0a520)
+2018-11-15T17:43:52.4246424+07:00 0HLIASSHHV4QT:00000001 [INF] Request finished in 157.1252ms 200 text/css (791a596a)
+2018-11-15T17:43:52.5204506+07:00 0HLIASSHHV4QU:00000001 [INF] Request finished in 186.2177ms 200 image/png (791a596a)
+2018-11-15T17:43:52.5625232+07:00 0HLIASSHHV4QS:00000003 [INF] Sending file. Request path: '"/lib/nprogress/nprogress.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\nprogress\nprogress.js"' (27b0a520)
+2018-11-15T17:43:52.5815342+07:00 0HLIASSHHV4QV:00000002 [INF] Sending file. Request path: '"/lib/jquery-sparkline/dist/jquery.sparkline.min.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\jquery-sparkline\dist\jquery.sparkline.min.js"' (27b0a520)
+2018-11-15T17:43:52.5891959+07:00 0HLIASSHHV4QS:00000003 [INF] Request finished in 178.9969ms 200 application/javascript (791a596a)
+2018-11-15T17:43:52.5947915+07:00 0HLIASSHHV4QV:00000002 [INF] Request finished in 214.1552ms 200 application/javascript (791a596a)
+2018-11-15T17:43:52.6002000+07:00 0HLIASSHHV4QS:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/twbs-pagination/jquery.twbsPagination.js   (ca22a1cb)
+2018-11-15T17:43:52.6095501+07:00 0HLIASSHHV4QV:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/ckeditor.js   (ca22a1cb)
+2018-11-15T17:43:52.6145644+07:00 0HLIASSHHV4QU:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap-daterangepicker/daterangepicker.js   (ca22a1cb)
+2018-11-15T17:43:52.6235161+07:00 0HLIASSHHV4QR:00000005 [INF] Sending file. Request path: '"/lib/moment/min/moment.min.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\moment\min\moment.min.js"' (27b0a520)
+2018-11-15T17:43:52.6307796+07:00 0HLIASSHHV4R0:00000001 [INF] Sending file. Request path: '"/lib/signalr/signalr.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\signalr\signalr.js"' (27b0a520)
+2018-11-15T17:43:52.6563927+07:00 0HLIASSHHV4QS:00000004 [INF] Sending file. Request path: '"/lib/twbs-pagination/jquery.twbsPagination.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\twbs-pagination\jquery.twbsPagination.js"' (27b0a520)
+2018-11-15T17:43:52.6607289+07:00 0HLIASSHHV4R0:00000001 [INF] Request finished in 396.2789ms 200 application/javascript (791a596a)
+2018-11-15T17:43:52.6645335+07:00 0HLIASSHHV4QS:00000004 [INF] Request finished in 66.9788ms 200 application/javascript (791a596a)
+2018-11-15T17:43:52.6695111+07:00 0HLIASSHHV4QR:00000005 [INF] Request finished in 255.9207ms 200 application/javascript (791a596a)
+2018-11-15T17:43:52.6750627+07:00 0HLIASSHHV4QS:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootbox/bootbox.js   (ca22a1cb)
+2018-11-15T17:43:52.7070979+07:00 0HLIASSHHV4QR:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/notifyjs/dist/styles/metro/notify-metro.js   (ca22a1cb)
+2018-11-15T17:43:52.7170648+07:00 0HLIASSHHV4QT:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/mustache/mustache.js   (ca22a1cb)
+2018-11-15T17:43:52.7291851+07:00 0HLIASSHHV4R0:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/shared/signalIR.js   (ca22a1cb)
+2018-11-15T17:43:52.7462123+07:00 0HLIASSHHV4QR:00000006 [INF] Sending file. Request path: '"/lib/notifyjs/dist/styles/metro/notify-metro.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\notifyjs\dist\styles\metro\notify-metro.js"' (27b0a520)
+2018-11-15T17:43:52.7596406+07:00 0HLIASSHHV4QS:00000005 [INF] Sending file. Request path: '"/lib/bootbox/bootbox.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\bootbox\bootbox.js"' (27b0a520)
+2018-11-15T17:43:52.7624864+07:00 0HLIASSHHV4QR:00000006 [INF] Request finished in 76.5468ms 200 application/javascript (791a596a)
+2018-11-15T17:43:52.7684660+07:00 0HLIASSHHV4QS:00000005 [INF] Request finished in 94.9684ms 200 application/javascript (791a596a)
+2018-11-15T17:43:52.7728977+07:00 0HLIASSHHV4QR:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/shared/core.js?v=UEsERRRY77IRK3FP9MJ3wVbNOJekQyFT_veFUivoNkQ   (ca22a1cb)
+2018-11-15T17:43:52.8245130+07:00 0HLIASSHHV4QR:00000007 [INF] Sending file. Request path: '"/app/shared/core.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\app\shared\core.js"' (27b0a520)
+2018-11-15T17:43:52.8300412+07:00 0HLIASSHHV4R0:00000002 [INF] Sending file. Request path: '"/app/shared/signalIR.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\app\shared\signalIR.js"' (27b0a520)
+2018-11-15T17:43:52.8370001+07:00 0HLIASSHHV4QS:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/shared/base.js   (ca22a1cb)
+2018-11-15T17:43:52.8452462+07:00 0HLIASSHHV4R0:00000002 [INF] Request finished in 120.7238ms 200 application/javascript (791a596a)
+2018-11-15T17:43:52.8659771+07:00 0HLIASSHHV4QT:00000002 [INF] Sending file. Request path: '"/lib/mustache/mustache.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\mustache\mustache.js"' (27b0a520)
+2018-11-15T17:43:52.8715064+07:00 0HLIASSHHV4QR:00000007 [INF] Request finished in 59.9818ms 200 application/javascript (791a596a)
+2018-11-15T17:43:52.9204895+07:00 0HLIASSHHV4QT:00000002 [INF] Request finished in 438.4241ms 200 application/javascript (791a596a)
+2018-11-15T17:43:52.9384539+07:00 0HLIASSHHV4R0:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/controllers/role/index.js?v=Dg3BctOMRfFE9xFNRtVK7FjQP4uy4srOiNkfp3TLm8A   (ca22a1cb)
+2018-11-15T17:43:52.9385383+07:00 0HLIASSHHV4QS:00000006 [INF] Sending file. Request path: '"/app/shared/base.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\app\shared\base.js"' (27b0a520)
+2018-11-15T17:43:52.9469130+07:00 0HLIASSHHV4QT:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2   (ca22a1cb)
+2018-11-15T17:43:52.9547694+07:00 0HLIASSHHV4QS:00000006 [INF] Request finished in 148.2013ms 200 application/javascript (791a596a)
+2018-11-15T17:43:52.9755214+07:00 0HLIASSHHV4QR:00000008 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jquery-treegrid/js/jquery.treegrid.js   (ca22a1cb)
+2018-11-15T17:43:52.9827288+07:00 0HLIASSHHV4R0:00000003 [INF] Sending file. Request path: '"/app/controllers/role/index.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\app\controllers\role\index.js"' (27b0a520)
+2018-11-15T17:43:53.0067423+07:00 0HLIASSHHV4R0:00000003 [INF] Request finished in 110.9121ms 200 application/javascript (791a596a)
+2018-11-15T17:43:53.0158087+07:00 0HLIASSHHV4QT:00000003 [INF] Sending file. Request path: '"/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2"' (27b0a520)
+2018-11-15T17:43:53.0436045+07:00 0HLIASSHHV4QU:00000002 [INF] Sending file. Request path: '"/lib/bootstrap-daterangepicker/daterangepicker.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\bootstrap-daterangepicker\daterangepicker.js"' (27b0a520)
+2018-11-15T17:43:53.0513449+07:00 0HLIASSHHV4QT:00000003 [INF] Request finished in 79.1967ms 200 font/woff2 (791a596a)
+2018-11-15T17:43:53.0628416+07:00 0HLIASSHHV4QU:00000002 [INF] Request finished in 523.2522ms 200 application/javascript (791a596a)
+2018-11-15T17:43:53.0676763+07:00 0HLIASSHHV4QR:00000008 [INF] Sending file. Request path: '"/lib/jquery-treegrid/js/jquery.treegrid.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\jquery-treegrid\js\jquery.treegrid.js"' (27b0a520)
+2018-11-15T17:43:53.0721479+07:00 0HLIASSHHV4QR:00000008 [INF] Request finished in 195.5293ms 200 application/javascript (791a596a)
+2018-11-15T17:43:53.9839466+07:00 0HLIASSHHV4QV:00000003 [INF] Sending file. Request path: '"/lib/ckeditor/ckeditor.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\ckeditor\ckeditor.js"' (27b0a520)
+2018-11-15T17:43:53.9885070+07:00 0HLIASSHHV4QV:00000003 [INF] Request finished in 1389.0261ms 200 application/javascript (791a596a)
+2018-11-15T17:43:54.2147116+07:00 0HLIASSHHV4QV:00000004 [INF] Request starting HTTP/1.1 POST https://localhost:5001/chatHub/negotiate text/plain;charset=UTF-8 0 (ca22a1cb)
+2018-11-15T17:43:54.2737939+07:00 0HLIASSHHV4QU:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/announcement/GetAllPaging?page=1&pageSize=10   (ca22a1cb)
+2018-11-15T17:43:54.2815010+07:00 0HLIASSHHV4QR:00000009 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/role/GetAllPaging?keyword=&page=1&pageSize=10   (ca22a1cb)
+2018-11-15T17:43:54.2909042+07:00 0HLIASSHHV4QU:00000003 [INF] Route matched with "{area = \"Admin\", action = \"GetAllPaging\", controller = \"Announcement\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Announcement.AnnouncementController.GetAllPaging (ShoppingOnline.WebApplication)" (a44c0341)
+2018-11-15T17:43:54.3001482+07:00 0HLIASSHHV4QU:00000003 [INF] Authorization was successful. (0d575a54)
+2018-11-15T17:43:54.3073028+07:00 0HLIASSHHV4QR:00000009 [INF] Route matched with "{area = \"Admin\", action = \"GetAllPaging\", controller = \"Role\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAllPaging (ShoppingOnline.WebApplication)" (a44c0341)
+2018-11-15T17:43:54.3149698+07:00 0HLIASSHHV4QU:00000003 [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Announcement.AnnouncementController.GetAllPaging (ShoppingOnline.WebApplication)" with arguments (["1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-15T17:43:54.3833647+07:00 0HLIASSHHV4QR:00000009 [INF] Authorization was successful. (0d575a54)
+2018-11-15T17:43:54.4002067+07:00 0HLIASSHHV4QU:00000003 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2018-11-15T17:43:54.4314897+07:00 0HLIASSHHV4QR:00000009 [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAllPaging (ShoppingOnline.WebApplication)" with arguments (["", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-15T17:43:54.4394169+07:00 0HLIASSHHV4QV:00000004 [INF] Request finished in 196.5325ms 200 application/json (791a596a)
+2018-11-15T17:43:54.4420293+07:00 0HLIASSHHV4QR:00000009 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2018-11-15T17:43:54.4675156+07:00 0HLIASSHHV4QR:00000009 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AppRoles] AS [a]" (0723d8ff)
+2018-11-15T17:43:54.5181076+07:00 0HLIASSHHV4QR:00000009 [WRN] Query: '"(from AppRole dto in DbSet<AppRole> select new AppRoleViewModel{ { 
+    Id = (Nullable<Guid>)[dto]...."' uses a row limiting operation (Skip/Take) without OrderBy which may lead to unpredictable results. (32148ccc)
+2018-11-15T17:43:54.5206104+07:00 0HLIASSHHV4QU:00000003 [INF] Executed DbCommand ("20"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Announcements] AS [x]
+LEFT JOIN [AnnouncementUsers] AS [y] ON [x].[Id] = [y].[AnnouncementId]
+WHERE ([y].[HasRead] = 0) AND ([y].[UserId] IS NULL OR ([y].[UserId] = @__userId_0))" (0723d8ff)
+2018-11-15T17:43:54.5429805+07:00 0HLIASSHHV4QR:00000009 [INF] Executed DbCommand ("4"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[Description]
+FROM [AppRoles] AS [dto]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2018-11-15T17:43:54.5547493+07:00 0HLIASSHHV4QR:00000009 [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAllPaging (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 116.298ms. (50a9e262)
+2018-11-15T17:43:54.5615720+07:00 0HLIASSHHV4QR:00000009 [INF] Executing ObjectResult, writing value of type '"ShoppingOnline.Utilities.Dtos.PagedResult`1[[ShoppingOnline.Application.Systems.Roles.Dtos.AppRoleViewModel, ShoppingOnline.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-15T17:43:54.5995812+07:00 0HLIASSHHV4QR:00000009 [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAllPaging (ShoppingOnline.WebApplication)" in 276.4894ms (afa2e885)
+2018-11-15T17:43:54.6120509+07:00 0HLIASSHHV4QU:00000003 [INF] Executed DbCommand ("8"ms) [Parameters=["@__userId_0='?' (DbType = Guid), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Title], [x].[Content], [x].[UserId], [x].[DateCreated], [x].[DateModified], [x].[Status]
+FROM [Announcements] AS [x]
+LEFT JOIN [AnnouncementUsers] AS [y] ON [x].[Id] = [y].[AnnouncementId]
+WHERE ([y].[HasRead] = 0) AND ([y].[UserId] IS NULL OR ([y].[UserId] = @__userId_0))
+ORDER BY [x].[DateCreated] DESC, [x].[Id]
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY" (0723d8ff)
+2018-11-15T17:43:54.6121321+07:00 0HLIASSHHV4QR:00000009 [INF] Request finished in 341.0494ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-15T17:43:54.6201100+07:00 0HLIASSHHV4QU:00000003 [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Announcement.AnnouncementController.GetAllPaging (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 300.8123ms. (50a9e262)
+2018-11-15T17:43:54.6247044+07:00 0HLIASSHHV4QU:00000003 [INF] Executing ObjectResult, writing value of type '"ShoppingOnline.Utilities.Dtos.PagedResult`1[[ShoppingOnline.Application.Systems.Announcements.Dtos.AnnouncementViewModel, ShoppingOnline.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-15T17:43:54.6406391+07:00 0HLIASSHHV4QU:00000003 [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Announcement.AnnouncementController.GetAllPaging (ShoppingOnline.WebApplication)" in 344.1407ms (afa2e885)
+2018-11-15T17:43:54.6460609+07:00 0HLIASSHHV4QU:00000003 [INF] Request finished in 404.3046ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-15T17:43:55.1369658+07:00 0HLIASSHHV4QU:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/role/GetAllPaging?keyword=&page=1&pageSize=10   (ca22a1cb)
+2018-11-15T17:43:55.1435729+07:00 0HLIASSHHV4R1:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/chatHub?id=kW7yHJIQMDIrKL4t-Vjm5Q   (ca22a1cb)
+2018-11-15T17:43:55.1488738+07:00 0HLIASSHHV4QU:00000004 [INF] Route matched with "{area = \"Admin\", action = \"GetAllPaging\", controller = \"Role\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAllPaging (ShoppingOnline.WebApplication)" (a44c0341)
+2018-11-15T17:43:55.1540489+07:00 0HLIASSHHV4QU:00000004 [INF] Authorization was successful. (0d575a54)
+2018-11-15T17:43:55.1611001+07:00 0HLIASSHHV4QU:00000004 [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAllPaging (ShoppingOnline.WebApplication)" with arguments (["", "1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-15T17:43:55.1669502+07:00 0HLIASSHHV4QU:00000004 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2018-11-15T17:43:55.1795810+07:00 0HLIASSHHV4QU:00000004 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AppRoles] AS [a]" (0723d8ff)
+2018-11-15T17:43:55.1944656+07:00 0HLIASSHHV4QU:00000004 [INF] Executed DbCommand ("4"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[Description]
+FROM [AppRoles] AS [dto]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2018-11-15T17:43:55.1997015+07:00 0HLIASSHHV4QU:00000004 [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAllPaging (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 33.4779ms. (50a9e262)
+2018-11-15T17:43:55.2047665+07:00 0HLIASSHHV4QU:00000004 [INF] Executing ObjectResult, writing value of type '"ShoppingOnline.Utilities.Dtos.PagedResult`1[[ShoppingOnline.Application.Systems.Roles.Dtos.AppRoleViewModel, ShoppingOnline.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-15T17:43:55.2125942+07:00 0HLIASSHHV4QU:00000004 [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAllPaging (ShoppingOnline.WebApplication)" in 56.2749ms (afa2e885)
+2018-11-15T17:43:55.2181762+07:00 0HLIASSHHV4QU:00000004 [INF] Request finished in 85.4734ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-15T17:43:55.4300814+07:00 0HLIASSHHV4R1:00000001 [INF] Completed connection handshake. Using HubProtocol '"json"'. (421947a1)
+2018-11-15T17:44:19.8655654+07:00 0HLIASSHHV4QU:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/product/index   (ca22a1cb)
+2018-11-15T17:44:19.8807883+07:00 0HLIASSHHV4QU:00000005 [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"Product\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Product.ProductController.Index (ShoppingOnline.WebApplication)" (a44c0341)
+2018-11-15T17:44:19.8874763+07:00 0HLIASSHHV4QU:00000005 [INF] Authorization was successful. (0d575a54)
+2018-11-15T17:44:19.8974893+07:00 0HLIASSHHV4QU:00000005 [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Product.ProductController.Index (ShoppingOnline.WebApplication)" - Validation state: Valid (dad538d7)
+2018-11-15T17:44:19.9064554+07:00 0HLIASSHHV4QU:00000005 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2018-11-15T17:44:19.9374045+07:00 0HLIASSHHV4QU:00000005 [INF] Executed DbCommand ("20"ms) [Parameters=["@__functionId_1='?' (Size = 128) (DbType = AnsiString)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]
+        INNER JOIN [Permissions] AS [p] ON [f].[Id] = [p].[FunctionId]
+        INNER JOIN [AppRoles] AS [r] ON [p].[RoleId] = [r].[Id]
+        WHERE ([r].[Name] IN (N'Admin') AND ([f].[Id] = @__functionId_1)) AND ([p].[CanRead] = 1))
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2018-11-15T17:44:19.9416390+07:00 0HLIASSHHV4QU:00000005 [INF] Authorization was successful. (0d575a54)
+2018-11-15T17:44:19.9464765+07:00 0HLIASSHHV4QU:00000005 [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Product.ProductController.Index (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 44.7241ms. (50a9e262)
+2018-11-15T17:44:19.9621330+07:00 0HLIASSHHV4QU:00000005 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2018-11-15T17:44:20.1687253+07:00 0HLIASSHHV4QU:00000005 [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[URL], [x].[ParentId], [x].[IconCss], [x].[SortOrder], [x].[Status]
+FROM [Functions] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[ParentId]" (0723d8ff)
+2018-11-15T17:44:20.2360466+07:00 0HLIASSHHV4QU:00000005 [INF] Executed ViewResult - view "Index" executed in 283.8002ms. (f66409e9)
+2018-11-15T17:44:20.2407628+07:00 0HLIASSHHV4QU:00000005 [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Product.ProductController.Index (ShoppingOnline.WebApplication)" in 355.7787ms (afa2e885)
+2018-11-15T17:44:20.2451078+07:00 0HLIASSHHV4QU:00000005 [INF] Request finished in 391.498ms 200 text/html; charset=utf-8 (791a596a)
+2018-11-15T17:44:20.3485119+07:00 0HLIASSHHV4QR:0000000A [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jQuery-EasyUI/themes/icon.css   (ca22a1cb)
+2018-11-15T17:44:20.3549886+07:00 0HLIASSHHV4QU:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jQuery-EasyUI/themes/bootstrap/easyui.css   (ca22a1cb)
+2018-11-15T17:44:20.3554056+07:00 0HLIASSHHV4QV:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jQuery-EasyUI/jquery.easyui.min.js   (ca22a1cb)
+2018-11-15T17:44:20.4136253+07:00 0HLIASSHHV4QT:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/controllers/product/index.js?v=WCAIPsWNHWmHiXa-jQjHW0CdLCg59BzggdPWV0eOt7Q   (ca22a1cb)
+2018-11-15T17:44:20.4453560+07:00 0HLIASSHHV4QR:0000000A [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/themes/icon.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\jQuery-EasyUI\themes\icon.css"' (27b0a520)
+2018-11-15T17:44:20.4497113+07:00 0HLIASSHHV4R1:00000001 [INF] Request finished in 25286.5229ms 101  (791a596a)
+2018-11-15T17:44:20.4620067+07:00 0HLIASSHHV4QR:0000000A [INF] Request finished in 104.3419ms 200 text/css (791a596a)
+2018-11-15T17:44:20.5406108+07:00 0HLIASSHHV4QU:00000006 [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/themes/bootstrap/easyui.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\jQuery-EasyUI\themes\bootstrap\easyui.css"' (27b0a520)
+2018-11-15T17:44:20.5437901+07:00 0HLIASSHHV4QT:00000004 [INF] Sending file. Request path: '"/app/controllers/product/index.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\app\controllers\product\index.js"' (27b0a520)
+2018-11-15T17:44:20.5494949+07:00 0HLIASSHHV4QR:0000000B [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/controllers/product/quantity-management.js   (ca22a1cb)
+2018-11-15T17:44:20.5573524+07:00 0HLIASSHHV4R0:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/controllers/product/whole-price-management.js   (ca22a1cb)
+2018-11-15T17:44:20.5657665+07:00 0HLIASSHHV4QU:00000006 [INF] Request finished in 203.3541ms 200 text/css (791a596a)
+2018-11-15T17:44:20.5711612+07:00 0HLIASSHHV4QT:00000004 [INF] Request finished in 149.4875ms 200 application/javascript (791a596a)
+2018-11-15T17:44:20.5856694+07:00 0HLIASSHHV4QU:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/controllers/product/image-management.js   (ca22a1cb)
+2018-11-15T17:44:20.6204636+07:00 0HLIASSHHV4QR:0000000B [INF] Sending file. Request path: '"/app/controllers/product/quantity-management.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\app\controllers\product\quantity-management.js"' (27b0a520)
+2018-11-15T17:44:20.6557160+07:00 0HLIASSHHV4R0:00000004 [INF] Sending file. Request path: '"/app/controllers/product/whole-price-management.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\app\controllers\product\whole-price-management.js"' (27b0a520)
+2018-11-15T17:44:20.6594249+07:00 0HLIASSHHV4QR:0000000B [INF] Request finished in 85.4586ms 200 application/javascript (791a596a)
+2018-11-15T17:44:20.6633700+07:00 0HLIASSHHV4QU:00000007 [INF] Sending file. Request path: '"/app/controllers/product/image-management.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\app\controllers\product\image-management.js"' (27b0a520)
+2018-11-15T17:44:20.6684652+07:00 0HLIASSHHV4R0:00000004 [INF] Request finished in 124.2042ms 200 application/javascript (791a596a)
+2018-11-15T17:44:20.6700539+07:00 0HLIASSHHV4QU:00000007 [INF] Request finished in 97.442ms 200 application/javascript (791a596a)
+2018-11-15T17:44:20.6872976+07:00 0HLIASSHHV4QV:00000005 [INF] Sending file. Request path: '"/lib/jQuery-EasyUI/jquery.easyui.min.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\jQuery-EasyUI\jquery.easyui.min.js"' (27b0a520)
+2018-11-15T17:44:20.6912048+07:00 0HLIASSHHV4QV:00000005 [INF] Request finished in 341.6228ms 200 application/javascript (791a596a)
+2018-11-15T17:44:20.9440650+07:00 0HLIASSHHV4QU:00000008 [INF] Request starting HTTP/1.1 POST https://localhost:5001/chatHub/negotiate text/plain;charset=UTF-8 0 (ca22a1cb)
+2018-11-15T17:44:21.0050690+07:00 0HLIASSHHV4QR:0000000C [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/announcement/GetAllPaging?page=1&pageSize=10   (ca22a1cb)
+2018-11-15T17:44:21.0945618+07:00 0HLIASSHHV4QU:00000008 [INF] Request finished in 27.2846ms 200 application/json (791a596a)
+2018-11-15T17:44:21.1106577+07:00 0HLIASSHHV4R2:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/chatHub?id=wKxHcQjFfzbd5DSA7FVGpQ   (ca22a1cb)
+2018-11-15T17:44:21.1891044+07:00 0HLIASSHHV4QR:0000000C [INF] Route matched with "{area = \"Admin\", action = \"GetAllPaging\", controller = \"Announcement\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Announcement.AnnouncementController.GetAllPaging (ShoppingOnline.WebApplication)" (a44c0341)
+2018-11-15T17:44:21.2027129+07:00 0HLIASSHHV4QT:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/Admin/Bill/GetSizes   (ca22a1cb)
+2018-11-15T17:44:21.2399919+07:00 0HLIASSHHV4R0:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/Admin/Bill/GetColors   (ca22a1cb)
+2018-11-15T17:44:21.2442489+07:00 0HLIASSHHV4QR:0000000C [INF] Authorization was successful. (0d575a54)
+2018-11-15T17:44:21.2567663+07:00 0HLIASSHHV4QT:00000005 [INF] Route matched with "{area = \"Admin\", action = \"GetSizes\", controller = \"Bill\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Bill.BillController.GetSizes (ShoppingOnline.WebApplication)" (a44c0341)
+2018-11-15T17:44:21.2709064+07:00 0HLIASSHHV4QR:0000000C [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Announcement.AnnouncementController.GetAllPaging (ShoppingOnline.WebApplication)" with arguments (["1", "10"]) - Validation state: Valid (4e3479ed)
+2018-11-15T17:44:21.3139065+07:00 0HLIASSHHV4QT:00000005 [INF] Authorization was successful. (0d575a54)
+2018-11-15T17:44:21.3276844+07:00 0HLIASSHHV4R2:00000001 [INF] Completed connection handshake. Using HubProtocol '"json"'. (421947a1)
+2018-11-15T17:44:21.3461247+07:00 0HLIASSHHV4R0:00000005 [INF] Route matched with "{area = \"Admin\", action = \"GetColors\", controller = \"Bill\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Bill.BillController.GetColors (ShoppingOnline.WebApplication)" (a44c0341)
+2018-11-15T17:44:21.3587461+07:00 0HLIASSHHV4QR:0000000C [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2018-11-15T17:44:21.3806957+07:00 0HLIASSHHV4R0:00000005 [INF] Authorization was successful. (0d575a54)
+2018-11-15T17:44:21.4078774+07:00 0HLIASSHHV4QT:00000005 [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Bill.BillController.GetSizes (ShoppingOnline.WebApplication)" - Validation state: Valid (dad538d7)
+2018-11-15T17:44:21.4181882+07:00 0HLIASSHHV4R0:00000005 [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Bill.BillController.GetColors (ShoppingOnline.WebApplication)" - Validation state: Valid (dad538d7)
+2018-11-15T17:44:21.4229167+07:00 0HLIASSHHV4QR:0000000C [INF] Executed DbCommand ("21"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Announcements] AS [x]
+LEFT JOIN [AnnouncementUsers] AS [y] ON [x].[Id] = [y].[AnnouncementId]
+WHERE ([y].[HasRead] = 0) AND ([y].[UserId] IS NULL OR ([y].[UserId] = @__userId_0))" (0723d8ff)
+2018-11-15T17:44:21.4394022+07:00 0HLIASSHHV4R0:00000005 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2018-11-15T17:44:21.4634609+07:00 0HLIASSHHV4QT:00000005 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2018-11-15T17:44:21.4881716+07:00 0HLIASSHHV4QR:0000000C [INF] Executed DbCommand ("11"ms) [Parameters=["@__userId_0='?' (DbType = Guid), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Title], [x].[Content], [x].[UserId], [x].[DateCreated], [x].[DateModified], [x].[Status]
+FROM [Announcements] AS [x]
+LEFT JOIN [AnnouncementUsers] AS [y] ON [x].[Id] = [y].[AnnouncementId]
+WHERE ([y].[HasRead] = 0) AND ([y].[UserId] IS NULL OR ([y].[UserId] = @__userId_0))
+ORDER BY [x].[DateCreated] DESC, [x].[Id]
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY" (0723d8ff)
+2018-11-15T17:44:21.5786757+07:00 0HLIASSHHV4QU:00000009 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/ProductCategory/GetAll   (ca22a1cb)
+2018-11-15T17:44:21.6396363+07:00 0HLIASSHHV4QR:0000000C [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Announcement.AnnouncementController.GetAllPaging (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 217.3336ms. (50a9e262)
+2018-11-15T17:44:21.6449952+07:00 0HLIASSHHV4QT:00000005 [INF] Executed DbCommand ("32"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name]
+FROM [Sizes] AS [dto]" (0723d8ff)
+2018-11-15T17:44:21.6537194+07:00 0HLIASSHHV4QR:0000000C [INF] Executing ObjectResult, writing value of type '"ShoppingOnline.Utilities.Dtos.PagedResult`1[[ShoppingOnline.Application.Systems.Announcements.Dtos.AnnouncementViewModel, ShoppingOnline.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-15T17:44:21.6610507+07:00 0HLIASSHHV4R0:00000005 [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[Code]
+FROM [Colors] AS [dto]" (0723d8ff)
+2018-11-15T17:44:21.6679817+07:00 0HLIASSHHV4QR:0000000C [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Announcement.AnnouncementController.GetAllPaging (ShoppingOnline.WebApplication)" in 464.8071ms (afa2e885)
+2018-11-15T17:44:21.6722313+07:00 0HLIASSHHV4QT:00000005 [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Bill.BillController.GetSizes (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 246.6133ms. (50a9e262)
+2018-11-15T17:44:21.6820823+07:00 0HLIASSHHV4R0:00000005 [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Bill.BillController.GetColors (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 250.93ms. (50a9e262)
+2018-11-15T17:44:21.6888083+07:00 0HLIASSHHV4QR:0000000C [INF] Request finished in 744.6708ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-15T17:44:21.7189158+07:00 0HLIASSHHV4R0:00000005 [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[ShoppingOnline.Application.ECommerce.Products.Dtos.ColorViewModel, ShoppingOnline.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-15T17:44:21.7426827+07:00 0HLIASSHHV4QT:00000005 [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[ShoppingOnline.Application.ECommerce.Products.Dtos.SizeViewModel, ShoppingOnline.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-15T17:44:21.7715478+07:00 0HLIASSHHV4R0:00000005 [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Bill.BillController.GetColors (ShoppingOnline.WebApplication)" in 378.4098ms (afa2e885)
+2018-11-15T17:44:21.7903872+07:00 0HLIASSHHV4QT:00000005 [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Bill.BillController.GetSizes (ShoppingOnline.WebApplication)" in 497.6128ms (afa2e885)
+2018-11-15T17:44:21.8009202+07:00 0HLIASSHHV4R0:00000005 [INF] Request finished in 574.7319ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-15T17:44:21.8063022+07:00 0HLIASSHHV4QT:00000005 [INF] Request finished in 617.6936ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-15T17:44:21.8114556+07:00 0HLIASSHHV4QU:00000009 [INF] Route matched with "{area = \"Admin\", action = \"GetAll\", controller = \"ProductCategory\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.ProductCategory.ProductCategoryController.GetAll (ShoppingOnline.WebApplication)" (a44c0341)
+2018-11-15T17:44:21.8178443+07:00 0HLIASSHHV4QV:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/product/GetAllPaging?categoryId=--Select+category--&keyword=&page=1&pageSize=10   (ca22a1cb)
+2018-11-15T17:44:21.8247128+07:00 0HLIASSHHV4QU:00000009 [INF] Authorization was successful. (0d575a54)
+2018-11-15T17:44:21.8302701+07:00 0HLIASSHHV4QR:0000000D [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/config.js?t=H8DC   (ca22a1cb)
+2018-11-15T17:44:21.8417848+07:00 0HLIASSHHV4QU:00000009 [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.ProductCategory.ProductCategoryController.GetAll (ShoppingOnline.WebApplication)" - Validation state: Valid (dad538d7)
+2018-11-15T17:44:21.8527829+07:00 0HLIASSHHV4QV:00000006 [INF] Route matched with "{area = \"Admin\", action = \"GetAllPaging\", controller = \"Product\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Product.ProductController.GetAllPaging (ShoppingOnline.WebApplication)" (a44c0341)
+2018-11-15T17:44:21.8706667+07:00 0HLIASSHHV4QU:00000009 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2018-11-15T17:44:21.8878828+07:00 0HLIASSHHV4QV:00000006 [INF] Authorization was successful. (0d575a54)
+2018-11-15T17:44:21.9621865+07:00 0HLIASSHHV4QR:0000000D [INF] Sending file. Request path: '"/lib/ckeditor/config.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\ckeditor\config.js"' (27b0a520)
+2018-11-15T17:44:21.9691566+07:00 0HLIASSHHV4QU:00000009 [INF] Executed DbCommand ("18"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2018-11-15T17:44:22.0080789+07:00 0HLIASSHHV4QR:0000000D [INF] Request finished in 190.8765ms 200 application/javascript (791a596a)
+2018-11-15T17:44:22.0623458+07:00 0HLIASSHHV4QU:00000009 [INF] Executed DbCommand ("47"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id], [x.Products].[Id]" (0723d8ff)
+2018-11-15T17:44:22.1175461+07:00 0HLIASSHHV4QU:00000009 [INF] Executed DbCommand ("41"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t1].[ParentId], [t1].[Id], [t1].[Id0], [x.Products.ProductTags].[Id] AS [Id2], [x.Products.ProductTags].[ProductId], [x.Products.ProductTags].[TagId], CASE
+    WHEN [x.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.Products.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT [t0].[ParentId], [t0].[Id], [x.Products0].[Id] AS [Id0]
+    FROM [Products] AS [x.Products0]
+    INNER JOIN (
+        SELECT [x1].[ParentId], [x1].[Id]
+        FROM [ProductCategories] AS [x1]
+    ) AS [t0] ON [x.Products0].[CategoryId] = [t0].[Id]
+) AS [t1] ON [x.Products.ProductTags].[ProductId] = [t1].[Id0]
+ORDER BY [t1].[ParentId], [t1].[Id], [t1].[Id0]" (0723d8ff)
+2018-11-15T17:44:22.1275721+07:00 0HLIASSHHV4QV:00000006 [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Product.ProductController.GetAllPaging (ShoppingOnline.WebApplication)" with arguments (["", "", "1", "10"]) - Validation state: Invalid (4e3479ed)
+2018-11-15T17:44:22.1378477+07:00 0HLIASSHHV4QU:00000009 [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.ProductCategory.ProductCategoryController.GetAll (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 276.671ms. (50a9e262)
+2018-11-15T17:44:22.1424958+07:00 0HLIASSHHV4QV:00000006 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2018-11-15T17:44:22.1444119+07:00 0HLIASSHHV4QU:00000009 [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[ShoppingOnline.Application.ECommerce.ProductCategories.Dtos.ProductCategoryViewModel, ShoppingOnline.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-15T17:44:22.1603454+07:00 0HLIASSHHV4QV:00000006 [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Products] AS [x]
+WHERE [x].[Status] = 1" (0723d8ff)
+2018-11-15T17:44:22.2350232+07:00 0HLIASSHHV4QU:00000009 [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.ProductCategory.ProductCategoryController.GetAll (ShoppingOnline.WebApplication)" in 407.3422ms (afa2e885)
+2018-11-15T17:44:22.2686587+07:00 0HLIASSHHV4QU:00000009 [INF] Request finished in 1062.3786ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-15T17:44:22.3663760+07:00 0HLIASSHHV4QV:00000006 [INF] Executed DbCommand ("12"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2018-11-15T17:44:22.4020708+07:00 0HLIASSHHV4QV:00000006 [INF] Executed DbCommand ("25"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [x.ProductTags].[Id] AS [Id1], [x.ProductTags].[ProductId], [x.ProductTags].[TagId], CASE
+    WHEN [x.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT [x0].[DateCreated], [x0].[Id]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t] ON [x.ProductTags].[ProductId] = [t].[Id]
+ORDER BY [t].[DateCreated] DESC, [t].[Id]" (0723d8ff)
+2018-11-15T17:44:22.4192874+07:00 0HLIASSHHV4QV:00000006 [INF] Executed DbCommand ("9"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t0].[DateCreated], [t0].[Id], [t0].[Id0], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[ViewCount], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Status]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT [x1].[DateCreated], [x1].[Id], [x.ProductCategory1].[Id] AS [Id0]
+    FROM [Products] AS [x1]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory1] ON [x1].[CategoryId] = [x.ProductCategory1].[Id]
+    WHERE [x1].[Status] = 1
+    ORDER BY [x1].[DateCreated] DESC, [x1].[Id], [x.ProductCategory1].[Id]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t0] ON [x.ProductCategory.Products].[CategoryId] = [t0].[Id0]
+ORDER BY [t0].[DateCreated] DESC, [t0].[Id], [t0].[Id0], [x.ProductCategory.Products].[Id]" (0723d8ff)
+2018-11-15T17:44:22.4422091+07:00 0HLIASSHHV4QV:00000006 [INF] Executed DbCommand ("17"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[DateCreated], [t2].[Id], [t2].[Id0], [t2].[Id1], [x.ProductCategory.Products.ProductTags].[Id] AS [Id3], [x.ProductCategory.Products.ProductTags].[ProductId], [x.ProductCategory.Products.ProductTags].[TagId], CASE
+    WHEN [x.ProductCategory.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag0].[Name], [dto.Tag0].[Type]
+FROM [ProductTags] AS [x.ProductCategory.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag0] ON [x.ProductCategory.Products.ProductTags].[TagId] = [dto.Tag0].[Id]
+INNER JOIN (
+    SELECT [t1].[DateCreated], [t1].[Id], [t1].[Id0], [x.ProductCategory.Products0].[Id] AS [Id1]
+    FROM [Products] AS [x.ProductCategory.Products0]
+    INNER JOIN (
+        SELECT [x2].[DateCreated], [x2].[Id], [x.ProductCategory2].[Id] AS [Id0]
+        FROM [Products] AS [x2]
+        INNER JOIN [ProductCategories] AS [x.ProductCategory2] ON [x2].[CategoryId] = [x.ProductCategory2].[Id]
+        WHERE [x2].[Status] = 1
+        ORDER BY [x2].[DateCreated] DESC, [x2].[Id], [x.ProductCategory2].[Id]
+        OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+    ) AS [t1] ON [x.ProductCategory.Products0].[CategoryId] = [t1].[Id0]
+) AS [t2] ON [x.ProductCategory.Products.ProductTags].[ProductId] = [t2].[Id1]
+ORDER BY [t2].[DateCreated] DESC, [t2].[Id], [t2].[Id0], [t2].[Id1]" (0723d8ff)
+2018-11-15T17:44:22.4514423+07:00 0HLIASSHHV4QV:00000006 [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Product.ProductController.GetAllPaging (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 317.3205ms. (50a9e262)
+2018-11-15T17:44:22.4573471+07:00 0HLIASSHHV4QV:00000006 [INF] Executing ObjectResult, writing value of type '"ShoppingOnline.Utilities.Dtos.PagedResult`1[[ShoppingOnline.Application.ECommerce.Products.Dtos.ProductViewModel, ShoppingOnline.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2018-11-15T17:44:22.4776476+07:00 0HLIASSHHV4QV:00000006 [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Product.ProductController.GetAllPaging (ShoppingOnline.WebApplication)" in 617.2222ms (afa2e885)
+2018-11-15T17:44:22.4886857+07:00 0HLIASSHHV4QV:00000006 [INF] Request finished in 1298.0747ms 200 application/json; charset=utf-8 (791a596a)
+2018-11-15T17:44:22.8323532+07:00 0HLIASSHHV4QV:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin-side/images/user.png   (ca22a1cb)
+2018-11-15T17:44:22.9443019+07:00 0HLIASSHHV4QV:00000007 [INF] Request finished in 21.5548ms 404  (791a596a)
+2018-11-15T17:44:22.9642928+07:00 0HLIASSHHV4QV:00000008 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/skins/moono-lisa/editor.css?t=H8DC   (ca22a1cb)
+2018-11-15T17:44:22.9755814+07:00 0HLIASSHHV4R3:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/lang/vi.js?t=H8DC   (ca22a1cb)
+2018-11-15T17:44:23.0241349+07:00 0HLIASSHHV4QV:00000008 [INF] Sending file. Request path: '"/lib/ckeditor/skins/moono-lisa/editor.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\ckeditor\skins\moono-lisa\editor.css"' (27b0a520)
+2018-11-15T17:44:23.0408008+07:00 0HLIASSHHV4QV:00000008 [INF] Request finished in 79.7434ms 200 text/css (791a596a)
+2018-11-15T17:44:23.0612324+07:00 0HLIASSHHV4R3:00000001 [INF] Sending file. Request path: '"/lib/ckeditor/lang/vi.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\ckeditor\lang\vi.js"' (27b0a520)
+2018-11-15T17:44:23.0711306+07:00 0HLIASSHHV4R3:00000001 [INF] Request finished in 104.2238ms 200 application/javascript (791a596a)
+2018-11-15T17:44:23.1265697+07:00 0HLIASSHHV4R3:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/styles.js?t=H8DC   (ca22a1cb)
+2018-11-15T17:44:23.1548360+07:00 0HLIASSHHV4R3:00000002 [INF] Sending file. Request path: '"/lib/ckeditor/styles.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\ckeditor\styles.js"' (27b0a520)
+2018-11-15T17:44:23.1614000+07:00 0HLIASSHHV4R3:00000002 [INF] Request finished in 33.099ms 200 application/javascript (791a596a)
+2018-11-15T17:44:23.1940128+07:00 0HLIASSHHV4R3:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/plugins/colorbutton/plugin.js?t=H8DC   (ca22a1cb)
+2018-11-15T17:44:23.2427074+07:00 0HLIASSHHV4R3:00000003 [INF] Sending file. Request path: '"/lib/ckeditor/plugins/colorbutton/plugin.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\ckeditor\plugins\colorbutton\plugin.js"' (27b0a520)
+2018-11-15T17:44:23.2544186+07:00 0HLIASSHHV4R3:00000003 [INF] Request finished in 54.361ms 200 application/javascript (791a596a)
+2018-11-15T17:44:23.2785770+07:00 0HLIASSHHV4R3:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/plugins/panelbutton/plugin.js?t=H8DC   (ca22a1cb)
+2018-11-15T17:44:23.3008966+07:00 0HLIASSHHV4R3:00000004 [INF] Sending file. Request path: '"/lib/ckeditor/plugins/panelbutton/plugin.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\ckeditor\plugins\panelbutton\plugin.js"' (27b0a520)
+2018-11-15T17:44:23.3063525+07:00 0HLIASSHHV4R3:00000004 [INF] Request finished in 29.8722ms 200 application/javascript (791a596a)
+2018-11-15T17:44:23.4654985+07:00 0HLIASSHHV4R3:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/plugins/scayt/skins/moono-lisa/scayt.css   (ca22a1cb)
+2018-11-15T17:44:23.4820302+07:00 0HLIASSHHV4QV:00000009 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/plugins/scayt/dialogs/dialog.css   (ca22a1cb)
+2018-11-15T17:44:23.4900162+07:00 0HLIASSHHV4R5:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/plugins/wsc/skins/moono-lisa/wsc.css   (ca22a1cb)
+2018-11-15T17:44:23.4974712+07:00 0HLIASSHHV4R6:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/plugins/colorbutton/lang/vi.js?t=H8DC   (ca22a1cb)
+2018-11-15T17:44:23.5045031+07:00 0HLIASSHHV4R4:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/plugins/tableselection/styles/tableselection.css   (ca22a1cb)
+2018-11-15T17:44:23.5138697+07:00 0HLIASSHHV4R3:00000005 [INF] Sending file. Request path: '"/lib/ckeditor/plugins/scayt/skins/moono-lisa/scayt.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\ckeditor\plugins\scayt\skins\moono-lisa\scayt.css"' (27b0a520)
+2018-11-15T17:44:23.5315660+07:00 0HLIASSHHV4QV:00000009 [INF] Sending file. Request path: '"/lib/ckeditor/plugins/scayt/dialogs/dialog.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\ckeditor\plugins\scayt\dialogs\dialog.css"' (27b0a520)
+2018-11-15T17:44:23.5396702+07:00 0HLIASSHHV4R3:00000005 [INF] Request finished in 99.2514ms 200 text/css (791a596a)
+2018-11-15T17:44:23.5685268+07:00 0HLIASSHHV4QV:00000009 [INF] Request finished in 89.5626ms 200 text/css (791a596a)
+2018-11-15T17:44:23.6182305+07:00 0HLIASSHHV4R6:00000001 [INF] Sending file. Request path: '"/lib/ckeditor/plugins/colorbutton/lang/vi.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\ckeditor\plugins\colorbutton\lang\vi.js"' (27b0a520)
+2018-11-15T17:44:23.6243270+07:00 0HLIASSHHV4R4:00000001 [INF] Sending file. Request path: '"/lib/ckeditor/plugins/tableselection/styles/tableselection.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\ckeditor\plugins\tableselection\styles\tableselection.css"' (27b0a520)
+2018-11-15T17:44:23.6346419+07:00 0HLIASSHHV4R6:00000001 [INF] Request finished in 135.0895ms 200 application/javascript (791a596a)
+2018-11-15T17:44:23.6412665+07:00 0HLIASSHHV4R4:00000001 [INF] Request finished in 182.7947ms 200 text/css (791a596a)
+2018-11-15T17:44:23.6454224+07:00 0HLIASSHHV4R5:00000001 [INF] Sending file. Request path: '"/lib/ckeditor/plugins/wsc/skins/moono-lisa/wsc.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\ckeditor\plugins\wsc\skins\moono-lisa\wsc.css"' (27b0a520)
+2018-11-15T17:44:23.6522099+07:00 0HLIASSHHV4R5:00000001 [INF] Request finished in 185.4595ms 200 text/css (791a596a)
+2018-11-15T17:44:23.6995317+07:00 0HLIASSHHV4R5:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/skins/moono-lisa/icons.png?t=H8DC   (ca22a1cb)
+2018-11-15T17:44:23.7214710+07:00 0HLIASSHHV4R5:00000002 [INF] Sending file. Request path: '"/lib/ckeditor/skins/moono-lisa/icons.png"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\ckeditor\skins\moono-lisa\icons.png"' (27b0a520)
+2018-11-15T17:44:23.7297740+07:00 0HLIASSHHV4R5:00000002 [INF] Request finished in 27.9501ms 200 image/png (791a596a)
+2018-11-15T17:44:23.7973449+07:00 0HLIASSHHV4R5:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/contents.css?t=H8DC   (ca22a1cb)
+2018-11-15T17:44:23.8189608+07:00 0HLIASSHHV4R5:00000003 [INF] Sending file. Request path: '"/lib/ckeditor/contents.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\ckeditor\contents.css"' (27b0a520)
+2018-11-15T17:44:23.8243628+07:00 0HLIASSHHV4R5:00000003 [INF] Request finished in 29.1748ms 200 text/css (791a596a)
+2018-11-15T17:44:25.3008253+07:00 0HLIASSHHV4R5:00000004 [INF] Request starting HTTP/1.1 POST https://localhost:5001/Admin/Product/ExportExcel  0 (ca22a1cb)
+2018-11-15T17:44:25.3141439+07:00 0HLIASSHHV4R5:00000004 [INF] Route matched with "{area = \"Admin\", action = \"ExportExcel\", controller = \"Product\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Product.ProductController.ExportExcel (ShoppingOnline.WebApplication)" (a44c0341)
+2018-11-15T17:44:25.3182909+07:00 0HLIASSHHV4R5:00000004 [INF] Authorization was successful. (0d575a54)
+2018-11-15T17:44:25.3226853+07:00 0HLIASSHHV4R5:00000004 [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Product.ProductController.ExportExcel (ShoppingOnline.WebApplication)" - Validation state: Valid (dad538d7)
+2018-11-15T17:44:25.3922781+07:00 0HLIASSHHV4R5:00000004 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2018-11-15T17:44:25.4364585+07:00 0HLIASSHHV4R5:00000004 [WRN] The Include operation for navigation '"[x].ProductCategory"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2018-11-15T17:44:25.5785247+07:00 0HLIASSHHV4R5:00000004 [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+ORDER BY [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2018-11-15T17:44:25.5996037+07:00 0HLIASSHHV4R5:00000004 [INF] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [x.ProductTags].[Id] AS [Id1], [x.ProductTags].[ProductId], [x.ProductTags].[TagId], CASE
+    WHEN [x.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT [x0].[Id]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+) AS [t] ON [x.ProductTags].[ProductId] = [t].[Id]
+ORDER BY [t].[Id]" (0723d8ff)
+2018-11-15T17:44:25.6392913+07:00 0HLIASSHHV4R5:00000004 [INF] Executed DbCommand ("15"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t0].[Id], [t0].[Id0], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[ViewCount], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[DateCreated], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Status]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT [x1].[Id], [x.ProductCategory1].[Id] AS [Id0]
+    FROM [Products] AS [x1]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory1] ON [x1].[CategoryId] = [x.ProductCategory1].[Id]
+) AS [t0] ON [x.ProductCategory.Products].[CategoryId] = [t0].[Id0]
+ORDER BY [t0].[Id], [t0].[Id0], [x.ProductCategory.Products].[Id]" (0723d8ff)
+2018-11-15T17:44:25.6679098+07:00 0HLIASSHHV4R5:00000004 [INF] Executed DbCommand ("21"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[Id], [t2].[Id0], [t2].[Id1], [x.ProductCategory.Products.ProductTags].[Id] AS [Id3], [x.ProductCategory.Products.ProductTags].[ProductId], [x.ProductCategory.Products.ProductTags].[TagId], CASE
+    WHEN [x.ProductCategory.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag0].[Name], [dto.Tag0].[Type]
+FROM [ProductTags] AS [x.ProductCategory.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag0] ON [x.ProductCategory.Products.ProductTags].[TagId] = [dto.Tag0].[Id]
+INNER JOIN (
+    SELECT [t1].[Id], [t1].[Id0], [x.ProductCategory.Products0].[Id] AS [Id1]
+    FROM [Products] AS [x.ProductCategory.Products0]
+    INNER JOIN (
+        SELECT [x2].[Id], [x.ProductCategory2].[Id] AS [Id0]
+        FROM [Products] AS [x2]
+        INNER JOIN [ProductCategories] AS [x.ProductCategory2] ON [x2].[CategoryId] = [x.ProductCategory2].[Id]
+    ) AS [t1] ON [x.ProductCategory.Products0].[CategoryId] = [t1].[Id0]
+) AS [t2] ON [x.ProductCategory.Products.ProductTags].[ProductId] = [t2].[Id1]
+ORDER BY [t2].[Id], [t2].[Id0], [t2].[Id1]" (0723d8ff)
+2018-11-15T17:44:28.4547968+07:00 0HLIASSHHV4R5:00000004 [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Product.ProductController.ExportExcel (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 3122.1252ms. (50a9e262)
+2018-11-15T17:44:28.4603000+07:00 0HLIASSHHV4R5:00000004 [INF] Executing ObjectResult, writing value of type '"System.String"'. (8a1b66c8)
+2018-11-15T17:44:28.4657235+07:00 0HLIASSHHV4R5:00000004 [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Product.ProductController.ExportExcel (ShoppingOnline.WebApplication)" in 3146.5991ms (afa2e885)
+2018-11-15T17:44:28.5439087+07:00 0HLIASSHHV4R5:00000004 [INF] Request finished in 3170.1574ms 200 text/plain; charset=utf-8 (791a596a)
+2018-11-15T17:44:28.5530456+07:00 0HLIASSHHV4R5:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/export-files/Product_20181115054425.xlsx   (ca22a1cb)
+2018-11-15T17:44:28.5647148+07:00 0HLIASSHHV4R5:00000005 [INF] Sending file. Request path: '"/export-files/Product_20181115054425.xlsx"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\export-files\Product_20181115054425.xlsx"' (27b0a520)
+2018-11-15T17:44:28.5775194+07:00 0HLIASSHHV4R5:00000005 [INF] Request finished in 20.5547ms 200 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet (791a596a)
+2018-11-15T17:45:30.9706743+07:00 0HLIASSHHV4R2:00000001 [INF] Request finished in 69887.7238ms 101  (791a596a)

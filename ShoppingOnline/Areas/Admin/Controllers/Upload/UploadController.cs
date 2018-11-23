@@ -17,7 +17,7 @@ namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Upload
 {
     public class UploadController : BaseController
     {
-        private readonly IHostingEnvironment _env;
+        private IHostingEnvironment _env;
 
         public UploadController(IHostingEnvironment env)
         {
@@ -133,7 +133,7 @@ namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Upload
 
             img.Dispose();
             bmp.Save(Path.Combine(src), imgFormat);
-            
+
             Stream writingStream = new FileStream(src, FileMode.Open);
 
             ResizeAndSaveImage(writingStream, src, 265, 265);
@@ -176,7 +176,7 @@ namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Upload
 
             img.Dispose();
             bmp.Save(Path.Combine(src), imgFormat);
-            
+
 
             Stream writingStream = new FileStream(src, FileMode.Open);
 
@@ -187,7 +187,7 @@ namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Upload
 
 
         [HttpPost]
-        public IActionResult UploadAdvertisement()
+        public IActionResult UploadAdvertistment()
         {
             DateTime now = DateTime.Now;
             var files = Request.Form.Files;
@@ -200,7 +200,7 @@ namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Upload
                 var file = files[0];
                 string extension = Path.GetExtension(file.FileName);
                 var filename = Guid.NewGuid().ToString() + extension;
-                var imageFolder = $@"\uploaded\images\{now.ToString("yyyyMMdd")}\ads";
+                var imageFolder = $@"\uploaded\images\ads\{now.ToString("yyyyMMdd")}";
 
                 string folder = _env.WebRootPath + imageFolder;
 
@@ -235,7 +235,7 @@ namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Upload
                 var file = files[0];
                 string extension = Path.GetExtension(file.FileName);
                 var filename = Guid.NewGuid().ToString() + extension;
-                var imageFolder = $@"\uploaded\images\{now.ToString("yyyyMMdd")}\slide";
+                var imageFolder = $@"\uploaded\images\slide\{now.ToString("yyyyMMdd")}";
 
                 string folder = _env.WebRootPath + imageFolder;
 
@@ -255,7 +255,6 @@ namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Upload
                 return new OkObjectResult(Path.Combine(imageFolder, filename).Replace(@"\", @"/"));
             }
         }
-
 
         private void ResizeAndSaveImage(Stream stream, string filePath, int width, int height)
         {

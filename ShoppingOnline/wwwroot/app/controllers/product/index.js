@@ -1,4 +1,15 @@
 ﻿var productController = function () {
+
+    var sourceImage;
+
+    var options = {
+        aspectRatio: 1 / 1,
+        minCropBoxWidth: 473,
+        minCropBoxHeight: 473,
+        zoomOnWheel: false,
+        autoCrop: false
+    };
+
     var quantityManagement = new QuantityManagement();
     var imageManagement = new ImageManagement();
     var wholePriceManagement = new WholePriceManagement();
@@ -14,7 +25,7 @@
         quantityManagement.initialize();
         wholePriceManagement.initialize();
 
-    };
+    }
 
     function registerEvents() {
 
@@ -22,8 +33,8 @@
             errorClass: 'red',
             ignore: [],
             rules: {
-                txtNameM: {required: true},
-                ddlCategoryIdM: {required: true},
+                txtNameM: { required: true },
+                ddlCategoryIdM: { required: true },
                 txtPriceM: {
                     required: true,
                     number: true,
@@ -73,8 +84,11 @@
 
         $('body').on('click', '.btnDelete', function (e) {
             e.preventDefault();
+
             var that = $(this).data('id');
+
             deleteItem(that);
+
         });
 
         $('#btnSave').on('click', function () {
@@ -83,7 +97,9 @@
 
         $('body').on('click', '.btnEdit', function (e) {
             e.preventDefault();
+
             var that = $(this).data('id');
+
             loadDetails(that);
         });
 
@@ -96,9 +112,6 @@
             var fileUpload = $(this).get(0);
             var files = fileUpload.files;
             var data = new FormData();
-            data.append("height", "360");
-            data.append("width", "360");
-
             var ValidImageTypes = ["image/gif", "image/jpeg", "image/png"];
 
             if ($.inArray(files[0].type, ValidImageTypes) > 0) {
@@ -114,7 +127,10 @@
                     processData: false,
                     data: data,
                     success: function (path) {
-                        $('#txtImage').val(path);
+                        sourceImage = path;
+                        $('#source-image').html('<img data-path="' + path + '" src="' + path + '"  id="image" style="max-width: 100%">');
+                        $('#source-image').show();
+                        cropImage();
                         core.notify('Upload image succesful!', 'success');
 
                     },
@@ -129,6 +145,7 @@
         });
 
         $('#btn-import').on('click', function () {
+
             initTreeDropDownCategory();
             $('#modal-import-excel').modal('show');
             $(".combo").css("width", "20%");
@@ -158,7 +175,7 @@
                         this.$element[0] !== e.target && !this.$element.has(e.target).length
                         // CKEditor compatibility fix start.
                         && !$(e.target).closest('.cke_dialog, .cke').length
-                    // CKEditor compatibility fix end.
+                        // CKEditor compatibility fix end.
                     ) {
                         this.$element.trigger('focus');
                     }
@@ -175,7 +192,7 @@
                 categoryId: $('#ddlCategorySearch').val(),
                 keyword: $('#txtKeyword').val(),
                 page: core.configs.pageIndex,
-                pageSize: core.configs.pageSize
+                pageSize: core.configs.pageSize,
             },
             url: '/admin/product/GetAllPaging',
             dataType: 'json',
@@ -201,8 +218,8 @@
                         wrapPaging(res.RowCount, function () {
                             loadData();
                         }, isPageChanged);
+
                     });
-                    core.notify('Loaded ' + res.RowCount + ' success product', 'success');
                 } else {
                     core.notify('Not found item', 'error');
                 }
@@ -312,6 +329,10 @@
         $('#txtUnitM').val('');
 
         $('#txtImage').val('');
+        $('#source-image').html('');
+        $('#source-thumbnail').html('');
+        $('#source-image').hide();
+        $('#source-thumbnail').hide();
         CKEDITOR.instances.txtContentM.setData('');
 
         $('#txtPriceM').val('');
@@ -327,6 +348,7 @@
         $('#ckStatusM').attr('checked', true);
         $('#ckHotM').attr('checked', false);
         $('#ckShowHomeM').attr('checked', true);
+
 
 
         $(".combo").css("width", "100%");
@@ -412,7 +434,7 @@
         $.ajax({
             type: "GET",
             url: "/Admin/Product/GetById",
-            data: {id: that},
+            data: { id: that },
             dataType: "json",
             beforeSend: function () {
                 core.startLoading();
@@ -430,7 +452,10 @@
                 $('#txtPromotionPriceM').val(res.PromotionPrice);
 
                 $('#txtImage').val(res.Image);
-                $('#productImage').attr("src", res.Image);
+                $('#source-image').html('');
+                $('#source-image').hide();
+                $('#source-thumbnail').html('<img src = "' + res.Image + '" />');
+                $('#source-thumbnail').show();
 
                 $('#txtTagM').val(res.Tags);
                 $('#txtMetakeywordM').val(res.SeoKeywords);
@@ -439,7 +464,7 @@
                 $('#txtSeoAliasM').val(res.SeoAlias);
 
                 CKEDITOR.instances.txtContentM.setData(res.Content);
-                $('#ckStatusM').prop('checked', res.Status == 1);
+                $('#ckStatusM').prop('checked', res.Status === 1);
                 $('#ckHotM').prop('checked', res.HotFlag);
                 $('#ckShowHomeM').prop('checked', res.HomeFlag);
 
@@ -504,6 +529,7 @@
     function importExcel() {
         var fileUpload = $("#fileInputExcel").get(0);
         var files = fileUpload.files;
+
         // Create FormData object  
         var fileData = new FormData();
         // Looping over all files and add it to FormData object  
@@ -521,11 +547,6 @@
             success: function (data) {
                 $('#modal-import-excel').modal('hide');
                 loadData();
-                core.notify('Import success product','success')
-            },
-            error:function (status) {
-                core.notify('Import failed','error');
-                console.log(status)
             }
         });
         return false;
@@ -535,4 +556,61 @@
     function clearFileInput() {
         $('#fileImage').val(null);
     }
+
+    function cropImage() {
+        var $image = $('#image');
+
+        var x = 0;
+        var y = 0;
+        var w = 0;
+        var h = 0;
+
+
+        $image.on({
+
+            crop: function (event) {
+
+                x = event.detail.x;
+                y = event.detail.y;
+                w = event.detail.width;
+                h = event.detail.height;
+
+            },
+            cropend: function (e) {
+
+                updateCoords(x, y, w, h);
+
+            }
+        }).cropper(options);
+    }
+
+    function updateCoords(x, y, w, h) {
+
+        var data = new FormData();
+        data.append('x', x);
+        data.append('y', y);
+        data.append('h', h);
+        data.append('w', w);
+        data.append('source', sourceImage);
+
+        $.ajax({
+            type: "POST",
+            url: "/Admin/Upload/Thumbnail",
+            contentType: false,
+            processData: false,
+            data: data,
+            success: function (res) {
+                var img = '<img src="' + res + '"/>';
+                $('#source-thumbnail').html(img);
+                $('#txtImage').val(res);
+                $('#source-thumbnail').show();
+
+            },
+            error: function () {
+                core.notify('Has an error in process', 'error');
+            }
+        });
+
+    }
+
 }

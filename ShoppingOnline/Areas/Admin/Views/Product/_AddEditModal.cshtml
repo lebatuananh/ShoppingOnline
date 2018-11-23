@@ -9,7 +9,7 @@
                 <div id="horizontal-form">
                     <form class="form-horizontal" role="form" id="frmMaintainance">
                         <div class="form-group">
-                            <input type="hidden" id="hidIdM" value="0"/>
+                            <input type="hidden" id="hidIdM" value="0" />
                             <label for="txtNameM" class="col-sm-2 control-label no-padding-right">Name</label>
                             <div class="col-sm-10">
                                 <input type="text" name="txtNameM" class="form-control" id="txtNameM">
@@ -52,16 +52,21 @@
                             <label for="txtImageM" class="col-sm-2 control-label no-padding-right">Image</label>
                             <div class="col-sm-6">
                                 <div class="input-group">
-                                    <input type="text" name="txtImage" class="form-control" id="txtImage"/>
-                                    <input type="file" id="fileInputImage" style="display: none"/>
                                     <span class="input-group-btn">
-                                        <input type="button" id="btnSelectImg" class="btn btn-default" value="Browser"/>
+                                        <input type="button" id="btnSelectImg" class="btn btn-default" value="Browser" />
                                     </span>
+                                    <input type="file" id="fileInputImage" style="display:none" />
+                                    <input type="hidden" name="txtImage" class="form-control" id="txtImage" />
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group" style="margin-left: 144px; margin-bottom: 26px;">
-                                <img id="productImage" alt="Product Image"/>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <div id="source-image" class="col-md-12 thumbnail" style="height:100%; display:none"></div>
+                                    <div id="source-thumbnail" class="col-md-12 thumbnail" style="height:100%; display:none"></div>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="txtContentM" class="col-sm-2 control-label no-padding-right">Content</label>
@@ -119,12 +124,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" id="btnCancel" class="btn btn-secondary" data-dismiss="modal">
-                                <i class="fa fa-times" aria-hidden="true"></i>
-                            </button>
-                            <button type="button" id="btnSave" class="btn btn-primary">
-                                <i class="fa fa-floppy-o" aria-hidden="true"></i>
-                            </button>
+                            <button type="button" id="btnCancel" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+                            <button type="button" id="btnSave" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
                         </div>
                     </form>
                 </div>

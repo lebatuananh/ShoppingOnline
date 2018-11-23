@@ -3,16 +3,18 @@
 }
 
 @section styles{
-    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet"/>
-    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet"/>
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/cropper/dist/cropper.css" rel="stylesheet" />
 }
 
 @section scripts{
-    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
+    <script src="~/lib/cropper/dist/cropper.js" asp-append-version="true"></script>
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
     <script src="~/app/controllers/product/index.js" asp-append-version="true"></script>
-    <script src="~/app/controllers/product/image-management.js"></script>
-    <script src="~/app/controllers/product/quantity-management.js"></script>
-    <script src="~/app/controllers/product/whole-price-management.js"></script>
+    <script src="~/app/controllers/product/image-management.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/product/quantity-management.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/product/whole-price-management.js" asp-append-version="true"></script>
     <script>
         var product = new productController();
         product.initialize();
@@ -85,15 +87,15 @@
         <div class="x_content">
             <table class="table">
                 <thead>
-                <tr>
-                    <th width="12%">Action</th>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Price</th>
-                    <th>Image</th>
-                    <th>CreatedDate</th>
-                    <th>Status</th>
-                </tr>
+                    <tr>
+                        <th width="12%">Action</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                        <th>CreatedDate</th>
+                        <th>Status</th>
+                    </tr>
                 </thead>
                 <tbody id="tbl-content"></tbody>
             </table>

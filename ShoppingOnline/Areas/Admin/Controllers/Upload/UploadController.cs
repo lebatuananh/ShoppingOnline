@@ -187,7 +187,7 @@ namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Upload
 
 
         [HttpPost]
-        public IActionResult UploadAdvertistment()
+        public IActionResult UploadAdvertisement()
         {
             DateTime now = DateTime.Now;
             var files = Request.Form.Files;

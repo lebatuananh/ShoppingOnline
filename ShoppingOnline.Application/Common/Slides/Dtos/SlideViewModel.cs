@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace ShoppingOnline.Application.Common.Dtos
+namespace ShoppingOnline.Application.Common.Slides.Dtos
 {
     public class SlideViewModel
     {

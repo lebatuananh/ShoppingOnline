@@ -1,4 +1,4 @@
-var AdvertistmentController = function () {
+var AdvertisementController = function () {
 
     this.initialize = function () {
         loadData();
@@ -91,7 +91,7 @@ var AdvertistmentController = function () {
                 var url = $('#txtUrlM').val();
                 var status = $('#ckStatusM').prop('checked') === true ? 1 : 0;
                 var sortOrder = $('#txtSortOrderM').val();
-                var positionId = 'home';
+                var positionId = 'home-left';
 
                 $.ajax({
                     type: "POST",

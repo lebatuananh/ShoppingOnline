@@ -15,6 +15,7 @@ using ShoppingOnline.Data.Entities.Advertisement;
 using ShoppingOnline.Data.Entities.Content;
 using ShoppingOnline.Data.Entities.ECommerce;
 using ShoppingOnline.Data.Entities.System;
+using ShoppingOnline.Infrastructure.SharedKernel;
 
 namespace ShoppingOnline.Data.EF
 {
@@ -128,21 +129,30 @@ namespace ShoppingOnline.Data.EF
 
         public override int SaveChanges()
         {
-            var modified = ChangeTracker.Entries().Where(e => e.State == EntityState.Modified || e.State == EntityState.Added);
-
-            foreach (EntityEntry item in modified)
+            try
             {
-                var changedOrAddedItem = item.Entity as IDateTracking;
-                if (changedOrAddedItem != null)
+                var modified = ChangeTracker.Entries().Where(e => e.State == EntityState.Modified || e.State == EntityState.Added);
+
+                foreach (EntityEntry item in modified)
                 {
-                    if (item.State == EntityState.Added)
+                    var changedOrAddedItem = item.Entity as IDateTracking;
+                    if (changedOrAddedItem != null)
                     {
-                        changedOrAddedItem.DateCreated = DateTime.Now;
+                        if (item.State == EntityState.Added)
+                        {
+                            changedOrAddedItem.DateCreated = DateTime.Now;
+                        }
+                        changedOrAddedItem.DateModified = DateTime.Now;
                     }
-                    changedOrAddedItem.DateModified = DateTime.Now;
                 }
+                return base.SaveChanges();
             }
-            return base.SaveChanges();
+            catch (DbUpdateException entityException)
+            {
+
+                throw new ModelValidationException(entityException.Message);
+            }
+           
         }
 
         public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>

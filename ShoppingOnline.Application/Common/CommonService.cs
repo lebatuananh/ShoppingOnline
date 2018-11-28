@@ -4,6 +4,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using ShoppingOnline.Application.Common.Advertisements.Dtos;
 using ShoppingOnline.Application.Common.Dtos;
+using ShoppingOnline.Application.Common.Slides.Dtos;
 using ShoppingOnline.Application.Systems.Settings.Dtos;
 using ShoppingOnline.Data.Entities.Advertisement;
 using ShoppingOnline.Data.Entities.Content;

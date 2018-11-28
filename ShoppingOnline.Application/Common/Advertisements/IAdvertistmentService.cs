@@ -1,5 +1,6 @@
 using ShoppingOnline.Application.Common.Advertisements.Dtos;
 using ShoppingOnline.Utilities.Dtos;
+using System.Collections.Generic;
 
 namespace ShoppingOnline.Application.Common.Advertisements
 {
@@ -16,5 +17,7 @@ namespace ShoppingOnline.Application.Common.Advertisements
         AdvertisementViewModel GetById(int id);
 
         void Save();
+
+        List<AdvertisementPositionViewModel> GetAllAdvertisementPosition();
     }
 }

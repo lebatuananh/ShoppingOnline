@@ -1,6 +1,7 @@
 using AutoMapper;
 using ShoppingOnline.Application.Common.Advertisements.Dtos;
 using ShoppingOnline.Application.Common.Dtos;
+using ShoppingOnline.Application.Common.Slides.Dtos;
 using ShoppingOnline.Application.Content.Blogs.Dtos;
 using ShoppingOnline.Application.Content.Dtos;
 using ShoppingOnline.Application.ECommerce.Bills.Dtos;

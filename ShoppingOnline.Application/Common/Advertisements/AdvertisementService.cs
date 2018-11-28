@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
@@ -12,11 +13,15 @@ namespace ShoppingOnline.Application.Common.Advertisements
     public class AdvertisementService : IAdvertisementService
     {
         private readonly IRepository<Advertisement, int> _advertisementRepository;
+        private readonly IRepository<AdvertisementPosition, string> _advertisementPositionRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public AdvertisementService(IRepository<Advertisement, int> advertisementRepository, IUnitOfWork unitOfWork)
+        public AdvertisementService(IRepository<AdvertisementPosition, string> advertisementPositionRepository,
+            IRepository<Advertisement, int> advertisementRepository,
+            IUnitOfWork unitOfWork)
         {
             this._advertisementRepository = advertisementRepository;
+            this._advertisementPositionRepository = advertisementPositionRepository;
             this._unitOfWork = unitOfWork;
         }
 
@@ -24,12 +29,17 @@ namespace ShoppingOnline.Application.Common.Advertisements
         {
             var advertisement = Mapper.Map<AdvertisementViewModel, Advertisement>(viewModel);
             _advertisementRepository.Add(advertisement);
-             return viewModel;
+            return viewModel;
         }
 
         public void Delete(int id)
         {
             _advertisementRepository.Remove(id);
+        }
+
+        public List<AdvertisementPositionViewModel> GetAllAdvertisementPosition()
+        {
+            return _advertisementPositionRepository.FindAll().OrderBy(x => x.Name).ProjectTo<AdvertisementPositionViewModel>().ToList();
         }
 
         public PagedResult<AdvertisementViewModel> GetAllPaging(string keyword, int page, int pageSize)
@@ -74,5 +84,7 @@ namespace ShoppingOnline.Application.Common.Advertisements
             var advertisement = Mapper.Map<AdvertisementViewModel, Advertisement>(viewModel);
             _advertisementRepository.Update(advertisement);
         }
+
+
     }
 }

@@ -92,9 +92,6 @@ var productCategoryController = function () {
                 var seoAlias = $('#txtSeoAliasM').val();
                 var status = $('#ckStatusM').prop('checked') == true ? 1 : 0;
                 var showHome = $('#ckShowHomeM').prop('checked');
-
-                debugger
-
                 $.ajax({
                     type: "POST",
                     url: "/Admin/ProductCategory/SaveEntity",

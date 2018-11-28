@@ -8,7 +8,7 @@ using ShoppingOnline.Infrastructure.SharedKernel;
 namespace ShoppingOnline.Data.Entities.Advertisement
 {
     [Table("Advertisements")]
-    public class Advertisement : DomainEntity<int>, ISwitchable, ISortable
+    public class Advertisement : DomainEntity<int>, ISwitchable, IDateTracking
     {
         public Advertisement()
         {

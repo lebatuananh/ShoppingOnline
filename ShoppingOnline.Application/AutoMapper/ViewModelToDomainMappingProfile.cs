@@ -1,11 +1,15 @@
 using AutoMapper;
 using ShoppingOnline.Application.Common.Advertisements.Dtos;
+using ShoppingOnline.Application.Common.Feedbacks.Dtos;
+using ShoppingOnline.Application.Common.Slides.Dtos;
+using ShoppingOnline.Application.Content.Pages.Dtos;
 using ShoppingOnline.Application.ECommerce.Bills.Dtos;
 using ShoppingOnline.Application.ECommerce.ProductCategories.Dtos;
 using ShoppingOnline.Application.ECommerce.Products.Dtos;
 using ShoppingOnline.Application.Systems.Announcements.Dtos;
 using ShoppingOnline.Application.Systems.Permissions.Dtos;
 using ShoppingOnline.Data.Entities.Advertisement;
+using ShoppingOnline.Data.Entities.Content;
 using ShoppingOnline.Data.Entities.ECommerce;
 using ShoppingOnline.Data.Entities.System;
 
@@ -53,6 +57,9 @@ namespace ShoppingOnline.Application.AutoMapper
                 .ConstructUsing(c => new AdvertisementPage(c.Name));
             CreateMap<AdvertisementPositionViewModel, AdvertisementPosition>()
                 .ConstructUsing(c => new AdvertisementPosition(c.Name, c.PageId));
+            CreateMap<SlideViewModel, Slide>().ConstructUsing(c => new Slide());
+            CreateMap<FeedbackViewModel, Feedback>().ConstructUsing(c => new Feedback());
+            CreateMap<PageViewModel, Page>().ConstructUsing(c => new Page());
         }
     }
 }

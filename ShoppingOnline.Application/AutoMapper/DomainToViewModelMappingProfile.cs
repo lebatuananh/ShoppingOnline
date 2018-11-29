@@ -1,9 +1,12 @@
 using AutoMapper;
 using ShoppingOnline.Application.Common.Advertisements.Dtos;
+using ShoppingOnline.Application.Common.Contacts.Dtos;
 using ShoppingOnline.Application.Common.Dtos;
+using ShoppingOnline.Application.Common.Feedbacks.Dtos;
 using ShoppingOnline.Application.Common.Slides.Dtos;
 using ShoppingOnline.Application.Content.Blogs.Dtos;
 using ShoppingOnline.Application.Content.Dtos;
+using ShoppingOnline.Application.Content.Pages.Dtos;
 using ShoppingOnline.Application.ECommerce.Bills.Dtos;
 using ShoppingOnline.Application.ECommerce.ProductCategories.Dtos;
 using ShoppingOnline.Application.ECommerce.Products.Dtos;
@@ -61,6 +64,8 @@ namespace ShoppingOnline.Application.AutoMapper
             CreateMap<Permission, PermissionViewModel>();
             CreateMap<Announcement, AnnouncementViewModel>();
             CreateMap<AnnouncementUser, AnnouncementUserViewModel>();
+            CreateMap<Feedback, FeedbackViewModel>();
+            CreateMap<Contact, ContactViewModel>();
         }
     }
 }

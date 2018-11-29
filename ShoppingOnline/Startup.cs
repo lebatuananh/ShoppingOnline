@@ -21,7 +21,11 @@ using ShoppignOnline.Application.Dapper.Implementations;
 using ShoppignOnline.Application.Dapper.Interfaces;
 using ShoppingOnline.Application.Common;
 using ShoppingOnline.Application.Common.Advertisements;
+using ShoppingOnline.Application.Common.Contacts;
+using ShoppingOnline.Application.Common.Feedbacks;
+using ShoppingOnline.Application.Common.Slides;
 using ShoppingOnline.Application.Content.Blogs;
+using ShoppingOnline.Application.Content.Pages;
 using ShoppingOnline.Application.ECommerce.Bills;
 using ShoppingOnline.Application.ECommerce.Carts;
 using ShoppingOnline.Application.ECommerce.ProductCategories;
@@ -130,6 +134,10 @@ namespace ShoppingOnline
             services.AddTransient<ICartService, CartService>();
             services.AddTransient<IViewRenderService, ViewRenderService>();
             services.AddTransient<IReportService, ReportService>();
+            services.AddTransient<ISlideService, SlideService>();
+            services.AddTransient<IContactService, ContactService>();
+            services.AddTransient<IFeedbackService, FeedbackService>();
+            services.AddTransient<IPageService, PageService>();
 
             services.AddTransient<IEmailSender, EmailSender>();
 

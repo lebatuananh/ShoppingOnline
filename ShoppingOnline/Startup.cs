@@ -112,7 +112,24 @@ namespace ShoppingOnline
             });
 
             //Mvc
-            services.AddMvc();
+            services.AddMvc(options =>
+            {
+                options.CacheProfiles.Add("Default",
+                    new CacheProfile()
+                    {
+                        Duration = 60
+                    });
+                options.CacheProfiles.Add("Never",
+                    new CacheProfile()
+                    {
+                        Location = ResponseCacheLocation.None,
+                        NoStore = true
+                    });
+            }).AddViewLocalization(
+                    LanguageViewLocationExpanderFormat.Suffix,
+                    opts => { opts.ResourcesPath = "Resources"; })
+                .AddDataAnnotationsLocalization()
+                .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
             //Repository And UnitOfWork
             services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
@@ -169,15 +186,15 @@ namespace ShoppingOnline
             });
 
             //Facebook, Google
-//            services.AddAuthentication().AddFacebook(n =>
-//            {
-//                n.AppId = Configuration["Authentication:Facebook:AppId"];
-//                n.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
-//            }).AddGoogle(n =>
-//            {
-//                n.ClientId = Configuration["Authentication:Google:ClientId"];
-//                n.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
-//            });
+            //            services.AddAuthentication().AddFacebook(n =>
+            //            {
+            //                n.AppId = Configuration["Authentication:Facebook:AppId"];
+            //                n.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+            //            }).AddGoogle(n =>
+            //            {
+            //                n.ClientId = Configuration["Authentication:Google:ClientId"];
+            //                n.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+            //            });
 
             //Recaptcha
             services.AddRecaptcha(new RecaptchaOptions()
@@ -187,26 +204,7 @@ namespace ShoppingOnline
             });
 
             //Cache and MultiLanguage
-            services.AddMvc(options =>
-                {
-                    options.CacheProfiles.Add("Default",
-                        new CacheProfile()
-                        {
-                            Duration = 60
-                        });
-                    options.CacheProfiles.Add("Never",
-                        new CacheProfile()
-                        {
-                            Location = ResponseCacheLocation.None,
-                            NoStore = true
-                        });
-                }).AddJsonOptions(
-                    options => options.SerializerSettings.ContractResolver = new DefaultContractResolver())
-                .AddViewLocalization(
-                    LanguageViewLocationExpanderFormat.Suffix,
-                    opts => { opts.ResourcesPath = "Resources"; })
-                .AddDataAnnotationsLocalization()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc();
             services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
 
             services.Configure<RequestLocalizationOptions>(
@@ -243,9 +241,10 @@ namespace ShoppingOnline
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-            app.UseSession();
+
 
             app.UseAuthentication();
+            app.UseSession();
 
             app.UseSignalR(routes => { routes.MapHub<ChatHub>("/chatHub"); });
 

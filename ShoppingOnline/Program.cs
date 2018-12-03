@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using ShoppingOnline.Data.EF;
 using System;
+using ShoppingOnline.WebApplication;
 
 namespace ShoppingOnline
 {

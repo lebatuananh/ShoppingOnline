@@ -150,7 +150,7 @@ namespace ShoppingOnline.WebApplication.Controllers.Cart
                         _billService.Save();
 
                         //var content = await _viewRenderService.RenderToStringAsync("Cart/_BillMail", billViewModel);
-                        //Send mail
+                        ////Send mail
                         //await _emailSender.SendEmailAsync(_configuration["MailSettings:AdminMail"], "New bill from ShopMart", content);
 
                         ViewData["Success"] = true;

@@ -155,9 +155,31 @@ namespace ShoppingOnline.Application.Systems.Users
             return false;
         }
 
-        public Task<List<AppUserViewModel>> AnnouncementUsers(string functionId)
+        public async Task<List<AppUserViewModel>> AnnouncementUsers(string functionId)
         {
-            throw new System.NotImplementedException();
+            var functions = _functionRepository.FindAll();
+            var permissions = _permissionRepository.FindAll();
+
+            var query = from f in functions
+                        join p in permissions on f.Id equals p.FunctionId
+                        join r in _roleManager.Roles on p.RoleId equals r.Id
+                        where f.Id == functionId && p.CanRead == true
+                        select r;
+
+            var announUsers = new List<AppUserViewModel>();
+
+            foreach (var item in query)
+            {
+                var users = await _userManager.GetUsersInRoleAsync(item.Name);
+
+                foreach (var jtem in users)
+                {
+                    var user = Mapper.Map<AppUser, AppUserViewModel>(jtem);
+                    announUsers.Add(user);
+                }
+            }
+
+            return announUsers;
         }
     }
 }

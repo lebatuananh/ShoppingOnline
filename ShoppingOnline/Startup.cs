@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
@@ -39,12 +35,15 @@ using ShoppingOnline.Data.EF.Abstract;
 using ShoppingOnline.Data.Entities.System;
 using ShoppingOnline.Infrastructure.Interfaces;
 using ShoppingOnline.WebApplication.Authorization;
+using ShoppingOnline.WebApplication.Extensions;
 using ShoppingOnline.WebApplication.Helpers;
 using ShoppingOnline.WebApplication.Services;
 using ShoppingOnline.WebApplication.SignalR;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
 
-
-namespace ShoppingOnline
+namespace ShoppingOnline.WebApplication
 {
     public class Startup
     {
@@ -84,7 +83,6 @@ namespace ShoppingOnline
                 options.User.RequireUniqueEmail = true;
             });
 
-
             //Add Authentication
             services.AddAuthentication();
 
@@ -110,26 +108,28 @@ namespace ShoppingOnline
                 options.IdleTimeout = TimeSpan.FromHours(2);
                 options.Cookie.HttpOnly = true;
             });
+            //MinResponse
+            services.AddMinResponse();
 
             //Mvc
-            services.AddMvc(options =>
-            {
-                options.CacheProfiles.Add("Default",
-                    new CacheProfile()
-                    {
-                        Duration = 60
-                    });
-                options.CacheProfiles.Add("Never",
-                    new CacheProfile()
-                    {
-                        Location = ResponseCacheLocation.None,
-                        NoStore = true
-                    });
-            }).AddViewLocalization(
-                    LanguageViewLocationExpanderFormat.Suffix,
-                    opts => { opts.ResourcesPath = "Resources"; })
-                .AddDataAnnotationsLocalization()
-                .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+            //services.AddMvc(options =>
+            //{
+            //    options.CacheProfiles.Add("Default",
+            //        new CacheProfile()
+            //        {
+            //            Duration = 60
+            //        });
+            //    options.CacheProfiles.Add("Never",
+            //        new CacheProfile()
+            //        {
+            //            Location = ResponseCacheLocation.None,
+            //            NoStore = true
+            //        });
+            //}).AddViewLocalization(
+            //        LanguageViewLocationExpanderFormat.Suffix,
+            //        opts => { opts.ResourcesPath = "Resources"; })
+            //    .AddDataAnnotationsLocalization()
+            //    .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
             //Repository And UnitOfWork
             services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
@@ -177,24 +177,23 @@ namespace ShoppingOnline
                 options.LoginPath = "/admin/login";
             });
 
-
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
+            //services.Configure<CookiePolicyOptions>(options =>
+            //{
+            //    // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+            //    options.CheckConsentNeeded = context => true;
+            //    options.MinimumSameSitePolicy = SameSiteMode.None;
+            //});
 
             //Facebook, Google
-            //            services.AddAuthentication().AddFacebook(n =>
-            //            {
-            //                n.AppId = Configuration["Authentication:Facebook:AppId"];
-            //                n.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
-            //            }).AddGoogle(n =>
-            //            {
-            //                n.ClientId = Configuration["Authentication:Google:ClientId"];
-            //                n.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
-            //            });
+            services.AddAuthentication().AddFacebook(n =>
+            {
+                n.AppId = Configuration["Authentication:Facebook:AppId"];
+                n.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+            }).AddGoogle(n =>
+            {
+                n.ClientId = Configuration["Authentication:Google:ClientId"];
+                n.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+            });
 
             //Recaptcha
             services.AddRecaptcha(new RecaptchaOptions()
@@ -205,6 +204,26 @@ namespace ShoppingOnline
 
             //Cache and MultiLanguage
             services.AddMvc();
+            services.AddMvc(options =>
+            {
+                options.CacheProfiles.Add("Default",
+                    new CacheProfile()
+                    {
+                        Duration = 60
+                    });
+                options.CacheProfiles.Add("Never",
+                    new CacheProfile()
+                    {
+                        Location = ResponseCacheLocation.None,
+                        NoStore = true
+                    });
+            }).AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver())
+           .AddViewLocalization(
+                   LanguageViewLocationExpanderFormat.Suffix,
+                   opts => { opts.ResourcesPath = "Resources"; })
+                   .AddDataAnnotationsLocalization()
+           .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
             services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
 
             services.Configure<RequestLocalizationOptions>(
@@ -242,9 +261,9 @@ namespace ShoppingOnline
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-
             app.UseAuthentication();
             app.UseSession();
+            app.UseMinResponse();
 
             app.UseSignalR(routes => { routes.MapHub<ChatHub>("/chatHub"); });
 

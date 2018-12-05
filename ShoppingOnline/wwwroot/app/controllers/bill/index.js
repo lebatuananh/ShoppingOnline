@@ -1,4 +1,4 @@
-var billController = function () {
+var BillController = function () {
 
     var cachedObj = {
         products: [],
@@ -6,7 +6,7 @@ var billController = function () {
         sizes: [],
         paymentMethods: [],
         billStatuses: []
-    }
+    };
 
     this.initialize = function () {
         $.when(loadBillStatus(),
@@ -17,9 +17,9 @@ var billController = function () {
             .done(function () {
                 loadData();
             });
-
+        loadShipper();
         registerEvents();
-    }
+    };
 
     function registerEvents() {
 
@@ -85,7 +85,7 @@ var billController = function () {
                     var data = response;
                     $('#hidId').val(data.Id);
                     $('#txtCustomerName').val(data.CustomerName);
-
+                    initTreeDropDownCategory(response.ShipperId);
                     $('#txtCustomerAddress').val(data.CustomerAddress);
                     $('#txtCustomerMobile').val(data.CustomerMobile);
                     $('#txtCustomerMessage').val(data.CustomerMessage);
@@ -139,6 +139,7 @@ var billController = function () {
                 var customerMessage = $('#txtCustomerMessage').val();
                 var paymentMethod = $('#ddlPaymentMethod').val();
                 var billStatus = $('#ddlBillStatus').val();
+                var shipperId = $('#ddlShipperM').combotree('getValue');
                 //bill detail
 
                 var billDetails = [];
@@ -165,6 +166,7 @@ var billController = function () {
                         CustomerMobile: customerMobile,
                         CustomerName: customerName,
                         PaymentMethod: paymentMethod,
+                        ShipperId:shipperId,
                         Status: 1,
                         BillDetails: billDetails
                     },
@@ -361,6 +363,7 @@ var billController = function () {
                 var customerMobile = $('#txtCustomerMobile').val();
                 var customerMessage = $('#txtCustomerMessage').val();
                 var paymentMethod = $('#ddlPaymentMethod').val();
+                var shipperId = $('#ddlShipperM').combotree('getValue');
                 var billStatus = 3;
                 //bill detail
 
@@ -384,6 +387,7 @@ var billController = function () {
                         BillStatus: billStatus,
                         CustomerAddress: customerAddress,
                         CustomerId: customerId,
+                        ShipperId: shipperId,
                         CustomerMessage: customerMessage,
                         CustomerMobile: customerMobile,
                         CustomerName: customerName,
@@ -411,7 +415,7 @@ var billController = function () {
                 return false;
             }
         });
-    };
+    }
 
     function loadBillStatus() {
         return $.ajax({
@@ -442,6 +446,62 @@ var billController = function () {
                 });
                 $('#ddlPaymentMethod').html(render);
             }
+        });
+    }
+
+    function loadShipper() {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/Shipper/GetAll',
+            dataType: 'json',
+            success: function (res) {
+                var render = '<option>---Select category---</option>';
+                $.each(res, function (i, item) {
+                    render += '<option value="' + item.Id + '">' + item.Name + '</option>';
+                });
+                $('#ddlShipperM').html(render);
+            },
+            error: function (status) {
+                console.log(status);
+                core.notify('Cannot loading product category data', 'error');
+            }
+        });
+    }
+
+    function initTreeDropDownCategory(isSelected) {
+
+        $.ajax({
+
+            url: '/Admin/Shipper/GetAll',
+            type: 'GET',
+            dataType: 'JSON',
+            async: false,
+            success: function (res) {
+                var data = [];
+
+                $.each(res, function (i, item) {
+
+                    data.push({
+                        id: item.Id,
+                        text: item.Name,
+                        parentId: null,
+                        sortOrder: item.SortOrder
+                    });
+
+                });
+
+
+                var arr = core.unflattern(data);
+
+                $('#ddlShipperM').combotree({
+                    data: arr
+                });
+
+                if (isSelected != undefined) {
+                    $('#ddlShipperM').combotree('setValue', isSelected);
+                }
+            }
+
         });
     }
 
@@ -525,6 +585,7 @@ var billController = function () {
 
     function resetFormMaintainance() {
         $('#hidId').val(0);
+        initTreeDropDownCategory('');
         $('#txtCustomerName').val('');
 
         $('#txtCustomerAddress').val('');

@@ -83,6 +83,8 @@ namespace ShoppingOnline.Data.EF
 
         public DbSet<AdvertisementPosition> AdvertistmentPositions { get; set; }
 
+        public DbSet<Shipper> Shippers { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             #region Identity Config
@@ -152,7 +154,7 @@ namespace ShoppingOnline.Data.EF
 
                 throw new ModelValidationException(entityException.Message);
             }
-           
+
         }
 
         public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>

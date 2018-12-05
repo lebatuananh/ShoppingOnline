@@ -42,6 +42,7 @@ using ShoppingOnline.WebApplication.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using ShoppingOnline.Application.Systems.Shippers;
 
 namespace ShoppingOnline.WebApplication
 {
@@ -155,6 +156,7 @@ namespace ShoppingOnline.WebApplication
             services.AddTransient<IContactService, ContactService>();
             services.AddTransient<IFeedbackService, FeedbackService>();
             services.AddTransient<IPageService, PageService>();
+            services.AddTransient<IShipperService, ShipperService>();
 
             services.AddTransient<IEmailSender, EmailSender>();
 

@@ -15,6 +15,7 @@ using ShoppingOnline.Application.Systems.Functions.Dtos;
 using ShoppingOnline.Application.Systems.Permissions.Dtos;
 using ShoppingOnline.Application.Systems.Roles.Dtos;
 using ShoppingOnline.Application.Systems.Settings.Dtos;
+using ShoppingOnline.Application.Systems.Shippers.Dtos;
 using ShoppingOnline.Application.Systems.Users.Dtos;
 using ShoppingOnline.Data.Entities.Advertisement;
 using ShoppingOnline.Data.Entities.Content;
@@ -66,6 +67,7 @@ namespace ShoppingOnline.Application.AutoMapper
             CreateMap<AnnouncementUser, AnnouncementUserViewModel>();
             CreateMap<Feedback, FeedbackViewModel>();
             CreateMap<Contact, ContactViewModel>();
+            CreateMap<Shipper, ShipperViewModel>();
         }
     }
 }

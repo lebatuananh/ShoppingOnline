@@ -6,20 +6,24 @@
 }
 
 @section styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
     <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css" rel="stylesheet"/>
+  
 }
 
 @section scripts{
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
     <script src="~/app/controllers/bill/index.js" asp-append-version="true"></script>
     <script>
-        var billController = new billController();
+        var billController = new BillController();
         billController.initialize();
     </script>
 }
 
 <input type="hidden" id="hid-category-id" value="0"/>
-<div class="">
+<div class="col-md-12 col-sm-12 col-xs-12">
     <div class="page-title">
         <div class="title_left">
             <h3>Bill management</h3>

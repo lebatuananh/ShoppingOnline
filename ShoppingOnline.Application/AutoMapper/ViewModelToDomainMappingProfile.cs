@@ -9,6 +9,7 @@ using ShoppingOnline.Application.ECommerce.ProductCategories.Dtos;
 using ShoppingOnline.Application.ECommerce.Products.Dtos;
 using ShoppingOnline.Application.Systems.Announcements.Dtos;
 using ShoppingOnline.Application.Systems.Permissions.Dtos;
+using ShoppingOnline.Application.Systems.Shippers.Dtos;
 using ShoppingOnline.Data.Entities.Advertisement;
 using ShoppingOnline.Data.Entities.Content;
 using ShoppingOnline.Data.Entities.ECommerce;
@@ -33,7 +34,7 @@ namespace ShoppingOnline.Application.AutoMapper
             CreateMap<BillViewModel, Bill>()
                 .ConstructUsing(c => new Bill(c.Id, c.CustomerName, c.CustomerAddress,
                     c.CustomerMobile, c.CustomerMessage, c.BillStatus,
-                    c.PaymentMethod, c.Status, c.CustomerId));
+                    c.PaymentMethod, c.Status, c.CustomerId, c.ShipperId));
 
             CreateMap<BillDetailViewModel, BillDetail>()
                 .ConstructUsing(c => new BillDetail(c.Id, c.BillId, c.ProductId,
@@ -64,6 +65,7 @@ namespace ShoppingOnline.Application.AutoMapper
             CreateMap<BlogViewModel, Blog>().ConstructUsing(c => new Blog(c.Name, c.Image, c.Description, c.Content,
                 c.HomeFlag, c.HotFlag,
                 c.Tags, c.Status, c.SeoPageTitle, c.SeoAlias, c.SeoKeywords, c.SeoDescription));
+            CreateMap<ShipperViewModel, Shipper>().ConstructUsing(c => new Shipper());
         }
     }
 }

@@ -423,11 +423,15 @@ namespace ShoppingOnline.Data.EF.Migrations
 
                     b.Property<int>("PaymentMethod");
 
+                    b.Property<int>("ShipperId");
+
                     b.Property<int>("Status");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
+
+                    b.HasIndex("ShipperId");
 
                     b.ToTable("Bills");
                 });
@@ -759,6 +763,8 @@ namespace ShoppingOnline.Data.EF.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
+                    b.Property<string>("Address");
+
                     b.Property<string>("Avatar");
 
                     b.Property<decimal>("Balance");
@@ -776,6 +782,8 @@ namespace ShoppingOnline.Data.EF.Migrations
                     b.Property<bool>("EmailConfirmed");
 
                     b.Property<string>("FullName");
+
+                    b.Property<bool>("Gender");
 
                     b.Property<bool>("LockoutEnabled");
 
@@ -882,6 +890,33 @@ namespace ShoppingOnline.Data.EF.Migrations
                     b.ToTable("Permissions");
                 });
 
+            modelBuilder.Entity("ShoppingOnline.Data.Entities.System.Shipper", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CompanyName")
+                        .HasMaxLength(128);
+
+                    b.Property<DateTime>("DateCreated");
+
+                    b.Property<DateTime>("DateModified");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(128);
+
+                    b.Property<string>("Phone")
+                        .IsRequired();
+
+                    b.Property<int>("Status");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Shippers");
+                });
+
             modelBuilder.Entity("ShoppingOnline.Data.Entities.System.SystemConfig", b =>
                 {
                     b.Property<string>("Id")
@@ -941,6 +976,11 @@ namespace ShoppingOnline.Data.EF.Migrations
                     b.HasOne("ShoppingOnline.Data.Entities.System.AppUser", "User")
                         .WithMany()
                         .HasForeignKey("CustomerId");
+
+                    b.HasOne("ShoppingOnline.Data.Entities.System.Shipper", "Shipper")
+                        .WithMany()
+                        .HasForeignKey("ShipperId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ShoppingOnline.Data.Entities.ECommerce.BillDetail", b =>

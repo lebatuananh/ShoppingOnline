@@ -9,20 +9,12 @@ namespace ShoppingOnline.Application.ECommerce.Bills.Dtos
     {
         public int Id { get; set; }
 
-        [Required]
-        [MaxLength(256)]
         public string CustomerName { set; get; }
 
-        [Required]
-        [MaxLength(256)]
         public string CustomerAddress { set; get; }
 
-        [Required]
-        [MaxLength(50)]
         public string CustomerMobile { set; get; }
 
-        [Required]
-        [MaxLength(256)]
         public string CustomerMessage { set; get; }
 
         public PaymentMethod PaymentMethod { set; get; }
@@ -36,6 +28,8 @@ namespace ShoppingOnline.Application.ECommerce.Bills.Dtos
         public Status Status { set; get; }
 
         public Guid? CustomerId { set; get; }
+
+        public int ShipperId { set; get; }
 
         public List<BillDetailViewModel> BillDetails { set; get; }
     }

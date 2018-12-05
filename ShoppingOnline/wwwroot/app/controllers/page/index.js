@@ -3,7 +3,7 @@ var PageController = function () {
         loadData();
         registerEvents();
         registerControls();
-    }
+    };
 
     function registerEvents() {
         //Init validation

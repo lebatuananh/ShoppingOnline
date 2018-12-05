@@ -6,6 +6,7 @@ namespace ShoppingOnline.Infrastructure.Enum
 {
     public enum CacheKey
     {
-        ProductCategories
+        ProductCategories,
+        HomePage
     }
 }

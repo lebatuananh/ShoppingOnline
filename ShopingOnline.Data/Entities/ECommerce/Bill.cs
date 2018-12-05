@@ -31,7 +31,7 @@ namespace ShoppingOnline.Data.Entities.ECommerce
         }
 
         public Bill(int id, string customerName, string customerAddress, string customerMobile, string customerMessage,
-           BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId)
+            BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId, int shipperId)
         {
             Id = id;
             CustomerName = customerName;
@@ -42,23 +42,16 @@ namespace ShoppingOnline.Data.Entities.ECommerce
             PaymentMethod = paymentMethod;
             Status = status;
             CustomerId = customerId;
+            ShipperId = shipperId;
         }
 
-        [Required]
-        [MaxLength(256)]
-        public string CustomerName { set; get; }
+        [Required] [MaxLength(256)] public string CustomerName { set; get; }
 
-        [Required]
-        [MaxLength(256)]
-        public string CustomerAddress { set; get; }
+        [Required] [MaxLength(256)] public string CustomerAddress { set; get; }
 
-        [Required]
-        [MaxLength(50)]
-        public string CustomerMobile { set; get; }
+        [Required] [MaxLength(50)] public string CustomerMobile { set; get; }
 
-        [Required]
-        [MaxLength(256)]
-        public string CustomerMessage { set; get; }
+        [Required] [MaxLength(256)] public string CustomerMessage { set; get; }
 
         public PaymentMethod PaymentMethod { set; get; }
 
@@ -67,13 +60,15 @@ namespace ShoppingOnline.Data.Entities.ECommerce
         public DateTime DateCreated { set; get; }
         public DateTime DateModified { set; get; }
 
-        [DefaultValue(Status.Active)]
-        public Status Status { set; get; } = Status.Active;
+        [DefaultValue(Status.Active)] public Status Status { set; get; } = Status.Active;
+
+        public int ShipperId { get; set; }
 
         public Guid? CustomerId { set; get; }
 
-        [ForeignKey("CustomerId")]
-        public virtual AppUser User { set; get; }
+        [ForeignKey("CustomerId")] public virtual AppUser User { set; get; }
+
+        [ForeignKey("ShipperId")] public virtual Shipper Shipper { get; set; }
 
         public virtual ICollection<BillDetail> BillDetails { set; get; }
     }

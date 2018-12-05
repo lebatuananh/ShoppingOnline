@@ -27,7 +27,7 @@
                                         </header>
                                         <div class="entry-meta-data"> <span class="author"> <i class="fa fa-user"></i>&nbsp; by: <a href="#">Admin</a></span> <span class="comment-count"> <i class="fa fa-comment"></i>&nbsp; 3 </span> <span class="date"><i class="fa fa-calendar"></i>&nbsp; @Model.Blog.DateCreated.ToString("dd/MM/yyyy")</span> </div>
                                         <div class="entry-content">
-                                           @Html.Raw(Model.Blog.Content)
+                                            @Html.Raw(Model.Blog.Content)
                                         </div>
                                     </div>
                                 </article>
@@ -42,23 +42,23 @@
                         <h3 class="widget-title"><span>Bài viết nhiều lượt xem</span></h3>
                         <div class="widget-content">
                             <ul class="posts-list unstyled">
-                              @foreach (var item in Model.MostBlogs)
-                              {
-                                  var url = "/" + item.SeoAlias + "-b." + item.Id + ".html";
-                                  <li>
-                                      <figure class="@url"> <a href="@url">
-                                           <img class="img-responsive" width="80" height="42" alt="blog image" src="@item.Image">
-                                      </a>
-                                      </figure>
-                                      <!--featured-thumb-->
-                                      <h4><a title="Pellentesque posuere" href="@url">@item.Name</a></h4>
-                                      <p class="post-meta">
-                                          <i class="icon-calendar"></i>
-                                          <time datetime="@item.DateCreated" class="entry-date">@item.DateCreated.ToString("dd/MM/yyyy")</time>
-                                          .
-                                      </p>
-                                  </li>
-                              }
+                                @foreach (var item in Model.MostBlogs)
+                                {
+                                    var url = "/" + item.SeoAlias + "-b." + item.Id + ".html";
+                                    <li>
+                                        <figure class="@url"> <a href="@url">
+                                                <img class="img-responsive" width="80" height="42" alt="blog image" src="@item.Image">
+                                            </a>
+                                        </figure>
+                                        <!--featured-thumb-->
+                                        <h4><a title="Pellentesque posuere" href="@url">@item.Name</a></h4>
+                                        <p class="post-meta">
+                                            <i class="icon-calendar"></i>
+                                            <time datetime="@item.DateCreated" class="entry-date">@item.DateCreated.ToString("dd/MM/yyyy")</time>
+                                            .
+                                        </p>
+                                    </li>
+                                }
                             </ul>
                         </div>
                         <!--widget-content-->
@@ -66,5 +66,9 @@
                 </div>
             </div>
         </div>
+        @{
+            var url1 = Model.Blog.SeoAlias + "-b." + Model.Blog.Id + ".html";
+            <div class="fb-comments" data-href="https://localhost:5001/@url1" data-width="100%" data-numposts="5"></div>
+        }
     </div>
 </div>

@@ -93,6 +93,11 @@ namespace ShoppingOnline.Data.EF
                     },
                     new Function()
                     {
+                        Id = "SHIPPER", Name = "Shipper", ParentId = "SYSTEM", SortOrder = 7, Status = Status.Active,
+                        URL = "/admin/shipper/index", IconCss = "fa-home"
+                    },
+                    new Function()
+                    {
                         Id = "ROLE", Name = "Role", ParentId = "SYSTEM", SortOrder = 1, Status = Status.Active,
                         URL = "/admin/role/index", IconCss = "fa-home"
                     },
@@ -191,8 +196,8 @@ namespace ShoppingOnline.Data.EF
                     },
                     new Function()
                     {
-                        Id = "ADVERTISMENT", Name = "Advertisment", ParentId = "UTILITY", SortOrder = 6,
-                        Status = Status.Active, URL = "/admin/advertistment/index", IconCss = "fa-clone"
+                        Id = "ADVERTISEMENT", Name = "Advertisement", ParentId = "UTILITY", SortOrder = 6,
+                        Status = Status.Active, URL = "/admin/advertisement/index", IconCss = "fa-clone"
                     },
 
                     new Function()

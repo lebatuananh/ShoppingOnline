@@ -67,7 +67,7 @@ namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.Blog
         [HttpGet]
         public IActionResult GetAllPaging(string keyword, int page, int pageSize)
         {
-            var model = _blogService.GetAllPaging(keyword, page, page);
+            var model = _blogService.GetAllPaging(keyword, pageSize, page);
             return new OkObjectResult(model);
         }
 

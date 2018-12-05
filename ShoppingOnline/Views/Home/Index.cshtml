@@ -264,21 +264,21 @@
                 <div class="slider-items slider-width-col6">
                     @foreach (var item in Model.LastestBlogs)
                     {
+                        var url = "/" + item.SeoAlias + "-b." + item.Id + ".html";
                         <div class="item">
                             <div class="blog-box">
-                                <a href="@item.SeoAlias-p.@(item.Id).html">
-                                    <img class="primary-img" src="@item.Image" alt="@item.Name">
-                                </a>
+                                <a href="@url"> <img class="primary-img" src="@item.Image?h=200" alt="@item.Name"></a>
                                 <div class="blog-btm-desc">
                                     <div class="blog-top-desc">
-                                        <div class="blog-date">@item.DateCreated.ToString("dd/MM/yyyy")</div>
-                                        <h4>
-                                            <a href="@item.SeoAlias-p.@(item.Id).html">@item.Name</a>
-                                        </h4>
-                                        @* <div class="jtv-entry-meta"> <i class="fa fa-user-o"></i> <strong>Admin</strong> <a href="#"><i class="fa fa-commenting-o"></i> <strong>15 Comments</strong></a></div>*@
+                                        @*<div class="blog-date"> @item.DateCreated.ToString("dd/MM/yyyy") </div>*@
+                                        <h4><a href="@url">@item.Name</a></h4>
+                                        @*<div class="jtv-entry-meta">
+                                            <i class="fa fa-user-o"></i> <strong>Admin</strong>
+                                            <a href="#"><i class="fa fa-commenting-o"></i> <strong>15 Comments</strong></a>
+                                        </div>*@
                                     </div>
                                     <p>@item.Description</p>
-                                    <a class="read-more" href="@item.SeoAlias-p.@(item.Id).html"> Read More</a>
+                                    <a class="read-more" href="@url"> Đọc thêm</a>
                                 </div>
                             </div>
                         </div>

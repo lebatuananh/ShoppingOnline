@@ -1,0 +1,70 @@
+@model ShoppingOnline.WebApplication.Models.BlogDetailViewModel
+
+@{
+    ViewData["PageTitle"] = Model.Blog.Name;
+    ViewData["SeoKeywords"] = Model.Blog.SeoKeywords;
+    ViewData["SeoDescription"] = Model.Blog.SeoDescription;
+}
+<div class="main-container col2-right-layout">
+    <div class="main container">
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="col-main">
+                    <div class="page-title">
+                        <h2>Blog</h2>
+                    </div>
+                    <div class="blog-wrapper" id="main">
+                        <div class="site-content" id="primary">
+                            <div role="main" id="content">
+                                <article class="blog_entry">
+
+                                    <!--blog_entry-header-->
+                                    <div class="entry-content">
+                                        <header class="blog_entry-header">
+                                            <div class="blog_entry-header-inner">
+                                                <h2 class="blog_entry-title">@Model.Blog.Name</h2>
+                                            </div>
+                                        </header>
+                                        <div class="entry-meta-data"> <span class="author"> <i class="fa fa-user"></i>&nbsp; by: <a href="#">Admin</a></span> <span class="comment-count"> <i class="fa fa-comment"></i>&nbsp; 3 </span> <span class="date"><i class="fa fa-calendar"></i>&nbsp; @Model.Blog.DateCreated.ToString("dd/MM/yyyy")</span> </div>
+                                        <div class="entry-content">
+                                           @Html.Raw(Model.Blog.Content)
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-right sidebar col-sm-3">
+                <div role="complementary" class="widget_wrapper13" id="secondary">
+                    <div class="popular-posts widget widget__sidebar" id="recent-posts-4">
+                        <h3 class="widget-title"><span>Bài viết nhiều lượt xem</span></h3>
+                        <div class="widget-content">
+                            <ul class="posts-list unstyled">
+                              @foreach (var item in Model.MostBlogs)
+                              {
+                                  var url = "/" + item.SeoAlias + "-b." + item.Id + ".html";
+                                  <li>
+                                      <figure class="@url"> <a href="@url">
+                                           <img class="img-responsive" width="80" height="42" alt="blog image" src="@item.Image">
+                                      </a>
+                                      </figure>
+                                      <!--featured-thumb-->
+                                      <h4><a title="Pellentesque posuere" href="@url">@item.Name</a></h4>
+                                      <p class="post-meta">
+                                          <i class="icon-calendar"></i>
+                                          <time datetime="@item.DateCreated" class="entry-date">@item.DateCreated.ToString("dd/MM/yyyy")</time>
+                                          .
+                                      </p>
+                                  </li>
+                              }
+                            </ul>
+                        </div>
+                        <!--widget-content-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

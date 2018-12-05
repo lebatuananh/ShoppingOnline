@@ -1,0 +1,45 @@
+@model ShoppingOnline.Utilities.Dtos.PagedResult<ShoppingOnline.Application.Content.Blogs.Dtos.BlogViewModel>
+@{
+    ViewData["PageTitle"] = "Blog";
+    ViewData["SeoKeywords"] = "Blog";
+    ViewData["SeoDescription"] = "Blog";
+}
+<section class="blog_post">
+    <div class="container">
+
+        <!-- Center colunm-->
+        <div class="blog-wrapper">
+            <div class="page-title">
+                <h2>Blog</h2>
+            </div>
+            <ul class="blog-posts">
+                @foreach (var item in Model.Results)
+                {
+                    var url = "/" + item.SeoAlias + "-b." + item.Id + ".html";
+
+                    <li class="post-item col-md-4">
+                        <div class="blog-box">
+                            <a href="@url"> <img class="primary-img" src="@item.Image" alt="@item.Name"></a>
+                            <div class="blog-btm-desc">
+                                <div class="blog-top-desc">
+                                    <div class="blog-date"> @item.DateCreated.ToString("dd/MM/yyyy") </div>
+                                    <h4><a href="@url">@item.Name</a></h4>
+                                    <div class="jtv-entry-meta">
+                                        <i class="fa fa-user-o"></i> <strong>Admin</strong>
+                                    </div>
+                                </div>
+                                <p>@item.Description</p>
+                                <a class="read-more" href="@url"> Đọc thêm</a>
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+            <div class="sortPagiBar">
+                @(await Component.InvokeAsync("Pager", Model))
+            </div>
+        </div>
+        <!-- ./ Center colunm -->
+    </div>
+</section>
+<!-- Main Container End --> 

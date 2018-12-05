@@ -21,21 +21,6 @@ var BlogController = function () {
             ignore: [],
             rules: {
                 txtNameM: {required: true},
-                ddlCategoryIdM: {required: true},
-                txtPriceM: {
-                    required: true,
-                    number: true,
-                    min: 0
-                },
-                txtOriginalPriceM: {
-                    required: true,
-                    number: true,
-                    min: 0
-                },
-                txtPromotionPriceM: {
-                    number: true,
-                    min: 0
-                }
             }
         });
 

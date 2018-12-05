@@ -1,0 +1,108 @@
+<div id="modal-add-edit" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Add edit blog</h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal" role="form" id="frmMaintainance">
+                        <div class="form-group">
+                            <input type="hidden" id="hidIdM" value="0" />
+                            <label for="txtNameM" class="col-sm-2 control-label no-padding-right">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtNameM" class="form-control" id="txtNameM">
+                            </div>
+                        </div>                      
+                        <div class="form-group">
+                            <label for="txtDescM" class="col-sm-2 control-label no-padding-right">Description</label>
+                            <div class="col-sm-10">
+                                <textarea rows="4" name="txtDescM" class="form-control" id="txtDescM"></textarea>
+                            </div>
+                        </div>                                          
+                        <div class="form-group">
+                            <label for="txtImageM" class="col-sm-2 control-label no-padding-right">Image</label>
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <input type="button" id="btnSelectImg" class="btn btn-default" value="Browser" />
+                                    </span>
+                                    <input type="file" id="fileInputImage" style="display:none" />
+                                    <input type="hidden" name="txtImage" class="form-control" id="txtImage" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <div id="source-image" class="col-md-12 thumbnail" style="height:100%; display:none"></div>
+                                    <div id="source-thumbnail" class="col-md-12 thumbnail" style="height:100%; display:none"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtContentM" class="col-sm-2 control-label no-padding-right">Content</label>
+                            <div class="col-sm-10">
+                                <textarea id="txtContentM" rows="6" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtMetakeywordM" class="col-sm-2 control-label no-padding-right">SEO title</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtSeoPageTitleM" class="form-control" id="txtSeoPageTitleM">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtSeoAliasM" class="col-sm-2 control-label no-padding-right">SEO Url</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtSeoAliasM" class="form-control" id="txtSeoAliasM">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtMetakeywordM" class="col-sm-2 control-label no-padding-right">SEO Keywords</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtMetakeywordM" class="form-control" id="txtMetakeywordM">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtMetaDescriptionM" class="col-sm-2 control-label no-padding-right">SEO Description</label>
+                            <div class="col-sm-10">
+                                <textarea rows="3" name="txtMetaDescriptionM" class="form-control" id="txtMetaDescriptionM"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtTagM" class="col-sm-2 control-label no-padding-right">Tag (separated by comma)</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtTagM" class="form-control" id="txtTagM">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" checked="checked" id="ckStatusM">
+                                        <span class="text">Active.</span>
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" id="ckHotM">
+                                        <span class="text">Hot product</span>
+                                    </label>
+
+                                    <label>
+                                        <input type="checkbox" checked="checked" id="ckShowHomeM">
+                                        <span class="text">Show on home</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="btnCancel" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+                            <button type="button" id="btnSave" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

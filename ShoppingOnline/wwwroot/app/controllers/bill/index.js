@@ -31,7 +31,8 @@ var billController = function () {
 
         $('#txtToDate').datepicker({
             autoclose: true,
-            format: 'dd/mm/yyyy'
+            format: 'dd/mm/yyyy',
+            setDate: new Date()
         }).datepicker("update", new Date());
 
         //Init validation

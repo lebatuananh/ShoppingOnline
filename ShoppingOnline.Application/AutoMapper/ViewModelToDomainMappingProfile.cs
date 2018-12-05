@@ -2,6 +2,7 @@ using AutoMapper;
 using ShoppingOnline.Application.Common.Advertisements.Dtos;
 using ShoppingOnline.Application.Common.Feedbacks.Dtos;
 using ShoppingOnline.Application.Common.Slides.Dtos;
+using ShoppingOnline.Application.Content.Blogs.Dtos;
 using ShoppingOnline.Application.Content.Pages.Dtos;
 using ShoppingOnline.Application.ECommerce.Bills.Dtos;
 using ShoppingOnline.Application.ECommerce.ProductCategories.Dtos;
@@ -60,6 +61,9 @@ namespace ShoppingOnline.Application.AutoMapper
             CreateMap<SlideViewModel, Slide>().ConstructUsing(c => new Slide());
             CreateMap<FeedbackViewModel, Feedback>().ConstructUsing(c => new Feedback());
             CreateMap<PageViewModel, Page>().ConstructUsing(c => new Page());
+            CreateMap<BlogViewModel, Blog>().ConstructUsing(c => new Blog(c.Name, c.Image, c.Description, c.Content,
+                c.HomeFlag, c.HotFlag,
+                c.Tags, c.Status, c.SeoPageTitle, c.SeoAlias, c.SeoKeywords, c.SeoDescription));
         }
     }
 }

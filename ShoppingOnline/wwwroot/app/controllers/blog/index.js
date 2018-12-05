@@ -1,5 +1,4 @@
-﻿var ProductController = function () {
-
+var BlogController = function () {
     var sourceImage;
 
     var options = {
@@ -10,31 +9,19 @@
         autoCrop: false
     };
 
-    var quantityManagement = new QuantityManagement();
-    var imageManagement = new ImageManagement();
-    var wholePriceManagement = new WholePriceManagement();
-
     this.initialize = function () {
-
         loadData();
-        loadCategories();
         registerEvents();
         registerControls();
-
-        imageManagement.initialize();
-        quantityManagement.initialize();
-        wholePriceManagement.initialize();
-
-    }
+    };
 
     function registerEvents() {
-
         $('#frmMaintainance').validate({
             errorClass: 'red',
             ignore: [],
             rules: {
-                txtNameM: { required: true },
-                ddlCategoryIdM: { required: true },
+                txtNameM: {required: true},
+                ddlCategoryIdM: {required: true},
                 txtPriceM: {
                     required: true,
                     number: true,
@@ -143,24 +130,6 @@
                 clearFileInput();
             }
         });
-
-        $('#btn-import').on('click', function () {
-
-            initTreeDropDownCategory();
-            $('#modal-import-excel').modal('show');
-            $(".combo").css("width", "20%");
-            $('.textbox-text').css("width", "100%")
-        });
-
-        $('#btnImportExcel').on('click', function () {
-            importExcel();
-
-        });
-
-        $('#btn-export').on('click', function () {
-            exportExcel();
-        });
-
     }
 
     function registerControls() {
@@ -175,7 +144,7 @@
                         this.$element[0] !== e.target && !this.$element.has(e.target).length
                         // CKEditor compatibility fix start.
                         && !$(e.target).closest('.cke_dialog, .cke').length
-                        // CKEditor compatibility fix end.
+                    // CKEditor compatibility fix end.
                     ) {
                         this.$element.trigger('focus');
                     }
@@ -189,12 +158,11 @@
         $.ajax({
             type: 'GET',
             data: {
-                categoryId: $('#ddlCategorySearch').val(),
                 keyword: $('#txtKeyword').val(),
                 page: core.configs.pageIndex,
-                pageSize: core.configs.pageSize,
+                pageSize: core.configs.pageSize
             },
-            url: '/admin/product/GetAllPaging',
+            url: '/admin/blog/GetAllPaging',
             dataType: 'json',
             success: function (res) {
                 if (res.Results.length > 0) {
@@ -203,8 +171,7 @@
                             Id: item.Id,
                             Name: item.Name,
                             Image: item.Image == null ? '<img src="/admin-side/images/user.png" width=25' : '<img src="' + item.Image + '" width=25 />',
-                            CategoryName: item.ProductCategory.Name,
-                            Price: core.formatNumber(item.Price, 0),
+                            Description: item.Description,
                             CreatedDate: core.dateFormatSubStr(item.DateCreated),
                             Status: core.getStatus(item.Status)
                         });
@@ -228,66 +195,6 @@
                 console.log(status);
                 core.notify('Cannot loading data', 'error');
             }
-        });
-    }
-
-    function loadCategories() {
-        $.ajax({
-            type: 'GET',
-            url: '/admin/ProductCategory/GetAll',
-            dataType: 'json',
-            success: function (res) {
-                var render = '<option>---Select category---</option>';
-                $.each(res, function (i, item) {
-                    render += '<option value="' + item.Id + '">' + item.Name + '</option>';
-                });
-                $('#ddlCategorySearch').html(render);
-            },
-            error: function (status) {
-                console.log(status);
-                core.notify('Cannot loading product category data', 'error');
-            }
-        });
-    }
-
-    function initTreeDropDownCategory(isSelected) {
-
-        $.ajax({
-
-            url: '/Admin/ProductCategory/GetAll',
-            type: 'GET',
-            dataType: 'JSON',
-            async: false,
-            success: function (res) {
-                var data = [];
-
-                $.each(res, function (i, item) {
-
-                    data.push({
-                        id: item.Id,
-                        text: item.Name,
-                        parentId: item.ParentId,
-                        sortOrder: item.SortOrder
-                    });
-
-                });
-
-
-                var arr = core.unflattern(data);
-
-                $('#ddlCategoryIdM').combotree({
-                    data: arr
-                });
-
-                $('#ddlCategoryIdImportExcel').combotree({
-                    data: arr
-                });
-
-                if (isSelected != undefined) {
-                    $('#ddlCategoryIdM').combotree('setValue', isSelected);
-                }
-            }
-
         });
     }
 
@@ -324,9 +231,7 @@
 
         $('#hidIdM').val(0);
         $('#txtNameM').val('');
-        initTreeDropDownCategory('');
         $('#txtDescM').val('');
-        $('#txtUnitM').val('');
 
         $('#txtImage').val('');
         $('#source-image').html('');
@@ -335,9 +240,6 @@
         $('#source-thumbnail').hide();
         CKEDITOR.instances.txtContentM.setData('');
 
-        $('#txtPriceM').val('');
-        $('#txtOriginalPriceM').val('');
-        $('#txtPromotionPriceM').val('');
         $('#txtSeoPageTitleM').val('');
 
         $('#txtSeoAliasM').val('');
@@ -349,8 +251,6 @@
         $('#ckHotM').attr('checked', false);
         $('#ckShowHomeM').attr('checked', true);
 
-
-
         $(".combo").css("width", "100%");
 
     }
@@ -359,14 +259,8 @@
         if ($('#frmMaintainance').valid()) {
             var id = $('#hidIdM').val();
             var name = $('#txtNameM').val();
-            var categoryId = $('#ddlCategoryIdM').combotree('getValue');
 
             var description = $('#txtDescM').val();
-            var unit = $('#txtUnitM').val();
-
-            var price = $('#txtPriceM').val();
-            var originalPrice = $('#txtOriginalPriceM').val();
-            var promotionPrice = $('#txtPromotionPriceM').val();
 
             var image = $('#txtImage').val();
 
@@ -384,22 +278,17 @@
 
             $.ajax({
                 type: 'POST',
-                url: '/Admin/Product/SaveEntity',
+                url: '/Admin/Blog/SaveEntity',
                 dataType: 'JSON',
                 data: {
                     Id: id,
                     Name: name,
-                    CategoryId: categoryId,
                     Image: image,
-                    Price: price,
-                    OriginalPrice: originalPrice,
-                    PromotionPrice: promotionPrice,
                     Description: description,
                     Content: content,
                     HomeFlag: showHome,
                     HotFlag: hot,
-                    Tags: tags,
-                    Unit: unit,
+                    Tags: tags,     
                     Status: status,
                     SeoPageTitle: seoPageTitle,
                     SeoAlias: seoAlias,
@@ -433,8 +322,8 @@
 
         $.ajax({
             type: "GET",
-            url: "/Admin/Product/GetById",
-            data: { id: that },
+            url: "/Admin/Blog/GetById",
+            data: {id: that},
             dataType: "json",
             beforeSend: function () {
                 core.startLoading();
@@ -442,15 +331,7 @@
             success: function (res) {
                 $('#hidIdM').val(res.Id);
                 $('#txtNameM').val(res.Name);
-                initTreeDropDownCategory(res.CategoryId);
-
                 $('#txtDescM').val(res.Description);
-                $('#txtUnitM').val(res.Unit);
-
-                $('#txtPriceM').val(res.Price);
-                $('#txtOriginalPriceM').val(res.OriginalPrice);
-                $('#txtPromotionPriceM').val(res.PromotionPrice);
-
                 $('#txtImage').val(res.Image);
                 $('#source-image').html('');
                 $('#source-image').hide();
@@ -485,7 +366,7 @@
         core.confirm('Are you sure to delete?', function () {
 
             $.ajax({
-                url: '/Admin/Product/Delete',
+                url: '/Admin/Blog/Delete',
                 type: 'POST',
                 data: {
                     id: that
@@ -506,51 +387,6 @@
             });
 
         });
-    }
-
-    function exportExcel() {
-        $.ajax({
-            type: "POST",
-            url: "/Admin/Product/ExportExcel",
-            beforeSend: function () {
-                core.startLoading();
-            },
-            success: function (response) {
-                window.location.href = response;
-                core.stopLoading();
-            },
-            error: function () {
-                core.notify('Has an error in progress', 'error');
-                core.stopLoading();
-            }
-        });
-    }
-
-    function importExcel() {
-        var fileUpload = $("#fileInputExcel").get(0);
-        var files = fileUpload.files;
-
-        // Create FormData object  
-        var fileData = new FormData();
-        // Looping over all files and add it to FormData object  
-        for (var i = 0; i < files.length; i++) {
-            fileData.append("files", files[i]);
-        }
-        // Adding one more key to FormData object  
-        fileData.append('categoryId', $('#ddlCategoryIdImportExcel').combotree('getValue'));
-        $.ajax({
-            url: '/Admin/Product/ImportExcel',
-            type: 'POST',
-            data: fileData,
-            processData: false,  // tell jQuery not to process the data
-            contentType: false,  // tell jQuery not to set contentType
-            success: function (data) {
-                $('#modal-import-excel').modal('hide');
-                loadData();
-            }
-        });
-        return false;
-        $('#modal-import-excel').modal('hide');
     }
 
     function clearFileInput() {
@@ -602,5 +438,4 @@
         });
 
     }
-
-}
+};

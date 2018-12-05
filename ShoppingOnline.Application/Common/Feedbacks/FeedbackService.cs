@@ -47,7 +47,8 @@ namespace ShoppingOnline.Application.Common.Feedbacks
         {
             var query = _feedbackRepository.FindAll();
             if (!string.IsNullOrEmpty(keyword))
-                query = query.Where(x => x.Name.Contains(keyword));
+                query = query.Where(x =>
+                    x.Name.Contains(keyword) || x.Email.Contains(keyword) || x.Message.Contains(keyword));
 
             int totalRow = query.Count();
             var data = query.OrderByDescending(x => x.DateCreated)

@@ -1,0 +1,125 @@
+@model ShoppingOnline.Application.Systems.Users.Dtos.AppUserViewModel
+
+@{
+    ViewData["Title"] = "Your account";
+    ViewData["MetaDescription"] = "Shopping cart";
+    ViewData["MetaKeyword"] = "Shopping cart";
+}
+
+<!-- Breadcrumbs -->
+
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    <li class="home"> <a asp-area="" asp-controller="Home" asp-action="Index">Home</a><span>&raquo;</span></li>
+                    <li><a asp-area="" asp-controller="Account" asp-action="Index"><strong>My Account</strong></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs End -->
+<!-- Main Container -->
+<section class="main-container col2-right-layout">
+    <div class="main container">
+        <div class="row">
+            <div class="col-main col-sm-9 col-xs-12">
+                <div class="my-account">
+                    <div class="page-title">
+                        <h2>Account Information</h2>
+                    </div>
+                    <div class="dashboard">
+                        <div class="page-content">
+                            <div class="account-login">
+                                <div class="col-md-12">
+                                    <div class="single-input p-bottom50 clearfix">
+                                        <form method="post" asp-area="" asp-controller="Account" asp-action="UpdateAccount">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="check-title">
+                                                        <div asp-validation-summary="All" class="text-danger"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <label>Username:</label>
+                                                    <div class="input-text">
+                                                        <input type="hidden" asp-for="Id" name="id" class="form-control">
+                                                        <input type="text" asp-for="UserName" name="userName" class="form-control" disabled>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <label>Full Name:</label>
+                                                    <div class="input-text">
+                                                        <input type="text" asp-for="FullName" name="fullName" class="form-control">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <label>Email:</label>
+                                                    <div class="input-text">
+                                                        <input type="text" asp-for="Email" name="email" class="form-control">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <label>Address:</label>
+                                                    <div class="input-text">
+                                                        <input type="text" name="address" asp-for="Address" class="form-control">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <label>DOB:</label>
+                                                    <div class="input-text">
+                                                        <input type="date" asp-for="BirthDay" name="birthDay" class="form-control">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <label>Phone Number:</label>
+                                                    <div class="input-text">
+                                                        <input type="text" name="phoneNumber" asp-for="PhoneNumber" class="form-control">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xs-12">
+                                                    <label>Gender:</label>
+                                                    <div class="input-text">
+                                                        <label><input type="checkbox" name="gender" asp-for="Gender"> Male</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <div class="submit-text">
+                                                        <button type="submit" class="button"><i class="fa fa-user"></i>&nbsp; <span>Update</span></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <aside class="right sidebar col-sm-3 col-xs-12">
+                <div class="sidebar-account block">
+                    <div class="sidebar-bar-title">
+                        <h3>My Account</h3>
+                    </div>
+                    <div class="block-content">
+                        <ul>
+                            <li><a asp-area="" asp-controller="Account" asp-action="UpdateAccount">Update account</a></li>
+                            <li><a asp-area="" asp-controller="Account" asp-action="UpdatePassword">Update password</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+<!-- service section -->

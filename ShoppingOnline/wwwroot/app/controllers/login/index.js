@@ -49,9 +49,10 @@ var loginController = function () {
             success: function (res) {
                 if (res.Success) {
                     var urlRedirect = core.getParamUrl('ReturnUrl');
-                    debugger;
+                    // debugger;
                     console.log(urlRedirect);
                     window.location.href = core.getParamUrl('ReturnUrl') || '/Admin/Home/Index';
+                    // window.location.href = '/Admin/Home/Index';
                 }
                 else {
                     core.notify('Login Failed', 'error');
@@ -60,4 +61,4 @@ var loginController = function () {
             }
         });
     };
-}
+};

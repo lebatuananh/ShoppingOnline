@@ -28,14 +28,15 @@
                             {
                                 <li>
                                     <div class="dropdown">
-                                        <a class="current-open" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
-                                            <span>@User.GetSpecificClaim("FullName")</span> <i class="fa fa-angle-down"></i>
-                                        </a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li>
-                                                <a href="/account.html">@Localizer["Information"]</a>
-                                            </li>
-                                        </ul>
+                                        @*<a class="current-open" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">*@
+                                        @*<span>@User.GetSpecificClaim("FullName")</span> <i class="fa fa-angle-down"></i>*@
+                                        @*</a>*@
+                                        @*<ul class="dropdown-menu" role="menu">
+                                                <li>
+                                                    <a href="/account.html">@Localizer["Information"]</a>
+                                                </li>
+                                            </ul>*@
+                                        <a class="current-open" href="/account.html"><span>@User.GetSpecificClaim("FullName")</span></a>
                                     </div>
                                 </li>
                                 <li>

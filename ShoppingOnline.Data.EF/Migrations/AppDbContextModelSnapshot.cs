@@ -423,7 +423,7 @@ namespace ShoppingOnline.Data.EF.Migrations
 
                     b.Property<int>("PaymentMethod");
 
-                    b.Property<int>("ShipperId");
+                    b.Property<int?>("ShipperId");
 
                     b.Property<int>("Status");
 
@@ -979,8 +979,7 @@ namespace ShoppingOnline.Data.EF.Migrations
 
                     b.HasOne("ShoppingOnline.Data.Entities.System.Shipper", "Shipper")
                         .WithMany()
-                        .HasForeignKey("ShipperId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ShipperId");
                 });
 
             modelBuilder.Entity("ShoppingOnline.Data.Entities.ECommerce.BillDetail", b =>

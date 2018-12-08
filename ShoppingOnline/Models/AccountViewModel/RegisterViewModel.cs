@@ -5,11 +5,16 @@ namespace ShoppingOnline.WebApplication.Models.AccountViewModel
 {
     public class RegisterViewModel
     {
+        [Required(ErrorMessage = "Username required", AllowEmptyStrings = false)]
+        [Display(Name = "Username")]
+        public string UserName { set; get; }
+
         [Required(ErrorMessage = "Full name required", AllowEmptyStrings = false)]
         [Display(Name = "Full name")]
         public string FullName { set; get; }
 
-        [Display(Name = "DOB")] public DateTime? BirthDay { set; get; }
+        [Display(Name = "DOB")]
+        public DateTime? BirthDay { set; get; }
 
         [Required]
         [EmailAddress]
@@ -17,8 +22,7 @@ namespace ShoppingOnline.WebApplication.Models.AccountViewModel
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.",
-            MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
@@ -28,10 +32,17 @@ namespace ShoppingOnline.WebApplication.Models.AccountViewModel
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Display(Name = "Address")] public string Address { get; set; }
+        [Display(Name = "Address")]
+        public string Address { get; set; }
 
-        [Display(Name = "Phone number")] public string PhoneNumber { set; get; }
+        [Display(Name = "Phone number")]
+        [Required]
+        public string PhoneNumber { set; get; }
 
-        [Display(Name = "Avatar")] public string Avatar { get; set; }
+        [Display(Name = "Avatar")]
+        public string Avatar { get; set; }
+
+        [Display(Name = "Gender")]
+        public bool Gender { get; set; }
     }
 }

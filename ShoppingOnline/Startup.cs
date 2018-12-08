@@ -42,7 +42,10 @@ using ShoppingOnline.WebApplication.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using ShoppingOnline.Application.Systems.Shippers;
+using ShoppingOnline.Utilities.Constants;
+using ShoppingOnline.WebApplication.DataProtects;
 
 namespace ShoppingOnline.WebApplication
 {
@@ -65,7 +68,9 @@ namespace ShoppingOnline.WebApplication
             // Configure Identity
             services.AddIdentity<AppUser, AppRole>()
                 .AddEntityFrameworkStores<AppDbContext>()
-                .AddDefaultTokenProviders();
+                .AddDefaultTokenProviders()
+                .AddEmailConfirmTokenProvider();
+            ;
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -82,6 +87,9 @@ namespace ShoppingOnline.WebApplication
 
                 // User settings
                 options.User.RequireUniqueEmail = true;
+
+                //Email confirmation token
+                options.Tokens.EmailConfirmationTokenProvider = SystemConstants.TokenProvider.EmailConfirm;
             });
 
             //Add Authentication
@@ -179,6 +187,30 @@ namespace ShoppingOnline.WebApplication
                 options.LoginPath = "/admin/login";
             });
 
+//            services.ConfigureApplicationCookie(options =>
+//            {
+//                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+//                options.Cookie.Name = "ShoppingOnline.PO";
+//                options.Cookie.HttpOnly = true;
+//                options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+//                options.LoginPath = "/Identity/Account/Login";
+//                // ReturnUrlParameter requires 
+//                //using Microsoft.AspNetCore.Authentication.Cookies;
+//                options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
+//                options.SlidingExpiration = true;
+//            });
+            // enables immediate logout, after updating the user's stat.
+            services.Configure<SecurityStampValidatorOptions>(options =>
+            {
+                options.ValidationInterval = TimeSpan.Zero;
+            });
+
+            //lifespan for token:
+            services.Configure<DataProtectionTokenProviderOptions>(options =>
+            {
+                options.TokenLifespan = TimeSpan.FromHours(2);
+            });
+
             //services.Configure<CookiePolicyOptions>(options =>
             //{
             //    // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -207,24 +239,25 @@ namespace ShoppingOnline.WebApplication
             //Cache and MultiLanguage
             services.AddMvc();
             services.AddMvc(options =>
-            {
-                options.CacheProfiles.Add("Default",
-                    new CacheProfile()
-                    {
-                        Duration = 60
-                    });
-                options.CacheProfiles.Add("Never",
-                    new CacheProfile()
-                    {
-                        Location = ResponseCacheLocation.None,
-                        NoStore = true
-                    });
-            }).AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver())
-           .AddViewLocalization(
-                   LanguageViewLocationExpanderFormat.Suffix,
-                   opts => { opts.ResourcesPath = "Resources"; })
-                   .AddDataAnnotationsLocalization()
-           .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+                {
+                    options.CacheProfiles.Add("Default",
+                        new CacheProfile()
+                        {
+                            Duration = 60
+                        });
+                    options.CacheProfiles.Add("Never",
+                        new CacheProfile()
+                        {
+                            Location = ResponseCacheLocation.None,
+                            NoStore = true
+                        });
+                }).AddJsonOptions(
+                    options => options.SerializerSettings.ContractResolver = new DefaultContractResolver())
+                .AddViewLocalization(
+                    LanguageViewLocationExpanderFormat.Suffix,
+                    opts => { opts.ResourcesPath = "Resources"; })
+                .AddDataAnnotationsLocalization()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
 

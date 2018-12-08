@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ShoppingOnline.Application.Systems.Users.Dtos;
 using ShoppingOnline.Data.Entities.System;
+using ShoppingOnline.Data.Enum;
 using ShoppingOnline.Infrastructure.Interfaces;
 using ShoppingOnline.Utilities.Dtos;
 
@@ -17,45 +18,58 @@ namespace ShoppingOnline.Application.Systems.Users
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly RoleManager<AppRole> _roleManager;
+        private readonly SignInManager<AppUser> _signInManager;
         private readonly IRepository<Function, string> _functionRepository;
         private readonly IRepository<Permission, int> _permissionRepository;
 
         public AppUserService(UserManager<AppUser> userManager, RoleManager<AppRole> roleManager,
-            IRepository<Function, string> functionRepository, IRepository<Permission, int> permissionRepository)
+            SignInManager<AppUser> signInManager, IRepository<Function, string> functionRepository,
+            IRepository<Permission, int> permissionRepository)
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _signInManager = signInManager;
             _functionRepository = functionRepository;
             _permissionRepository = permissionRepository;
         }
 
-        public async Task<bool> AddAsync(AppUserViewModel userVm)
+        public async Task<bool> AddAsync(AppUserViewModel viewModel)
         {
-            var findByEmail = await _userManager.FindByEmailAsync(userVm.Email);
-            var findByUserName = await _userManager.FindByNameAsync(userVm.UserName);
-            if (findByEmail != null || findByUserName != null)
+            var findByEmail = await _userManager.FindByEmailAsync(viewModel.Email);
+            var findByUsername = await _userManager.FindByNameAsync(viewModel.UserName);
+            var findByPhoneNumber =
+                _userManager.Users.SingleOrDefault(n => n.PhoneNumber.Equals(viewModel.PhoneNumber));
+
+
+            if (findByEmail != null || findByUsername != null || findByPhoneNumber != null)
             {
                 return false;
             }
 
+
             var user = new AppUser()
             {
-                UserName = userVm.UserName,
-                Avatar = userVm.Avatar,
-                FullName = userVm.FullName,
+                Gender = viewModel.Gender,
+                BirthDay = viewModel.BirthDay,
+                Address = viewModel.Address,
+                UserName = viewModel.UserName,
+                Avatar = viewModel.Avatar,
+                FullName = viewModel.FullName,
                 DateCreated = DateTime.Now,
-                Status = userVm.Status,
-                Email = userVm.Email,
-                PhoneNumber = userVm.PhoneNumber
+                DateModified = DateTime.Now,
+                Status = viewModel.Status,
+                Email = viewModel.Email,
+                PhoneNumber = viewModel.PhoneNumber,
             };
-            var result = await _userManager.CreateAsync(user, userVm.Password);
-            if (result.Succeeded && userVm.Roles.Count > 0)
+
+            var result = await _userManager.CreateAsync(user, viewModel.Password);
+
+            if (result.Succeeded && viewModel.Roles.Count > 0)
             {
                 var appUser = await _userManager.FindByNameAsync(user.UserName);
+
                 if (appUser != null)
-                {
-                    await _userManager.AddToRolesAsync(appUser, userVm.Roles);
-                }
+                    await _userManager.AddToRolesAsync(appUser, viewModel.Roles);
             }
 
             return true;
@@ -87,7 +101,7 @@ namespace ShoppingOnline.Application.Systems.Users
                 UserName = n.UserName,
                 Avatar = n.Avatar,
                 FullName = n.FullName,
-                BirthDay = n.BirthDay.ToString(),
+                BirthDay = n.BirthDay,
                 Email = n.Email,
                 Id = n.Id,
                 PhoneNumber = n.PhoneNumber,
@@ -126,12 +140,25 @@ namespace ShoppingOnline.Application.Systems.Users
         {
             var user = await _userManager.FindByIdAsync(userVm.Id.ToString());
             var findByEmail = await _userManager.FindByEmailAsync(userVm.Email);
+            var findByPhoneNumber = _userManager.Users.SingleOrDefault(n => n.PhoneNumber.Equals(userVm.PhoneNumber));
 
-            if (!user.Email.Equals(userVm.Email) && findByEmail != null)
+
+            if ((!user.Email.Equals(userVm.Email) && findByEmail != null))
+            {
                 return false;
+            }
+
+
+            if (string.IsNullOrEmpty(user.PhoneNumber) && findByPhoneNumber != null)
+            {
+                return false;
+            }
+            else if (findByPhoneNumber != null && !user.PhoneNumber.Equals(userVm.PhoneNumber))
+            {
+                return false;
+            }
 
             //remove current roles in db
-
             var currentRoles = await _userManager.GetRolesAsync(user);
 
             var result = await _userManager.AddToRolesAsync(user, userVm.Roles.Except(currentRoles).ToArray());
@@ -142,13 +169,21 @@ namespace ShoppingOnline.Application.Systems.Users
                 await _userManager.RemoveFromRolesAsync(user, needRemoveRoles);
 
                 //Update user detail
-
+                user.Gender = userVm.Gender;
+                user.Address = userVm.Address;
+                user.BirthDay = userVm.BirthDay;
                 user.FullName = userVm.FullName;
                 user.Email = userVm.Email;
                 user.Status = userVm.Status;
                 user.PhoneNumber = userVm.PhoneNumber;
                 user.DateModified = DateTime.Now;
                 await _userManager.UpdateAsync(user);
+
+                if (user.Status == Status.InActive)
+                {
+                    await _userManager.UpdateSecurityStampAsync(user);
+                }
+
                 return true;
             }
 
@@ -161,10 +196,10 @@ namespace ShoppingOnline.Application.Systems.Users
             var permissions = _permissionRepository.FindAll();
 
             var query = from f in functions
-                        join p in permissions on f.Id equals p.FunctionId
-                        join r in _roleManager.Roles on p.RoleId equals r.Id
-                        where f.Id == functionId && p.CanRead == true
-                        select r;
+                join p in permissions on f.Id equals p.FunctionId
+                join r in _roleManager.Roles on p.RoleId equals r.Id
+                where f.Id == functionId && p.CanRead == true
+                select r;
 
             var announUsers = new List<AppUserViewModel>();
 
@@ -180,6 +215,101 @@ namespace ShoppingOnline.Application.Systems.Users
             }
 
             return announUsers;
+        }
+
+        public async Task<bool> UpdateAccount(AppUserViewModel userVm)
+        {
+            var user = await _userManager.FindByIdAsync(userVm.Id.ToString());
+            var findByEmail = await _userManager.FindByEmailAsync(userVm.Email);
+
+            if (!user.Email.Equals(userVm.Email) && findByEmail != null)
+                return false;
+
+            //Update user detail
+            user.Gender = userVm.Gender;
+            user.Address = userVm.Address;
+            user.BirthDay = userVm.BirthDay;
+            user.FullName = userVm.FullName;
+            user.Email = userVm.Email;
+            user.Status = userVm.Status;
+            user.PhoneNumber = userVm.PhoneNumber;
+            user.DateModified = DateTime.Now;
+            await _userManager.UpdateAsync(user);
+            return true;
+        }
+
+        public async Task<bool> ChangePassword(string userId, string oldPassword, string password)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            var checkPassword = await _userManager.CheckPasswordAsync(user, oldPassword);
+
+            if (checkPassword == false)
+            {
+                return false;
+            }
+            else
+            {
+                await _userManager.ChangePasswordAsync(user, oldPassword, password);
+
+                await _userManager.UpdateSecurityStampAsync(user);
+
+                return true;
+            }
+        }
+
+        public async Task<bool> ResetPassword(string userId, string password)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+
+            if (user == null || string.IsNullOrEmpty(password))
+            {
+                return false;
+            }
+
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+            var result = await _userManager.ResetPasswordAsync(user, token, password);
+
+            if (result.Succeeded)
+            {
+                await _userManager.UpdateSecurityStampAsync(user);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool CheckPhoneNumber(string phoneNumber)
+        {
+            var user = _userManager.Users.SingleOrDefault(n => n.PhoneNumber.Equals(phoneNumber));
+
+            if (user != null)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public async Task<bool> CheckUpdatePhoneNumber(string phoneNumber, string userId)
+        {
+            var findByPhone = _userManager.Users.SingleOrDefault(n => n.PhoneNumber.Equals(phoneNumber));
+
+            var user = await _userManager.FindByIdAsync(userId);
+
+            if (string.IsNullOrEmpty(phoneNumber) && user != null)
+            {
+                return false;
+            }
+
+            if (user.PhoneNumber.Equals(phoneNumber) && findByPhone != null)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

@@ -13,7 +13,7 @@ namespace ShoppingOnline.Application.Systems.Users.Dtos
 
         public Guid? Id { set; get; }
         public string FullName { set; get; }
-        public string BirthDay { set; get; }
+        public DateTime? BirthDay { set; get; }
         public string Email { set; get; }
         public string Password { set; get; }
         public string UserName { set; get; }
@@ -22,7 +22,7 @@ namespace ShoppingOnline.Application.Systems.Users.Dtos
         public string Avatar { get; set; }
         public Status Status { get; set; }
 
-        public string Gender { get; set; }
+        public bool Gender { get; set; }
 
         public DateTime DateCreated { get; set; }
 

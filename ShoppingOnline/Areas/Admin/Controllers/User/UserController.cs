@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using ShoppingOnline.Application.Systems.Users;
 using ShoppingOnline.Application.Systems.Users.Dtos;
 using ShoppingOnline.Data.Entities.System;
+using ShoppingOnline.Utilities.Constants;
 using ShoppingOnline.Utilities.Dtos;
 using ShoppingOnline.WebApplication.Areas.Admin.Controllers.Base;
 using ShoppingOnline.WebApplication.Authorization;
@@ -102,6 +103,28 @@ namespace ShoppingOnline.WebApplication.Areas.Admin.Controllers.User
                 await _userService.DeleteAsync(id);
 
                 return new OkObjectResult(id);
+            }
+        }
+        
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(string userId)
+        {
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return new BadRequestResult();
+
+            }
+
+            var isValid = await _userService.ResetPassword(userId, CommonConstants.DefaultPassword);
+
+            if (isValid)
+            {
+                return new OkObjectResult(new GenericResult(true));
+            }
+            else
+            {
+                return new OkObjectResult(new GenericResult(false));
             }
         }
     }

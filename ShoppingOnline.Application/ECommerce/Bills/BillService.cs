@@ -49,7 +49,7 @@ namespace ShoppingOnline.Application.ECommerce.Bills
             var announcement = Mapper.Map<AnnouncementViewModel, Announcement>(announcementVm);
 
             _billRepository.Add(order);
-            _announcementRepository.Add(announcement);
+             _announcementRepository.Add(announcement);
         }
 
         public void Update(BillViewModel billVm)

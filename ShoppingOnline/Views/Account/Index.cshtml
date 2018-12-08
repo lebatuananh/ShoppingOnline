@@ -1,0 +1,98 @@
+@model ShoppingOnline.Application.Systems.Users.Dtos.AppUserViewModel
+
+@{
+    ViewData["Title"] = "Your account";
+    ViewData["MetaDescription"] = "Shopping cart";
+    ViewData["MetaKeyword"] = "Shopping cart";
+}
+
+<!-- Breadcrumbs -->
+
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    <li class="home"> <a asp-area="" asp-controller="Home" asp-action="Index">Home</a><span>&raquo;</span></li>
+                    <li><a asp-area="" asp-controller="Account" asp-action="Index"><strong>My Account</strong></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs End -->
+<!-- Main Container -->
+<section class="main-container col2-right-layout">
+    <div class="main container">
+        <div class="row">
+            <div class="col-main col-sm-9 col-xs-12">
+                <div class="my-account">
+                    <div class="page-title">
+                        <h2>Account Information</h2>
+                    </div>
+                    <div class="dashboard">
+                        <div class="table-responsive">
+                            <table class="table table-bordered cart_summary table-striped">
+                                <tbody>
+                                    <tr class="first odd">
+                                        <td>Username</td>
+                                        <td>@Model.UserName</td>
+                                    </tr>
+
+                                    <tr class="flast even">
+                                        <td>Full name</td>
+                                        <td>@Model.FullName</td>
+                                    </tr>
+
+                                    <tr class="first odd">
+                                        <td>Birthday</td>
+                                        <td>
+                                            @if (@Model.BirthDay.HasValue)
+                                            {
+                                                @Model.BirthDay.Value.ToString("dd/MM/yyyy")
+                                            }
+                                        </td>
+                                    </tr>
+
+                                    <tr class="last even">
+                                        <td>Email</td>
+                                        <td>@Model.Email</td>
+                                    </tr>
+
+                                    <tr class="first odd">
+                                        <td>Phone Number</td>
+                                        <td>@Model.PhoneNumber</td>
+                                    </tr>
+
+                                    <tr class="last even">
+                                        <td>Address</td>
+                                        <td>@Model.Address</td>
+                                    </tr>
+
+                                    <tr class="first odd">
+                                        <td>Gender</td>
+                                        <td>@(Model.Gender ? "Male" : "Female")</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <aside class="right sidebar col-sm-3 col-xs-12">
+                <div class="sidebar-account block">
+                    <div class="sidebar-bar-title">
+                        <h3>My Account</h3>
+                    </div>
+                    <div class="block-content">
+                        <ul>
+                            <li><a asp-area="" asp-controller="Account" asp-action="UpdateAccount">Update account</a></li>
+                            <li><a asp-area="" asp-controller="Account" asp-action="UpdatePassword">Update password</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+<!-- service section -->

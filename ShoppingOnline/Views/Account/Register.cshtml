@@ -2,6 +2,8 @@
 @{
     ViewData["Title"] = "Register";
 }
+
+
 <!-- Breadcrumbs -->
 
 <div class="breadcrumbs">
@@ -9,12 +11,8 @@
         <div class="row">
             <div class="col-xs-12">
                 <ul>
-                    <li class="home">
-                        <a title="Go to Home Page" asp-action="Index" asp-controller="Home">Home</a><span>&raquo;</span>
-                    </li>
-                    <li>
-                        <strong>Register</strong>
-                    </li>
+                    <li class="home"> <a title="Go to Home Page" asp-action="Index" asp-controller="Home">Home</a><span>&raquo;</span></li>
+                    <li><strong>Register</strong></li>
                 </ul>
             </div>
         </div>
@@ -36,6 +34,12 @@
                                         <div asp-validation-summary="All" class="text-danger"></div>
                                     </div>
                                 </div>
+                                <div class="col-xs-12">
+                                    <label>Username:</label>
+                                    <div class="input-text">
+                                        <input type="text" asp-for="UserName" name="userName" class="form-control">
+                                    </div>
+                                </div>
                                 <div class="col-sm-6">
                                     <label>Full Name:</label>
                                     <div class="input-text">
@@ -48,38 +52,45 @@
                                         <input type="text" asp-for="Email" name="email" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-xs-12">
+                                <div class="col-sm-6">
                                     <label>Password:</label>
                                     <div class="input-text">
                                         <input type="password" asp-for="Password" name="password" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-xs-12">
+                                <div class="col-sm-6">
                                     <label>Confirm Password:</label>
                                     <div class="input-text">
                                         <input type="password" asp-for="ConfirmPassword" name="confirmPassword" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-xs-12">
+                                <div class="col-sm-6">
                                     <label>DOB:</label>
                                     <div class="input-text">
                                         <input type="date" asp-for="BirthDay" name="birthDay" class="form-control">
                                     </div>
                                 </div>
+
                                 <div class="col-sm-6">
                                     <label>Phone Number:</label>
                                     <div class="input-text">
                                         <input type="text" name="phoneNumber" asp-for="PhoneNumber" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-xs-12">
                                     <label>Address:</label>
                                     <div class="input-text">
                                         <input type="text" name="address" asp-for="Address" class="form-control">
                                     </div>
                                 </div>
+                                <div class="col-xs-12">
+                                    <label>Gender:</label>
+                                    <div class="input-text">
+                                        <label><input type="checkbox" name="gender" asp-for="Gender"> Male</label>
+                                    </div>
+                                </div>
                                 <div class="col-sm-6">
-                                    <recaptcha/>
+                                    <recaptcha />
                                     <span class="text-danger" id="recaptchaErrorMessage"></span>
                                 </div>
                                 <div class="col-xs-12">

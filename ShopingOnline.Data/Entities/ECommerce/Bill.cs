@@ -31,7 +31,7 @@ namespace ShoppingOnline.Data.Entities.ECommerce
         }
 
         public Bill(int id, string customerName, string customerAddress, string customerMobile, string customerMessage,
-            BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId, int shipperId)
+            BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId, int? shipperId)
         {
             Id = id;
             CustomerName = customerName;
@@ -62,7 +62,7 @@ namespace ShoppingOnline.Data.Entities.ECommerce
 
         [DefaultValue(Status.Active)] public Status Status { set; get; } = Status.Active;
 
-        public int ShipperId { get; set; }
+        public int? ShipperId { get; set; }
 
         public Guid? CustomerId { set; get; }
 

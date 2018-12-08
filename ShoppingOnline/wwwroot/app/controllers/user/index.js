@@ -1,17 +1,25 @@
-var userController = function () {
+var UserController = function () {
     this.initialize = function () {
         loadData();
         registerEvents();
     };
 
     function registerEvents() {
+
+        $('#txtBirthday').datepicker({
+            autoclose: true,
+            format: 'dd/mm/yyyy',
+            setDate: new Date()
+
+        }).datepicker("update", new Date());
+
         //Init validation
         $('#frmMaintainance').validate({
             errorClass: 'red',
             ignore: [],
             rules: {
-                txtFullName: {required: true},
-                txtUserName: {required: true},
+                txtFullName: { required: true },
+                txtUserName: { required: true },
                 txtPassword: {
                     required: true,
                     minlength: 6
@@ -62,16 +70,28 @@ var userController = function () {
                 var username = $('#txtUserName').val();
                 var password = $('#txtPassword').val();
                 var email = $('#txtEmail').val();
+                var address = $('#txtAddress').val();
                 var phoneNumber = $('#txtPhoneNumber').val();
+                var gender = $('#ckGender').prop('checked');
                 var roles = [];
 
                 $.each($('input[name="ckRoles"]'), function (i, item) {
-                    if ($(item).prop('checked') == true) {
+                    if ($(item).prop('checked') === true) {
                         roles.push($(item).prop('value'));
                     }
                 });
 
-                var status = $('#ckStatus').prop('checked') == true ? 1 : 0;
+                debugger
+
+                if (roles.length === 0) {
+                    core.notify('Please, check roles', 'error');
+                    return false;
+                }
+
+                var status = $('#ckStatus').prop('checked') === true ? 1 : 0;
+
+                var birthday = $("#txtBirthday").data('datepicker').getFormattedDate('yyyy-mm-dd');
+
 
                 $.ajax({
                     type: "POST",
@@ -85,9 +105,11 @@ var userController = function () {
                         Email: email,
                         PhoneNumber: phoneNumber,
                         Status: status,
-                        Roles: roles
+                        Roles: roles,
+                        Gender: gender,
+                        BirthDay: birthday,
+                        Address: address
                     },
-                    dataType: "json",
                     beforeSend: function () {
                         core.startLoading();
                     },
@@ -100,7 +122,7 @@ var userController = function () {
                             loadData(true);
                             $('#paginationUL').twbsPagination('destroy');
                         } else {
-                            core.notify('Please check username and email', 'Error');
+                            core.notify('Please, check username or email or phone number', 'Error');
                         }
                     },
                     error: function () {
@@ -167,6 +189,14 @@ var userController = function () {
                     $('#txtEmail').val(res.Email);
                     $('#txtPhoneNumber').val(res.PhoneNumber);
                     $('#ckStatus').prop('checked', res.Status === 1);
+                    $('#txtAddress').val(res.Address);
+                    $('#ckGender').prop('checked', res.Gender);
+
+                    $('#txtBirthday').datepicker({
+                        autoclose: true,
+                        format: 'dd/mm/yyyy',
+                        setDate: new Date()
+                    }).datepicker("update", core.dateFormatSubStr(res.BirthDay));
 
                     initRoleList(res.Roles);
 
@@ -176,16 +206,55 @@ var userController = function () {
 
                 },
                 error: function (res) {
-                    console.log('Has a error', 'error');
+                    core.notify('Has a error', 'error');
                     core.stopLoading();
                 }
 
             });
 
         });
+
+        $('body').on('click', '.btnReset', function () {
+
+            var id = $(this).data('id');
+
+
+            core.confirm('Are you sure to reset password this account ?', function () {
+
+                $.ajax({
+
+                    url: '/Admin/User/ResetPassword',
+                    type: 'post',
+                    dataType: 'json',
+                    data: {
+                        userId: id
+                    },
+                    beforeSend: function () {
+                        core.startLoading();
+                    },
+                    success: function (res) {
+
+                        if (res.Success) {
+                            core.notify('Your password has been reset successfully', 'success');
+                        } else {
+                            core.notify('Reset Password Failed', 'error');
+                        }
+                        core.stopLoading();
+
+                    },
+                    error: function (res) {
+                        core.notify('Has a error', 'error');
+                        core.stopLoading();
+                    }
+
+                });
+            });
+
+        });
     }
 
     function loadData(isPageChanged) {
+
         $.ajax({
 
             url: '/Admin/User/GetAllPaging',
@@ -210,7 +279,7 @@ var userController = function () {
                             FullName: item.FullName,
                             Id: item.Id,
                             UserName: item.UserName,
-                            Avatar: (item.Avatar === undefined || item.Avatar == null) ? '<img src="/admin-site/images/user.png" width=25/>' : '<img src="' + item.Avatar + '" width=25/>',
+                            Avatar: ( item.Avatar == null || item.Avatar===undefined )? '<img src="/admin-site/images/user.png" width=25/>' : '<img src="' + item.Avatar + '" width=25/>',
                             DateCreated: core.dateFormatSubStr(item.DateCreated),
                             Status: core.getStatus(item.Status)
                         });
@@ -301,6 +370,7 @@ var userController = function () {
         $('#hidId').val('');
         initRoleList();
         $('#txtFullName').val('');
+        $('#txtAddress').val('');
         $('#txtUserName').val('');
         $('#txtPassword').val('');
         $('#txtConfirmPassword').val('');
@@ -308,6 +378,12 @@ var userController = function () {
         $('#txtEmail').val('');
         $('#txtPhoneNumber').val('');
         $('#ckStatus').prop('checked', true);
+        $('#ckGender').prop('checked', true);
+        $('#txtBirthday').datepicker({
+            autoclose: true,
+            format: 'dd-mm-yyyy'
+        }).datepicker("update", new Date());
+
     }
 
     function disableFieldEdit(disabled) {
@@ -316,4 +392,4 @@ var userController = function () {
         $('#txtConfirmPassword').prop('disabled', disabled);
 
     }
-};
+}

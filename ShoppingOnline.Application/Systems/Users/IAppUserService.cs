@@ -19,6 +19,16 @@ namespace ShoppingOnline.Application.Systems.Users
 
         Task<bool> UpdateAsync(AppUserViewModel userVm);
 
+        Task<bool> UpdateAccount(AppUserViewModel userVm);
+
         Task<List<AppUserViewModel>> AnnouncementUsers(string functionId);
+
+        Task<bool> ChangePassword(string userId, string oldPassword, string password);
+
+        Task<bool> ResetPassword(string userId, string password);
+
+        bool CheckPhoneNumber(string phoneNumber);
+
+        Task<bool> CheckUpdatePhoneNumber(string phoneNumber, string userId);
     }
 }

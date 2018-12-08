@@ -107,7 +107,8 @@ namespace ShoppingOnline.WebApplication.Controllers.Cart
                         CustomerName = model.CustomerName,
                         CustomerMessage = model.CustomerMessage,
                         BillDetails = details,
-                        Status = Status.Active
+                        Status = Status.Active,
+                        ShipperId=1
                     };
 
                     if (User.Identity.IsAuthenticated == true)
@@ -122,7 +123,7 @@ namespace ShoppingOnline.WebApplication.Controllers.Cart
                     {
                         Title = "New bill",
                         DateCreated = DateTime.Now,
-                        UserId = null,
+                        UserId = Guid.Parse(User.GetSpecificClaim("UserId")),
                         Content = $"New bill has been created",
                         Id = notificationId
                     };

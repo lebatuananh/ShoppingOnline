@@ -5,8 +5,10 @@
 
 @section Styles{
 
-    <style>
-        .g-recaptcha { margin-left: -15px; }
+<style>
+    .g-recaptcha {
+        margin-left:-15px;
+    }
     </style>
 }
 
@@ -17,12 +19,8 @@
         <div class="row">
             <div class="col-xs-12">
                 <ul>
-                    <li class="home">
-                        <a title="Go to Home Page" href="/">Home</a><span>&raquo;</span>
-                    </li>
-                    <li>
-                        <strong>Associate your @ViewData["LoginProvider"] account.</strong>
-                    </li>
+                    <li class="home"> <a title="Go to Home Page" href="/">Home</a><span>&raquo;</span></li>
+                    <li><strong>Associate your @ViewData["LoginProvider"] account.</strong></li>
                 </ul>
             </div>
         </div>
@@ -44,16 +42,39 @@
                     <div class="single-input p-bottom50 clearfix">
                         <form asp-action="ExternalLoginConfirmation" asp-route-retururl="@ViewData["ReturnUrl"]" method="post">
                             <div asp-validation-summary="All" class="text-danger"></div>
+
+                            <div class="col-xs-12">
+                                <label>Username:</label>
+                                <div class="input-text">
+                                    <input type="text" asp-for="UserName" name="userName" class="form-control">
+                                </div>
+                            </div>
+
                             <div class="col-sm-6">
-                                <label asp-for="FullName"></label>
+                                <label>Full Name:</label>
                                 <div class="input-text">
                                     <input type="text" asp-for="FullName" name="fullName" class="form-control">
                                 </div>
                             </div>
+
                             <div class="col-sm-6">
                                 <label>Email:</label>
                                 <div class="input-text">
-                                    <input type="email" asp-for="Email" name="email" class="form-control">
+                                    <input type="text" asp-for="Email" name="email" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label>Password:</label>
+                                <div class="input-text">
+                                    <input type="password" asp-for="Password" name="password" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label>Confirm Password:</label>
+                                <div class="input-text">
+                                    <input type="password" asp-for="ConfirmPassword" name="confirmPassword" class="form-control">
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -62,6 +83,7 @@
                                     <input type="date" asp-for="DOB" name="dob" class="form-control">
                                 </div>
                             </div>
+
                             <div class="col-sm-6">
                                 <label>Phone Number:</label>
                                 <div class="input-text">
@@ -69,9 +91,23 @@
                                 </div>
                             </div>
 
+                            <div class="col-xs-12">
+                                <label>Address:</label>
+                                <div class="input-text">
+                                    <input type="text" name="address" asp-for="Address" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12">
+                                <label>Gender:</label>
+                                <div class="input-text">
+                                    <label><input type="checkbox" name="gender" asp-for="Gender"> Male</label>
+                                </div>
+                            </div>
+
                             <div class="col-sm-6">
                                 <div class="col-md-10">
-                                    <recaptcha/>
+                                    <recaptcha />
                                     <span class="text-danger" id="recaptchaErrorMessage"></span>
                                 </div>
                             </div>
@@ -93,6 +129,6 @@
 
     @await Html.PartialAsync("_ValidationScriptsPartial")
 
-    <recaptcha-script validation-message-element-id="recaptchaErrorMessage"/>
+    <recaptcha-script validation-message-element-id="recaptchaErrorMessage" />
 
 }

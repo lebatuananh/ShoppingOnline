@@ -91,6 +91,11 @@ namespace ShoppingOnline.Application.ECommerce.Bills
             _billRepository.Update(order);
         }
 
+        public List<BillViewModel> GetAll(Guid id)
+        {
+            return _billRepository.FindAll(x=>x.CustomerId==id).ProjectTo<BillViewModel>().ToList();
+        }
+
         public PagedResult<BillViewModel> GetAllPaging(string startDate, string endDate, string keyword, int pageIndex,
             int pageSize)
         {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using ShoppingOnline.Application.ECommerce.Bills.Dtos;
 using ShoppingOnline.Application.ECommerce.Products.Dtos;
@@ -12,6 +13,8 @@ namespace ShoppingOnline.Application.ECommerce.Bills
         void Create(BillViewModel billVm, AnnouncementViewModel announcementVm);
 
         void Update(BillViewModel billVm);
+
+        List<BillViewModel> GetAll(Guid id);
 
         PagedResult<BillViewModel> GetAllPaging(string startDate, string endDate, string keyword,
             int pageIndex, int pageSize);

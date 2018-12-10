@@ -1,0 +1,39 @@
+@model List<ShoppingOnline.Application.ECommerce.Bills.Dtos.BillViewModel> 
+@{
+    ViewData["PageTitle"] = "Bill";
+    ViewData["SeoKeywords"] = "Bill";
+    ViewData["SeoDescription"] = "Bill";
+}
+<section class="blog_post">
+    <div class="container">
+
+        <!-- Center colunm-->
+        <div class="blog-wrapper">
+            <div class="page-title">
+                <h2>Blog</h2>
+            </div>
+            <ul class="blog-posts">
+                @foreach (var item in Model)
+                {
+                    var url = "/" + "bill." + item.Id + ".html";
+                    <li class="post-item col-md-4">
+                        <div class="blog-box">
+                            <a href="@url"></a>
+                            <div class="blog-btm-desc">
+                                <div class="blog-top-desc">
+                                    <div class="blog-date"> @item.DateCreated.ToString("dd/MM/yyyy") </div>
+                                    <h4><a href="@url">@item.CustomerName</a></h4>
+                                    <div class="jtv-entry-meta">
+                                        <i class="fa fa-user-o"></i> <strong>Admin</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>           
+        </div>
+        <!-- ./ Center colunm -->
+    </div>
+</section>
+<!-- Main Container End --> 

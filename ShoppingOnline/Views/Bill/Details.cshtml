@@ -1,0 +1,22 @@
+@model ShoppingOnline.WebApplication.Models.PayViewModel
+
+@{
+}
+
+<h2>title</h2>
+@{
+    decimal totalPrice = 0;
+    foreach (var item in Model.Details)
+    {
+        var price = item.Price * item.Quantity;
+        totalPrice += price;
+    }
+    <p>@totalPrice</p>
+}
+
+@{
+    var url = "https://www.nganluong.vn/button_payment.php?receiver=tuananh300496@gmail.com&product_name=" + @Model.Bill.Id + "&price=" + totalPrice + "&return_url=/Home/Index&comments=cảm ơn bạn đã đặt hàng";
+    <a target="_blank" href=@url>
+        <img src="https://www.nganluong.vn/css/newhome/img/button/safe-pay-2.png"border="0"/>
+    </a>
+}

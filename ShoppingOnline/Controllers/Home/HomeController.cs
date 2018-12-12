@@ -61,5 +61,11 @@ namespace ShoppingOnline.WebApplication.Controllers.Home
 
             return LocalRedirect(returnUrl);
         }
+
+        public IActionResult SearchQuery(string q)
+        {
+            var result = _productService.SearchQuery(q);
+            return new OkObjectResult(result);
+        }
     }
 }

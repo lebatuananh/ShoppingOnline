@@ -52,5 +52,8 @@ namespace ShoppingOnline.Application.ECommerce.Products
         List<ProductViewModel> GetUpSellProducts(int top);
 
         List<TagViewModel> GetProductTags(int productId);
+
+        List<SearchQueryViewModel> SearchQuery(string q);
+
     }
 }

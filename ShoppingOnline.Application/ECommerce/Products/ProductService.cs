@@ -20,6 +20,7 @@ namespace ShoppingOnline.Application.ECommerce.Products
     public class ProductService : IProductService
     {
         private readonly IRepository<Product, int> _productRepository;
+        private readonly IRepository<ProductCategory, int> _productCategoryRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IRepository<ProductTag, int> _productTagRepository;
         private readonly IRepository<Tag, string> _tagRepository;
@@ -29,13 +30,14 @@ namespace ShoppingOnline.Application.ECommerce.Products
         private readonly IRepository<Color, int> _colorRepository;
         private readonly IRepository<Size, int> _sizeRepository;
 
-        public ProductService(IRepository<Product, int> productRepository, IUnitOfWork unitOfWork,
+        public ProductService(IRepository<Product, int> productRepository, IRepository<ProductCategory, int> productCategoryRepository, IUnitOfWork unitOfWork,
             IRepository<ProductTag, int> productTagRepository, IRepository<Tag, string> tagRepository,
             IRepository<ProductQuantity, int> productQuantityRepository,
             IRepository<ProductImage, int> productImageRepository, IRepository<WholePrice, int> wholePriceRepository,
             IRepository<Color, int> colorRepository, IRepository<Size, int> sizeRepository)
         {
             _productRepository = productRepository;
+            _productCategoryRepository = productCategoryRepository;
             _unitOfWork = unitOfWork;
             _productTagRepository = productTagRepository;
             _tagRepository = tagRepository;
@@ -439,5 +441,16 @@ namespace ShoppingOnline.Application.ECommerce.Products
 
             _productRepository.Update(product);
         }
+
+        public List<SearchQueryViewModel> SearchQuery(string q)
+        {
+            var model = new List<SearchQueryViewModel>();
+            _productRepository.FindAll(x => x.Name.Contains(q)).ToList().ForEach(x =>
+            {
+                model.Add(new SearchQueryViewModel() { Id = x.Id, Name = x.Name, Alias = x.SeoAlias, Category = _productCategoryRepository.FindById(x.CategoryId).Name, CategoryAlias = _productCategoryRepository.FindById(x.CategoryId).SeoAlias });
+            });
+            return model;
+        }
+
     }
 }

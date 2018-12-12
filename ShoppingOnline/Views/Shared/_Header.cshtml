@@ -1,6 +1,26 @@
 @using ShoppingOnline.WebApplication.Extensions
 @inject IViewLocalizer Localizer
+@*@section Styles{
+    <link href="~/client-side/css/jquery-ui.css" rel="stylesheet" />
+    <style>
+        .ui-autocomplete-category {
+            font-weight: bold;
+            color: #1f8dd6;
+            padding: .2em .4em;
+            margin: .8em 0 .2em;
+            line-height: 1.5;
+        }
+    </style>
 
+}
+@section Scripts{
+    
+    <script src="~/app-client/controllers/header/index.js"></script>
+    <script>
+        var HeaderController = new HeaderController();
+        HeaderController.initialize();
+    </script>
+}*@
 <header>
     <div class="header-container">
         <div class="header-top">
@@ -87,14 +107,12 @@
 
                     <div class="top-search">
                         <div id="search">
-                            <form method="get" action="/search.html">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" required placeholder="@Localizer["Keyword"]" name="keyword">
-                                    <button class="btn-search" type="submit">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </div>
-                            </form>
+                            @*<form method="get" action="/search.html">*@
+                            <div class="input-group">
+                                <input type="text" class="form-control" required placeholder="@Localizer["Keyword"]" name="keyword">
+                               
+                            </div>
+                            @*</form>*@
                         </div>
                     </div>
 

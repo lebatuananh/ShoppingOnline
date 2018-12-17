@@ -1,23 +1,109 @@
 @model ShoppingOnline.WebApplication.Models.PayViewModel
 
-@{
-}
+<div class="container">
+    <h3>@Model.Bill.CustomerName</h3>
+    <div class="card">
+        <div class="card-header">
+            Hoá đơn
+            <strong>@Model.Bill.DateCreated</strong>
+            <br />
+            <span class="float-right"> <strong>Status:</strong> @Model.Bill.Status</span>
+        </div>
+        <br />
+        <br />
+        <div class="card-body">
+            <div class="row mb-4">
+                <div class="col-sm-6">
+                    <h6 class="mb-3">Cửa hàng:</h6>
+                    <div>
+                        <strong>ShoppingOnline</strong>
+                    </div>
+                    <div>Hà Nội</div>
+                    <div>Email: tuananh300496@gmal.com</div>
+                    <div>Phone:0333355553</div>
+                </div>
 
-<h2>title</h2>
-@{
-    decimal totalPrice = 0;
-    foreach (var item in Model.Details)
-    {
-        var price = item.Price * item.Quantity;
-        totalPrice += price;
-    }
-    <p>@totalPrice</p>
-    <p>@Model.Bill.CustomerMessage</p>
-}
+                <div class="col-sm-6">
+                    <h6 class="mb-3">To:</h6>
+                    <div>
+                        <strong>@Model.Bill.CustomerName</strong>
+                    </div>
+                    <div>@Model.Bill.CustomerAddress</div>
+                    <div>Tin nhắn: @Model.Bill.CustomerMessage</div>
+                    <div>Phone: @Model.Bill.CustomerMobile</div>
+                </div>
+            </div>
 
-@{
-    var url = "https://www.nganluong.vn/button_payment.php?receiver=tuananh300496@gmail.com&product_name=" + @Model.Bill.Id + "&price=" + totalPrice + "&return_url=/Home/Index&comments=cảm ơn bạn đã đặt hàng";
-    <a target="_blank" href=@url>
-        <img src="https://www.nganluong.vn/css/newhome/img/button/safe-pay-2.png"border="0"/>
-    </a>
-}
+            <div class="table-responsive-sm">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="center">#</th>
+                            <th>Sản phẩm</th>
+                            <th>Mô tả</th>
+                            <th>Thuộc tính</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th>Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Details)
+                        {
+                            int i = 1;
+                            var total = item.Quantity * item.Price;
+                            <tr>
+                                <td>@i</td>
+                                <td>@item.Product.Name</td>
+                                <td>@item.Product.Description</td>
+                                <td>@item.Size.Name @item.Color.Name</td>
+                                <td>@item.Price</td>
+                                <td>@item.Quantity</td>
+                                <td>@total</td>
+                            </tr>
+                            i += 1;
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                @{
+                    decimal totalPrice = 0;
+                    foreach (var item in Model.Details)
+                    {
+                        var price = item.Price * item.Quantity;
+                        totalPrice += price;
+                    }
+                    <div class="col-lg-4 col-sm-5 ml-auto" style="float: right;">
+                        <table class="table table-clear" style="margin-left:-135px">
+                            <tbody>
+                                <tr>
+                                    <td class="left">
+                                        <strong>Total</strong>
+                                    </td>
+                                    <td class="right">
+                                        <strong>@totalPrice</strong>
+                                    </td>
+                                </tr>
+                                @{var url = "https://www.nganluong.vn/button_payment.php?receiver=tuananh300496@gmail.com&product_name=" + @Model.Bill.Id + "&price=" + totalPrice + "&return_url=https://localhost:5001/Home/Index&comments=cảm ơn bạn đã đặt hàng"; }
+                                <tr>
+                                    <td class="left"><strong>Thanh toán ngân lượng</strong></td>
+                                    <td class="right">
+                                        <a target="_blank" href=@url>
+                                            <img src="https://www.nganluong.vn/css/newhome/img/button/safe-pay-2.png" border="0" />
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                }
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
